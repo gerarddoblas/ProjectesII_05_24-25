@@ -49,7 +49,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""name"": ""Attack"",
                     ""type"": ""Value"",
                     ""id"": ""a182cdb4-f78d-465f-a944-c511e241e226"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": ""Press"",
                     ""initialStateCheck"": true

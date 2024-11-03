@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
@@ -9,26 +10,23 @@ public class Player : MonoBehaviour
     public float consumedMana;
     public float speed = 1f, jumpForce = 10f;
     public Vector2 playerSpeed = Vector2.zero;
+    public UnityEvent<float> onAlterMana;
     Rigidbody2D rigidbody2D;
     GroundCheck groundCheck;
-    void Start()
+    Coroutine charging;
+    public SpriteRenderer positionMarker;
+    void Awake()
     {
         mana = 0;
         fillspeed = 0.1f;
         maxFill = 3;
-        //Getting components
         rigidbody2D = GetComponent<Rigidbody2D>();
         groundCheck = GetComponentInChildren<GroundCheck>();
-        //Input settings
         PlayerInput input = GetComponent<PlayerInput>();
-        //Move
         input.actions.FindAction("Move").performed += Move;
         input.actions.FindAction("Move").canceled += MoveCancelled;
-        //Jump
         input.actions.FindAction("Jump").started += Jump;
-        //Attack/Create
         input.actions.FindAction("Attack").started += StartCreating;
-        input.actions.FindAction("Attack").performed += CharginCreation;
         input.actions.FindAction("Attack").canceled += Create;
     }
     private void FixedUpdate()
@@ -42,6 +40,7 @@ public class Player : MonoBehaviour
             mana += fillspeed * Time.deltaTime;
             if (mana >= maxFill)
                 mana = maxFill;
+            onAlterMana.Invoke(this.mana);
         }
     }
     void Move(InputAction.CallbackContext context)
@@ -59,20 +58,28 @@ public class Player : MonoBehaviour
      }
     void StartCreating(InputAction.CallbackContext context) 
     {
-        //if(mana >= 1)
-        //    consumedMana = 1;
+        if(mana >= 1)
+            consumedMana = 1;
+        charging = StartCoroutine(CharginCreation(context));
     }
-    void CharginCreation(InputAction.CallbackContext context)
+    IEnumerator CharginCreation(InputAction.CallbackContext context)
     {
-        Debug.Log("Hi");
-       //if (consumedMana < mana)
-        //{
-            consumedMana += fillspeed * Time.deltaTime;
-            //if (consumedMana > mana)
-            //    consumedMana = mana;
-        //}
+        while (true)
+        {
+            Debug.Log("Consuming Mana");
+            if (consumedMana < mana)
+            {
+                consumedMana += (fillspeed * Time.deltaTime * 4);
+                if (consumedMana > mana)
+                    consumedMana = mana;
+            }
+            yield return null;
+        }
     }
     void Create(InputAction.CallbackContext context) {
+        StopCoroutine(charging);
+        charging = null;
+        Debug.Log("Creating...");
         switch ((int)consumedMana)
         {
             case 1:
@@ -85,23 +92,8 @@ public class Player : MonoBehaviour
                 Debug.Log("generating big object");
                 break;
         }
-        mana -=(int)consumedMana; 
+        mana -=(int)consumedMana;
+        onAlterMana.Invoke(this.mana);
         consumedMana = 0;
     }
-    /*  void InputTest(InputAction.CallbackContext context)
-      {
-          if (context.performed)
-          {
-              print("Action performed");
-          }
-          else if (context.started)
-          {
-              print("Action started");
-          }
-          else if (context.canceled)
-          {
-              print("Action canceled");
-          }
-      }*/
-
 }

@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_NotificationBehavior: 3
-  m_MaxPlayerCount: -1
+  m_MaxPlayerCount: 3
   m_AllowJoining: 1
   m_JoinBehavior: 0
   m_PlayerJoinedEvent:
@@ -216,8 +216,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerColours:
   - {r: 0.5, g: 0, b: 0, a: 1}
-  - {r: 0, g: 0, b: 0, a: 0}
-  - {r: 0, g: 0, b: 0, a: 0}
+  - {r: 0, g: 0, b: 0.5, a: 0.9882353}
+  - {r: 0, g: 0.5, b: 0, a: 1}
+  - {r: 0.5, g: 0.5, b: 0, a: 1}
   canvasPrefab: {fileID: 5217877837741811901, guid: 47d43233bd6b3ba48bbf4410422af590, type: 3}
   players: []
   playersCanvas: []

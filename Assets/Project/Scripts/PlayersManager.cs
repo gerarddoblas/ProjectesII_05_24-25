@@ -22,12 +22,27 @@ public class PlayersManager : MonoBehaviour
     {
         Debug.Log("hi");
         input.gameObject.transform.SetParent(playerContainer.transform);     
-        input.gameObject.GetComponentInChildren<SpriteRenderer>().color = playerColours[players.Count];
-        players.Add(input.gameObject);
+        input.gameObject.GetComponent<SpriteRenderer>().color = playerColours[players.Count];
+        input.gameObject.GetComponent<Player>().positionMarker.color = playerColours[players.Count];
         GameObject instantiatedHUD = GameObject.Instantiate(canvasPrefab,hudsContainer.transform);
         playersCanvas.Add(instantiatedHUD);
         instantiatedHUD.GetComponent<PlayerHud>().backgroundImage.GetComponent<Image>().color = playerColours[players.Count];
+        players.Add(input.gameObject);
         //Sobreescribir eventos de player
+        input.gameObject.GetComponent<HealthBehaviour>().OnAlterHealth.AddListener((int health, int maxHealth) => 
+        {
+            instantiatedHUD.GetComponent<PlayerHud>().knockoutSlider.value = health/maxHealth;
+        });
+        input.gameObject.GetComponent<Player>().onAlterMana.AddListener((float currentMana) =>
+        {
+            instantiatedHUD.GetComponent<PlayerHud>().manaSlider.value = currentMana;
+        });
+        //Reorder HUDS position
+        float initialpos = instantiatedHUD.GetComponent<RectTransform>().sizeDelta.x;
+        foreach (Transform hud in hudsContainer.transform) {
+            hud.position = new Vector3(initialpos,hud.GetComponent<RectTransform>().sizeDelta.y/2, 0);
+            initialpos += instantiatedHUD.GetComponent<RectTransform>().sizeDelta.x*2;
+        }
     }
     private void OnPlayerLeft(PlayerInput input)
     {
