@@ -37,6 +37,10 @@ public class PlayersManager : MonoBehaviour
         {
             instantiatedHUD.GetComponent<PlayerHud>().manaSlider.value = currentMana;
         });
+        input.gameObject.GetComponent<Player>().onAlterScore.AddListener((float score) =>
+        {
+            instantiatedHUD.GetComponent<PlayerHud>().scoreSlider.value = score;
+        });
         //Reorder HUDS position
         float initialpos = instantiatedHUD.GetComponent<RectTransform>().sizeDelta.x;
         foreach (Transform hud in hudsContainer.transform) {

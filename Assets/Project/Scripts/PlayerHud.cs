@@ -5,6 +5,6 @@ using UnityEngine.UI;
 
 public class PlayerHud : MonoBehaviour
 {
-    public Slider manaSlider, knockoutSlider;
+    public Slider manaSlider, knockoutSlider, scoreSlider;
     public Image smallImage, midImage, bigImage, backgroundImage;
 }

@@ -6,11 +6,14 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private float score;
+    public float Score { set { score = value; } get { return score; } }
     public float mana, fillspeed, maxFill;
     public float consumedMana;
     public float speed = 1f, jumpForce = 10f;
     public Vector2 playerSpeed = Vector2.zero;
     public UnityEvent<float> onAlterMana;
+    public UnityEvent<float> onAlterScore;
     Rigidbody2D rigidbody2D;
     GroundCheck groundCheck;
     Coroutine charging;
