@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4405941679950551709}
   - component: {fileID: 329843083177097422}
   - component: {fileID: 166817005524751964}
+  - component: {fileID: 2593818539699598947}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -51,16 +52,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c165a2c0bd9e56449f6d3f8c32c7fde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mana: 0
-  fillspeed: 0
-  maxFill: 0
-  consumedMana: 0
   speed: 200
   jumpForce: 5
   playerSpeed: {x: 0, y: 0}
-  onAlterMana:
-    m_PersistentCalls:
-      m_Calls: []
   positionMarker: {fileID: 6039755520987158056}
 --- !u!114 &8925897465064070515
 MonoBehaviour:
@@ -235,6 +229,25 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnDie:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &2593818539699598947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2405843281983287208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7513a56333b2f4a45a8187e156e8766d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mana: 0
+  fillspeed: 0
+  maxFill: 0
+  consumedMana: 0
+  onAlterMana:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &2677488241086367303

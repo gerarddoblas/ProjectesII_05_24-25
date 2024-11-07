@@ -23,7 +23,7 @@ public class PlayersManager : MonoBehaviour
         Debug.Log("hi");
         input.gameObject.transform.SetParent(playerContainer.transform);     
         input.gameObject.GetComponent<SpriteRenderer>().color = playerColours[players.Count];
-        input.gameObject.GetComponent<Player>().positionMarker.color = playerColours[players.Count];
+        input.gameObject.GetComponent<ItemsCreation>().positionMarker.color = playerColours[players.Count];
         GameObject instantiatedHUD = GameObject.Instantiate(canvasPrefab,hudsContainer.transform);
         playersCanvas.Add(instantiatedHUD);
         instantiatedHUD.GetComponent<PlayerHud>().backgroundImage.GetComponent<Image>().color = playerColours[players.Count];
@@ -33,7 +33,7 @@ public class PlayersManager : MonoBehaviour
         {
             instantiatedHUD.GetComponent<PlayerHud>().knockoutSlider.value = health/maxHealth;
         });
-        input.gameObject.GetComponent<Player>().onAlterMana.AddListener((float currentMana) =>
+        input.gameObject.GetComponent<Items>().onAlterMana.AddListener((float currentMana) =>
         {
             instantiatedHUD.GetComponent<PlayerHud>().manaSlider.value = currentMana;
         });
