@@ -4,9 +4,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-public class ItemsCreation : MonoBehaviour
+public class Player : MonoBehaviour
 {
-<<<<<<< HEAD
     [SerializeField] private float score;
     public float Score { set { score = value; } get { return score; } }
     public float mana, fillspeed, maxFill;
@@ -15,13 +14,6 @@ public class ItemsCreation : MonoBehaviour
     public Vector2 playerSpeed = Vector2.zero;
     public UnityEvent<float> onAlterMana;
     public UnityEvent<float> onAlterScore;
-=======
-
-
-    public float speed = 1f, jumpForce = 10f;
-    public Vector2 playerSpeed = Vector2.zero;
-
->>>>>>> 7f9d0e351ad2a54b09f9c0eb709b6c72caf47b8b
     Rigidbody2D rigidbody2D;
     GroundCheck groundCheck;
 
