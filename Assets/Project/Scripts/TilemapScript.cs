@@ -10,12 +10,22 @@ public class TilemapScript : MonoBehaviour
     void Start()
     {
         tm = GetComponent<Tilemap>();
+        for (int i = -2; i < 2; i++)
+        {
+            ExplodingTile et = (ExplodingTile)tm.GetTile(new Vector3Int(i, -1, 0));
+            if (et != null && et.started)
+            {
+                et.started = false;
+                Debug.Log("refreshing at " + new Vector3Int(i, -1, 0));
+                tm.RefreshTile(new Vector3Int(i, -1, 0));
+            }
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void OnCollisionEnter2D(Collision2D collision)
