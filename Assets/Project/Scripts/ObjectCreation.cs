@@ -6,10 +6,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Items",menuName = "ObjectCreatorManager")]
 public class ObjectCreation : ScriptableObject
 {
-    List<GameObject> smallObjects = new List<GameObject>();
-    List<GameObject> mediumObjects = new List<GameObject>();
-    List<GameObject> bigObjects = new List<GameObject>();
-    GameObject GetRandomSmallObject() { return smallObjects[Random.Range(0, smallObjects.Count - 1)]; }
-    GameObject GetRandomMediumObject() { return mediumObjects[Random.Range(0, mediumObjects.Count - 1)]; }
-    GameObject GetRandomBigObject() { return bigObjects[Random.Range(0, bigObjects.Count - 1)]; }
+    [SerializeField]List<GameObject> smallObjects = new List<GameObject>();
+    [SerializeField] List<GameObject> mediumObjects = new List<GameObject>();
+    [SerializeField] List<GameObject> bigObjects = new List<GameObject>();
+    public GameObject GetRandomSmallObject() { return smallObjects[Random.Range(0, smallObjects.Count)]; }
+    public GameObject GetRandomMediumObject() { return mediumObjects[Random.Range(0, mediumObjects.Count)]; }
+    public GameObject GetRandomBigObject() { return bigObjects[Random.Range(0, bigObjects.Count)]; }
 }

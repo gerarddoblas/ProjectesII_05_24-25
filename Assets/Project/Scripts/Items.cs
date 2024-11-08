@@ -8,7 +8,7 @@ public class Items : MonoBehaviour
 {
     public float mana, fillspeed, maxFill;
     public float consumedMana;
-
+    public ObjectCreation objectGenerator;
 
     public UnityEvent<float> onAlterMana;
     Coroutine charging;
@@ -16,7 +16,7 @@ public class Items : MonoBehaviour
     private void Awake()
     {
         mana = 0;
-        fillspeed = 0.1f;
+        fillspeed = 0.5f;
         maxFill = 3;
         PlayerInput input = GetComponent<PlayerInput>();
         input.actions.FindAction("Attack").started += StartCreating;
@@ -58,17 +58,25 @@ public class Items : MonoBehaviour
         StopCoroutine(charging);
         charging = null;
         Debug.Log("Creating...");
+        GameObject instantiatedItem = null;
         switch ((int)consumedMana)
         {
             case 1:
-                Debug.Log("generating small object");
+                instantiatedItem =  objectGenerator.GetRandomSmallObject();
+                //Debug.Log("generating small object");
                 break;
             case 2:
-                Debug.Log("generating mid object");
+                instantiatedItem =  objectGenerator.GetRandomMediumObject();
+                //Debug.Log("generating mid object");
                 break;
             case 3:
-                Debug.Log("generating big object");
+                instantiatedItem = objectGenerator.GetRandomBigObject();
+                //Debug.Log("generating big object");
                 break;
+        }
+        if (instantiatedItem)
+        {
+            Instantiate(instantiatedItem, this.transform.position, Quaternion.Euler(0,0,0));
         }
         mana -= (int)consumedMana;
         onAlterMana.Invoke(this.mana);

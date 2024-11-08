@@ -52,9 +52,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c165a2c0bd9e56449f6d3f8c32c7fde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  score: 0
   speed: 200
   jumpForce: 5
   playerSpeed: {x: 0, y: 0}
+  onAlterMana:
+    m_PersistentCalls:
+      m_Calls: []
+  onAlterScore:
+    m_PersistentCalls:
+      m_Calls: []
   positionMarker: {fileID: 6039755520987158056}
 --- !u!114 &8925897465064070515
 MonoBehaviour:
@@ -247,6 +254,7 @@ MonoBehaviour:
   fillspeed: 0
   maxFill: 0
   consumedMana: 0
+  objectGenerator: {fileID: 11400000, guid: beec49a64267bdd4792ee5991a8b74e8, type: 2}
   onAlterMana:
     m_PersistentCalls:
       m_Calls: []
@@ -261,7 +269,7 @@ GameObject:
   - component: {fileID: 6622831389778516039}
   - component: {fileID: 7129967184898863711}
   - component: {fileID: 8924938480063540322}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
