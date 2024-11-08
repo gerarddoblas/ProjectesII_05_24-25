@@ -28,10 +28,16 @@ namespace UnityEngine.Tilemaps
             {
                 hasExploded = true;
                 tileData.sprite = sprites[1];
+                tileData.transform = Matrix4x4.TRS(Vector3.zero, Quaternion.Euler(0f, 0f, 0f), Vector3.one);
+                tileData.flags = TileFlags.LockTransform | TileFlags.LockColor;
+                tileData.colliderType = Tile.ColliderType.Sprite;
             } else
             {
                 hasExploded = false;
                 tileData.sprite = sprites[0];
+                tileData.transform = Matrix4x4.TRS(Vector3.zero, Quaternion.Euler(0f, 0f, 0f), Vector3.one);
+                tileData.flags = TileFlags.LockTransform | TileFlags.LockColor;
+                tileData.colliderType = Tile.ColliderType.Sprite;
             }
         }
     }
