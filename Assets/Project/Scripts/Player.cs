@@ -4,8 +4,9 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-public class Player : MonoBehaviour
+public class ItemsCreation : MonoBehaviour
 {
+<<<<<<< HEAD
     [SerializeField] private float score;
     public float Score { set { score = value; } get { return score; } }
     public float mana, fillspeed, maxFill;
@@ -14,23 +15,27 @@ public class Player : MonoBehaviour
     public Vector2 playerSpeed = Vector2.zero;
     public UnityEvent<float> onAlterMana;
     public UnityEvent<float> onAlterScore;
+=======
+
+
+    public float speed = 1f, jumpForce = 10f;
+    public Vector2 playerSpeed = Vector2.zero;
+
+>>>>>>> 7f9d0e351ad2a54b09f9c0eb709b6c72caf47b8b
     Rigidbody2D rigidbody2D;
     GroundCheck groundCheck;
-    Coroutine charging;
+
     public SpriteRenderer positionMarker;
     void Awake()
     {
-        mana = 0;
-        fillspeed = 0.1f;
-        maxFill = 3;
+
         rigidbody2D = GetComponent<Rigidbody2D>();
         groundCheck = GetComponentInChildren<GroundCheck>();
         PlayerInput input = GetComponent<PlayerInput>();
         input.actions.FindAction("Move").performed += Move;
         input.actions.FindAction("Move").canceled += MoveCancelled;
         input.actions.FindAction("Jump").started += Jump;
-        input.actions.FindAction("Attack").started += StartCreating;
-        input.actions.FindAction("Attack").canceled += Create;
+
     }
     private void FixedUpdate()
     {
@@ -38,13 +43,7 @@ public class Player : MonoBehaviour
     }
     private void Update()
     {
-        if (mana < maxFill)
-        {
-            mana += fillspeed * Time.deltaTime;
-            if (mana >= maxFill)
-                mana = maxFill;
-            onAlterMana.Invoke(this.mana);
-        }
+
     }
     void Move(InputAction.CallbackContext context)
     {
@@ -54,49 +53,11 @@ public class Player : MonoBehaviour
     {
         playerSpeed = Vector2.zero;
     }
-     void Jump(InputAction.CallbackContext context)
-     {
-        if(groundCheck.grounded)
+    void Jump(InputAction.CallbackContext context)
+    {
+        if (groundCheck.grounded)
             rigidbody2D.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
-     }
-    void StartCreating(InputAction.CallbackContext context) 
-    {
-        if(mana >= 1)
-            consumedMana = 1;
-        charging = StartCoroutine(CharginCreation(context));
     }
-    IEnumerator CharginCreation(InputAction.CallbackContext context)
-    {
-        while (true)
-        {
-            Debug.Log("Consuming Mana");
-            if (consumedMana < mana)
-            {
-                consumedMana += (fillspeed * Time.deltaTime * 4);
-                if (consumedMana > mana)
-                    consumedMana = mana;
-            }
-            yield return null;
-        }
-    }
-    void Create(InputAction.CallbackContext context) {
-        StopCoroutine(charging);
-        charging = null;
-        Debug.Log("Creating...");
-        switch ((int)consumedMana)
-        {
-            case 1:
-                Debug.Log("generating small object");
-                break;
-            case 2:
-                Debug.Log("generating mid object");
-                break;
-            case 3:
-                Debug.Log("generating big object");
-                break;
-        }
-        mana -=(int)consumedMana;
-        onAlterMana.Invoke(this.mana);
-        consumedMana = 0;
-    }
+
+
 }
