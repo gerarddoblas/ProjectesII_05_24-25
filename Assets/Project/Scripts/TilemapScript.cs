@@ -30,7 +30,7 @@ public class TilemapScript : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        tm.RefreshTile(new Vector3Int((int)Mathf.Floor(collision.transform.position.x - 0.6f), (int)Mathf.Floor(collision.transform.position.y - 0.6f), 0));
-        Debug.Log(new Vector3Int((int)Mathf.Floor(collision.transform.position.x - 0.6f), (int)Mathf.Floor(collision.transform.position.y - 0.6f), 0));
+            tm.RefreshTile(new Vector3Int((int)Mathf.Floor(collision.transform.position.x - 0.6f), (int)Mathf.Floor(collision.transform.position.y - 0.6f), 0));
+            Debug.Log(new Vector3Int((int)Mathf.Floor(collision.transform.position.x - 0.6f), (int)Mathf.Floor(collision.transform.position.y - 0.6f), 0));
     }
 }

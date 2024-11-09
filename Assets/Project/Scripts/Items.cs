@@ -6,11 +6,14 @@ using UnityEngine.InputSystem;
 
 public class Items : MonoBehaviour
 {
+    //Mana
     public float mana, fillspeed, maxFill;
     public float consumedMana;
-    public ObjectCreation objectGenerator;
-
     public UnityEvent<float> onAlterMana;
+    //Object Creation
+    public ObjectCreation objectGenerator;
+    public GameObject smallObject, mediumObject, bigObject;
+    public UnityEvent<Sprite> onGenerateRandomSmallObject, onGenerateRandomMidObject, onGenerateRandomBigObject;
     Coroutine charging;
 
     private void Awake()
@@ -21,6 +24,12 @@ public class Items : MonoBehaviour
         PlayerInput input = GetComponent<PlayerInput>();
         input.actions.FindAction("Attack").started += StartCreating;
         input.actions.FindAction("Attack").canceled += Create;
+        smallObject = objectGenerator.GetRandomSmallObject();
+        onGenerateRandomSmallObject.Invoke(smallObject.GetComponent<SpriteRenderer>().sprite);
+        mediumObject = objectGenerator.GetRandomMediumObject();
+        onGenerateRandomMidObject.Invoke(mediumObject.GetComponent<SpriteRenderer>().sprite);
+        bigObject = objectGenerator.GetRandomBigObject();
+        onGenerateRandomBigObject.Invoke(bigObject.GetComponent<SpriteRenderer>().sprite);
     }
 
     private void Update()
@@ -62,15 +71,21 @@ public class Items : MonoBehaviour
         switch ((int)consumedMana)
         {
             case 1:
-                instantiatedItem =  objectGenerator.GetRandomSmallObject();
+                instantiatedItem = smallObject;
+                smallObject = objectGenerator.GetRandomSmallObject();
+                onGenerateRandomSmallObject.Invoke(smallObject.GetComponent<SpriteRenderer>().sprite);
                 //Debug.Log("generating small object");
                 break;
             case 2:
                 instantiatedItem =  objectGenerator.GetRandomMediumObject();
+                mediumObject = objectGenerator.GetRandomMediumObject();
+                onGenerateRandomMidObject.Invoke(mediumObject.GetComponent<SpriteRenderer>().sprite);
                 //Debug.Log("generating mid object");
                 break;
             case 3:
                 instantiatedItem = objectGenerator.GetRandomBigObject();
+                bigObject = objectGenerator.GetRandomBigObject();
+                onGenerateRandomBigObject.Invoke(bigObject.GetComponent<SpriteRenderer>().sprite);
                 //Debug.Log("generating big object");
                 break;
         }

@@ -37,10 +37,23 @@ public class PlayersManager : MonoBehaviour
         {
             instantiatedHUD.GetComponent<PlayerHud>().manaSlider.value = currentMana;
         });
+        input.gameObject.GetComponent<Items>().onGenerateRandomSmallObject.AddListener(delegate(Sprite s)
+        {
+            instantiatedHUD.GetComponent<PlayerHud>().smallImage.sprite = s;
+        });
+        input.gameObject.GetComponent<Items>().onGenerateRandomMidObject.AddListener(delegate (Sprite s)
+        {
+            instantiatedHUD.GetComponent<PlayerHud>().midImage.sprite = s;
+        });
+        input.gameObject.GetComponent<Items>().onGenerateRandomBigObject.AddListener(delegate (Sprite s)
+        {
+            instantiatedHUD.GetComponent<PlayerHud>().bigImage.sprite = s;
+        });
         input.gameObject.GetComponent<Player>().onAlterScore.AddListener((float score) =>
         {
             instantiatedHUD.GetComponent<PlayerHud>().scoreSlider.value = score;
         });
+
         //Reorder HUDS position
         float initialpos = instantiatedHUD.GetComponent<RectTransform>().sizeDelta.x;
         foreach (Transform hud in hudsContainer.transform) {
