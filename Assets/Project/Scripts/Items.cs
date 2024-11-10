@@ -15,6 +15,8 @@ public class Items : MonoBehaviour
     public GameObject smallObject, mediumObject, bigObject;
     public UnityEvent<Sprite> onGenerateRandomSmallObject, onGenerateRandomMidObject, onGenerateRandomBigObject;
     Coroutine charging;
+    SpriteRenderer spriteRenderer;
+    Rigidbody2D rigidbody;
 
     private void Awake()
     {
@@ -22,6 +24,8 @@ public class Items : MonoBehaviour
         fillspeed = 0.5f;
         maxFill = 3;
         PlayerInput input = GetComponent<PlayerInput>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        rigidbody = GetComponent<Rigidbody2D>();
         input.actions.FindAction("Attack").started += StartCreating;
         input.actions.FindAction("Attack").canceled += Create;
         smallObject = objectGenerator.GetRandomSmallObject();
@@ -89,14 +93,20 @@ public class Items : MonoBehaviour
                 //Debug.Log("generating big object");
                 break;
         }
-        if (instantiatedItem)
+        if (instantiatedItem!=null)
         {
             if (instantiatedItem.GetComponent<Item>().consumible)
                 instantiatedItem.GetComponent<Item>().Effect(this.gameObject);
             else
             {
-                instantiatedItem = Instantiate(instantiatedItem, this.transform.position, Quaternion.Euler(0, 0, 0));
+                Vector3 spawnpos = Vector3.zero;
+                if (spriteRenderer.flipX)
+                    spawnpos = Vector3.right;
+                else
+                    spawnpos = Vector3.left;
+                    instantiatedItem = Instantiate(instantiatedItem, this.transform.position + spawnpos, Quaternion.Euler(0, 0, 0));
                 instantiatedItem.GetComponent <Item>().creator = this.gameObject;
+                instantiatedItem.GetComponent<Rigidbody2D>().AddForce(new Vector2(spawnpos.x*10, 0), ForceMode2D.Impulse); 
             }
         }
         mana -= (int)consumedMana;

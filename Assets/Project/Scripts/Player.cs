@@ -14,11 +14,12 @@ public class Player : MonoBehaviour
     public UnityEvent<float> onAlterScore;
     Rigidbody2D rigidbody2D;
     GroundCheck groundCheck;
+    SpriteRenderer spriteRenderer;
 
     public SpriteRenderer positionMarker;
     void Awake()
     {
-
+        spriteRenderer = GetComponent<SpriteRenderer>();
         rigidbody2D = GetComponent<Rigidbody2D>();
         groundCheck = GetComponentInChildren<GroundCheck>();
         PlayerInput input = GetComponent<PlayerInput>();
@@ -42,6 +43,11 @@ public class Player : MonoBehaviour
     void Move(InputAction.CallbackContext context)
     {
         playerSpeed = context.ReadValue<Vector2>();
+        if(playerSpeed.x > 0)
+            spriteRenderer.flipX = true;
+        else if(playerSpeed.x < 0)
+                spriteRenderer.flipX = false;
+            
     }
     void MoveCancelled(InputAction.CallbackContext context)
     {

@@ -6,11 +6,11 @@ public class Item : MonoBehaviour
 {
    public  GameObject creator;
     public bool consumible = false;
+    public bool creatorImmunity = false;
     public virtual void Effect(GameObject target) { }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject != creator)
+        if(collision.gameObject != creator || !creatorImmunity)
             Effect(collision.gameObject);
     }
-
 }
