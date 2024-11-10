@@ -53,7 +53,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 0
-  speed: 200
+  acceleration: 1000
+  maxSpeed: 5
   jumpForce: 5
   playerSpeed: {x: 0, y: 0}
   onAlterMana:
@@ -254,8 +255,20 @@ MonoBehaviour:
   fillspeed: 0
   maxFill: 0
   consumedMana: 0
-  objectGenerator: {fileID: 11400000, guid: beec49a64267bdd4792ee5991a8b74e8, type: 2}
   onAlterMana:
+    m_PersistentCalls:
+      m_Calls: []
+  objectGenerator: {fileID: 11400000, guid: beec49a64267bdd4792ee5991a8b74e8, type: 2}
+  smallObject: {fileID: 0}
+  mediumObject: {fileID: 0}
+  bigObject: {fileID: 0}
+  onGenerateRandomSmallObject:
+    m_PersistentCalls:
+      m_Calls: []
+  onGenerateRandomMidObject:
+    m_PersistentCalls:
+      m_Calls: []
+  onGenerateRandomBigObject:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &2677488241086367303
