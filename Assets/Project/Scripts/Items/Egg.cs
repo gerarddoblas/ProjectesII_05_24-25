@@ -4,8 +4,9 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class Egg : Item { 
-    public void Effect(Collision2D collision)
+    override public void Effect(GameObject target)
     {
-       collision.gameObject.GetComponent<Tilemap>().RefreshTile(new Vector3Int((int)Mathf.Floor(collision.transform.position.x - 0.6f), (int)Mathf.Floor(collision.transform.position.y - 0.6f), 0));
+        if(target.TryGetComponent<Tilemap>(out Tilemap tm))
+                tm.RefreshTile(new Vector3Int((int)Mathf.Floor(target.transform.position.x - 0.6f), (int)Mathf.Floor(target.transform.position.y - 0.6f), 0));
     }
 }

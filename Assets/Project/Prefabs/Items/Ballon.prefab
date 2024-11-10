@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7856704066592609255}
   - component: {fileID: -8350918590151756432}
   - component: {fileID: 387624527577898417}
-  - component: {fileID: 5719303493532123686}
+  - component: {fileID: -8338715702024099552}
   m_Layer: 7
   m_Name: Ballon
   m_TagString: Untagged
@@ -159,7 +159,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.64, y: 0.64}
   m_EdgeRadius: 0
---- !u!114 &5719303493532123686
+--- !u!114 &-8338715702024099552
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -168,6 +168,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 2128471897566729481}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c054a2862587c144983cb8d6b4181e6f, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d631ac6df7fc514e91efb1e5ade2fcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  creator: {fileID: 0}
+  consumible: 1

@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    GameObject creator;
-    public virtual void Effect(Collision2D collision) { }
+   public  GameObject creator;
+    public bool consumible = false;
+    public virtual void Effect(GameObject target) { }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject != creator)
-            Effect(collision);
+            Effect(collision.gameObject);
     }
 
 }

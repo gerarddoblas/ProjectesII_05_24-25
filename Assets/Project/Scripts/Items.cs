@@ -91,7 +91,13 @@ public class Items : MonoBehaviour
         }
         if (instantiatedItem)
         {
-            Instantiate(instantiatedItem, this.transform.position, Quaternion.Euler(0,0,0));
+            if (instantiatedItem.GetComponent<Item>().consumible)
+                instantiatedItem.GetComponent<Item>().Effect(this.gameObject);
+            else
+            {
+                instantiatedItem = Instantiate(instantiatedItem, this.transform.position, Quaternion.Euler(0, 0, 0));
+                instantiatedItem.GetComponent <Item>().creator = this.gameObject;
+            }
         }
         mana -= (int)consumedMana;
         onAlterMana.Invoke(this.mana);
