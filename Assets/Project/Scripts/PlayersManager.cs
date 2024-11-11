@@ -31,7 +31,8 @@ public class PlayersManager : MonoBehaviour
         //Sobreescribir eventos de player
         input.gameObject.GetComponent<HealthBehaviour>().OnAlterHealth.AddListener((int health, int maxHealth) => 
         {
-            instantiatedHUD.GetComponent<PlayerHud>().knockoutSlider.value = health/maxHealth;
+            Debug.Log(health / maxHealth);
+        instantiatedHUD.GetComponent<PlayerHud>().knockoutSlider.value = health/maxHealth;
         });
         input.gameObject.GetComponent<Items>().onAlterMana.AddListener((float currentMana) =>
         {

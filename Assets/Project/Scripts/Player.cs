@@ -59,5 +59,9 @@ public class Player : MonoBehaviour
             rigidbody2D.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
     }
 
-
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.TryGetComponent<Player>(out Player p))
+            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(rigidbody2D.velocity.magnitude, 0),ForceMode2D.Impulse) ;
+    }
 }
