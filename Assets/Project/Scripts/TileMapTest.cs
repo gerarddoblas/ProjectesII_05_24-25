@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -8,48 +9,40 @@ namespace UnityEngine.Tilemaps
     [Serializable]
     public class ExplodingTile : TileBase
     {
-        [SerializeField] public bool started = false;
         [SerializeField] public Sprite[] sprites;
+        public Dictionary<Vector3Int, int> haveStarted;
 
-        public override void RefreshTile(Vector3Int pos, ITilemap tilemap)
+        void OnEnable()
         {
-            Debug.Log("Refreshed at " + pos);
+            haveStarted = new Dictionary<Vector3Int, int>();
         }
 
         public override void GetTileData(Vector3Int position, ITilemap tilemap, ref TileData tileData)
         {
-            Debug.Log("GetData at " + position);
-            UpdateTile(position, tilemap, ref tileData);
+            if (!EditorApplication.isPlaying)
+            {
+                UpdateTile(position, tilemap, ref tileData, 0);
+                return;
+            }
+
+            try
+            {
+                if (haveStarted[position] < sprites.Length - 1) haveStarted[position]++;
+                UpdateTile(position, tilemap, ref tileData, haveStarted[position]);
+            }
+            catch (KeyNotFoundException)
+            {
+                haveStarted.Add(position, 0);
+                UpdateTile(position, tilemap, ref tileData, haveStarted[position]);
+            }
         }
 
-        private void UpdateTile(Vector3Int position, ITilemap tilemap, ref TileData tileData)
+        private void UpdateTile(Vector3Int position, ITilemap tilemap, ref TileData tileData, int state)
         {
-
-#if UNITY_EDITOR
-            tileData.sprite = sprites[0];
+            tileData.sprite = sprites[state];
             tileData.transform = Matrix4x4.TRS(Vector3.zero, Quaternion.Euler(0f, 0f, 0f), Vector3.one);
             tileData.flags = TileFlags.LockTransform | TileFlags.LockColor;
             tileData.colliderType = Tile.ColliderType.Sprite;
-            started = false;
-            Debug.Log("Setup");
-            return;
-#else
-            if (started)
-            {
-                Debug.Log("boom");
-                tileData.sprite = sprites[1];
-                tileData.transform = Matrix4x4.TRS(Vector3.zero, Quaternion.Euler(0f, 0f, 0f), Vector3.one);
-                tileData.flags = TileFlags.LockTransform | TileFlags.LockColor;
-                tileData.colliderType = Tile.ColliderType.Sprite;
-            } else
-            {
-                tileData.sprite = sprites[0];
-                tileData.transform = Matrix4x4.TRS(Vector3.zero, Quaternion.Euler(0f, 0f, 0f), Vector3.one);
-                tileData.flags = TileFlags.LockTransform | TileFlags.LockColor;
-                tileData.colliderType = Tile.ColliderType.Sprite;
-                started = true;
-            }
-#endif
         }
     }
 
