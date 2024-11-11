@@ -13,4 +13,9 @@ public class Item : MonoBehaviour
         if(collision.gameObject != creator || !creatorImmunity)
             Effect(collision.gameObject);
     }
+
+    private void OnBecameInvisible()
+    {
+        Destroy(this.gameObject);
+    }
 }
