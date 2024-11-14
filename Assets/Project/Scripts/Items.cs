@@ -56,7 +56,7 @@ public class Items : MonoBehaviour
     {
         while (true)
         {
-            Debug.Log("Consuming Mana");
+            //Debug.Log("Consuming Mana");
             if (consumedMana < mana)
             {
                 consumedMana += (fillspeed * Time.deltaTime * 4);
@@ -70,7 +70,7 @@ public class Items : MonoBehaviour
     {
         StopCoroutine(charging);
         charging = null;
-        Debug.Log("Creating...");
+        //Debug.Log("Creating...");
         GameObject instantiatedItem = null;
         switch ((int)consumedMana)
         {

@@ -12,9 +12,13 @@ public class Player : MonoBehaviour
     public Vector2 playerSpeed = Vector2.zero;
     public UnityEvent<float> onAlterMana;
     public UnityEvent<float> onAlterScore;
-    Rigidbody2D rigidbody2D;
-    GroundCheck groundCheck;
-    SpriteRenderer spriteRenderer;
+    public Rigidbody2D rigidbody2D;
+    public GroundCheck groundCheck;
+    public SpriteRenderer spriteRenderer;
+    public HealthBehaviour healthBehaviour;
+    //Knockout vars
+    public bool canMove = true;
+    public float knowdownTime = 3f;
 
     public SpriteRenderer positionMarker;
     void Awake()
@@ -26,6 +30,11 @@ public class Player : MonoBehaviour
         input.actions.FindAction("Move").performed += Move;
         input.actions.FindAction("Move").canceled += MoveCancelled;
         input.actions.FindAction("Jump").started += Jump;
+        healthBehaviour = GetComponent<HealthBehaviour>();
+        healthBehaviour.OnDie.AddListener(delegate ()
+        {
+            StartCoroutine(this.Knokout());
+        });
     }
     private void FixedUpdate()
     {
@@ -42,12 +51,14 @@ public class Player : MonoBehaviour
     }
     void Move(InputAction.CallbackContext context)
     {
-        playerSpeed = context.ReadValue<Vector2>();
-        if(playerSpeed.x > 0)
-            spriteRenderer.flipX = true;
-        else if(playerSpeed.x < 0)
+        if (canMove)
+        {
+            playerSpeed = context.ReadValue<Vector2>();
+            if (playerSpeed.x > 0)
+                spriteRenderer.flipX = true;
+            else if (playerSpeed.x < 0)
                 spriteRenderer.flipX = false;
-            
+        }
     }
     void MoveCancelled(InputAction.CallbackContext context)
     {
@@ -55,7 +66,7 @@ public class Player : MonoBehaviour
     }
     void Jump(InputAction.CallbackContext context)
     {
-        if (groundCheck.grounded)
+        if (groundCheck.grounded && canMove)
             rigidbody2D.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
     }
 
@@ -63,5 +74,15 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent<Player>(out Player p))
             collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(rigidbody2D.velocity.magnitude, 0),ForceMode2D.Impulse) ;
+    }
+    IEnumerator Knokout()
+    {
+        Debug.LogWarning("I'm out");
+        canMove = false;
+        yield return new WaitForSeconds(knowdownTime);
+        canMove = true;
+        healthBehaviour.FullHeal();
+        StartCoroutine(healthBehaviour.SetInvencibility(knowdownTime));
+
     }
 }

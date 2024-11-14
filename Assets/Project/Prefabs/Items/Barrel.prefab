@@ -174,3 +174,5 @@ MonoBehaviour:
   creator: {fileID: 0}
   consumible: 0
   creatorImmunity: 0
+  timeInScene: 1
+  contador: 0

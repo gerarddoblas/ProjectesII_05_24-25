@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class Mina : Item
 {
-
     override public void Effect(GameObject target)
     {
-
-
         if (target.TryGetComponent<Player>(out Player p))
         {
-            target.GetComponent<HealthBehaviour>().Damage(2);
+            p.healthBehaviour.Damage(2);
             Destroy(this.gameObject);
         }
         else

@@ -9,6 +9,11 @@ public class HealthBehaviour : MonoBehaviour
     public int health, maxhealth;
     public UnityEvent<int, int> OnAlterHealth;
     public UnityEvent OnDie;
+    private void Awake()
+    {
+        this.health = this.maxhealth;
+        this.OnAlterHealth.Invoke(this.health, this.maxhealth);
+    }
     public void Heal(){ 
         this.health++;
         if(this.health>this.maxhealth)
@@ -30,7 +35,7 @@ public class HealthBehaviour : MonoBehaviour
         if (!invencibility)
         {
             this.health--;
-            if (this.health >= 0)
+            if (this.health <= 0)
             {
                 this.health = 0;
                 this.OnDie.Invoke();
@@ -42,7 +47,7 @@ public class HealthBehaviour : MonoBehaviour
         if (!invencibility)
         {
             this.health -= damage;
-            if (this.health >= 0)
+            if (this.health <= 0)
             {
                 this.health = 0;
                 this.OnDie.Invoke();
@@ -109,6 +114,7 @@ public class HealthBehaviour : MonoBehaviour
     }
     public IEnumerator SetInvencibility(float invencibilitySeconds)
     {
+        Debug.LogWarning("Ooooooh, invencible soy");
         this.invencibility = true;
         yield return new WaitForSeconds(invencibilitySeconds);
         this.invencibility = false;

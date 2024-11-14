@@ -18,10 +18,10 @@ public class Barrel : Item
     override public void Effect(GameObject target)
     {
 
-     if (target.TryGetComponent<Player>(out Player p))
+        if (target.TryGetComponent<Player>(out Player p))
         {
-            target.GetComponent<Rigidbody2D>().velocity = new Vector2(this.GetComponent<Rigidbody2D>().velocity.x, target.GetComponent<Rigidbody2D>().velocity.y);
-            target.GetComponent<HealthBehaviour>().Damage(2);
+            p.rigidbody2D.velocity = new Vector2(this.GetComponent<Rigidbody2D>().velocity.x, target.GetComponent<Rigidbody2D>().velocity.y);
+            p.healthBehaviour.Damage(2);
             Destroy(this.gameObject);
         }
     }
