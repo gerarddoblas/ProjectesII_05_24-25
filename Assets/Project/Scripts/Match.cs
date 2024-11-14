@@ -11,6 +11,7 @@ public class Match : MonoBehaviour
     private float remainingTime;
     public TextMeshProUGUI counterText;
     public UnityEvent onFinishGame;
+    private AudioSource source;
     void OnEnable()
     {
         remainingTime = gameTime;
@@ -19,11 +20,16 @@ public class Match : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         });
+        source = GetComponent<AudioSource>();
     }
     void Update()
     {
         counterText.text = remainingTime.ToString();
         remainingTime -= Time.deltaTime;
+        if(remainingTime < 15.0f && !source.isPlaying)
+        {
+            source.Play();
+        }
         if(remainingTime < 0)
             onFinishGame.Invoke();
     }

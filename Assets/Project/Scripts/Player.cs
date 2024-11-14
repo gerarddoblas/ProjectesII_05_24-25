@@ -19,10 +19,12 @@ public class Player : MonoBehaviour
     //Knockout vars
     public bool canMove = true;
     public float knowdownTime = 3f;
-
+    private AudioSource source;
+    [SerializeField] private AudioClip jumpClip;
     public SpriteRenderer positionMarker;
     void Awake()
     {
+        source = GetComponent<AudioSource>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         rigidbody2D = GetComponent<Rigidbody2D>();
         groundCheck = GetComponentInChildren<GroundCheck>();
@@ -33,7 +35,7 @@ public class Player : MonoBehaviour
         healthBehaviour = GetComponent<HealthBehaviour>();
         healthBehaviour.OnDie.AddListener(delegate ()
         {
-            StartCoroutine(this.Knokout());
+            StartCoroutine(this.Knockout());
         });
     }
     private void FixedUpdate()
@@ -66,8 +68,11 @@ public class Player : MonoBehaviour
     }
     void Jump(InputAction.CallbackContext context)
     {
-        if (groundCheck.grounded && canMove)
+        if (groundCheck.grounded && canMove) { 
             rigidbody2D.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+            source.clip = jumpClip;
+            source.Play();
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -75,7 +80,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.TryGetComponent<Player>(out Player p))
             collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(rigidbody2D.velocity.magnitude, 0),ForceMode2D.Impulse) ;
     }
-    IEnumerator Knokout()
+    IEnumerator Knockout()
     {
         Debug.LogWarning("I'm out");
         canMove = false;
