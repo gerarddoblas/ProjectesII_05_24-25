@@ -15,10 +15,13 @@ public class Player : MonoBehaviour
     Rigidbody2D rigidbody2D;
     GroundCheck groundCheck;
     SpriteRenderer spriteRenderer;
+    private AudioSource source;
+    [SerializeField] private AudioClip jumpClip;
 
     public SpriteRenderer positionMarker;
     void Awake()
     {
+        source = GetComponent<AudioSource>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         rigidbody2D = GetComponent<Rigidbody2D>();
         groundCheck = GetComponentInChildren<GroundCheck>();
@@ -56,7 +59,11 @@ public class Player : MonoBehaviour
     void Jump(InputAction.CallbackContext context)
     {
         if (groundCheck.grounded)
+        {
             rigidbody2D.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+            source.clip = jumpClip;
+            source.Play();
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

@@ -6,8 +6,10 @@ public class AreaManager : MonoBehaviour
 {
     [SerializeField] private Vector2[] possibleAreas;
     [SerializeField] private float timeBeforeChange;
+    private AudioSource source;
     void Start()
     {
+        source = GetComponent<AudioSource>();  
         ChangeArea();
     }
 
@@ -31,5 +33,6 @@ public class AreaManager : MonoBehaviour
     {
         transform.position = possibleAreas[Random.Range(0, possibleAreas.Length)];
         timeBeforeChange = Random.Range(3.0f, 10.0f);
+        source.Play();
     }
 }
