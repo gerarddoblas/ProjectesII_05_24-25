@@ -10,10 +10,14 @@ public class Item : MonoBehaviour
     public virtual void Effect(GameObject target) { }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject != creator || !creatorImmunity)
+        if(collision.gameObject != creator && !creatorImmunity)
             Effect(collision.gameObject);
     }
-
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject != creator && !creatorImmunity)
+            Effect(collision.gameObject);
+    }
     private void OnBecameInvisible()
     {
         Destroy(this.gameObject);

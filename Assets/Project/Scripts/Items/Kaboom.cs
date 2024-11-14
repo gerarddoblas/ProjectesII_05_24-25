@@ -29,7 +29,7 @@ public class Kaboom : Item
     {
         if(target.TryGetComponent<Tilemap>(out Tilemap tm))
                 tm.RefreshTile(new Vector3Int((int)Mathf.Floor(target.transform.position.x ), (int)Mathf.Floor(target.transform.position.y), 0));
-        else if (target.TryGetComponent<Player>(out Player p))
-            p.healthBehaviour.FullDamage();
+        else if (target.TryGetComponent<HealthBehaviour>(out HealthBehaviour hb))
+            hb.FullDamage();
     }
 }

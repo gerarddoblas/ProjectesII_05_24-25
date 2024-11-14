@@ -114,7 +114,6 @@ public class HealthBehaviour : MonoBehaviour
     }
     public IEnumerator SetInvencibility(float invencibilitySeconds)
     {
-        Debug.LogWarning("Ooooooh, invencible soy");
         this.invencibility = true;
         yield return new WaitForSeconds(invencibilitySeconds);
         this.invencibility = false;

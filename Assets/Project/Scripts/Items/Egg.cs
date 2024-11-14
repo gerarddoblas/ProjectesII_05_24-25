@@ -4,7 +4,18 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class Egg : Item { 
+public class Egg : Item {
+    public float timeInScene = 1.5f;
+    public float contador = 0.0f;
+
+    public void Update()
+    {
+        contador += Time.deltaTime;
+        if (contador >= timeInScene)
+        {
+            Destroy(this.gameObject);
+        }
+    }
     override public void Effect(GameObject target)
     {
         /*if(target.TryGetComponent<Tilemap>(out Tilemap tm))

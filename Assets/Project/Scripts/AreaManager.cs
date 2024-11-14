@@ -26,6 +26,7 @@ public class AreaManager : MonoBehaviour
         if (player != null)
         {
             player.Score += Time.deltaTime;
+            player.onAlterScore.Invoke(player.Score);
         }
     }
 

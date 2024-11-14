@@ -10,6 +10,7 @@ namespace UnityEngine.Tilemaps
     public class ExplodingTile : TileBase
     {
         [SerializeField] public Sprite[] sprites;
+        [SerializeField] public GameObject particles;
         public Dictionary<Vector3Int, int> haveStarted;
 
         void OnEnable()
@@ -43,6 +44,8 @@ namespace UnityEngine.Tilemaps
             tileData.transform = Matrix4x4.TRS(Vector3.zero, Quaternion.Euler(0f, 0f, 0f), Vector3.one);
             tileData.flags = TileFlags.LockTransform | TileFlags.LockColor;
             tileData.colliderType = Tile.ColliderType.Sprite;
+
+            Instantiate(particles, position, Quaternion.identity);
         }
     }
 
@@ -66,9 +69,17 @@ public class ExplodingTileEditor : Editor
         EditorGUI.BeginChangeCheck();
         tile.sprites[0] = (Sprite) EditorGUILayout.ObjectField("Before", tile.sprites[0], typeof(Sprite), false, null);
         tile.sprites[1] = (Sprite) EditorGUILayout.ObjectField("After", tile.sprites[1], typeof(Sprite), false, null);
-        if (EditorGUI.EndChangeCheck())
-            EditorUtility.SetDirty(tile);
-    }
+            if (EditorGUI.EndChangeCheck())
+                EditorUtility.SetDirty(tile);
+
+            EditorGUILayout.LabelField("Place particle system");
+            EditorGUILayout.Space();
+
+            EditorGUI.BeginChangeCheck();
+            tile.particles = (GameObject) EditorGUILayout.ObjectField("Before", tile.particles, typeof(GameObject), false, null);
+            if (EditorGUI.EndChangeCheck())
+                EditorUtility.SetDirty(tile);
+        }
 
     [MenuItem("Assets/Create/ExplodingTile")]
     public static void CreateExplodingTile()

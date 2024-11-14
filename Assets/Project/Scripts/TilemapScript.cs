@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -21,7 +22,9 @@ public class TilemapScript : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        tm.RefreshTile(new Vector3Int((int)Mathf.Ceil(collision.contacts[0].point.x) - 1, (int)(collision.contacts[0].point.y - 1f), 0));
+        if (collision.gameObject.GetComponent<Item>() == null) return;
+        foreach(ContactPoint2D contact in collision.contacts)
+            tm.RefreshTile(new Vector3Int((int)Mathf.Ceil(contact.point.x) - 1, (int)(contact.point.y - 1f), 0));
         source.Play();
         //TODO: Check edge cases
     }
