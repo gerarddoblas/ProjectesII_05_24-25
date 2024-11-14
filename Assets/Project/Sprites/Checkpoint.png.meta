@@ -1,0 +1,441 @@
+fileFormatVersion: 2
+guid: f23bff1245e38c646a62ad55037f75a0
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Checkpoint_0
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 1087
+        width: 184
+        height: 251
+      alignment: 9
+      pivot: {x: 0.51, y: 0.02}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f34fdcd44dc449545b4c45a9c62fcd4d
+      internalID: 1455052762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Checkpoint_32
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 1087
+        width: 177
+        height: 246
+      alignment: 9
+      pivot: {x: 0.47, y: 0.02}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 920b66496fdd2174fb49f415ee12dacc
+      internalID: 1431748662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Checkpoint_33
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 1087
+        width: 179
+        height: 245
+      alignment: 9
+      pivot: {x: 0.48, y: 0.02}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a83db0529f908b640b9ea167b30bcd6d
+      internalID: -1263510024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Checkpoint_34
+      rect:
+        serializedVersion: 2
+        x: 614
+        y: 1099
+        width: 199
+        height: 234
+      alignment: 9
+      pivot: {x: 0.42, y: 0.02}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8d63b56bb6649e4c9d436d6b87e9554
+      internalID: 1519794480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Checkpoint_1
+      rect:
+        serializedVersion: 2
+        x: 831
+        y: 1112
+        width: 198
+        height: 222
+      alignment: 9
+      pivot: {x: 0.42, y: 0.02}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ab0156d6aa10b744b127c353f2100a0
+      internalID: 1697179766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Checkpoint_2
+      rect:
+        serializedVersion: 2
+        x: 1048
+        y: 1104
+        width: 185
+        height: 229
+      alignment: 9
+      pivot: {x: 0.49, y: 0.02}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cb874a2ec02ee74b9c6d8e4a9cd81cd
+      internalID: 1764883544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Checkpoint_0: 1455052762
+      Checkpoint_1: 1697179766
+      Checkpoint_10: -1927593959
+      Checkpoint_100: 1045638573
+      Checkpoint_101: -18542181
+      Checkpoint_102: 1028600758
+      Checkpoint_103: 1621936210
+      Checkpoint_104: -2011752281
+      Checkpoint_105: -1801712799
+      Checkpoint_106: -1351257254
+      Checkpoint_107: -180149799
+      Checkpoint_108: 819458923
+      Checkpoint_109: 807642586
+      Checkpoint_11: 803348193
+      Checkpoint_110: -1532590908
+      Checkpoint_111: -498842955
+      Checkpoint_112: -2115632450
+      Checkpoint_113: -701081183
+      Checkpoint_114: -1672258770
+      Checkpoint_115: 641834885
+      Checkpoint_116: 216284845
+      Checkpoint_117: 892582504
+      Checkpoint_118: 994813767
+      Checkpoint_119: 82458817
+      Checkpoint_12: 1334106868
+      Checkpoint_120: -1239748774
+      Checkpoint_121: -2050345283
+      Checkpoint_122: 621889841
+      Checkpoint_123: 1760541806
+      Checkpoint_124: 1447785440
+      Checkpoint_125: 826284474
+      Checkpoint_126: 1017317994
+      Checkpoint_127: 1446543281
+      Checkpoint_128: 1876951497
+      Checkpoint_129: 1730238393
+      Checkpoint_13: 821015218
+      Checkpoint_130: -39373236
+      Checkpoint_131: 2061930469
+      Checkpoint_132: 1656614728
+      Checkpoint_133: 1241087189
+      Checkpoint_134: -1612087996
+      Checkpoint_135: -1411806709
+      Checkpoint_136: 467270251
+      Checkpoint_137: -1751327931
+      Checkpoint_138: -666754860
+      Checkpoint_139: -1359270200
+      Checkpoint_14: -428351765
+      Checkpoint_140: 670007286
+      Checkpoint_141: -2014534991
+      Checkpoint_142: -457002829
+      Checkpoint_143: -228440140
+      Checkpoint_144: 1956480177
+      Checkpoint_145: 1839599462
+      Checkpoint_146: 552991972
+      Checkpoint_147: 23937604
+      Checkpoint_148: -1227538995
+      Checkpoint_149: -1122432216
+      Checkpoint_15: -778246751
+      Checkpoint_150: -1725750362
+      Checkpoint_151: -1116353554
+      Checkpoint_152: -1653941813
+      Checkpoint_153: 1146225520
+      Checkpoint_154: -1553993199
+      Checkpoint_155: 190360109
+      Checkpoint_156: -1403542380
+      Checkpoint_157: 2106495902
+      Checkpoint_158: 268510992
+      Checkpoint_159: -607163564
+      Checkpoint_16: -1703548361
+      Checkpoint_160: 411523072
+      Checkpoint_161: 766797286
+      Checkpoint_162: -47700696
+      Checkpoint_163: -1736318343
+      Checkpoint_164: 1073356448
+      Checkpoint_165: -1065298738
+      Checkpoint_166: -1800991994
+      Checkpoint_167: -1312247610
+      Checkpoint_168: 1490931527
+      Checkpoint_169: 1281867118
+      Checkpoint_17: -1265967574
+      Checkpoint_170: 2017543983
+      Checkpoint_171: 1702623930
+      Checkpoint_172: 1838142673
+      Checkpoint_173: 333480916
+      Checkpoint_174: -351651663
+      Checkpoint_175: 678481164
+      Checkpoint_176: -254437043
+      Checkpoint_177: 1219518276
+      Checkpoint_178: -1267383156
+      Checkpoint_179: 1301465638
+      Checkpoint_18: 1852004881
+      Checkpoint_180: 861022114
+      Checkpoint_181: 2052855234
+      Checkpoint_182: -2042407229
+      Checkpoint_183: 1422380340
+      Checkpoint_184: -1208258278
+      Checkpoint_185: -1550640682
+      Checkpoint_186: 1047586274
+      Checkpoint_187: 1414847619
+      Checkpoint_188: 831708424
+      Checkpoint_19: -1460279788
+      Checkpoint_2: 1764883544
+      Checkpoint_20: -466557592
+      Checkpoint_21: 1620514348
+      Checkpoint_22: -1442026956
+      Checkpoint_23: -2055351195
+      Checkpoint_24: 1538393303
+      Checkpoint_25: -24509266
+      Checkpoint_26: -826584192
+      Checkpoint_27: 1877015710
+      Checkpoint_28: 740514792
+      Checkpoint_29: 508621029
+      Checkpoint_3: 1345352940
+      Checkpoint_30: 626848813
+      Checkpoint_32: 1431748662
+      Checkpoint_33: -1263510024
+      Checkpoint_34: 1519794480
+      Checkpoint_35: -1545336447
+      Checkpoint_36: 1627834191
+      Checkpoint_37: 2112541075
+      Checkpoint_38: -485966882
+      Checkpoint_39: 484897763
+      Checkpoint_4: 238785806
+      Checkpoint_40: -1626791667
+      Checkpoint_41: 611863764
+      Checkpoint_42: 301701751
+      Checkpoint_43: 1107375280
+      Checkpoint_44: 1932306170
+      Checkpoint_45: 1891506512
+      Checkpoint_46: -1125844283
+      Checkpoint_47: 429626324
+      Checkpoint_48: 1111907132
+      Checkpoint_49: 387714287
+      Checkpoint_5: 1893553262
+      Checkpoint_50: -1764278953
+      Checkpoint_51: -747723664
+      Checkpoint_52: -2031535941
+      Checkpoint_53: -728892367
+      Checkpoint_54: -400578788
+      Checkpoint_55: -2030050083
+      Checkpoint_56: -311991356
+      Checkpoint_57: 320337276
+      Checkpoint_58: -1975827848
+      Checkpoint_59: -1262434531
+      Checkpoint_6: -1207317920
+      Checkpoint_60: -1727478962
+      Checkpoint_61: 771812861
+      Checkpoint_62: 428705257
+      Checkpoint_63: -1759339424
+      Checkpoint_64: -1197437456
+      Checkpoint_65: -1077225688
+      Checkpoint_66: 1989093746
+      Checkpoint_67: -1363058960
+      Checkpoint_68: 1616964014
+      Checkpoint_69: -1292970331
+      Checkpoint_7: -487911652
+      Checkpoint_70: 1903390580
+      Checkpoint_71: -1879475520
+      Checkpoint_72: 1883922713
+      Checkpoint_73: 1113969421
+      Checkpoint_74: -468312085
+      Checkpoint_75: 339656402
+      Checkpoint_76: -1391644783
+      Checkpoint_77: 1472781721
+      Checkpoint_78: -104508609
+      Checkpoint_79: -435829643
+      Checkpoint_8: -122698908
+      Checkpoint_80: 464043816
+      Checkpoint_81: -985450484
+      Checkpoint_82: -477937660
+      Checkpoint_83: 1161661179
+      Checkpoint_84: -180297365
+      Checkpoint_85: 1339358389
+      Checkpoint_86: -1573106029
+      Checkpoint_87: -374068267
+      Checkpoint_88: -336668575
+      Checkpoint_89: -753498300
+      Checkpoint_9: -314065291
+      Checkpoint_90: -1539489482
+      Checkpoint_91: 1595816057
+      Checkpoint_92: 1169858164
+      Checkpoint_93: 718056957
+      Checkpoint_94: -1400594628
+      Checkpoint_95: 1743225089
+      Checkpoint_96: -569453466
+      Checkpoint_97: 1704085789
+      Checkpoint_98: -1659763747
+      Checkpoint_99: -1482974381
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

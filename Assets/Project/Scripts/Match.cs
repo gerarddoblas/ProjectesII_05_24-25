@@ -25,7 +25,7 @@ public class Match : MonoBehaviour
     }
     void Update()
     {
-        counterText.text = remainingTime.ToString();
+        counterText.text = ((int)remainingTime/60).ToString() + ":" +((int)remainingTime % 60).ToString();
         remainingTime -= Time.deltaTime;
         if(remainingTime < 15.0f && !source.isPlaying)
         {
