@@ -70,7 +70,7 @@ MonoBehaviour:
   healthBehaviour: {fileID: 0}
   canMove: 1
   knowdownTime: 3
-  jumpClip: {fileID: 0}
+  jumpClip: {fileID: 8300000, guid: 4a95e4c3bafa6c240a922c6815c667fb, type: 3}
   positionMarker: {fileID: 6039755520987158056}
 --- !u!114 &8925897465064070515
 MonoBehaviour:

@@ -21,6 +21,7 @@ public class Match : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         });
         source = GetComponent<AudioSource>();
+        source.Play();
     }
     void Update()
     {
