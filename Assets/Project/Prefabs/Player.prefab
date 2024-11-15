@@ -54,9 +54,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 0
-  acceleration: 1000
+  acceleration: 500
   maxSpeed: 10
-  jumpForce: 5
+  jumpForce: 7.2
   playerSpeed: {x: 0, y: 0}
   onAlterMana:
     m_PersistentCalls:
@@ -244,7 +244,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 55bc2033b6f118f429c80b8df9e854f2, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
