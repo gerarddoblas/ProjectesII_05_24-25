@@ -20,11 +20,11 @@ namespace UnityEngine.Tilemaps
 
         public override void GetTileData(Vector3Int position, ITilemap tilemap, ref TileData tileData)
         {
-            if (!EditorApplication.isPlaying)
-            {
-                UpdateTile(position, tilemap, ref tileData, 0);
-                return;
-            }
+           // if (!EditorApplication.isPlaying)
+           // {
+                //UpdateTile(position, tilemap, ref tileData, 0);
+                //return;
+           // }
 
             try
             {
@@ -45,7 +45,7 @@ namespace UnityEngine.Tilemaps
             tileData.flags = TileFlags.LockTransform | TileFlags.LockColor;
             tileData.colliderType = Tile.ColliderType.Sprite;
 
-            Instantiate(particles, position, Quaternion.identity);
+           // Instantiate(particles, position, Quaternion.identity);
         }
     }
 
