@@ -53,13 +53,13 @@ public class PlayersManager : MonoBehaviour
         });
         input.gameObject.GetComponent<Player>().onAlterScore.AddListener((float score) =>
         {
-            instantiatedHUD.GetComponent<PlayerHud>().scoreSlider.value = score;
+            instantiatedHUD.GetComponent<PlayerHud>().scoreText.text = "Score: " + (int)score;
         });
 
         //Reorder HUDS position
         float initialpos = instantiatedHUD.GetComponent<RectTransform>().sizeDelta.x;
         foreach (Transform hud in hudsContainer.transform) {
-            hud.position = new Vector3(initialpos,hud.GetComponent<RectTransform>().sizeDelta.y/2, 0);
+            hud.position = new Vector3(initialpos,hud.GetComponent<RectTransform>().sizeDelta.y/1.5f, 0);
             initialpos += instantiatedHUD.GetComponent<RectTransform>().sizeDelta.x*2;
         }
 
