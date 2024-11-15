@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     public bool canMove = true;
     public float knowdownTime = 3f;
     private AudioSource source;
-    [SerializeField] private AudioClip jumpClip;
+    [SerializeField] private AudioClip jumpClip, KnockoutClip;
     public SpriteRenderer positionMarker;
     void Awake()
     {
@@ -88,6 +88,7 @@ public class Player : MonoBehaviour
         canMove = true;
         healthBehaviour.FullHeal();
         StartCoroutine(healthBehaviour.SetInvencibility(knowdownTime));
-
+        source.clip = KnockoutClip;
+        source.Play(); 
     }
 }
