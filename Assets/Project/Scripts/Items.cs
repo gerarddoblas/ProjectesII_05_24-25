@@ -81,13 +81,13 @@ public class Items : MonoBehaviour
                 //Debug.Log("generating small object");
                 break;
             case 2:
-                instantiatedItem =  objectGenerator.GetRandomMediumObject();
+                instantiatedItem = mediumObject;
                 mediumObject = objectGenerator.GetRandomMediumObject();
                 onGenerateRandomMidObject.Invoke(mediumObject.GetComponent<SpriteRenderer>().sprite);
                 //Debug.Log("generating mid object");
                 break;
             case 3:
-                instantiatedItem = objectGenerator.GetRandomBigObject();
+                instantiatedItem = bigObject;
                 bigObject = objectGenerator.GetRandomBigObject();
                 onGenerateRandomBigObject.Invoke(bigObject.GetComponent<SpriteRenderer>().sprite);
                 //Debug.Log("generating big object");
