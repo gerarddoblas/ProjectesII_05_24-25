@@ -24,9 +24,27 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Attack",
+                    "name": "GenerateSmallObject",
                     "type": "Value",
                     "id": "a182cdb4-f78d-465f-a944-c511e241e226",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "GenerateMidObject",
+                    "type": "Value",
+                    "id": "d80eb539-8f69-425f-a83b-f440d341c62b",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "GenerateBigObject",
+                    "type": "Value",
+                    "id": "1bff7463-e091-454d-a422-b4197d59abd6",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "Press",
@@ -129,7 +147,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Attack",
+                    "action": "GenerateSmallObject",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -140,7 +158,51 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Attack",
+                    "action": "GenerateSmallObject",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "203505c3-4bf6-4ba1-b9ec-65efffa8e64a",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "GenerateMidObject",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "323e50fa-ba59-4783-ad43-bac39aadaf4c",
+                    "path": "<Joystick>/trigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "GenerateMidObject",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "52964ba0-2e8e-4977-b27e-dbae7102c227",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "GenerateBigObject",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "506cf374-c202-4a49-aaf7-b412d57c39a2",
+                    "path": "<HID::USB Gamepad >/button2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "GenerateBigObject",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
