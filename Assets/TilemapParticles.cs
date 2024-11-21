@@ -1,20 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
-public class TileMapTest : MonoBehaviour
+public class TilemapParticles : MonoBehaviour
 {
-    public Tilemap tm;
+    [SerializeField] private ParticleSystem particle;
     // Start is called before the first frame update
     void Start()
     {
-        
+        particle = GetComponent<ParticleSystem>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A)) tm.RefreshTile(new Vector3Int(-1, -1, 0));
+        if (!particle.isPlaying) Destroy(this.gameObject);
     }
 }
