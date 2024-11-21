@@ -11,30 +11,40 @@ namespace UnityEngine.Tilemaps
     {
         [SerializeField] public Sprite[] sprites;
         [SerializeField] public GameObject particles;
-        public Dictionary<Vector3Int, int> haveStarted;
+        public Dictionary<Vector3Int, int> states;
 
         void OnEnable()
         {
-            haveStarted = new Dictionary<Vector3Int, int>();
+            states = new Dictionary<Vector3Int, int>();
+        }
+
+        void Start()
+        {
+            states = new Dictionary<Vector3Int, int>();
         }
 
         public override void GetTileData(Vector3Int position, ITilemap tilemap, ref TileData tileData)
         {
-           // if (!EditorApplication.isPlaying)
-           // {
-                //UpdateTile(position, tilemap, ref tileData, 0);
-                //return;
-           // }
+#if UNITY_EDITOR
+            if (!EditorApplication.isPlaying)
+            {
+                UpdateTile(position, tilemap, ref tileData, 0);
+                return;
+            }
+#endif
 
             try
             {
-                if (haveStarted[position] < sprites.Length - 1) haveStarted[position]++;
-                UpdateTile(position, tilemap, ref tileData, haveStarted[position]);
+                if (states[position] < sprites.Length - 1)
+                {
+                    states[position]++;
+                    UpdateTile(position, tilemap, ref tileData, states[position]);
+                }
             }
             catch (KeyNotFoundException)
             {
-                haveStarted.Add(position, 0);
-                UpdateTile(position, tilemap, ref tileData, haveStarted[position]);
+                states.Add(position, 0);
+                UpdateTile(position, tilemap, ref tileData, states[position]);
             }
         }
 
@@ -44,8 +54,9 @@ namespace UnityEngine.Tilemaps
             tileData.transform = Matrix4x4.TRS(Vector3.zero, Quaternion.Euler(0f, 0f, 0f), Vector3.one);
             tileData.flags = TileFlags.LockTransform | TileFlags.LockColor;
             tileData.colliderType = Tile.ColliderType.Sprite;
-
-           // Instantiate(particles, position, Quaternion.identity);
+#if !UNITY_EDITOR
+            Instantiate(particles, position, Quaternion.identity);
+#endif
         }
     }
 

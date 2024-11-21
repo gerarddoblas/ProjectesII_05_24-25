@@ -15,4 +15,4 @@ MonoBehaviour:
   sprites:
   - {fileID: 1782521112, guid: c25db868650fc844696ac72fff658e0b, type: 3}
   - {fileID: 0}
-  particles: {fileID: 7298244603847551267, guid: 68ddc66c4263afd4e9bbd02c72b86be7, type: 3}
+  particles: {fileID: 2686372130080697451, guid: 68ddc66c4263afd4e9bbd02c72b86be7, type: 3}
