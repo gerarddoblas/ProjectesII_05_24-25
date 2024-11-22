@@ -42,17 +42,7 @@ public class Player : MonoBehaviour
         });
     }
     private void FixedUpdate()
-    {
-        //rigidbody2D.velocity = new Vector2(playerSpeed.x * speed * Time.deltaTime, rigidbody2D.velocity.y);
-        rigidbody2D.AddForce(new Vector2(acceleration*playerSpeed.x*Time.deltaTime,0), ForceMode2D.Force);
-        if (rigidbody2D.velocity.x > maxSpeed)
-            rigidbody2D.velocity = new Vector2(maxSpeed, rigidbody2D.velocity.y);
-        else if (rigidbody2D.velocity.x < -maxSpeed)
-            rigidbody2D.velocity = new Vector2(-maxSpeed, rigidbody2D.velocity.y);
-    }
-    private void Update()
-    {
-        UpdateAnimations();
+    { 
         if (groundCheck.grounded)
         {
             rigidbody2D.drag = 1;
@@ -63,11 +53,24 @@ public class Player : MonoBehaviour
             rigidbody2D.drag = 3;
             rigidbody2D.gravityScale = 8;
         }
+        rigidbody2D.AddForce(new Vector2(acceleration*playerSpeed.x*Time.deltaTime,0), ForceMode2D.Force);
+        if (rigidbody2D.velocity.x > maxSpeed)
+            rigidbody2D.velocity = new Vector2(maxSpeed, rigidbody2D.velocity.y);
+        else if (rigidbody2D.velocity.x < -maxSpeed)
+            rigidbody2D.velocity = new Vector2(-maxSpeed, rigidbody2D.velocity.y);
+       
+    }
+    private void Update()
+    {
+        UpdateAnimations();
     }
     void UpdateAnimations()
     {
         animator.SetBool("canMove", canMove);
         animator.SetBool("invencibility", healthBehaviour.invencibility);
+        animator.SetBool("isGrounded",groundCheck.grounded);
+        animator.SetFloat("horizontalSpeed",rigidbody2D.velocity.x);
+        animator.SetFloat("verticalSpeed", rigidbody2D.velocity.y);
     }
     void Move(InputAction.CallbackContext context)
     {

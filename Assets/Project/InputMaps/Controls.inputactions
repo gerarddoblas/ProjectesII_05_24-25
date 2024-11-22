@@ -131,6 +131,39 @@
                 },
                 {
                     "name": "",
+                    "id": "cb5c31ad-f948-4dcb-af03-2b2a6c311b30",
+                    "path": "<SwitchProControllerHID>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "85fb52e8-b3f1-4c67-84f3-1da21684d01b",
+                    "path": "<DualShockGamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3136b0f9-dfad-4f1d-9257-0fbf439872ae",
+                    "path": "<DualSenseGamepadHID>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "a9cd06d6-af4e-41f8-8875-420a6295a737",
                     "path": "<Keyboard>/space",
                     "interactions": "",
@@ -155,6 +188,39 @@
                     "name": "",
                     "id": "bb0ea641-6aec-45dd-83ad-eac8c5c7e61b",
                     "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "45c2d944-2a63-4a98-8ddd-a05f97727722",
+                    "path": "<SwitchProControllerHID>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c2038f98-454e-4f11-8310-8e642f5f2885",
+                    "path": "<DualShockGamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6cae6af5-f492-4ad4-a0ed-0fb654020e7d",
+                    "path": "<DualSenseGamepadHID>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
@@ -197,6 +263,39 @@
                 },
                 {
                     "name": "",
+                    "id": "722455ee-f967-4b6a-9dd3-941e0146052f",
+                    "path": "<SwitchProControllerHID>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "GenerateSmallObject",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e186fea4-e7d7-40a2-9f41-e026fea85651",
+                    "path": "<DualShockGamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "GenerateSmallObject",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "273cf0af-0164-4e9a-941a-ace8e4980405",
+                    "path": "<DualSenseGamepadHID>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "GenerateSmallObject",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "203505c3-4bf6-4ba1-b9ec-65efffa8e64a",
                     "path": "<Keyboard>/e",
                     "interactions": "",
@@ -230,6 +329,39 @@
                 },
                 {
                     "name": "",
+                    "id": "6ed396cd-de1b-4452-8991-855634edcc58",
+                    "path": "<SwitchProControllerHID>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "GenerateMidObject",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a00d85a8-2412-4938-b275-aeee6712fad8",
+                    "path": "<DualShockGamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "GenerateMidObject",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "845f9de0-96bd-4875-9e82-ba8c7fe21cf4",
+                    "path": "<DualSenseGamepadHID>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "GenerateMidObject",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "52964ba0-2e8e-4977-b27e-dbae7102c227",
                     "path": "<Keyboard>/q",
                     "interactions": "",
@@ -254,6 +386,39 @@
                     "name": "",
                     "id": "a1520b74-ee26-4b36-9636-4b2de953e743",
                     "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "GenerateBigObject",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c0c85724-ae71-4065-be59-5e3bcdbccc4c",
+                    "path": "<SwitchProControllerHID>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "GenerateBigObject",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8bcb26df-f306-4295-b0a7-a712fc9bb01c",
+                    "path": "<DualShockGamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "GenerateBigObject",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9908ea4c-b08e-42ea-a9db-bb4aa1b4268c",
+                    "path": "<DualSenseGamepadHID>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
@@ -303,6 +468,11 @@
             "devices": [
                 {
                     "devicePath": "<Gamepad>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Joystick>",
                     "isOptional": false,
                     "isOR": false
                 }

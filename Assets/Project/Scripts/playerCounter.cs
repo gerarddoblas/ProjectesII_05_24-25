@@ -17,11 +17,11 @@ public class playerCounter : MonoBehaviour
     {
         players++;
         onPlayerEnter.Invoke();
-        if (players == playerInputManager.playerCount)
-        {
+       // if (players == playerInputManager.playerCount)
+        //{
             onAllPlayersEnter.Invoke();
             Camera.main.gameObject.GetComponent<CameraTween>().MoveCameraTo(new Vector3(0, -7.5f, -10));
-        }
+        //}
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
