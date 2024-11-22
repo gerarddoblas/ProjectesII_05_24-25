@@ -30,6 +30,11 @@ public class PlayersManager : MonoBehaviour
         playersCanvas.Add(instantiatedHUD);
         instantiatedHUD.GetComponent<PlayerHud>().backgroundImage.GetComponent<Image>().color = playerColours[players.Count];
         players.Add(input.gameObject);
+
+        if (input.currentControlScheme == "Keyboard")
+            instantiatedHUD.GetComponent<PlayerHud>().SetKeyboardControls();
+        else
+            instantiatedHUD.GetComponent<PlayerHud>().SetGamepdControls();
         //Sobreescribir eventos de player
         input.gameObject.GetComponent<HealthBehaviour>().OnAlterHealth.AddListener((int health, int maxHealth) => 
         {
