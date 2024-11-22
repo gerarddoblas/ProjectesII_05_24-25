@@ -53,6 +53,16 @@ public class Player : MonoBehaviour
     private void Update()
     {
         UpdateAnimations();
+        if (groundCheck.grounded)
+        {
+            rigidbody2D.drag = 1;
+            rigidbody2D.gravityScale = 2;
+        }
+        else
+        {
+            rigidbody2D.drag = 3;
+            rigidbody2D.gravityScale = 8;
+        }
     }
     void UpdateAnimations()
     {
