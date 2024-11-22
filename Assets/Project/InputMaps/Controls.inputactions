@@ -24,9 +24,27 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Attack",
+                    "name": "GenerateSmallObject",
                     "type": "Value",
                     "id": "a182cdb4-f78d-465f-a944-c511e241e226",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "GenerateMidObject",
+                    "type": "Value",
+                    "id": "d80eb539-8f69-425f-a83b-f440d341c62b",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "GenerateBigObject",
+                    "type": "Value",
+                    "id": "1bff7463-e091-454d-a422-b4197d59abd6",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "Press",
@@ -102,6 +120,17 @@
                 },
                 {
                     "name": "",
+                    "id": "1c9f3d0a-01e1-48b4-8e9d-6463b30e5ec5",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "a9cd06d6-af4e-41f8-8875-420a6295a737",
                     "path": "<Keyboard>/space",
                     "interactions": "",
@@ -124,12 +153,23 @@
                 },
                 {
                     "name": "",
+                    "id": "bb0ea641-6aec-45dd-83ad-eac8c5c7e61b",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "00979ab0-fb26-4d79-a182-0851661f857b",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Attack",
+                    "action": "GenerateSmallObject",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -140,7 +180,84 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Attack",
+                    "action": "GenerateSmallObject",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0c45a330-868c-46f4-9109-b85b7ea65a28",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "GenerateSmallObject",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "203505c3-4bf6-4ba1-b9ec-65efffa8e64a",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "GenerateMidObject",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "323e50fa-ba59-4783-ad43-bac39aadaf4c",
+                    "path": "<Joystick>/trigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "GenerateMidObject",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5bc08ff3-9549-4de3-ae5e-ed43f4728ea1",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "GenerateMidObject",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "52964ba0-2e8e-4977-b27e-dbae7102c227",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "GenerateBigObject",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "506cf374-c202-4a49-aaf7-b412d57c39a2",
+                    "path": "<HID::USB Gamepad >/button2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "GenerateBigObject",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a1520b74-ee26-4b36-9636-4b2de953e743",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "GenerateBigObject",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -175,6 +292,17 @@
                 },
                 {
                     "devicePath": "<Joystick>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "Controller",
+            "bindingGroup": "Controller",
+            "devices": [
+                {
+                    "devicePath": "<Gamepad>",
                     "isOptional": false,
                     "isOR": false
                 }

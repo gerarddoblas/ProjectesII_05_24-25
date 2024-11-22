@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
     public GroundCheck groundCheck;
     public SpriteRenderer spriteRenderer;
     public HealthBehaviour healthBehaviour;
+    Animator animator;
+
     //Knockout vars
     public bool canMove = true;
     public float knowdownTime = 3f;
@@ -24,6 +26,7 @@ public class Player : MonoBehaviour
     public SpriteRenderer positionMarker;
     void Awake()
     {
+        animator = GetComponent<Animator>();
         source = GetComponent<AudioSource>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         rigidbody2D = GetComponent<Rigidbody2D>();
@@ -49,7 +52,12 @@ public class Player : MonoBehaviour
     }
     private void Update()
     {
-
+        UpdateAnimations();
+    }
+    void UpdateAnimations()
+    {
+        animator.SetBool("canMove", canMove);
+        animator.SetBool("invencibility", healthBehaviour.invencibility);
     }
     void Move(InputAction.CallbackContext context)
     {
@@ -82,13 +90,12 @@ public class Player : MonoBehaviour
     }
     IEnumerator Knockout()
     {
-        Debug.LogWarning("I'm out");
         canMove = false;
+        source.clip = KnockoutClip;
+        source.Play(); 
+        StartCoroutine(healthBehaviour.SetInvencibility(knowdownTime*2));
         yield return new WaitForSeconds(knowdownTime);
         canMove = true;
         healthBehaviour.FullHeal();
-        StartCoroutine(healthBehaviour.SetInvencibility(knowdownTime));
-        source.clip = KnockoutClip;
-        source.Play(); 
     }
 }

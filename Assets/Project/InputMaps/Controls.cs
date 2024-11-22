@@ -46,9 +46,27 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Attack"",
+                    ""name"": ""GenerateSmallObject"",
                     ""type"": ""Value"",
                     ""id"": ""a182cdb4-f78d-465f-a944-c511e241e226"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""GenerateMidObject"",
+                    ""type"": ""Value"",
+                    ""id"": ""d80eb539-8f69-425f-a83b-f440d341c62b"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""GenerateBigObject"",
+                    ""type"": ""Value"",
+                    ""id"": ""1bff7463-e091-454d-a422-b4197d59abd6"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": ""Press"",
@@ -124,6 +142,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""1c9f3d0a-01e1-48b4-8e9d-6463b30e5ec5"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""a9cd06d6-af4e-41f8-8875-420a6295a737"",
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
@@ -146,12 +175,23 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""bb0ea641-6aec-45dd-83ad-eac8c5c7e61b"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""00979ab0-fb26-4d79-a182-0851661f857b"",
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""Attack"",
+                    ""action"": ""GenerateSmallObject"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -162,7 +202,84 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Attack"",
+                    ""action"": ""GenerateSmallObject"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0c45a330-868c-46f4-9109-b85b7ea65a28"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""GenerateSmallObject"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""203505c3-4bf6-4ba1-b9ec-65efffa8e64a"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""GenerateMidObject"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""323e50fa-ba59-4783-ad43-bac39aadaf4c"",
+                    ""path"": ""<Joystick>/trigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""GenerateMidObject"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5bc08ff3-9549-4de3-ae5e-ed43f4728ea1"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""GenerateMidObject"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""52964ba0-2e8e-4977-b27e-dbae7102c227"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""GenerateBigObject"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""506cf374-c202-4a49-aaf7-b412d57c39a2"",
+                    ""path"": ""<HID::USB Gamepad >/button2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""GenerateBigObject"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a1520b74-ee26-4b36-9636-4b2de953e743"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""GenerateBigObject"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -201,6 +318,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""isOR"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Controller"",
+            ""bindingGroup"": ""Controller"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<Gamepad>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
         }
     ]
 }");
@@ -208,7 +336,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
-        m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
+        m_Player_GenerateSmallObject = m_Player.FindAction("GenerateSmallObject", throwIfNotFound: true);
+        m_Player_GenerateMidObject = m_Player.FindAction("GenerateMidObject", throwIfNotFound: true);
+        m_Player_GenerateBigObject = m_Player.FindAction("GenerateBigObject", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -272,14 +402,18 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Jump;
-    private readonly InputAction m_Player_Attack;
+    private readonly InputAction m_Player_GenerateSmallObject;
+    private readonly InputAction m_Player_GenerateMidObject;
+    private readonly InputAction m_Player_GenerateBigObject;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
         public PlayerActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
-        public InputAction @Attack => m_Wrapper.m_Player_Attack;
+        public InputAction @GenerateSmallObject => m_Wrapper.m_Player_GenerateSmallObject;
+        public InputAction @GenerateMidObject => m_Wrapper.m_Player_GenerateMidObject;
+        public InputAction @GenerateBigObject => m_Wrapper.m_Player_GenerateBigObject;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -295,9 +429,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
-            @Attack.started += instance.OnAttack;
-            @Attack.performed += instance.OnAttack;
-            @Attack.canceled += instance.OnAttack;
+            @GenerateSmallObject.started += instance.OnGenerateSmallObject;
+            @GenerateSmallObject.performed += instance.OnGenerateSmallObject;
+            @GenerateSmallObject.canceled += instance.OnGenerateSmallObject;
+            @GenerateMidObject.started += instance.OnGenerateMidObject;
+            @GenerateMidObject.performed += instance.OnGenerateMidObject;
+            @GenerateMidObject.canceled += instance.OnGenerateMidObject;
+            @GenerateBigObject.started += instance.OnGenerateBigObject;
+            @GenerateBigObject.performed += instance.OnGenerateBigObject;
+            @GenerateBigObject.canceled += instance.OnGenerateBigObject;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -308,9 +448,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
-            @Attack.started -= instance.OnAttack;
-            @Attack.performed -= instance.OnAttack;
-            @Attack.canceled -= instance.OnAttack;
+            @GenerateSmallObject.started -= instance.OnGenerateSmallObject;
+            @GenerateSmallObject.performed -= instance.OnGenerateSmallObject;
+            @GenerateSmallObject.canceled -= instance.OnGenerateSmallObject;
+            @GenerateMidObject.started -= instance.OnGenerateMidObject;
+            @GenerateMidObject.performed -= instance.OnGenerateMidObject;
+            @GenerateMidObject.canceled -= instance.OnGenerateMidObject;
+            @GenerateBigObject.started -= instance.OnGenerateBigObject;
+            @GenerateBigObject.performed -= instance.OnGenerateBigObject;
+            @GenerateBigObject.canceled -= instance.OnGenerateBigObject;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -346,10 +492,21 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             return asset.controlSchemes[m_GamepadSchemeIndex];
         }
     }
+    private int m_ControllerSchemeIndex = -1;
+    public InputControlScheme ControllerScheme
+    {
+        get
+        {
+            if (m_ControllerSchemeIndex == -1) m_ControllerSchemeIndex = asset.FindControlSchemeIndex("Controller");
+            return asset.controlSchemes[m_ControllerSchemeIndex];
+        }
+    }
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
-        void OnAttack(InputAction.CallbackContext context);
+        void OnGenerateSmallObject(InputAction.CallbackContext context);
+        void OnGenerateMidObject(InputAction.CallbackContext context);
+        void OnGenerateBigObject(InputAction.CallbackContext context);
     }
 }

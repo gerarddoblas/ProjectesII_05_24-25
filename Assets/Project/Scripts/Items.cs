@@ -26,8 +26,9 @@ public class Items : MonoBehaviour
         PlayerInput input = GetComponent<PlayerInput>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         rigidbody = GetComponent<Rigidbody2D>();
-        input.actions.FindAction("Attack").started += StartCreating;
-        input.actions.FindAction("Attack").canceled += Create;
+        input.actions.FindAction("GenerateSmallObject").started += CreateSmallObject;
+        input.actions.FindAction("GenerateMidObject").started += CreateMidObject;
+        input.actions.FindAction("GenerateBigObject").started += CreateBigObject;
         smallObject = objectGenerator.GetRandomSmallObject();
         onGenerateRandomSmallObject.Invoke(smallObject.GetComponent<SpriteRenderer>().sprite);
         mediumObject = objectGenerator.GetRandomMediumObject();
@@ -35,7 +36,6 @@ public class Items : MonoBehaviour
         bigObject = objectGenerator.GetRandomBigObject();
         onGenerateRandomBigObject.Invoke(bigObject.GetComponent<SpriteRenderer>().sprite);
     }
-
     private void Update()
     {
         if (mana < maxFill)
@@ -46,71 +46,54 @@ public class Items : MonoBehaviour
             onAlterMana.Invoke(this.mana);
         }
     }
-    void StartCreating(InputAction.CallbackContext context)
+    void CreateSmallObject(InputAction.CallbackContext context)
     {
-        if (mana >= 1)
-            consumedMana = 1;
-        charging = StartCoroutine(CharginCreation(context));
-    }
-    IEnumerator CharginCreation(InputAction.CallbackContext context)
-    {
-        while (true)
+        if(mana >= 1f)
         {
-            //Debug.Log("Consuming Mana");
-            if (consumedMana < mana)
-            {
-                consumedMana += (fillspeed * Time.deltaTime * 4);
-                if (consumedMana > mana)
-                    consumedMana = mana;
-            }
-            yield return null;
+            mana -= 1f;
+            GameObject  instantiatedItem = smallObject;
+            smallObject = objectGenerator.GetRandomSmallObject();
+            onGenerateRandomSmallObject.Invoke(smallObject.GetComponent<SpriteRenderer>().sprite);
+            InstantiateCreatedObject(instantiatedItem);
         }
     }
-    void Create(InputAction.CallbackContext context)
+    void CreateMidObject(InputAction.CallbackContext context)
     {
-        StopCoroutine(charging);
-        charging = null;
-        //Debug.Log("Creating...");
-        GameObject instantiatedItem = null;
-        switch ((int)consumedMana)
+        if (mana >= 2f)
         {
-            case 1:
-                instantiatedItem = smallObject;
-                smallObject = objectGenerator.GetRandomSmallObject();
-                onGenerateRandomSmallObject.Invoke(smallObject.GetComponent<SpriteRenderer>().sprite);
-                //Debug.Log("generating small object");
-                break;
-            case 2:
-                instantiatedItem = mediumObject;
-                mediumObject = objectGenerator.GetRandomMediumObject();
-                onGenerateRandomMidObject.Invoke(mediumObject.GetComponent<SpriteRenderer>().sprite);
-                //Debug.Log("generating mid object");
-                break;
-            case 3:
-                instantiatedItem = bigObject;
-                bigObject = objectGenerator.GetRandomBigObject();
-                onGenerateRandomBigObject.Invoke(bigObject.GetComponent<SpriteRenderer>().sprite);
-                //Debug.Log("generating big object");
-                break;
+            mana -= 2f;
+            GameObject instantiatedItem = mediumObject;
+            mediumObject = objectGenerator.GetRandomMediumObject();
+            onGenerateRandomMidObject.Invoke(mediumObject.GetComponent<SpriteRenderer>().sprite);
+            InstantiateCreatedObject(instantiatedItem);
         }
-        if (instantiatedItem!=null)
+    }
+    void CreateBigObject(InputAction.CallbackContext context)
+    {
+        if (mana >= 3f)
         {
-            if (instantiatedItem.GetComponent<Item>().consumible)
-                instantiatedItem.GetComponent<Item>().Effect(this.gameObject);
+            mana -= 3f;
+            GameObject instantiatedItem = bigObject;
+            bigObject = objectGenerator.GetRandomBigObject();
+            onGenerateRandomBigObject.Invoke(bigObject.GetComponent<SpriteRenderer>().sprite);
+            InstantiateCreatedObject(instantiatedItem);
+        }
+    }
+    void InstantiateCreatedObject(GameObject instantiatedItem)
+    {
+        if (instantiatedItem.GetComponent<Item>().consumible)
+            instantiatedItem.GetComponent<Item>().Effect(this.gameObject);
+        else
+        {
+            Vector3 spawnpos = Vector3.zero;
+            if (spriteRenderer.flipX)
+                spawnpos = Vector3.right;
             else
-            {
-                Vector3 spawnpos = Vector3.zero;
-                if (spriteRenderer.flipX)
-                    spawnpos = Vector3.right;
-                else
-                    spawnpos = Vector3.left;
-                    instantiatedItem = Instantiate(instantiatedItem, this.transform.position + spawnpos, Quaternion.Euler(0, 0, 0));
-                instantiatedItem.GetComponent <Item>().creator = this.gameObject;
-                instantiatedItem.GetComponent<Rigidbody2D>().AddForce(new Vector2(spawnpos.x*10, 0), ForceMode2D.Impulse); 
-            }
+                spawnpos = Vector3.left;
+            instantiatedItem = Instantiate(instantiatedItem, this.transform.position + spawnpos, Quaternion.Euler(0, 0, 0));
+            instantiatedItem.GetComponent<Item>().creator = this.gameObject;
+            instantiatedItem.GetComponent<Rigidbody2D>().AddForce(new Vector2(spawnpos.x * 10, 0), ForceMode2D.Impulse);
         }
-        mana -= (int)consumedMana;
         onAlterMana.Invoke(this.mana);
-        consumedMana = 0;
     }
 }
