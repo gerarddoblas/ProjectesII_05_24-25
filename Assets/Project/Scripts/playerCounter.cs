@@ -9,6 +9,7 @@ public class playerCounter : MonoBehaviour
     public PlayerInputManager playerInputManager;
     private int players ;
     public UnityEvent onPlayerEnter, onPlayerExit, onAllPlayersEnter;
+    public Vector3 cameraDestination;
     private void OnEnable()
     {
         players = 0;
@@ -20,7 +21,7 @@ public class playerCounter : MonoBehaviour
        // if (players == playerInputManager.playerCount)
         //{
             onAllPlayersEnter.Invoke();
-            Camera.main.gameObject.GetComponent<CameraTween>().MoveCameraTo(new Vector3(0, -7.5f, -10));
+            Camera.main.gameObject.GetComponent<CameraTween>().MoveCameraTo(cameraDestination);
         //}
     }
     private void OnTriggerExit2D(Collider2D collision)

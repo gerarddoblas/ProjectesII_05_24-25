@@ -766,6 +766,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  cameraDestination: {x: 0, y: -7.5, z: -10.25}
 --- !u!1 &496859609
 GameObject:
   m_ObjectHideFlags: 0
