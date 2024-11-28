@@ -7,6 +7,7 @@ public class AreaManager : MonoBehaviour
     [SerializeField] private Vector2[] possibleAreas;
     [SerializeField] private float timeBeforeChange;
     private AudioSource source;
+    [SerializeField]private float scoreMultiplier = 5f;
     void Start()
     {
         source = GetComponent<AudioSource>();  
@@ -25,7 +26,7 @@ public class AreaManager : MonoBehaviour
         Player player = collision.GetComponent<Player>();
         if (player != null)
         {
-            player.Score += Time.deltaTime;
+            player.Score += (Time.deltaTime*scoreMultiplier);
             player.onAlterScore.Invoke(player.Score);
         }
     }
