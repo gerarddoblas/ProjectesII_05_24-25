@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private float jumpGraceTime = 0.5f;
+    private float jumpTime = 0.0f;
     [SerializeField] private float score;
     public float Score { set { score = value; } get { return score; } }
     public float acceleration ,maxSpeed, jumpForce;
@@ -43,7 +45,8 @@ public class Player : MonoBehaviour
     }
     private void FixedUpdate()
     { 
-        if (groundCheck.grounded)
+        //Change because of coyote time. Use materials
+        if (groundCheck.Grounded)
         {
             rigidbody2D.drag = 1;
             rigidbody2D.gravityScale = 2;
@@ -63,12 +66,13 @@ public class Player : MonoBehaviour
     private void Update()
     {
         UpdateAnimations();
+        if(jumpTime > 0) TryJump();
     }
     void UpdateAnimations()
     {
         animator.SetBool("canMove", canMove);
         animator.SetBool("invencibility", healthBehaviour.invencibility);
-        animator.SetBool("isGrounded",groundCheck.grounded);
+        animator.SetBool("isGrounded",groundCheck.Grounded);
         animator.SetFloat("horizontalSpeed",rigidbody2D.velocity.x);
         animator.SetFloat("verticalSpeed", rigidbody2D.velocity.y);
     }
@@ -89,11 +93,20 @@ public class Player : MonoBehaviour
     }
     void Jump(InputAction.CallbackContext context)
     {
-        if (groundCheck.grounded && canMove) { 
-            rigidbody2D.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
-            source.clip = jumpClip;
-            source.Play();
-        }
+        jumpTime = jumpGraceTime;
+        TryJump();
+    }
+
+    void TryJump()
+    {
+        jumpTime -= Time.deltaTime;
+        if (!(groundCheck.Grounded && canMove)) return;
+
+        rigidbody2D.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+        groundCheck.Grounded = false;
+        source.clip = jumpClip;
+        source.Play();
+        jumpTime = 0;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
