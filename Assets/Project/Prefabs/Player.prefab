@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e0e1c6f90f6c1a40a46a36767ef60e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coyoteTime: 0.5
   grounded: 0
 --- !u!61 &9074607855059947321
 BoxCollider2D:
@@ -145,6 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c165a2c0bd9e56449f6d3f8c32c7fde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpGraceTime: 0.1
   score: 0
   acceleration: 2000
   maxSpeed: 15
@@ -177,7 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 788cac53c5ba6ed4ba6d280965201916, type: 3}
+  m_Actions: {fileID: -944628639613478452, guid: 068748115ee1d9d4cba13c7a0f115b03, type: 3}
   m_NotificationBehavior: 0
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:

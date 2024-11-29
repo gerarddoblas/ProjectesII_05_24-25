@@ -5,7 +5,7 @@ using UnityEngine;
 public class GroundCheck : MonoBehaviour
 {
     [SerializeField] private float coyoteTime = 0.5f;
-    private bool grounded;
+    [SerializeField]private bool grounded;
     public bool Grounded { get { return grounded; } set { grounded = value; } }
     private void OnTriggerStay2D(Collider2D collision)
     {

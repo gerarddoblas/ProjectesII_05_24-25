@@ -17,8 +17,9 @@ public class PlayersManager : MonoBehaviour
     {
         source = GetComponent<AudioSource>();
         playerInputManager = GetComponent<PlayerInputManager>();
+        playerInputManager.EnableJoining();
         playerInputManager.onPlayerJoined += OnPlayerJoin;
-        playerInputManager.onPlayerLeft += OnPlayerLeft;
+        //playerInputManager.onPlayerLeft += OnPlayerLeft;
     }
     private void OnPlayerJoin(PlayerInput input)
     {
@@ -30,7 +31,7 @@ public class PlayersManager : MonoBehaviour
         instantiatedHUD.GetComponent<PlayerHud>().backgroundImage.GetComponent<Image>().color = playerColours[players.Count];
         players.Add(input.gameObject);
 
-        if (input.currentControlScheme == "Keyboard")
+        if (input.currentControlScheme.Contains("Keyboard"))
             instantiatedHUD.GetComponent<PlayerHud>().SetKeyboardControls();
         else
             instantiatedHUD.GetComponent<PlayerHud>().SetGamepdControls();
@@ -65,7 +66,7 @@ public class PlayersManager : MonoBehaviour
             initialpos += instantiatedHUD.GetComponent<RectTransform>().sizeDelta.x*2;
         }
         source.Play();
-    }
+    }/*
     private void OnPlayerLeft(PlayerInput input)
     {
         for (int i = 0; i < playerInputManager.playerCount; i++) {
@@ -74,5 +75,5 @@ public class PlayersManager : MonoBehaviour
                 Destroy(hudsContainer.transform.GetChild(i));
             } 
         }
-    }
+    }*/
 }
