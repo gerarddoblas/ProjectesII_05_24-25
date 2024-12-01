@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class playerCounter : MonoBehaviour
 {
-    public PlayerInputManager playerInputManager;
+  
     private int players ;
-    public UnityEvent onPlayerEnter, onPlayerExit, onAllPlayersEnter;
     public Vector3 cameraDestination;
+    public UnityEvent onPlayerEnter, onPlayerExit, onAllPlayersEnter;
     private void OnEnable()
     {
         players = 0;
@@ -18,11 +19,13 @@ public class playerCounter : MonoBehaviour
     {
         players++;
         onPlayerEnter.Invoke();
-       // if (players == playerInputManager.playerCount)
-        //{
+        if (players == PlayersManager.Instance.players.Count)
+        {
             onAllPlayersEnter.Invoke();
-            Camera.main.gameObject.GetComponent<CameraTween>().MoveCameraTo(cameraDestination);
-        //}
+            //if (SceneManager.GetActiveScene().name == "TitleScreen")
+                SceneManager.LoadScene("GameTest");
+            //Camera.main.gameObject.GetComponent<CameraTween>().MoveCameraTo(cameraDestination);
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {

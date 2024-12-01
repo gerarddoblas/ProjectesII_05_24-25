@@ -68,6 +68,7 @@ public class Player : MonoBehaviour
         UpdateAnimations();
         if(jumpTime > 0) TryJump();
     }
+    
     void UpdateAnimations()
     {
         animator.SetBool("canMove", canMove);

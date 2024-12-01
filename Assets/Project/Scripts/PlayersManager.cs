@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayersManager : MonoBehaviour
@@ -13,6 +14,23 @@ public class PlayersManager : MonoBehaviour
     PlayerInputManager playerInputManager;
     public GameObject playerContainer, hudsContainer;
     private AudioSource source;
+    public static PlayersManager Instance { get; private set; }
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(this);
+        }
+        else
+            Destroy(gameObject);
+
+        SceneManager.sceneLoaded+=SetPlayersPosition;
+    }
+    private void SetPlayersPosition(Scene loadedScene, LoadSceneMode loadedSceneMode) {
+        foreach (GameObject player in players)
+            player.transform.position = Vector3.zero;
+    }
     private void Start()
     {
         source = GetComponent<AudioSource>();
