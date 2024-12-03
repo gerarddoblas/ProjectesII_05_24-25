@@ -409,7 +409,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Project/Prefabs
+    - Packages
     m_Globs: []
     m_OriginalText: titl
     m_ImportLogFlags: 0
@@ -417,7 +417,7 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Project/Prefabs
+  - Packages
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\sergi\Desktop\UnityProjects\ProjectesII_05_24-25
   m_LockTracker:
@@ -481,7 +481,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c62300001ac30000266c000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
