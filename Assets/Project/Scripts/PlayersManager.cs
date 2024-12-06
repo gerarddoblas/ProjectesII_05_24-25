@@ -11,7 +11,7 @@ public class PlayersManager : MonoBehaviour
     public GameObject canvasPrefab;
     public List<GameObject> players;
     public List<GameObject> playersCanvas;
-    PlayerInputManager playerInputManager;
+    public PlayerInputManager playerInputManager;
     public GameObject playerContainer, hudsContainer;
     private AudioSource source;
     public static PlayersManager Instance { get; private set; }
@@ -35,7 +35,7 @@ public class PlayersManager : MonoBehaviour
     {
         source = GetComponent<AudioSource>();
         playerInputManager = GetComponent<PlayerInputManager>();
-        playerInputManager.EnableJoining();
+        //playerInputManager.EnableJoining();
         playerInputManager.onPlayerJoined += OnPlayerJoin;
         //playerInputManager.onPlayerLeft += OnPlayerLeft;
     }
@@ -83,7 +83,7 @@ public class PlayersManager : MonoBehaviour
             hud.position = new Vector3(initialpos,hud.GetComponent<RectTransform>().sizeDelta.y/1.5f, 0);
             initialpos += instantiatedHUD.GetComponent<RectTransform>().sizeDelta.x*2;
         }
-        source.Play();
+        //source.Play();
     }/*
     private void OnPlayerLeft(PlayerInput input)
     {

@@ -77,7 +77,7 @@ Transform:
   - {fileID: 3926284514290105922}
   - {fileID: 986765965865619187}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6016600495428334092
 MonoBehaviour:
@@ -113,7 +113,7 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: 0}
-  m_PlayerPrefab: {fileID: 2405843281983287208, guid: 2e5b21c6ddb9a934fa93ddb401ddc4ef, type: 3}
+  m_PlayerPrefab: {fileID: 3595640720133808575, guid: 2e5b21c6ddb9a934fa93ddb401ddc4ef, type: 3}
   m_SplitScreen: 0
   m_MaintainAspectRatioInSplitScreen: 0
   m_FixedNumberOfSplitScreens: -1
