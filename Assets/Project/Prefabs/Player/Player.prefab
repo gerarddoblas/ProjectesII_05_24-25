@@ -146,11 +146,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c165a2c0bd9e56449f6d3f8c32c7fde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpGraceTime: 0.1
+  jumpGraceTime: 0.5
   score: 0
   acceleration: 2000
   maxSpeed: 15
-  jumpForce: 28
+  jumpForce: 33
   playerSpeed: {x: 0, y: 0}
   onAlterMana:
     m_PersistentCalls:
@@ -262,9 +262,9 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 1
+  m_LinearDrag: 3
   m_AngularDrag: 100
-  m_GravityScale: 2
+  m_GravityScale: 8
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
