@@ -148,7 +148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpGraceTime: 0.5
   score: 0
-  acceleration: 2000
+  acceleration: 5000
   maxSpeed: 15
   jumpForce: 33
   playerSpeed: {x: 0, y: 0}
