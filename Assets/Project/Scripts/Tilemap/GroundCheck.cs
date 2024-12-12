@@ -9,11 +9,13 @@ public class GroundCheck : MonoBehaviour
     public bool Grounded { get { return grounded; } set { grounded = value; } }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        grounded = true;
+        if (gameObject.activeInHierarchy)
+            grounded = true;
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        StartCoroutine(CoyoteTime());
+        if(gameObject.activeInHierarchy)
+            StartCoroutine(CoyoteTime());
     }
 
     IEnumerator CoyoteTime()

@@ -22,9 +22,7 @@ public class playerCounter : MonoBehaviour
         if (players == PlayersManager.Instance.players.Count)
         {
             onAllPlayersEnter.Invoke();
-            //if (SceneManager.GetActiveScene().name == "TitleScreen")
-                SceneManager.LoadScene("GameTest");
-            //Camera.main.gameObject.GetComponent<CameraTween>().MoveCameraTo(cameraDestination);
+            Camera.main.gameObject.GetComponent<CameraTween>().MoveCameraTo(cameraDestination);
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
