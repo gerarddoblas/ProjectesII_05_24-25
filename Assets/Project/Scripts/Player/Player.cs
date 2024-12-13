@@ -45,17 +45,7 @@ public class Player : MonoBehaviour
     }
     private void FixedUpdate()
     { 
-        //Change because of coyote time. Use materials
-        if (groundCheck.Grounded)
-        {
-            rigidbody2D.drag = 1;
-            rigidbody2D.gravityScale = 2;
-        }
-        else
-        {
-            rigidbody2D.drag = 3;
-            rigidbody2D.gravityScale = 8;
-        }
+
         rigidbody2D.AddForce(new Vector2(acceleration*playerSpeed.x*Time.deltaTime,0), ForceMode2D.Force);
         if (rigidbody2D.velocity.x > maxSpeed)
             rigidbody2D.velocity = new Vector2(maxSpeed, rigidbody2D.velocity.y);

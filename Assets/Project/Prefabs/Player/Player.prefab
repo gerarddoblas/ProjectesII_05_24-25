@@ -148,9 +148,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpGraceTime: 0.5
   score: 0
-  acceleration: 5000
+  acceleration: 7000
   maxSpeed: 13
-  jumpForce: 42
+  jumpForce: 45
   playerSpeed: {x: 0, y: 0}
   onAlterMana:
     m_PersistentCalls:
