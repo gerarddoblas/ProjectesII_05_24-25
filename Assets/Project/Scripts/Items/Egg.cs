@@ -16,7 +16,7 @@ public class Egg : Item {
             Destroy(this.gameObject);
         }
     }
-    override public void Effect(GameObject target)
+    override public IEnumerator Effect(GameObject target)
     {
         if (target.TryGetComponent<Tilemap>(out Tilemap tm))
             tm.GetTile(new Vector3Int((int)transform.position.x,(int)transform.position.y));
@@ -27,6 +27,6 @@ public class Egg : Item {
             p.healthBehaviour.Damage(1);
             Destroy(this.gameObject);
         }
-        
+        yield return null;
      }
 }

@@ -15,7 +15,7 @@ public class Barrel : Item
             Destroy(this.gameObject);
         }
     }
-    override public void Effect(GameObject target)
+    override public IEnumerator Effect(GameObject target)
     {
 
         if (target.TryGetComponent<Player>(out Player p))
@@ -24,5 +24,6 @@ public class Barrel : Item
             p.healthBehaviour.Damage(2);
             Destroy(this.gameObject);
         }
+        yield return null;
     }
 }

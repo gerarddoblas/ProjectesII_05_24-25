@@ -84,7 +84,7 @@ public class Items : MonoBehaviour
     void InstantiateCreatedObject(GameObject instantiatedItem)
     {
         if (instantiatedItem.GetComponent<Item>().consumible)
-            instantiatedItem.GetComponent<Item>().Effect(this.gameObject);
+            StartCoroutine(instantiatedItem.GetComponent<Item>().Effect(this.gameObject));
         else
         {
             Vector3 spawnpos = Vector3.zero;

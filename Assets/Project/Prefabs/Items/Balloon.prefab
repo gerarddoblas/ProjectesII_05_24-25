@@ -173,4 +173,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   creator: {fileID: 0}
   consumible: 1
-  creatorImmunity: 0
+  creatorImmunity: 1
+  jumpIncrease: 2
+  duration: 20
