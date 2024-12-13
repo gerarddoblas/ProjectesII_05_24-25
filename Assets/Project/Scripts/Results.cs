@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class Results : MonoBehaviour
 {
     // Start is called before the first frame update
+    float timer = 5f;
     void Start()
     {
         PlayersManager.Instance.HideAllHuds();
@@ -23,10 +24,11 @@ public class Results : MonoBehaviour
 
     void Update()
     {
-        if (Input.anyKeyDown)
+        timer-=Time.deltaTime;
+        if (Input.anyKeyDown&&timer<=0)
         {
             PlayersManager.Instance.UnlockPlayersMovement();
-            SceneManager.LoadScene("GameTest");
+            SceneManager.LoadScene("GrayBox");
         }
     }
 }

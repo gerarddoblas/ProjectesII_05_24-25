@@ -17,6 +17,7 @@ public class Match : MonoBehaviour
     {
         remainingTime = gameTime;
         LeanTween.alphaCanvas(counterText.GetComponentInParent<CanvasGroup>(),1,1);
+        PlayersManager.Instance.ShowAllHuds(1);
         onFinishGame.AddListener(delegate ()
         {
             SceneManager.LoadScene("ResultScene");
