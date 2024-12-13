@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class PlayersManager : MonoBehaviour
 {
+    public bool enabledHUDByDefault;
     public Color[] playerColours;
     public GameObject canvasPrefab;
     public List<GameObject> players;
@@ -83,6 +84,8 @@ public class PlayersManager : MonoBehaviour
             hud.position = new Vector3(initialpos,hud.GetComponent<RectTransform>().sizeDelta.y/1.5f, 0);
             initialpos += instantiatedHUD.GetComponent<RectTransform>().sizeDelta.x*2;
         }
+        if(!enabledHUDByDefault)
+            instantiatedHUD.SetActive(false);
         //source.Play();
     }/*
     private void OnPlayerLeft(PlayerInput input)
@@ -94,4 +97,61 @@ public class PlayersManager : MonoBehaviour
             } 
         }
     }*/
+    public void ShowAllHuds()
+    {
+        foreach (GameObject canva in playersCanvas)
+        {
+            LeanTween.cancel(canva);
+            canva.SetActive(true);
+            canva.GetComponent<CanvasGroup>().alpha = 1.0f;
+        }
+    }
+    public void ShowAllHuds(float time)
+    {
+        foreach (GameObject canva in playersCanvas)
+        {
+            LeanTween.cancel(canva);
+            LeanTween.value(canva, 0f, 1f, time).setOnStart(() =>
+            {
+                canva.SetActive(true);
+                canva.GetComponent<CanvasGroup>().alpha = 0f;
+            }).setOnUpdate((float r) => {
+                canva.GetComponent<CanvasGroup>().alpha = r;
+            });
+        }
+    }
+    public void HideAllHuds()
+    {
+        foreach (GameObject canva in playersCanvas)
+        {
+            LeanTween.cancel(canva);
+            canva.GetComponent<CanvasGroup>().alpha = 0f;
+            canva.SetActive(false);
+        }
+    }
+    public void HideAllHuds(float time)
+    {
+        foreach (GameObject canva in playersCanvas)
+        {
+            LeanTween.cancel(canva);
+            LeanTween.value(canva, 1f, 0f, time).setOnStart(() =>
+            {
+                canva.SetActive(true);
+                canva.GetComponent<CanvasGroup>().alpha = 1f;
+            }).setOnUpdate((float r) => {
+                canva.GetComponent<CanvasGroup>().alpha = r;
+                canva.SetActive(false);
+            });
+        }
+    }
+    public void LockPlayersMovement()
+    {
+        foreach(GameObject player in players)
+            player.GetComponent<Player>().LockMovement();
+    }
+    public void UnlockPlayersMovement()
+    {
+        foreach (GameObject player in players)
+            player.GetComponent<Player>().UnlockMovement();
+    }
 }

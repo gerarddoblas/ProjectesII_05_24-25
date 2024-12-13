@@ -1420,6 +1420,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7363463690276142053}
   - component: {fileID: 3229417542242309056}
+  - component: {fileID: 1971153255942441682}
   m_Layer: 5
   m_Name: PlayerHud
   m_TagString: Untagged
@@ -1477,6 +1478,18 @@ MonoBehaviour:
   backgroundImage: {fileID: 2454136116466794841}
   keyboardControls: {fileID: 2616071060491336383}
   gamePadControls: {fileID: 233280402886803430}
+--- !u!225 &1971153255942441682
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5217877837741811901}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &6242308480274124337
 GameObject:
   m_ObjectHideFlags: 0

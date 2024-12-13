@@ -21,11 +21,13 @@ public class Player : MonoBehaviour
     Animator animator;
 
     //Knockout vars
-    public bool canMove = true;
+    private bool canMove = true;
     public float knowdownTime = 3f;
     private AudioSource source;
     [SerializeField] private AudioClip jumpClip, KnockoutClip;
     public SpriteRenderer positionMarker;
+    public void LockMovement() { canMove = false; }
+    public void UnlockMovement() {  canMove = true; }
     void Awake()
     {
         animator = GetComponent<Animator>();

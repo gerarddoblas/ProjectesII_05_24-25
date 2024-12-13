@@ -11,13 +11,15 @@ public class Items : MonoBehaviour
     public float consumedMana;
     public UnityEvent<float> onAlterMana;
     //Object Creation
+    private bool canCreate = true;
     public ObjectCreation objectGenerator;
     public GameObject smallObject, mediumObject, bigObject;
     public UnityEvent<Sprite> onGenerateRandomSmallObject, onGenerateRandomMidObject, onGenerateRandomBigObject;
     Coroutine charging;
     SpriteRenderer spriteRenderer;
     Rigidbody2D rigidbody;
-
+    public void EnableCreation() { canCreate = true; }
+    public void DisableCreation() {  canCreate = false; }
     private void Awake()
     {
         mana = 0;
@@ -48,7 +50,7 @@ public class Items : MonoBehaviour
     }
     void CreateSmallObject(InputAction.CallbackContext context)
     {
-        if(mana >= 1f)
+        if(mana >= 1f && canCreate)
         {
             mana -= 1f;
             GameObject  instantiatedItem = smallObject;
@@ -59,7 +61,7 @@ public class Items : MonoBehaviour
     }
     void CreateMidObject(InputAction.CallbackContext context)
     {
-        if (mana >= 2f)
+        if (mana >= 2f && canCreate)
         {
             mana -= 2f;
             GameObject instantiatedItem = mediumObject;
@@ -70,7 +72,7 @@ public class Items : MonoBehaviour
     }
     void CreateBigObject(InputAction.CallbackContext context)
     {
-        if (mana >= 3f)
+        if (mana >= 3f && canCreate)
         {
             mana -= 3f;
             GameObject instantiatedItem = bigObject;

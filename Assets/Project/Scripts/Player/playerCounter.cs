@@ -22,6 +22,7 @@ public class playerCounter : MonoBehaviour
         if (players == PlayersManager.Instance.players.Count)
         {
             onAllPlayersEnter.Invoke();
+            PlayersManager.Instance.ShowAllHuds(1);
             Camera.main.gameObject.GetComponent<CameraTween>().MoveCameraTo(cameraDestination);
         }
     }

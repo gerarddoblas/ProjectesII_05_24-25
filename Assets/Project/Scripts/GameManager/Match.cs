@@ -12,13 +12,14 @@ public class Match : MonoBehaviour
     public TextMeshProUGUI counterText;
     public UnityEvent onFinishGame;
     private AudioSource source;
+    
     void OnEnable()
     {
         remainingTime = gameTime;
         LeanTween.alphaCanvas(counterText.GetComponentInParent<CanvasGroup>(),1,1);
         onFinishGame.AddListener(delegate ()
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            SceneManager.LoadScene("ResultScene");
         });
         source = GetComponent<AudioSource>();
         source.Play();
