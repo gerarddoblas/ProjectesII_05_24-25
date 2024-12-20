@@ -151,6 +151,11 @@ MonoBehaviour:
   acceleration: 7000
   maxSpeed: 13
   jumpForce: 45
+  maxJumpForce: 90
+  minJumpForce: 45
+  curJumpForce: 0
+  deltaJumpForce: 50
+  jumping: 0
   playerSpeed: {x: 0, y: 0}
   onAlterMana:
     m_PersistentCalls:
@@ -158,11 +163,11 @@ MonoBehaviour:
   onAlterScore:
     m_PersistentCalls:
       m_Calls: []
+  input: {fileID: 0}
   rigidbody2D: {fileID: 0}
   groundCheck: {fileID: 0}
   spriteRenderer: {fileID: 0}
   healthBehaviour: {fileID: 0}
-  canMove: 1
   knowdownTime: 3
   jumpClip: {fileID: 8300000, guid: 4a95e4c3bafa6c240a922c6815c667fb, type: 3}
   KnockoutClip: {fileID: 8300000, guid: b8f19cb7c498bb94fb038d5861ae103d, type: 3}
