@@ -174,5 +174,5 @@ MonoBehaviour:
   creator: {fileID: 0}
   consumible: 1
   creatorImmunity: 0
-  incrementMult: 1.5
+  incrementMult: 2
   duration: 5
