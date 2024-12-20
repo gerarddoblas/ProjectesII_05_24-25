@@ -692,6 +692,10 @@ PrefabInstance:
       propertyPath: m_MaxPlayerCount
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 6440259471974055472, guid: f4aed4a02c4f8e7419f0d65d818c6c8d, type: 3}
+      propertyPath: playerColours.Array.data[1].a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8677806340695492295, guid: f4aed4a02c4f8e7419f0d65d818c6c8d, type: 3}
       propertyPath: m_RootOrder
       value: 2

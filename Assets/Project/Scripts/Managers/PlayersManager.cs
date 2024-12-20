@@ -154,4 +154,10 @@ public class PlayersManager : MonoBehaviour
         foreach (GameObject player in players)
             player.GetComponent<Player>().UnlockMovement();
     }
+    public void SetJoining(bool enabled) {
+        if(enabled)
+            playerInputManager.EnableJoining();
+        else 
+            playerInputManager.DisableJoining();
+    }
 }
