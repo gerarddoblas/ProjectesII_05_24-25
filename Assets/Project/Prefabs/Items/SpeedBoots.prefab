@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 7856704066592609255}
   - component: {fileID: -8350918590151756432}
   - component: {fileID: 387624527577898417}
-  - component: {fileID: 6204688814685289339}
+  - component: {fileID: 8590878378841763724}
   m_Layer: 7
-  m_Name: SmallPotion
+  m_Name: SpeedBoots
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 24095aaa49a10c34289ac7e39aa1a146, type: 3}
+  m_Sprite: {fileID: 21300000, guid: acd4f5170fcfb3e4c9265b227fb686f0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -150,7 +150,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.28, y: 1.28}
+    oldSize: {x: 0.72, y: 0.8}
     newSize: {x: 0.64, y: 0.64}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -159,7 +159,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.64, y: 0.64}
   m_EdgeRadius: 0
---- !u!114 &6204688814685289339
+--- !u!114 &8590878378841763724
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -168,11 +168,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2128471897566729481}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 917cf72b3d213b246b8b5e5abb9b14d6, type: 3}
+  m_Script: {fileID: 11500000, guid: 46a3aad1e9536e44f8f5ac47178a6425, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   creator: {fileID: 0}
   consumible: 1
   creatorImmunity: 0
-  incrementMult: 2
+  incrementMult: 1.5
   duration: 5

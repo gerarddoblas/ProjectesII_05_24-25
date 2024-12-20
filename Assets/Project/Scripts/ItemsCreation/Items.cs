@@ -11,7 +11,7 @@ public class Items : MonoBehaviour
     public float consumedMana;
     public UnityEvent<float> onAlterMana;
     //Object Creation
-    private bool canCreate = true;
+    private bool canCreate = true,fillingMana = true;
     public ObjectCreation objectGenerator;
     public GameObject smallObject, mediumObject, bigObject;
     public UnityEvent<Sprite> onGenerateRandomSmallObject, onGenerateRandomMidObject, onGenerateRandomBigObject;
@@ -40,7 +40,7 @@ public class Items : MonoBehaviour
     }
     private void Update()
     {
-        if (mana < maxFill)
+        if (mana < maxFill && fillingMana)
         {
             mana += fillspeed * Time.deltaTime;
             if (mana >= maxFill)
@@ -97,5 +97,38 @@ public class Items : MonoBehaviour
             instantiatedItem.GetComponent<Rigidbody2D>().AddForce(new Vector2(spawnpos.x * 10, 0), ForceMode2D.Impulse);
         }
         onAlterMana.Invoke(this.mana);
+    }
+    void LockObjectCreation() { this.canCreate = false; }
+    void UnlockObjectCreation() { this.canCreate = true; }
+    IEnumerator LockObjectCreation(float time)
+    {
+        this.LockObjectCreation();
+        yield return new WaitForSeconds(time);
+        this.UnlockObjectCreation();
+        yield return null;
+    }
+    void LockManaFill() { this.fillingMana = false; }
+    void UnlockManaFill() { this.fillingMana = true; }
+    IEnumerator LockManaFill(float time)
+    {
+        this.LockManaFill();
+        yield return new WaitForSeconds(time);
+        this.UnlockManaFill();
+        yield return null;
+    }
+    void LockManaAndCreation() { 
+        this.fillingMana = false; 
+        this.canCreate = false;
+    }
+    void UnlockManaAndCreation() {
+        this.fillingMana = true;
+        this.canCreate = true;
+    }
+    IEnumerator LockManaAndCreation(float time)
+    {
+        this.LockManaAndCreation();
+        yield return new WaitForSeconds(time);
+        this.UnlockManaAndCreation();
+        yield return null;
     }
 }

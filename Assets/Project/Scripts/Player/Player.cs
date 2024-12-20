@@ -112,7 +112,7 @@ public class Player : MonoBehaviour
 
     void JumpHold()
     {
-        if(jumping && curJumpForce < maxJumpForce)
+        if(jumping && curJumpForce < maxJumpForce && rigidbody2D.velocity.y > 0)
         {
             rigidbody2D.AddForce(new Vector2(0, deltaJumpForce * Time.deltaTime), ForceMode2D.Impulse);
             curJumpForce += deltaJumpForce * Time.deltaTime;
