@@ -154,7 +154,7 @@ MonoBehaviour:
   maxJumpForce: 90
   minJumpForce: 45
   curJumpForce: 0
-  deltaJumpForce: 50
+  deltaJumpForce: 60
   jumping: 0
   playerSpeed: {x: 0, y: 0}
   onAlterMana:
