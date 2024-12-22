@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 7002814917597663600}
   - component: {fileID: -3335600526158151530}
   - component: {fileID: -31633054081451891}
-  - component: {fileID: 6144703359273682242}
   - component: {fileID: -3233342256277971237}
   m_Layer: 7
   m_Name: Teleporter
@@ -30,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 4110435733389039893}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1.5}
+  m_LocalScale: {x: 1, y: 1, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -160,24 +159,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.31, y: 0.31}
   m_EdgeRadius: 0
---- !u!114 &6144703359273682242
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4110435733389039893}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c054a2862587c144983cb8d6b4181e6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  creator: {fileID: 0}
-  consumible: 0
-  creatorImmunity: 0
-  timeInScene: 2.5
-  contador: 0
-  damage: 5
 --- !u!114 &-3233342256277971237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,3 +171,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ac5a5b2281df4b499dc2b88e0271e17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  creator: {fileID: 0}
+  consumible: 0
+  creatorImmunity: 0
