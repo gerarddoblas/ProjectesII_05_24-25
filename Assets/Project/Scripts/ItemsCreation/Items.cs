@@ -12,6 +12,8 @@ public class Items : MonoBehaviour
     public UnityEvent<float> onAlterMana;
     //Object Creation
     private bool canCreate = true,fillingMana = true;
+    private bool dontRepeat = true;
+    private GameObject lastSmallObject, lastMidObject, lastBigObject;
     public ObjectCreation objectGenerator;
     public GameObject smallObject, mediumObject, bigObject;
     public UnityEvent<Sprite> onGenerateRandomSmallObject, onGenerateRandomMidObject, onGenerateRandomBigObject;
@@ -55,6 +57,8 @@ public class Items : MonoBehaviour
             mana -= 1f;
             GameObject  instantiatedItem = smallObject;
             smallObject = objectGenerator.GetRandomSmallObject();
+            while(instantiatedItem.GetComponent<SpriteRenderer>().sprite == smallObject.GetComponent<SpriteRenderer>().sprite && dontRepeat)
+                smallObject = objectGenerator.GetRandomSmallObject();
             onGenerateRandomSmallObject.Invoke(smallObject.GetComponent<SpriteRenderer>().sprite);
             InstantiateCreatedObject(instantiatedItem);
         }
@@ -66,6 +70,8 @@ public class Items : MonoBehaviour
             mana -= 2f;
             GameObject instantiatedItem = mediumObject;
             mediumObject = objectGenerator.GetRandomMediumObject();
+            while (instantiatedItem.GetComponent<SpriteRenderer>().sprite == mediumObject.GetComponent<SpriteRenderer>().sprite && dontRepeat)
+                mediumObject = objectGenerator.GetRandomMediumObject(); 
             onGenerateRandomMidObject.Invoke(mediumObject.GetComponent<SpriteRenderer>().sprite);
             InstantiateCreatedObject(instantiatedItem);
         }
@@ -77,6 +83,8 @@ public class Items : MonoBehaviour
             mana -= 3f;
             GameObject instantiatedItem = bigObject;
             bigObject = objectGenerator.GetRandomBigObject();
+            while (instantiatedItem.GetComponent<SpriteRenderer>().sprite == bigObject.GetComponent<SpriteRenderer>().sprite && dontRepeat)
+                bigObject = objectGenerator.GetRandomBigObject();
             onGenerateRandomBigObject.Invoke(bigObject.GetComponent<SpriteRenderer>().sprite);
             InstantiateCreatedObject(instantiatedItem);
         }
