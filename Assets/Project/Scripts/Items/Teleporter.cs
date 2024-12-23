@@ -7,7 +7,6 @@ public class Teleporter : Item
 {
     override public IEnumerator Effect(GameObject target)
     {
-        
         if (target.TryGetComponent<Player>(out Player p))
         {
             Vector3 creatorPos = creator.transform.position; 
