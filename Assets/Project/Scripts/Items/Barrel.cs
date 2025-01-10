@@ -6,6 +6,7 @@ public class Barrel : Item
 {
     public float timeInScene = 1.5f;
     public float contador = 0.0f;
+    public int damage = 15;
 
     public void Update()
     {
@@ -15,14 +16,15 @@ public class Barrel : Item
             Destroy(this.gameObject);
         }
     }
-    override public void Effect(GameObject target)
+    override public IEnumerator Effect(GameObject target)
     {
 
         if (target.TryGetComponent<Player>(out Player p))
         {
             p.rigidbody2D.velocity = new Vector2(this.GetComponent<Rigidbody2D>().velocity.x, target.GetComponent<Rigidbody2D>().velocity.y);
-            p.healthBehaviour.Damage(2);
+            p.healthBehaviour.Damage(damage);
             Destroy(this.gameObject);
         }
+        yield return null;
     }
 }

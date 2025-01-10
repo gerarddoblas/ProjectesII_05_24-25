@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Mina : Item
 {
-    override public void Effect(GameObject target)
+    override public IEnumerator Effect(GameObject target)
     {
         if (target.TryGetComponent<Player>(out Player p))
         {
@@ -18,6 +18,6 @@ public class Mina : Item
                 GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             }
         }
+        yield return null;
     }
-
 }

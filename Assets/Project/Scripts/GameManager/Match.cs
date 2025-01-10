@@ -15,6 +15,7 @@ public class Match : MonoBehaviour
     
     void OnEnable()
     {
+        PlayersManager.Instance.SetJoining(false);
         remainingTime = gameTime;
         LeanTween.alphaCanvas(counterText.GetComponentInParent<CanvasGroup>(),1,1);
         PlayersManager.Instance.ShowAllHuds(1);
@@ -24,6 +25,7 @@ public class Match : MonoBehaviour
         });
         source = GetComponent<AudioSource>();
         source.Play();
+        
     }
     void Update()
     {

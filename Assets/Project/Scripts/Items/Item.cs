@@ -7,16 +7,16 @@ public class Item : MonoBehaviour
    public  GameObject creator;
     public bool consumible = false;
     public bool creatorImmunity = false;
-    public virtual void Effect(GameObject target) { }
+    public virtual IEnumerator Effect(GameObject target) { yield return null; }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject != creator && !creatorImmunity)
-            Effect(collision.gameObject);
+            StartCoroutine(Effect(collision.gameObject));
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject != creator && !creatorImmunity)
-            Effect(collision.gameObject);
+            StartCoroutine(Effect(collision.gameObject));
     }
     private void OnBecameInvisible()
     {

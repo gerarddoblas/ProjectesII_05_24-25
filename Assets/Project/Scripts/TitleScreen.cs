@@ -8,7 +8,7 @@ public class TitleScreen : MonoBehaviour
     {
         LeanTween.move(Camera.main.gameObject, Vector2.zero, 2).setOnComplete(delegate ()
         {
-                PlayersManager.Instance.playerInputManager.EnableJoining();  
+                PlayersManager.Instance.SetJoining(true);
         }).setEaseInOutElastic();  
     }
 }

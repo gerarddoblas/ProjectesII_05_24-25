@@ -20,8 +20,8 @@ public class Beam:Item
             Destroy(this.gameObject);
         }
     }
-    override public void Effect(GameObject target)
+    override public IEnumerator Effect(GameObject target)
     {
-
+        yield return target;
     }
 }

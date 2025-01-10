@@ -5,11 +5,13 @@ using UnityEngine.Tilemaps;
 
 public class Baloon : Item
 {
-    
-    override public void Effect(GameObject target)
+    public float jumpIncrease = 2;
+    public float duration = 5;
+    override public IEnumerator Effect(GameObject target)
     {
-        target.GetComponent<Player>().jumpForce += 1.5f;
-        if (target.GetComponent<Player>().jumpForce > 35)
-            target.GetComponent<Player>().jumpForce = 35;
+        target.GetComponent<Player>().jumpForce += jumpIncrease;
+        yield return new WaitForSeconds(duration);
+        target.GetComponent<Player>().jumpForce -= jumpIncrease;
+        yield return null;
     }
 }

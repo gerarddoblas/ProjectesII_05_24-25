@@ -25,11 +25,12 @@ public class Kaboom : Item
             Destroy(this.gameObject);
         }
     }
-    override public void Effect(GameObject target)
+    override public IEnumerator Effect(GameObject target)
     {
         if(target.TryGetComponent<Tilemap>(out Tilemap tm))
                 tm.RefreshTile(new Vector3Int((int)Mathf.Floor(target.transform.position.x ), (int)Mathf.Floor(target.transform.position.y), 0));
         else if (target.TryGetComponent<HealthBehaviour>(out HealthBehaviour hb))
             hb.FullDamage();
+        yield return null;
     }
 }

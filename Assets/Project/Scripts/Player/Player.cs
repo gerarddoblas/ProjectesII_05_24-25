@@ -11,9 +11,12 @@ public class Player : MonoBehaviour
     [SerializeField] private float score;
     public float Score { set { score = value; } get { return score; } }
     public float acceleration ,maxSpeed, jumpForce;
+    public float maxJumpForce, minJumpForce, curJumpForce, deltaJumpForce;
+    public bool jumping = false;
     public Vector2 playerSpeed = Vector2.zero;
     public UnityEvent<float> onAlterMana;
     public UnityEvent<float> onAlterScore;
+    public PlayerInput input;
     public Rigidbody2D rigidbody2D;
     public GroundCheck groundCheck;
     public SpriteRenderer spriteRenderer;
@@ -35,10 +38,11 @@ public class Player : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         rigidbody2D = GetComponent<Rigidbody2D>();
         groundCheck = GetComponentInChildren<GroundCheck>();
-        PlayerInput input = GetComponent<PlayerInput>();
+        input = GetComponent<PlayerInput>();
         input.actions.FindAction("Move").performed += Move;
         input.actions.FindAction("Move").canceled += MoveCancelled;
         input.actions.FindAction("Jump").started += Jump;
+        input.actions.FindAction("Jump").canceled += JumpStop;
         healthBehaviour = GetComponent<HealthBehaviour>();
         healthBehaviour.OnDie.AddListener(delegate ()
         {
@@ -59,6 +63,7 @@ public class Player : MonoBehaviour
     {
         UpdateAnimations();
         if(jumpTime > 0) TryJump();
+        if (input.actions.FindAction("Jump").IsPressed()) JumpHold();
     }
     
     void UpdateAnimations()
@@ -95,13 +100,27 @@ public class Player : MonoBehaviour
         jumpTime -= Time.deltaTime;
         if (!(groundCheck.Coyote && canMove)) return;
 
-        rigidbody2D.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+        jumping = true;
+
+        rigidbody2D.AddForce(new Vector2(0, minJumpForce), ForceMode2D.Impulse);
+        curJumpForce = minJumpForce;
         groundCheck.Grounded = false;
         groundCheck.Coyote = false;
         source.clip = jumpClip;
         source.Play();
         jumpTime = 0;
     }
+
+    void JumpHold()
+    {
+        if(jumping && curJumpForce < maxJumpForce)
+        {
+            rigidbody2D.AddForce(new Vector2(0, deltaJumpForce * Time.deltaTime), ForceMode2D.Impulse);
+            curJumpForce += deltaJumpForce * Time.deltaTime;
+        }
+    }
+
+    void JumpStop(InputAction.CallbackContext context) => jumping = false;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

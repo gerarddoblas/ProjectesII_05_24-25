@@ -17,6 +17,7 @@ public class StageSelector : MonoBehaviour
         players++;
         if (players == PlayersManager.Instance.players.Count)
         {
+            Debug.Log("LoadingRandomStage...");
             LoadRandomStage();
         }
     }
