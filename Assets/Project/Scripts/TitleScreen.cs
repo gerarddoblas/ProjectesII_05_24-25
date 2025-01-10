@@ -10,5 +10,6 @@ public class TitleScreen : MonoBehaviour
         {
                 PlayersManager.Instance.SetJoining(true);
         }).setEaseInOutBounce();  
+        
     }
 }

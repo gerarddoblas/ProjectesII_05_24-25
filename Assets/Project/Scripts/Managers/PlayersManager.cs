@@ -146,8 +146,13 @@ public class PlayersManager : MonoBehaviour
     }
     public void LockPlayersMovement()
     {
-        foreach(GameObject player in players)
+        foreach (GameObject player in players)
+        {
+            player.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
             player.GetComponent<Player>().LockMovement();
+            player.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+        }
+
     }
     public void UnlockPlayersMovement()
     {
