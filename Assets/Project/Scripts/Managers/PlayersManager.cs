@@ -50,41 +50,52 @@ public class PlayersManager : MonoBehaviour
         instantiatedHUD.GetComponent<PlayerHud>().backgroundImage.GetComponent<Image>().color = playerColours[players.Count];
         players.Add(input.gameObject);
 
-        if (input.currentControlScheme.Contains("Keyboard"))
-            instantiatedHUD.GetComponent<PlayerHud>().SetKeyboardControls();
-        else
-            instantiatedHUD.GetComponent<PlayerHud>().SetGamepdControls();
-        input.gameObject.GetComponent<HealthBehaviour>().OnAlterHealth.AddListener((int health, int maxHealth) => 
-        {
-            instantiatedHUD.GetComponent<PlayerHud>().knockoutSlider.value = 1-((float)health/(float)maxHealth);
-        });
+        instantiatedHUD.GetComponent<PlayerHud>().playerTransform = input.gameObject.transform;
+
+        //if (input.currentControlScheme.Contains("Keyboard"))
+        //    instantiatedHUD.GetComponent<PlayerHud>().SetKeyboardControls();
+        //else
+        //    instantiatedHUD.GetComponent<PlayerHud>().SetGamepdControls();
+        //input.gameObject.GetComponent<HealthBehaviour>().OnAlterHealth.AddListener((int health, int maxHealth) => 
+        //{
+        //    instantiatedHUD.GetComponent<PlayerHud>().knockoutSlider.value = 1-((float)health/(float)maxHealth);
+        //});
+        //input.gameObject.GetComponent<Items>().onAlterMana.AddListener((float currentMana) =>
+        //{
+        //    instantiatedHUD.GetComponent<PlayerHud>().manaSlider.value = currentMana;
+        //});
+        //input.gameObject.GetComponent<Items>().onGenerateRandomSmallObject.AddListener(delegate(Sprite s)
+        //{
+        //    instantiatedHUD.GetComponent<PlayerHud>().smallImage.sprite = s;
+        //});
+        //input.gameObject.GetComponent<Items>().onGenerateRandomMidObject.AddListener(delegate (Sprite s)
+        //{
+        //    instantiatedHUD.GetComponent<PlayerHud>().midImage.sprite = s;
+        //});
+        //input.gameObject.GetComponent<Items>().onGenerateRandomBigObject.AddListener(delegate (Sprite s)
+        //{
+        //    instantiatedHUD.GetComponent<PlayerHud>().bigImage.sprite = s;
+        //});
+        //input.gameObject.GetComponent<Player>().onAlterScore.AddListener((float score) =>
+        //{
+        //    instantiatedHUD.GetComponent<PlayerHud>().scoreText.text = "Score: " + (int)score;
+        //});
+
         input.gameObject.GetComponent<Items>().onAlterMana.AddListener((float currentMana) =>
         {
-            instantiatedHUD.GetComponent<PlayerHud>().manaSlider.value = currentMana;
+            instantiatedHUD.GetComponent<PlayerHud>().manaRadial.fillAmount = currentMana / 3;
         });
-        input.gameObject.GetComponent<Items>().onGenerateRandomSmallObject.AddListener(delegate(Sprite s)
+        input.gameObject.GetComponent<HealthBehaviour>().OnAlterHealth.AddListener((int health, int maxHealth) =>
         {
-            instantiatedHUD.GetComponent<PlayerHud>().smallImage.sprite = s;
-        });
-        input.gameObject.GetComponent<Items>().onGenerateRandomMidObject.AddListener(delegate (Sprite s)
-        {
-            instantiatedHUD.GetComponent<PlayerHud>().midImage.sprite = s;
-        });
-        input.gameObject.GetComponent<Items>().onGenerateRandomBigObject.AddListener(delegate (Sprite s)
-        {
-            instantiatedHUD.GetComponent<PlayerHud>().bigImage.sprite = s;
-        });
-        input.gameObject.GetComponent<Player>().onAlterScore.AddListener((float score) =>
-        {
-            instantiatedHUD.GetComponent<PlayerHud>().scoreText.text = "Score: " + (int)score;
+            instantiatedHUD.GetComponent<PlayerHud>().knockoutRadial.fillAmount = 1 - ((float)health / (float)maxHealth);
         });
 
-        float initialpos = instantiatedHUD.GetComponent<RectTransform>().sizeDelta.x;
-        foreach (Transform hud in hudsContainer.transform) {
-            hud.position = new Vector3(initialpos,hud.GetComponent<RectTransform>().sizeDelta.y/1.5f, 0);
-            initialpos += instantiatedHUD.GetComponent<RectTransform>().sizeDelta.x*2;
-        }
-        if(!enabledHUDByDefault)
+        //float initialpos = instantiatedHUD.GetComponent<RectTransform>().sizeDelta.x;
+        //foreach (Transform hud in hudsContainer.transform) {
+        //    hud.position = new Vector3(initialpos,hud.GetComponent<RectTransform>().sizeDelta.y/1.5f, 0);
+        //    initialpos += instantiatedHUD.GetComponent<RectTransform>().sizeDelta.x*2;
+        //}
+        if (!enabledHUDByDefault)
             instantiatedHUD.SetActive(false);
         //source.Play();
     }/*
