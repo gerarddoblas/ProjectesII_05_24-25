@@ -93,10 +93,11 @@ public class Player : MonoBehaviour
     void TryJump()
     {
         jumpTime -= Time.deltaTime;
-        if (!(groundCheck.Grounded && canMove)) return;
+        if (!(groundCheck.Coyote && canMove)) return;
 
         rigidbody2D.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
         groundCheck.Grounded = false;
+        groundCheck.Coyote = false;
         source.clip = jumpClip;
         source.Play();
         jumpTime = 0;
