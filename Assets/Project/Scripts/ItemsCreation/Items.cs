@@ -25,7 +25,7 @@ public class Items : MonoBehaviour
     private void Awake()
     {
         mana = 0;
-        fillspeed = 0.5f;
+        fillspeed = 1;
         maxFill = 3;
         PlayerInput input = GetComponent<PlayerInput>();
         spriteRenderer = GetComponent<SpriteRenderer>();
