@@ -7,7 +7,9 @@ public class AreaManager : MonoBehaviour
     [SerializeField] private Vector2[] possibleAreas;
     [SerializeField] private float timeBeforeChange;
     private AudioSource source;
-    [SerializeField] private float scoreMultiplier = 5f;
+    [SerializeField] private AudioClip InArea;
+   [SerializeField] private float scoreMultiplier = 5f;
+    int players = 0;
     public static AreaManager Instance { get; private set; }
 
     private void Awake()
@@ -38,6 +40,17 @@ public class AreaManager : MonoBehaviour
             player.Score += (Time.deltaTime * scoreMultiplier);
             player.onAlterScore.Invoke(player.Score);
         }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        source.clip = InArea;
+        source.Play();
+        players++;
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    { 
+        if (--players == 0)
+            source.Stop();
     }
     public Vector3 GetRandomPositionFromList() { 
         return possibleAreas[Random.Range(0, possibleAreas.Length)];}
