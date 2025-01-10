@@ -33,7 +33,7 @@ public class Results : MonoBehaviour
         if (Input.anyKeyDown&&timer<=0)
         {
             PlayersManager.Instance.UnlockPlayersMovement();
-            SceneManager.LoadScene("GrayBox");
+            SceneManager.LoadScene("LevelSelector");
         }
     }
 }

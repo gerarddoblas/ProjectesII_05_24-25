@@ -124,11 +124,11 @@ public class Items : MonoBehaviour
         this.UnlockManaFill();
         yield return null;
     }
-    void LockManaAndCreation() { 
+    public void LockManaAndCreation() { 
         this.fillingMana = false; 
         this.canCreate = false;
     }
-    void UnlockManaAndCreation() {
+    public void UnlockManaAndCreation() {
         this.fillingMana = true;
         this.canCreate = true;
     }

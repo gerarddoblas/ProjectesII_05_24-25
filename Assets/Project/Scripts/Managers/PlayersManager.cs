@@ -176,4 +176,13 @@ public class PlayersManager : MonoBehaviour
         else 
             playerInputManager.DisableJoining();
     }
+    public void DisablePlayersCreation() {
+        foreach (GameObject player in players)
+            player.GetComponent<Items>().LockManaAndCreation();
+    }
+    public void EnablePlayersCreation()
+    {
+        foreach (GameObject player in players)
+            player.GetComponent<Items>().UnlockManaAndCreation();
+    }
 }

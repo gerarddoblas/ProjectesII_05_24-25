@@ -19,10 +19,12 @@ public class Match : MonoBehaviour
         remainingTime = gameTime;
         LeanTween.alphaCanvas(counterText.GetComponentInParent<CanvasGroup>(),1,1);
         PlayersManager.Instance.ShowAllHuds(1);
+        PlayersManager.Instance.EnablePlayersCreation();
         onFinishGame.AddListener(delegate ()
         {
             PlayersManager.Instance.HideAllHuds();
             PlayersManager.Instance.LockPlayersMovement();
+            PlayersManager.Instance.DisablePlayersCreation();
             SceneManager.LoadScene("ResultScene");
         });
         source = GetComponent<AudioSource>();
