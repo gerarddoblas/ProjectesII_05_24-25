@@ -22,6 +22,10 @@ public class Player : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public HealthBehaviour healthBehaviour;
     Animator animator;
+    [SerializeField] private ParticleSystem particle;
+
+    [SerializeField] private GameObject landingParticles;
+    [SerializeField] private GameObject jumpParticles;
 
     //Knockout vars
     private bool canMove = true;
@@ -62,7 +66,9 @@ public class Player : MonoBehaviour
     private void Update()
     {
         UpdateAnimations();
-        if(jumpTime > 0) TryJump();
+        if (groundCheck.WasLastGrounded == GroundCheck.Landed.JUST_LANDED)
+            Instantiate(landingParticles, groundCheck.transform.position, Quaternion.identity);
+        if (jumpTime > 0) TryJump();
         if (input.actions.FindAction("Jump").IsPressed()) JumpHold();
     }
     
@@ -71,7 +77,8 @@ public class Player : MonoBehaviour
         animator.SetBool("canMove", canMove);
         animator.SetBool("invencibility", healthBehaviour.invencibility);
         animator.SetBool("isGrounded",groundCheck.Grounded);
-        animator.SetFloat("horizontalSpeed",rigidbody2D.velocity.x);
+        animator.SetFloat("horizontalSpeed", rigidbody2D.velocity.x);
+        animator.SetBool("MovingHorizontally",(playerSpeed.x != 0));
         animator.SetFloat("verticalSpeed", rigidbody2D.velocity.y);
     }
     void Move(InputAction.CallbackContext context)
@@ -79,9 +86,9 @@ public class Player : MonoBehaviour
         if (canMove)
         {
             playerSpeed = context.ReadValue<Vector2>();
-            if (playerSpeed.x > 0)
+            if (playerSpeed.x < 0)
                 spriteRenderer.flipX = true;
-            else if (playerSpeed.x < 0)
+            else if (playerSpeed.x > 0)
                 spriteRenderer.flipX = false;
         }
     }
@@ -93,6 +100,7 @@ public class Player : MonoBehaviour
     {
         jumpTime = jumpGraceTime;
         TryJump();
+        particle.Play();
     }
 
     void TryJump()
@@ -109,6 +117,7 @@ public class Player : MonoBehaviour
         source.clip = jumpClip;
         source.Play();
         jumpTime = 0;
+        Instantiate(jumpParticles, groundCheck.transform.position, Quaternion.identity);
     }
 
     void JumpHold()
