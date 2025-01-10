@@ -957,6 +957,62 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 986765965865619187, guid: f4aed4a02c4f8e7419f0d65d818c6c8d, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 986765965865619187, guid: f4aed4a02c4f8e7419f0d65d818c6c8d, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 986765965865619187, guid: f4aed4a02c4f8e7419f0d65d818c6c8d, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 856
+      objectReference: {fileID: 0}
+    - target: {fileID: 986765965865619187, guid: f4aed4a02c4f8e7419f0d65d818c6c8d, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 481.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 986765965865619187, guid: f4aed4a02c4f8e7419f0d65d818c6c8d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 986765965865619187, guid: f4aed4a02c4f8e7419f0d65d818c6c8d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 986765965865619187, guid: f4aed4a02c4f8e7419f0d65d818c6c8d, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 986765965865619187, guid: f4aed4a02c4f8e7419f0d65d818c6c8d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 986765965865619187, guid: f4aed4a02c4f8e7419f0d65d818c6c8d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 986765965865619187, guid: f4aed4a02c4f8e7419f0d65d818c6c8d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 986765965865619187, guid: f4aed4a02c4f8e7419f0d65d818c6c8d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 428
+      objectReference: {fileID: 0}
+    - target: {fileID: 986765965865619187, guid: f4aed4a02c4f8e7419f0d65d818c6c8d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 240.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 4333231507313183929, guid: f4aed4a02c4f8e7419f0d65d818c6c8d, type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4847337025701192561, guid: f4aed4a02c4f8e7419f0d65d818c6c8d, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5789512594702725739, guid: f4aed4a02c4f8e7419f0d65d818c6c8d, type: 3}
       propertyPath: m_Name
       value: PlayerManger
