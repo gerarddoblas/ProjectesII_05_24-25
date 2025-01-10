@@ -654,6 +654,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tm: {fileID: 354010550}
+  tolerance: 0.3
 --- !u!483693784 &354010549
 TilemapRenderer:
   m_ObjectHideFlags: 0

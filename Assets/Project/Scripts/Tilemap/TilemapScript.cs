@@ -25,13 +25,20 @@ public class TilemapScript : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<Item>() == null) return;
         foreach (ContactPoint2D contact in collision.contacts)
-        {
-            tm.RefreshTile(tm.layoutGrid.WorldToCell(contact.point));
-            tm.RefreshTile(tm.layoutGrid.WorldToCell(contact.point + Vector2.up * tolerance));
-            tm.RefreshTile(tm.layoutGrid.WorldToCell(contact.point + Vector2.down * tolerance));
-            tm.RefreshTile(tm.layoutGrid.WorldToCell(contact.point + Vector2.left * tolerance));
-            tm.RefreshTile(tm.layoutGrid.WorldToCell(contact.point + Vector2.right * tolerance));
-        }
+            CollideAt(contact.point);
         source.Play();
+    }
+    
+    private void CollideAt(Vector2 pos)
+    {
+        tm.RefreshTile(tm.layoutGrid.WorldToCell(pos));
+        tm.RefreshTile(tm.layoutGrid.WorldToCell(pos + Vector2.up * tolerance));
+        tm.RefreshTile(tm.layoutGrid.WorldToCell(pos + Vector2.down * tolerance));
+        tm.RefreshTile(tm.layoutGrid.WorldToCell(pos + Vector2.left * tolerance));
+        tm.RefreshTile(tm.layoutGrid.WorldToCell(pos + Vector2.right * tolerance));
+        tm.RefreshTile(tm.layoutGrid.WorldToCell(pos + Vector2.up * tolerance + Vector2.left * tolerance));
+        tm.RefreshTile(tm.layoutGrid.WorldToCell(pos + Vector2.down * tolerance + Vector2.left * tolerance));
+        tm.RefreshTile(tm.layoutGrid.WorldToCell(pos + Vector2.up * tolerance + Vector2.right * tolerance));
+        tm.RefreshTile(tm.layoutGrid.WorldToCell(pos + Vector2.down * tolerance + Vector2.right * tolerance));
     }
 }
