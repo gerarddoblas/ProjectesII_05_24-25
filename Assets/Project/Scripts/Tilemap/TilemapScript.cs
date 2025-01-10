@@ -20,17 +20,13 @@ public class TilemapScript : MonoBehaviour
 
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.GetComponent<Item>() == null) return;
+        if (collision.gameObject.GetComponent<Item>() == null) return;)
         foreach (ContactPoint2D contact in collision.contacts)
         {
-            tm.RefreshTile(new Vector3Int((int)Mathf.Floor(contact.point.x), (int)Mathf.Floor(contact.point.y), 0));
-            tm.RefreshTile(new Vector3Int((int)Mathf.Floor(contact.point.x), (int)Mathf.Ceil(contact.point.y), 0));
-            tm.RefreshTile(new Vector3Int((int)Mathf.Ceil(contact.point.x), (int)Mathf.Floor(contact.point.y), 0));
-            tm.RefreshTile(new Vector3Int((int)Mathf.Ceil(contact.point.x), (int)Mathf.Ceil(contact.point.y), 0));
+            tm.RefreshTile(tm.layoutGrid.WorldToCell(contact.point));
         }
         source.Play();
-        //TODO: Check edge cases
     }
 }
