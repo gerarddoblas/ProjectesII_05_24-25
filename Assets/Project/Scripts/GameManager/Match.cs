@@ -21,6 +21,8 @@ public class Match : MonoBehaviour
         PlayersManager.Instance.ShowAllHuds(1);
         onFinishGame.AddListener(delegate ()
         {
+            PlayersManager.Instance.HideAllHuds();
+            PlayersManager.Instance.LockPlayersMovement();
             SceneManager.LoadScene("ResultScene");
         });
         source = GetComponent<AudioSource>();

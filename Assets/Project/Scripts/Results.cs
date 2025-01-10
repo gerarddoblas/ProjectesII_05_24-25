@@ -10,8 +10,6 @@ public class Results : MonoBehaviour
     float timer = 5f;
     void Start()
     {
-        PlayersManager.Instance.HideAllHuds(5);
-        PlayersManager.Instance.LockPlayersMovement();
         GameObject [] orderedPlayers = PlayersManager.Instance.players.OrderBy(go => (-1*go.GetComponent<Player>().Score)).ToArray();
         for(int i = 0; i < orderedPlayers.Length; i++)
         {

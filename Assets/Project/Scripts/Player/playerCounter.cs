@@ -23,7 +23,8 @@ public class playerCounter : MonoBehaviour
         {
             onAllPlayersEnter.Invoke();
             PlayersManager.Instance.ShowAllHuds(1);
-            Camera.main.gameObject.GetComponent<CameraTween>().MoveCameraTo(cameraDestination);
+            //Camera.main.gameObject.GetComponent<CameraTween>().MoveCameraTo(cameraDestination);
+            CameraFX.Instance.CenterCamera();
         }
     }
     private void OnTriggerExit2D(Collider2D collision)

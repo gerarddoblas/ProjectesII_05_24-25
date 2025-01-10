@@ -11,7 +11,9 @@ public class Items : MonoBehaviour
     public float consumedMana;
     public UnityEvent<float> onAlterMana;
     //Object Creation
-    private bool canCreate = true;
+    private bool canCreate = true,fillingMana = true;
+    private bool dontRepeat = true;
+    private GameObject lastSmallObject, lastMidObject, lastBigObject;
     public ObjectCreation objectGenerator;
     public GameObject smallObject, mediumObject, bigObject;
     public UnityEvent<Sprite> onGenerateRandomSmallObject, onGenerateRandomMidObject, onGenerateRandomBigObject;
@@ -23,7 +25,7 @@ public class Items : MonoBehaviour
     private void Awake()
     {
         mana = 0;
-        fillspeed = 0.5f;
+        fillspeed = 1;
         maxFill = 3;
         PlayerInput input = GetComponent<PlayerInput>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -40,7 +42,7 @@ public class Items : MonoBehaviour
     }
     private void Update()
     {
-        if (mana < maxFill)
+        if (mana < maxFill && fillingMana)
         {
             mana += fillspeed * Time.deltaTime;
             if (mana >= maxFill)
@@ -55,6 +57,8 @@ public class Items : MonoBehaviour
             mana -= 1f;
             GameObject  instantiatedItem = smallObject;
             smallObject = objectGenerator.GetRandomSmallObject();
+            while(instantiatedItem.GetComponent<SpriteRenderer>().sprite == smallObject.GetComponent<SpriteRenderer>().sprite && dontRepeat)
+                smallObject = objectGenerator.GetRandomSmallObject();
             onGenerateRandomSmallObject.Invoke(smallObject.GetComponent<SpriteRenderer>().sprite);
             InstantiateCreatedObject(instantiatedItem);
         }
@@ -66,6 +70,8 @@ public class Items : MonoBehaviour
             mana -= 2f;
             GameObject instantiatedItem = mediumObject;
             mediumObject = objectGenerator.GetRandomMediumObject();
+            while (instantiatedItem.GetComponent<SpriteRenderer>().sprite == mediumObject.GetComponent<SpriteRenderer>().sprite && dontRepeat)
+                mediumObject = objectGenerator.GetRandomMediumObject(); 
             onGenerateRandomMidObject.Invoke(mediumObject.GetComponent<SpriteRenderer>().sprite);
             InstantiateCreatedObject(instantiatedItem);
         }
@@ -77,6 +83,8 @@ public class Items : MonoBehaviour
             mana -= 3f;
             GameObject instantiatedItem = bigObject;
             bigObject = objectGenerator.GetRandomBigObject();
+            while (instantiatedItem.GetComponent<SpriteRenderer>().sprite == bigObject.GetComponent<SpriteRenderer>().sprite && dontRepeat)
+                bigObject = objectGenerator.GetRandomBigObject();
             onGenerateRandomBigObject.Invoke(bigObject.GetComponent<SpriteRenderer>().sprite);
             InstantiateCreatedObject(instantiatedItem);
         }
@@ -92,10 +100,43 @@ public class Items : MonoBehaviour
                 spawnpos = Vector3.right;
             else
                 spawnpos = Vector3.left;
-            instantiatedItem = Instantiate(instantiatedItem, this.transform.position + spawnpos, Quaternion.Euler(0, 0, 0));
+            instantiatedItem = Instantiate(instantiatedItem, this.transform.position - spawnpos, Quaternion.Euler(0, 0, 0));
             instantiatedItem.GetComponent<Item>().creator = this.gameObject;
-            instantiatedItem.GetComponent<Rigidbody2D>().AddForce(new Vector2(spawnpos.x * 10, 0), ForceMode2D.Impulse);
+            instantiatedItem.GetComponent<Rigidbody2D>().AddForce(-new Vector2(spawnpos.x * 10, 0), ForceMode2D.Impulse);
         }
         onAlterMana.Invoke(this.mana);
+    }
+    void LockObjectCreation() { this.canCreate = false; }
+    void UnlockObjectCreation() { this.canCreate = true; }
+    IEnumerator LockObjectCreation(float time)
+    {
+        this.LockObjectCreation();
+        yield return new WaitForSeconds(time);
+        this.UnlockObjectCreation();
+        yield return null;
+    }
+    void LockManaFill() { this.fillingMana = false; }
+    void UnlockManaFill() { this.fillingMana = true; }
+    IEnumerator LockManaFill(float time)
+    {
+        this.LockManaFill();
+        yield return new WaitForSeconds(time);
+        this.UnlockManaFill();
+        yield return null;
+    }
+    void LockManaAndCreation() { 
+        this.fillingMana = false; 
+        this.canCreate = false;
+    }
+    void UnlockManaAndCreation() {
+        this.fillingMana = true;
+        this.canCreate = true;
+    }
+    IEnumerator LockManaAndCreation(float time)
+    {
+        this.LockManaAndCreation();
+        yield return new WaitForSeconds(time);
+        this.UnlockManaAndCreation();
+        yield return null;
     }
 }
