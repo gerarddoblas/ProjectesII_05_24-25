@@ -80,9 +80,9 @@ public class Player : MonoBehaviour
         if (canMove)
         {
             playerSpeed = context.ReadValue<Vector2>();
-            if (playerSpeed.x > 0)
+            if (playerSpeed.x < 0)
                 spriteRenderer.flipX = true;
-            else if (playerSpeed.x < 0)
+            else if (playerSpeed.x > 0)
                 spriteRenderer.flipX = false;
         }
     }
