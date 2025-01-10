@@ -22,7 +22,7 @@ public class TilemapScript : MonoBehaviour
 
     void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.GetComponent<Item>() == null) return;)
+        if (collision.gameObject.GetComponent<Item>() == null) return;
         foreach (ContactPoint2D contact in collision.contacts)
         {
             tm.RefreshTile(tm.layoutGrid.WorldToCell(contact.point));
