@@ -24,6 +24,9 @@ public class Player : MonoBehaviour
     Animator animator;
     [SerializeField] private ParticleSystem particle;
 
+    [SerializeField] private GameObject landingParticles;
+    [SerializeField] private GameObject jumpParticles;
+
     //Knockout vars
     private bool canMove = true;
     public float knowdownTime = 3f;
@@ -63,7 +66,9 @@ public class Player : MonoBehaviour
     private void Update()
     {
         UpdateAnimations();
-        if(jumpTime > 0) TryJump();
+        if (groundCheck.WasLastGrounded == GroundCheck.Landed.JUST_LANDED)
+            Instantiate(landingParticles, groundCheck.transform.position, Quaternion.identity);
+        if (jumpTime > 0) TryJump();
         if (input.actions.FindAction("Jump").IsPressed()) JumpHold();
     }
     
@@ -111,6 +116,7 @@ public class Player : MonoBehaviour
         source.clip = jumpClip;
         source.Play();
         jumpTime = 0;
+        Instantiate(jumpParticles, groundCheck.transform.position, Quaternion.identity);
     }
 
     void JumpHold()

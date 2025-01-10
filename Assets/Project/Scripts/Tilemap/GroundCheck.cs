@@ -10,6 +10,29 @@ public class GroundCheck : MonoBehaviour
     [SerializeField] private bool coyote;
     public bool Grounded { get { return grounded; } set { grounded = value; } }
     public bool Coyote { get { return coyote; } set { coyote = value; } }
+
+    public enum Landed
+    {
+        FALLING,
+        JUST_LANDED,
+        LANDED
+    }
+
+    private Landed wasLastGrounded;
+    public Landed WasLastGrounded { get { return wasLastGrounded; } }
+
+    private void Start()
+    {
+        wasLastGrounded = Landed.FALLING;
+    }
+
+    private void Update()
+    {
+        if (grounded && wasLastGrounded == Landed.JUST_LANDED) wasLastGrounded = Landed.LANDED;
+        if (grounded && wasLastGrounded == Landed.FALLING) wasLastGrounded = Landed.JUST_LANDED;
+        if (!grounded) wasLastGrounded = Landed.FALLING;
+    }
+
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (gameObject.activeInHierarchy)
