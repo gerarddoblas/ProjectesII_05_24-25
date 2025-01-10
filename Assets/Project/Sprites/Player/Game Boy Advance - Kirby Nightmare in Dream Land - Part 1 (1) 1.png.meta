@@ -1,0 +1,479 @@
+fileFormatVersion: 2
+guid: aa453ce3a1b00bb4f82ed397d3bf3dbc
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Game Boy Advance - Kirby Nightmare in Dream Land - Part 1 (1) 1_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 125
+        width: 39
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b68f7fc120331df4eba0035fc5613744
+      internalID: -1957024233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game Boy Advance - Kirby Nightmare in Dream Land - Part 1 (1) 1_1
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 125
+        width: 39
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5037119f13744d740b3953ef825bbb4b
+      internalID: -1125524056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game Boy Advance - Kirby Nightmare in Dream Land - Part 1 (1) 1_2
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 125
+        width: 39
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5fcb1304435a7347ab4448c5a8e7e65
+      internalID: 790873734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game Boy Advance - Kirby Nightmare in Dream Land - Part 1 (1) 1_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 100
+        width: 39
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ba7e0660a3fd5f4ba2c28c47f0eaaba
+      internalID: 1492645513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game Boy Advance - Kirby Nightmare in Dream Land - Part 1 (1) 1_4
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 100
+        width: 39
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3257d790a4e2e804881ff54c742e628a
+      internalID: 1936520170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game Boy Advance - Kirby Nightmare in Dream Land - Part 1 (1) 1_5
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 100
+        width: 39
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d408a4e8e094744ba2d428df23d2c3e
+      internalID: -1433786434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game Boy Advance - Kirby Nightmare in Dream Land - Part 1 (1) 1_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 75
+        width: 39
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7362dd7f77a45d84e8a43b13e981f520
+      internalID: -95348476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game Boy Advance - Kirby Nightmare in Dream Land - Part 1 (1) 1_7
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 75
+        width: 39
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63b456e47ae29c84d9843e9fa8e04967
+      internalID: 1982465266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game Boy Advance - Kirby Nightmare in Dream Land - Part 1 (1) 1_8
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 75
+        width: 39
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5eb29ca0cdd81140b1a08c7d60e3611
+      internalID: 1251536874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game Boy Advance - Kirby Nightmare in Dream Land - Part 1 (1) 1_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 50
+        width: 39
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64493609693fbe94ba85018b0671bd69
+      internalID: -1917685609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game Boy Advance - Kirby Nightmare in Dream Land - Part 1 (1) 1_10
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 50
+        width: 39
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1df584d469f42cd40966211214ef0069
+      internalID: 92388178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game Boy Advance - Kirby Nightmare in Dream Land - Part 1 (1) 1_11
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 50
+        width: 39
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4dfde6c304ae3cc48be69e7cdeb1bd5e
+      internalID: 2053133937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game Boy Advance - Kirby Nightmare in Dream Land - Part 1 (1) 1_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 25
+        width: 39
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 282e2555cb42e1549a641fa0589c5b08
+      internalID: 1881197726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game Boy Advance - Kirby Nightmare in Dream Land - Part 1 (1) 1_13
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 25
+        width: 39
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7477ff689aa9c84aae7eeeb39eff375
+      internalID: 1454365224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game Boy Advance - Kirby Nightmare in Dream Land - Part 1 (1) 1_14
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 25
+        width: 39
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffa18c4e6b91d614b8418815a20c00b4
+      internalID: -268579672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game Boy Advance - Kirby Nightmare in Dream Land - Part 1 (1) 1_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 39
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3516e7e2e7ddc746bd0f1d2598945ca
+      internalID: 354595515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Game Boy Advance - Kirby Nightmare in Dream Land - Part 1 (1) 1_0: -1957024233
+      Game Boy Advance - Kirby Nightmare in Dream Land - Part 1 (1) 1_1: -1125524056
+      Game Boy Advance - Kirby Nightmare in Dream Land - Part 1 (1) 1_10: 92388178
+      Game Boy Advance - Kirby Nightmare in Dream Land - Part 1 (1) 1_11: 2053133937
+      Game Boy Advance - Kirby Nightmare in Dream Land - Part 1 (1) 1_12: 1881197726
+      Game Boy Advance - Kirby Nightmare in Dream Land - Part 1 (1) 1_13: 1454365224
+      Game Boy Advance - Kirby Nightmare in Dream Land - Part 1 (1) 1_14: -268579672
+      Game Boy Advance - Kirby Nightmare in Dream Land - Part 1 (1) 1_15: 354595515
+      Game Boy Advance - Kirby Nightmare in Dream Land - Part 1 (1) 1_2: 790873734
+      Game Boy Advance - Kirby Nightmare in Dream Land - Part 1 (1) 1_3: 1492645513
+      Game Boy Advance - Kirby Nightmare in Dream Land - Part 1 (1) 1_4: 1936520170
+      Game Boy Advance - Kirby Nightmare in Dream Land - Part 1 (1) 1_5: -1433786434
+      Game Boy Advance - Kirby Nightmare in Dream Land - Part 1 (1) 1_6: -95348476
+      Game Boy Advance - Kirby Nightmare in Dream Land - Part 1 (1) 1_7: 1982465266
+      Game Boy Advance - Kirby Nightmare in Dream Land - Part 1 (1) 1_8: 1251536874
+      Game Boy Advance - Kirby Nightmare in Dream Land - Part 1 (1) 1_9: -1917685609
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

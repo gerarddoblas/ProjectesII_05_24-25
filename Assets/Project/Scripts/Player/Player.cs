@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public HealthBehaviour healthBehaviour;
     Animator animator;
+    [SerializeField] private ParticleSystem particle;
 
     //Knockout vars
     private bool canMove = true;
@@ -93,6 +94,7 @@ public class Player : MonoBehaviour
     {
         jumpTime = jumpGraceTime;
         TryJump();
+        particle.Play();
     }
 
     void TryJump()
