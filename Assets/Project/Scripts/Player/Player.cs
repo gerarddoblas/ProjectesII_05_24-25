@@ -77,7 +77,8 @@ public class Player : MonoBehaviour
         animator.SetBool("canMove", canMove);
         animator.SetBool("invencibility", healthBehaviour.invencibility);
         animator.SetBool("isGrounded",groundCheck.Grounded);
-        animator.SetFloat("horizontalSpeed",rigidbody2D.velocity.x);
+        animator.SetFloat("horizontalSpeed", rigidbody2D.velocity.x);
+        animator.SetBool("MovingHorizontally",(playerSpeed.x != 0));
         animator.SetFloat("verticalSpeed", rigidbody2D.velocity.y);
     }
     void Move(InputAction.CallbackContext context)
