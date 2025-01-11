@@ -29,7 +29,7 @@ public class TilemapScript : MonoBehaviour
         source.Play();
     }
     
-    private void CollideAt(Vector2 pos)
+    public void CollideAt(Vector2 pos)
     {
         tm.RefreshTile(tm.layoutGrid.WorldToCell(pos));
         tm.RefreshTile(tm.layoutGrid.WorldToCell(pos + Vector2.up * tolerance));
@@ -40,5 +40,18 @@ public class TilemapScript : MonoBehaviour
         tm.RefreshTile(tm.layoutGrid.WorldToCell(pos + Vector2.down * tolerance + Vector2.left * tolerance));
         tm.RefreshTile(tm.layoutGrid.WorldToCell(pos + Vector2.up * tolerance + Vector2.right * tolerance));
         tm.RefreshTile(tm.layoutGrid.WorldToCell(pos + Vector2.down * tolerance + Vector2.right * tolerance));
+    }
+
+    public void CollideAtArea(Vector2 pos, int radius)
+    {
+        for (int x = 0; x < radius; ++x)
+            for (int y = 0; y < radius; ++y)
+                if (x * x + y * y < radius)
+                {
+                    CollideAt(pos + new Vector2(x, y));
+                    CollideAt(pos + new Vector2(-x, y));
+                    CollideAt(pos + new Vector2(x, -y));
+                    CollideAt(pos + new Vector2(-x, -y));
+                }
     }
 }

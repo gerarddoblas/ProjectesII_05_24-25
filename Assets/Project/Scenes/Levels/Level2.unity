@@ -314,6 +314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tm: {fileID: 583392236}
+  tolerance: 0
 --- !u!483693784 &583392235
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -10018,6 +10019,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6016600495428334092, guid: f4aed4a02c4f8e7419f0d65d818c6c8d, type: 3}
       propertyPath: m_AllowJoining
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6440259471974055472, guid: f4aed4a02c4f8e7419f0d65d818c6c8d, type: 3}
+      propertyPath: enabledHUDByDefault
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8677806340695492295, guid: f4aed4a02c4f8e7419f0d65d818c6c8d, type: 3}

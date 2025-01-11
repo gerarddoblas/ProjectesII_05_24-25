@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using static UnityEngine.GraphicsBuffer;
 
 public class Kaboom : Item
 {
@@ -11,6 +12,7 @@ public class Kaboom : Item
     private void Start()
     {
         this.GetComponent<SpriteRenderer>().enabled = false;
+        GameObject.Find("Grid").GetComponentInChildren<TilemapScript>().CollideAtArea(this.transform.position, 200);
     }
     public void Update()
     {
@@ -25,10 +27,22 @@ public class Kaboom : Item
             Destroy(this.gameObject);
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("Colliding with " + collision.gameObject.name);
+        if (collision.gameObject.TryGetComponent<TilemapScript>(out TilemapScript tm))
+        {
+            tm.CollideAtArea(this.transform.position, 200);
+        }
+    }
+
     override public IEnumerator Effect(GameObject target)
     {
-        if(target.TryGetComponent<Tilemap>(out Tilemap tm))
-                tm.RefreshTile(new Vector3Int((int)Mathf.Floor(target.transform.position.x ), (int)Mathf.Floor(target.transform.position.y), 0));
+        if (target.TryGetComponent<TilemapScript>(out TilemapScript tm))
+        {
+            tm.CollideAtArea(this.transform.position, 200);
+        }
         else if (target.TryGetComponent<HealthBehaviour>(out HealthBehaviour hb))
             hb.FullDamage();
         yield return null;
