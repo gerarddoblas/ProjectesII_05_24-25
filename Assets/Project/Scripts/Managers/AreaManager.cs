@@ -8,6 +8,10 @@ public class AreaManager : MonoBehaviour
     [SerializeField] private float timeBeforeChange;
     private AudioSource source;
     [SerializeField]private float scoreMultiplier = 5f;
+
+    [SerializeField] private GameObject particle;
+    [SerializeField] private float particleRate = 5.0f;
+
     void Start()
     {
         source = GetComponent<AudioSource>();  
@@ -28,6 +32,17 @@ public class AreaManager : MonoBehaviour
         {
             player.Score += (Time.deltaTime*scoreMultiplier);
             player.onAlterScore.Invoke(player.Score);
+
+            if(Random.Range(0f, 100f) < particleRate)
+            {
+                Vector3 spawnPos = 
+                    this.transform.position 
+                    + this.transform.localScale.y * 1.5f * Vector3.up 
+                    + new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0f);
+
+                GameObject instance = Instantiate(particle, spawnPos, Quaternion.identity);
+                instance.GetComponent<AreaParticleScript>().objective = collision.gameObject.transform;
+            }
         }
     }
 
