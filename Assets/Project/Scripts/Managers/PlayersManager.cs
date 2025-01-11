@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Windows;
 
 public class PlayersManager : MonoBehaviour
 {
@@ -15,6 +17,7 @@ public class PlayersManager : MonoBehaviour
     public PlayerInputManager playerInputManager;
     public GameObject playerContainer, hudsContainer;
     private AudioSource source;
+    public UnityEvent onAnyActionPerformed;
     public static PlayersManager Instance { get; private set; }
     private void Awake()
     {
@@ -31,6 +34,7 @@ public class PlayersManager : MonoBehaviour
     private void SetPlayersPosition(Scene loadedScene, LoadSceneMode loadedSceneMode) {
         foreach (GameObject player in players)
             player.transform.position = Vector3.zero;
+        //onAnyActionPerformed.RemoveAllListeners();
     }
     private void Start()
     {
@@ -51,36 +55,6 @@ public class PlayersManager : MonoBehaviour
         players.Add(input.gameObject);
 
         instantiatedHUD.GetComponent<PlayerHud>().playerTransform = input.gameObject.transform;
-
-        //if (input.currentControlScheme.Contains("Keyboard"))
-        //    instantiatedHUD.GetComponent<PlayerHud>().SetKeyboardControls();
-        //else
-        //    instantiatedHUD.GetComponent<PlayerHud>().SetGamepdControls();
-        //input.gameObject.GetComponent<HealthBehaviour>().OnAlterHealth.AddListener((int health, int maxHealth) => 
-        //{
-        //    instantiatedHUD.GetComponent<PlayerHud>().knockoutSlider.value = 1-((float)health/(float)maxHealth);
-        //});
-        //input.gameObject.GetComponent<Items>().onAlterMana.AddListener((float currentMana) =>
-        //{
-        //    instantiatedHUD.GetComponent<PlayerHud>().manaSlider.value = currentMana;
-        //});
-        //input.gameObject.GetComponent<Items>().onGenerateRandomSmallObject.AddListener(delegate(Sprite s)
-        //{
-        //    instantiatedHUD.GetComponent<PlayerHud>().smallImage.sprite = s;
-        //});
-        //input.gameObject.GetComponent<Items>().onGenerateRandomMidObject.AddListener(delegate (Sprite s)
-        //{
-        //    instantiatedHUD.GetComponent<PlayerHud>().midImage.sprite = s;
-        //});
-        //input.gameObject.GetComponent<Items>().onGenerateRandomBigObject.AddListener(delegate (Sprite s)
-        //{
-        //    instantiatedHUD.GetComponent<PlayerHud>().bigImage.sprite = s;
-        //});
-        //input.gameObject.GetComponent<Player>().onAlterScore.AddListener((float score) =>
-        //{
-        //    instantiatedHUD.GetComponent<PlayerHud>().scoreText.text = "Score: " + (int)score;
-        //});
-
         input.gameObject.GetComponent<Items>().onAlterMana.AddListener((float currentMana) =>
         {
             instantiatedHUD.GetComponent<PlayerHud>().manaRadial.fillAmount = currentMana / 3;
@@ -90,24 +64,10 @@ public class PlayersManager : MonoBehaviour
             instantiatedHUD.GetComponent<PlayerHud>().knockoutRadial.fillAmount = 1 - ((float)health / (float)maxHealth);
         });
 
-        //float initialpos = instantiatedHUD.GetComponent<RectTransform>().sizeDelta.x;
-        //foreach (Transform hud in hudsContainer.transform) {
-        //    hud.position = new Vector3(initialpos,hud.GetComponent<RectTransform>().sizeDelta.y/1.5f, 0);
-        //    initialpos += instantiatedHUD.GetComponent<RectTransform>().sizeDelta.x*2;
-        //}
         if (!enabledHUDByDefault)
             instantiatedHUD.SetActive(false);
-        //source.Play();
-    }/*
-    private void OnPlayerLeft(PlayerInput input)
-    {
-        for (int i = 0; i < playerInputManager.playerCount; i++) {
-            if (input.gameObject == playerContainer.transform.GetChild(i)) {
-                Destroy(playerContainer.transform.GetChild(i));
-                Destroy(hudsContainer.transform.GetChild(i));
-            } 
-        }
-    }*/
+        SetOnAnyActionPerformed(input.gameObject);
+    }
     public void ShowAllHuds()
     {
         foreach (GameObject canva in playersCanvas)
@@ -184,5 +144,16 @@ public class PlayersManager : MonoBehaviour
     {
         foreach (GameObject player in players)
             player.GetComponent<Items>().UnlockManaAndCreation();
+    }
+    private void SetOnAnyActionPerformed(GameObject newPlayer)
+    {
+        newPlayer.GetComponent<PlayerInput>().actions.FindAction("Jump").started += CallOnAnyActionPerformed;
+        newPlayer.GetComponent<PlayerInput>().actions.FindAction("GenerateSmallObject").started += CallOnAnyActionPerformed;
+        newPlayer.GetComponent<PlayerInput>().actions.FindAction("GenerateMidObject").started += CallOnAnyActionPerformed;
+        newPlayer.GetComponent<PlayerInput>().actions.FindAction("GenerateBigObject").started += CallOnAnyActionPerformed;
+    }
+    private void CallOnAnyActionPerformed(InputAction.CallbackContext context)
+    {
+        onAnyActionPerformed.Invoke();
     }
 }
