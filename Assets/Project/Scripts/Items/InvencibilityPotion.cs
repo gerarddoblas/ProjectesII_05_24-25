@@ -9,7 +9,7 @@ public class InvencibilityPotion : Item
     float invencibilityTime = 5;
     override public IEnumerator Effect(GameObject target)
     {
-        target.GetComponent<HealthBehaviour>().SetInvencibility(invencibilityTime);
+        target.GetComponent<HealthBehaviour>().SetInvincibility(invencibilityTime);
         yield return null;
     }
 }

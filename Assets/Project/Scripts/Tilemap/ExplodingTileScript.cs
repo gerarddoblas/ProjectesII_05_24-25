@@ -6,11 +6,14 @@ using UnityEditor;
 
 namespace UnityEngine.Tilemaps
 {
+    //Several parts of the code are dependent on the UNITY_EDITOR flag
+    //This is to allow for easier use during development
+
     [Serializable]
     public class ExplodingTile : TileBase
     {
-        [SerializeField] public Sprite[] sprites;
-        [SerializeField] public GameObject particles;
+        public Sprite[] sprites;
+        public GameObject particles;
         public Dictionary<Vector3Int, int> states;
 
         void OnEnable()
@@ -18,13 +21,9 @@ namespace UnityEngine.Tilemaps
             states = new Dictionary<Vector3Int, int>();
         }
 
-        void Start()
-        {
-            states = new Dictionary<Vector3Int, int>();
-        }
-
         public override void GetTileData(Vector3Int position, ITilemap tilemap, ref TileData tileData)
         {
+
 #if UNITY_EDITOR
             if (!EditorApplication.isPlaying)
             {
@@ -54,9 +53,14 @@ namespace UnityEngine.Tilemaps
             tileData.transform = Matrix4x4.TRS(Vector3.zero, Quaternion.Euler(0f, 0f, 0f), Vector3.one);
             tileData.flags = TileFlags.LockTransform | TileFlags.LockColor;
             tileData.colliderType = Tile.ColliderType.Sprite;
-#if !UNITY_EDITOR
+
+#if UNITY_EDITOR
+            if (EditorApplication.isPlaying && state > 0)
+                Instantiate(particles, position, Quaternion.identity);
+#else
             Instantiate(particles, position, Quaternion.identity);
 #endif
+
         }
     }
 

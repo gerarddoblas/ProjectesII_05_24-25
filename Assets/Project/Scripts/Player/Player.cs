@@ -6,30 +6,38 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    private PlayerInput input;
+    private Rigidbody2D rigidbody2D;
+    private GroundCheck groundCheck;
+    private SpriteRenderer spriteRenderer;
+    public HealthBehaviour healthBehaviour;
+    private Animator animator;
+
+    [Header("Physics Attributes")]
+    public float acceleration, maxSpeed, jumpForce;
+    [SerializeField] private float maxJumpForce, minJumpForce, curJumpForce, deltaJumpForce;
     [SerializeField] private float jumpGraceTime = 0.5f;
     private float jumpTime = 0.0f;
-    [SerializeField] private float score;
-    public float Score { set { score = value; } get { return score; } }
-    public float acceleration ,maxSpeed, jumpForce;
-    public float maxJumpForce, minJumpForce, curJumpForce, deltaJumpForce;
     public bool jumping = false;
     public Vector2 playerSpeed = Vector2.zero;
+
+    [Header("Knockout Variables")]
+    private bool canMove = true;
+    public float knockoutTime = 3f;
+
+    [Header("Events")]
     public UnityEvent<float> onAlterMana;
     public UnityEvent<float> onAlterScore;
-    public PlayerInput input;
-    public Rigidbody2D rigidbody2D;
-    public GroundCheck groundCheck;
-    public SpriteRenderer spriteRenderer;
-    public HealthBehaviour healthBehaviour;
-    Animator animator;
-    [SerializeField] private ParticleSystem particle;
 
+    [Header("Score")]
+    [SerializeField] private float score;
+    public float Score { set { score = value; } get { return score; } }
+
+    [Header("VFX")]
     [SerializeField] private GameObject landingParticles;
     [SerializeField] private GameObject jumpParticles;
 
-    //Knockout vars
-    private bool canMove = true;
-    public float knowdownTime = 3f;
+    [Header("SFX")]
     private AudioSource source;
     [SerializeField] private AudioClip jumpClip, KnockoutClip;
     public SpriteRenderer positionMarker;
@@ -43,10 +51,12 @@ public class Player : MonoBehaviour
         rigidbody2D = GetComponent<Rigidbody2D>();
         groundCheck = GetComponentInChildren<GroundCheck>();
         input = GetComponent<PlayerInput>();
+
         input.actions.FindAction("Move").performed += Move;
         input.actions.FindAction("Move").canceled += MoveCancelled;
         input.actions.FindAction("Jump").started += Jump;
         input.actions.FindAction("Jump").canceled += JumpStop;
+
         healthBehaviour = GetComponent<HealthBehaviour>();
         healthBehaviour.OnDie.AddListener(delegate ()
         {
@@ -54,14 +64,9 @@ public class Player : MonoBehaviour
         });
     }
     private void FixedUpdate()
-    { 
-
-        rigidbody2D.AddForce(new Vector2(acceleration*playerSpeed.x*Time.deltaTime,0), ForceMode2D.Force);
-        if (rigidbody2D.velocity.x > maxSpeed)
-            rigidbody2D.velocity = new Vector2(maxSpeed, rigidbody2D.velocity.y);
-        else if (rigidbody2D.velocity.x < -maxSpeed)
-            rigidbody2D.velocity = new Vector2(-maxSpeed, rigidbody2D.velocity.y);
-       
+    {
+        rigidbody2D.AddForce(new Vector2(acceleration * playerSpeed.x * Time.deltaTime, 0), ForceMode2D.Force);
+        rigidbody2D.velocity = new Vector2(Mathf.Clamp(rigidbody2D.velocity.x, -maxSpeed, maxSpeed), rigidbody2D.velocity.y);
     }
     private void Update()
     {
@@ -75,7 +80,7 @@ public class Player : MonoBehaviour
     void UpdateAnimations()
     {
         animator.SetBool("canMove", canMove);
-        animator.SetBool("invencibility", healthBehaviour.invencibility);
+        animator.SetBool("invencibility", healthBehaviour.invincibility);
         animator.SetBool("isGrounded",groundCheck.Grounded);
         animator.SetFloat("horizontalSpeed", rigidbody2D.velocity.x);
         animator.SetBool("MovingHorizontally",(playerSpeed.x != 0));
@@ -83,14 +88,11 @@ public class Player : MonoBehaviour
     }
     void Move(InputAction.CallbackContext context)
     {
-        if (canMove)
-        {
-            playerSpeed = context.ReadValue<Vector2>();
-            if (playerSpeed.x < 0)
-                spriteRenderer.flipX = true;
-            else if (playerSpeed.x > 0)
-                spriteRenderer.flipX = false;
-        }
+        if (!canMove) return;
+
+        playerSpeed = context.ReadValue<Vector2>();
+        if (playerSpeed.x == 0) return;
+        spriteRenderer.flipX = playerSpeed.x < 0;
     }
     void MoveCancelled(InputAction.CallbackContext context)
     {
@@ -100,7 +102,6 @@ public class Player : MonoBehaviour
     {
         jumpTime = jumpGraceTime;
         TryJump();
-        particle.Play();
     }
 
     void TryJump()
@@ -109,14 +110,16 @@ public class Player : MonoBehaviour
         if (!(groundCheck.Coyote && canMove)) return;
 
         jumping = true;
+        jumpTime = 0;
 
         rigidbody2D.AddForce(new Vector2(0, minJumpForce), ForceMode2D.Impulse);
         curJumpForce = minJumpForce;
         groundCheck.Grounded = false;
         groundCheck.Coyote = false;
+
         source.clip = jumpClip;
         source.Play();
-        jumpTime = 0;
+
         Instantiate(jumpParticles, groundCheck.transform.position, Quaternion.identity);
     }
 
@@ -138,12 +141,14 @@ public class Player : MonoBehaviour
     }
     IEnumerator Knockout()
     {
-        canMove = false;
         source.clip = KnockoutClip;
-        source.Play(); 
-        StartCoroutine(healthBehaviour.SetInvencibility(knowdownTime*2));
-        yield return new WaitForSeconds(knowdownTime);
+        source.Play();
+
+        canMove = false;
+        StartCoroutine(healthBehaviour.SetInvincibility(knockoutTime * 2));
+        yield return new WaitForSeconds(knockoutTime);
         canMove = true;
+
         healthBehaviour.FullHeal();
     }
 }

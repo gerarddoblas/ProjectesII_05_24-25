@@ -10,12 +10,17 @@ using UnityEngine.Windows;
 public class PlayersManager : MonoBehaviour
 {
     public bool enabledHUDByDefault;
-    public Color[] playerColours;
-    public GameObject canvasPrefab;
+    public PlayerInputManager playerInputManager;
+    [SerializeField] private GameObject playerContainer, hudsContainer;
+
+    [Header("Lists")]
     public List<GameObject> players;
     public List<GameObject> playersCanvas;
-    public PlayerInputManager playerInputManager;
-    public GameObject playerContainer, hudsContainer;
+
+    [Header("Visual Parameters")]
+    [SerializeField] private Color[] playerColours;
+    [SerializeField] private GameObject canvasPrefab;
+
     private AudioSource source;
     public UnityEvent onAnyActionPerformed;
     public static PlayersManager Instance { get; private set; }
@@ -29,45 +34,55 @@ public class PlayersManager : MonoBehaviour
         else
             Destroy(gameObject);
 
-        SceneManager.sceneLoaded+=SetPlayersPosition;
+        SceneManager.sceneLoaded += SetPlayersPosition;
     }
+
     private void SetPlayersPosition(Scene loadedScene, LoadSceneMode loadedSceneMode) {
         foreach (GameObject player in players)
             player.transform.position = Vector3.zero;
         //onAnyActionPerformed.RemoveAllListeners();
     }
+
     private void Start()
     {
         source = GetComponent<AudioSource>();
         playerInputManager = GetComponent<PlayerInputManager>();
-        //playerInputManager.EnableJoining();
         playerInputManager.onPlayerJoined += OnPlayerJoin;
-        //playerInputManager.onPlayerLeft += OnPlayerLeft;
     }
+
     private void OnPlayerJoin(PlayerInput input)
     {
-        Debug.Log("hi");
-        input.gameObject.transform.SetParent(playerContainer.transform);     
-        input.gameObject.GetComponent<SpriteRenderer>().color = playerColours[players.Count];
+        GameObject player = input.gameObject;
+
+        player.transform.SetParent(playerContainer.transform);     
+        player.GetComponent<SpriteRenderer>().color = playerColours[players.Count];
+
         GameObject instantiatedHUD = GameObject.Instantiate(canvasPrefab,hudsContainer.transform);
+        PlayerHud instanceScript = instantiatedHUD.GetComponent<PlayerHud>();
+
         playersCanvas.Add(instantiatedHUD);
-        instantiatedHUD.GetComponent<PlayerHud>().backgroundImage.GetComponent<Image>().color = playerColours[players.Count];
         players.Add(input.gameObject);
 
-        instantiatedHUD.GetComponent<PlayerHud>().playerTransform = input.gameObject.transform;
-        input.gameObject.GetComponent<Items>().onAlterMana.AddListener((float currentMana) =>
+        instanceScript.playerTransform = input.gameObject.transform;
+
+        player.GetComponent<Items>().onAlterMana.AddListener((float currentMana) =>
         {
-            instantiatedHUD.GetComponent<PlayerHud>().manaRadial.fillAmount = currentMana / 3;
+            instanceScript.manaRadial.fillAmount = currentMana / 3;
         });
-        input.gameObject.GetComponent<HealthBehaviour>().OnAlterHealth.AddListener((int health, int maxHealth) =>
+
+        player.GetComponent<HealthBehaviour>().OnAlterHealth.AddListener((int health, int maxHealth) =>
         {
-            instantiatedHUD.GetComponent<PlayerHud>().knockoutRadial.fillAmount = 1 - ((float)health / (float)maxHealth);
+            instanceScript.knockoutRadial.fillAmount = 1 - ((float)health / (float)maxHealth);
         });
 
         if (!enabledHUDByDefault)
             instantiatedHUD.SetActive(false);
+
         SetOnAnyActionPerformed(input.gameObject);
+
+        source.Play();
     }
+
     public void ShowAllHuds()
     {
         foreach (GameObject canva in playersCanvas)
@@ -77,6 +92,7 @@ public class PlayersManager : MonoBehaviour
             canva.GetComponent<CanvasGroup>().alpha = 1.0f;
         }
     }
+
     public void ShowAllHuds(float time)
     {
         foreach (GameObject canva in playersCanvas)
@@ -91,6 +107,7 @@ public class PlayersManager : MonoBehaviour
             });
         }
     }
+
     public void HideAllHuds()
     {
         foreach (GameObject canva in playersCanvas)
@@ -100,6 +117,7 @@ public class PlayersManager : MonoBehaviour
             canva.SetActive(false);
         }
     }
+
     public void HideAllHuds(float time)
     {
         foreach (GameObject canva in playersCanvas)
@@ -115,6 +133,7 @@ public class PlayersManager : MonoBehaviour
             });
         }
     }
+
     public void LockPlayersMovement()
     {
         foreach (GameObject player in players)
@@ -123,13 +142,14 @@ public class PlayersManager : MonoBehaviour
             player.GetComponent<Player>().LockMovement();
             player.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
         }
-
     }
+
     public void UnlockPlayersMovement()
     {
         foreach (GameObject player in players)
             player.GetComponent<Player>().UnlockMovement();
     }
+
     public void SetJoining(bool enabled) {
         if(enabled)
             playerInputManager.EnableJoining();

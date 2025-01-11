@@ -31,7 +31,6 @@ public class AreaManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timeBeforeChange -= Time.deltaTime;
         if (timeBeforeChange < 0) ChangeArea();
     }
 
@@ -66,12 +65,14 @@ public class AreaManager : MonoBehaviour
         if (--players == 0)
             source.Stop();
     }
-    public Vector3 GetRandomPositionFromList() { 
-        return possibleAreas[Random.Range(0, possibleAreas.Length)];}
+
+    public Vector3 GetRandomPositionFromList() => possibleAreas[Random.Range(0, possibleAreas.Length)];
+
     public void ChangeArea()
     {
-        transform.position = GetRandomPositionFromList();
-       timeBeforeChange = Random.Range(3.0f, 10.0f);
+        Vector3 curPosition = transform.position;
+        do { transform.position = GetRandomPositionFromList(); } while (transform.position == curPosition);
+        timeBeforeChange = Random.Range(1.5f, 5.0f);
         source.Play();
     }
 }

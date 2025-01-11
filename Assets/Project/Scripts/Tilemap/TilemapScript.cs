@@ -6,13 +6,14 @@ using UnityEngine.Tilemaps;
 
 public class TilemapScript : MonoBehaviour
 {
-    [SerializeField] private Tilemap tm;
+    [SerializeField] float tolerance = 0.3f;
+    private Tilemap tm;
     private AudioSource source;
-    [SerializeField] private float tolerance;
     // Start is called before the first frame update
     void Start()
     {
         source = GetComponent<AudioSource>();
+        tm = GetComponent<Tilemap>();
     }
 
     // Update is called once per frame

@@ -21,7 +21,7 @@ public class Barrel : Item
 
         if (target.TryGetComponent<Player>(out Player p))
         {
-            p.rigidbody2D.velocity = new Vector2(this.GetComponent<Rigidbody2D>().velocity.x, target.GetComponent<Rigidbody2D>().velocity.y);
+            p.GetComponent<Rigidbody2D>().velocity = new Vector2(this.GetComponent<Rigidbody2D>().velocity.x, target.GetComponent<Rigidbody2D>().velocity.y);
             p.healthBehaviour.Damage(damage);
             Destroy(this.gameObject);
         }
