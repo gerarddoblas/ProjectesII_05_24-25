@@ -10,12 +10,12 @@ public class Item : MonoBehaviour
     public virtual IEnumerator Effect(GameObject target) { yield return null; }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject != creator && !creatorImmunity)
+        if(! ((collision.gameObject == creator) && creatorImmunity))
             StartCoroutine(Effect(collision.gameObject));
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject != creator && !creatorImmunity)
+        if (!((collision.gameObject == creator) && creatorImmunity))
             StartCoroutine(Effect(collision.gameObject));
     }
     private void OnBecameInvisible()
