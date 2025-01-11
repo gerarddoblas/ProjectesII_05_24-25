@@ -13,18 +13,11 @@ MonoBehaviour:
   m_Name: ObjectCreator
   m_EditorClassIdentifier: 
   smallObjects:
-  - {fileID: 4110435733389039893, guid: 1922fc243da642c449d2ff1fdd3f49fb, type: 3}
-  - {fileID: 4110435733389039893, guid: daf37a4020ac11e4ebe0fc35400a8594, type: 3}
-  - {fileID: 2128471897566729481, guid: 54510ed8c0f866441b64675bcdcb8b92, type: 3}
-  mediumObjects:
-  - {fileID: 2128471897566729481, guid: 5577da96ee4eaf84da18c47977a0697d, type: 3}
-  - {fileID: 6923448661978156301, guid: 59c693c0c5a65c34cbfad3f8379ea29c, type: 3}
-  - {fileID: 2128471897566729481, guid: 0a3964686a850d74f80a51f5f64cd52c, type: 3}
+  - {fileID: 8233417357201669012, guid: 9b46c30f446b8a54c96ca83699400fb7, type: 3}
   - {fileID: 8325536505741278909, guid: b40e660cf7e20f944a582750f7a21b33, type: 3}
-  - {fileID: 2128471897566729481, guid: 0f600efe3401960438321969398f948b, type: 3}
+  mediumObjects:
+  - {fileID: 2128471897566729481, guid: 54510ed8c0f866441b64675bcdcb8b92, type: 3}
+  - {fileID: 2128471897566729481, guid: 70435951e6f56984dbe56e1936b74c18, type: 3}
   bigObjects:
   - {fileID: 8957381009157081984, guid: f27927c71d06e4d4490dc8c80ae8b0f0, type: 3}
-  - {fileID: 8233417357201669012, guid: 9b46c30f446b8a54c96ca83699400fb7, type: 3}
-  - {fileID: 2128471897566729481, guid: b8527608b3af3d84b93d83070caf33d8, type: 3}
-  - {fileID: 2128471897566729481, guid: 70435951e6f56984dbe56e1936b74c18, type: 3}
-  - {fileID: 4110435733389039893, guid: 13f8c479326181543835b636b66fb108, type: 3}
+  - {fileID: 2128471897566729481, guid: 9c46501f64e9cb74f9b0e6fcc3a9256d, type: 3}

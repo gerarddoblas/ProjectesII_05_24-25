@@ -97,12 +97,12 @@ public class Items : MonoBehaviour
         {
             Vector3 spawnpos = Vector3.zero;
             if (spriteRenderer.flipX)
-                spawnpos = Vector3.right;
+                spawnpos = Vector3.left * 2f;
             else
-                spawnpos = Vector3.left;
-            instantiatedItem = Instantiate(instantiatedItem, this.transform.position - spawnpos, Quaternion.Euler(0, 0, 0));
+               spawnpos = Vector3.right * 2f;
+            instantiatedItem = Instantiate(instantiatedItem, this.transform.position + spawnpos, Quaternion.Euler(0, 0, 0));
             instantiatedItem.GetComponent<Item>().creator = this.gameObject;
-            instantiatedItem.GetComponent<Rigidbody2D>().AddForce(-new Vector2(spawnpos.x * 10, 0), ForceMode2D.Impulse);
+            instantiatedItem.GetComponent<Rigidbody2D>().AddForce(spawnpos * 12.5f, ForceMode2D.Impulse);
         }
         onAlterMana.Invoke(this.mana);
     }

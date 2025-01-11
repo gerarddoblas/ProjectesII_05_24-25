@@ -173,6 +173,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   creator: {fileID: 0}
   consumible: 0
-  creatorImmunity: 0
-  duration: 5
+  creatorImmunity: 1
+  itemDuration: 5
   fillMaxMana: 0
