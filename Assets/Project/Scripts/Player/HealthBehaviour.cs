@@ -5,117 +5,114 @@ using UnityEngine.Events;
 
 public class HealthBehaviour : MonoBehaviour
 {
-    public bool invencibility = false;
+    public bool invincibility = false;
     public int health, maxhealth;
+
+    [Header("Events")]
     public UnityEvent<int, int> OnAlterHealth;
     public UnityEvent OnDie;
+
     private void Awake()
     {
-        this.health = this.maxhealth;
-        this.OnAlterHealth.Invoke(this.health, this.maxhealth);
+        health = maxhealth;
+        OnAlterHealth.Invoke(health, maxhealth);
     }
-    public void Heal(){ 
-        this.health++;
-        if(this.health>this.maxhealth)
-            this.health = this.maxhealth;
-        this.OnAlterHealth.Invoke(this.health, this.maxhealth);
+    public void Heal(){
+        health = Mathf.Min(health + 1, maxhealth);
+        OnAlterHealth.Invoke(health, maxhealth);
     }
-    public void Heal(int healing) {
-        this.health+=healing;
-        if (this.health > this.maxhealth)
-            this.health = this.maxhealth;
-        this.OnAlterHealth.Invoke(this.health, this.maxhealth);
+    public void Heal(int amount) {
+        health = Mathf.Min(health + amount, maxhealth);
+        OnAlterHealth.Invoke(health, maxhealth);
     }
     public void FullHeal()
     {
-        this.health = this.maxhealth;
-        this.OnAlterHealth.Invoke(this.health, this.maxhealth);
+        health = maxhealth;
+        OnAlterHealth.Invoke(health, maxhealth);
     }
     public void Damage() {
-        if (!invencibility)
+        if (!invincibility)
         {
-            this.health--;
-            if (this.health <= 0)
+            health--;
+            if (health <= 0)
             {
-                this.health = 0;
-                this.OnDie.Invoke();
+                health = 0;
+                OnDie.Invoke();
             }
-            this.OnAlterHealth.Invoke(this.health, this.maxhealth);
+            OnAlterHealth.Invoke(health, maxhealth);
         }
     }
     public void Damage(int damage) {
-        if (!invencibility)
+        if (!invincibility)
         {
-            this.health -= damage;
-            if (this.health <= 0)
+            health -= damage;
+            if (health <= 0)
             {
-                this.health = 0;
-                this.OnDie.Invoke();
+                health = 0;
+                OnDie.Invoke();
             }
-            this.OnAlterHealth.Invoke(this.health, this.maxhealth);
+            OnAlterHealth.Invoke(health, maxhealth);
         }
     }
     public void FullDamage()
     {
-        if (!invencibility)
+        if (!invincibility)
         {
-            this.health = 0;
-            this.OnAlterHealth.Invoke(this.health, this.maxhealth);
-            this.OnDie.Invoke();
+            health = 0;
+            OnAlterHealth.Invoke(health, maxhealth);
+            OnDie.Invoke();
         }
     }
     public void AddMaxHealth()
     {
-        this.maxhealth++;
-        this.OnAlterHealth.Invoke(this.health, this.maxhealth);
+        maxhealth++;
+        OnAlterHealth.Invoke(health, maxhealth);
     }
     public void AddMaxHealth(bool recover)
     {
-        this.maxhealth++;
+        maxhealth++;
         if (recover)
         {
             FullHeal();
             return;
         }
-        this.OnAlterHealth.Invoke(this.health, this.maxhealth);
+        OnAlterHealth.Invoke(health, maxhealth);
     }
-    public void AddMaxHealth(int healthToAdd)
+    public void AddMaxHealth(int amount)
     {
-        this.maxhealth+= healthToAdd;
-        this.OnAlterHealth.Invoke(this.health, this.maxhealth);
+        maxhealth += amount;
+        OnAlterHealth.Invoke(health, maxhealth);
     }
-    public void AddMaxHealth(int healthToAdd,bool recover)
+    public void AddMaxHealth(int amount, bool recover)
     {
-        this.maxhealth+= healthToAdd;
+        maxhealth += amount;
         if (recover)
-        {
             FullHeal();
-            return;
-        }
-        this.OnAlterHealth.Invoke(this.health, this.maxhealth);
+        else
+            OnAlterHealth.Invoke(health, maxhealth);
     }
     public void ReduceMaxHealth()
     {
-        this.maxhealth--;
-        if (this.maxhealth <= 0)
-            this.maxhealth = 1;
-        if(this.maxhealth < this.health)
-            this.health = this.maxhealth;
-        this.OnAlterHealth.Invoke(this.health, this.maxhealth);
+        maxhealth--;
+        if (maxhealth <= 0)
+            maxhealth = 1;
+        if(maxhealth < health)
+            health = maxhealth;
+        OnAlterHealth.Invoke(health, maxhealth);
     }
-    public void ReduceMaxHealth(int healthToQuit)
+    public void ReduceMaxHealth(int amount)
     {
-        this.maxhealth-=healthToQuit;
-        if (this.maxhealth <= 0)
-            this.maxhealth = 1;
-        if (this.maxhealth < this.health)
-            this.health = this.maxhealth;
-        this.OnAlterHealth.Invoke(this.health, this.maxhealth);
+        maxhealth -= amount;
+        if (maxhealth <= 0)
+            maxhealth = 1;
+        if (maxhealth < health)
+            health = maxhealth;
+        OnAlterHealth.Invoke(health, maxhealth);
     }
-    public IEnumerator SetInvencibility(float invencibilitySeconds)
+    public IEnumerator SetInvincibility(float duration)
     {
-        this.invencibility = true;
-        yield return new WaitForSeconds(invencibilitySeconds);
-        this.invencibility = false;
+        invincibility = true;
+        yield return new WaitForSeconds(duration);
+        invincibility = false;
     }
 }

@@ -8,12 +8,17 @@ using UnityEngine.UI;
 public class PlayersManager : MonoBehaviour
 {
     public bool enabledHUDByDefault;
-    public Color[] playerColours;
-    public GameObject canvasPrefab;
+    public PlayerInputManager playerInputManager;
+    [SerializeField] private GameObject playerContainer, hudsContainer;
+
+    [Header("Lists")]
     public List<GameObject> players;
     public List<GameObject> playersCanvas;
-    public PlayerInputManager playerInputManager;
-    public GameObject playerContainer, hudsContainer;
+
+    [Header("Visual Parameters")]
+    [SerializeField] private Color[] playerColours;
+    [SerializeField] private GameObject canvasPrefab;
+
     private AudioSource source;
     public static PlayersManager Instance { get; private set; }
     private void Awake()
@@ -26,88 +31,52 @@ public class PlayersManager : MonoBehaviour
         else
             Destroy(gameObject);
 
-        SceneManager.sceneLoaded+=SetPlayersPosition;
+        SceneManager.sceneLoaded += SetPlayersPosition;
     }
+
     private void SetPlayersPosition(Scene loadedScene, LoadSceneMode loadedSceneMode) {
         foreach (GameObject player in players)
             player.transform.position = Vector3.zero;
     }
+
     private void Start()
     {
         source = GetComponent<AudioSource>();
         playerInputManager = GetComponent<PlayerInputManager>();
-        //playerInputManager.EnableJoining();
         playerInputManager.onPlayerJoined += OnPlayerJoin;
-        //playerInputManager.onPlayerLeft += OnPlayerLeft;
     }
+
     private void OnPlayerJoin(PlayerInput input)
     {
-        Debug.Log("hi");
-        input.gameObject.transform.SetParent(playerContainer.transform);     
-        input.gameObject.GetComponent<SpriteRenderer>().color = playerColours[players.Count];
+        GameObject player = input.gameObject;
+
+        player.transform.SetParent(playerContainer.transform);     
+        player.GetComponent<SpriteRenderer>().color = playerColours[players.Count];
+
         GameObject instantiatedHUD = GameObject.Instantiate(canvasPrefab,hudsContainer.transform);
+        PlayerHud instanceScript = instantiatedHUD.GetComponent<PlayerHud>();
+
         playersCanvas.Add(instantiatedHUD);
-        instantiatedHUD.GetComponent<PlayerHud>().backgroundImage.GetComponent<Image>().color = playerColours[players.Count];
         players.Add(input.gameObject);
 
-        instantiatedHUD.GetComponent<PlayerHud>().playerTransform = input.gameObject.transform;
+        instanceScript.playerTransform = input.gameObject.transform;
 
-        //if (input.currentControlScheme.Contains("Keyboard"))
-        //    instantiatedHUD.GetComponent<PlayerHud>().SetKeyboardControls();
-        //else
-        //    instantiatedHUD.GetComponent<PlayerHud>().SetGamepdControls();
-        //input.gameObject.GetComponent<HealthBehaviour>().OnAlterHealth.AddListener((int health, int maxHealth) => 
-        //{
-        //    instantiatedHUD.GetComponent<PlayerHud>().knockoutSlider.value = 1-((float)health/(float)maxHealth);
-        //});
-        //input.gameObject.GetComponent<Items>().onAlterMana.AddListener((float currentMana) =>
-        //{
-        //    instantiatedHUD.GetComponent<PlayerHud>().manaSlider.value = currentMana;
-        //});
-        //input.gameObject.GetComponent<Items>().onGenerateRandomSmallObject.AddListener(delegate(Sprite s)
-        //{
-        //    instantiatedHUD.GetComponent<PlayerHud>().smallImage.sprite = s;
-        //});
-        //input.gameObject.GetComponent<Items>().onGenerateRandomMidObject.AddListener(delegate (Sprite s)
-        //{
-        //    instantiatedHUD.GetComponent<PlayerHud>().midImage.sprite = s;
-        //});
-        //input.gameObject.GetComponent<Items>().onGenerateRandomBigObject.AddListener(delegate (Sprite s)
-        //{
-        //    instantiatedHUD.GetComponent<PlayerHud>().bigImage.sprite = s;
-        //});
-        //input.gameObject.GetComponent<Player>().onAlterScore.AddListener((float score) =>
-        //{
-        //    instantiatedHUD.GetComponent<PlayerHud>().scoreText.text = "Score: " + (int)score;
-        //});
-
-        input.gameObject.GetComponent<Items>().onAlterMana.AddListener((float currentMana) =>
+        player.GetComponent<Items>().onAlterMana.AddListener((float currentMana) =>
         {
-            instantiatedHUD.GetComponent<PlayerHud>().manaRadial.fillAmount = currentMana / 3;
-        });
-        input.gameObject.GetComponent<HealthBehaviour>().OnAlterHealth.AddListener((int health, int maxHealth) =>
-        {
-            instantiatedHUD.GetComponent<PlayerHud>().knockoutRadial.fillAmount = 1 - ((float)health / (float)maxHealth);
+            instanceScript.manaRadial.fillAmount = currentMana / 3;
         });
 
-        //float initialpos = instantiatedHUD.GetComponent<RectTransform>().sizeDelta.x;
-        //foreach (Transform hud in hudsContainer.transform) {
-        //    hud.position = new Vector3(initialpos,hud.GetComponent<RectTransform>().sizeDelta.y/1.5f, 0);
-        //    initialpos += instantiatedHUD.GetComponent<RectTransform>().sizeDelta.x*2;
-        //}
+        player.GetComponent<HealthBehaviour>().OnAlterHealth.AddListener((int health, int maxHealth) =>
+        {
+            instanceScript.knockoutRadial.fillAmount = 1 - ((float)health / (float)maxHealth);
+        });
+
         if (!enabledHUDByDefault)
             instantiatedHUD.SetActive(false);
-        //source.Play();
-    }/*
-    private void OnPlayerLeft(PlayerInput input)
-    {
-        for (int i = 0; i < playerInputManager.playerCount; i++) {
-            if (input.gameObject == playerContainer.transform.GetChild(i)) {
-                Destroy(playerContainer.transform.GetChild(i));
-                Destroy(hudsContainer.transform.GetChild(i));
-            } 
-        }
-    }*/
+
+        source.Play();
+    }
+
     public void ShowAllHuds()
     {
         foreach (GameObject canva in playersCanvas)
@@ -117,6 +86,7 @@ public class PlayersManager : MonoBehaviour
             canva.GetComponent<CanvasGroup>().alpha = 1.0f;
         }
     }
+
     public void ShowAllHuds(float time)
     {
         foreach (GameObject canva in playersCanvas)
@@ -131,6 +101,7 @@ public class PlayersManager : MonoBehaviour
             });
         }
     }
+
     public void HideAllHuds()
     {
         foreach (GameObject canva in playersCanvas)
@@ -140,6 +111,7 @@ public class PlayersManager : MonoBehaviour
             canva.SetActive(false);
         }
     }
+
     public void HideAllHuds(float time)
     {
         foreach (GameObject canva in playersCanvas)
@@ -155,6 +127,7 @@ public class PlayersManager : MonoBehaviour
             });
         }
     }
+
     public void LockPlayersMovement()
     {
         foreach (GameObject player in players)
@@ -163,13 +136,14 @@ public class PlayersManager : MonoBehaviour
             player.GetComponent<Player>().LockMovement();
             player.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
         }
-
     }
+
     public void UnlockPlayersMovement()
     {
         foreach (GameObject player in players)
             player.GetComponent<Player>().UnlockMovement();
     }
+
     public void SetJoining(bool enabled) {
         if(enabled)
             playerInputManager.EnableJoining();

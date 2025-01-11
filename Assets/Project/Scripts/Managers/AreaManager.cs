@@ -6,8 +6,8 @@ public class AreaManager : MonoBehaviour
 {
     [SerializeField] private Vector2[] possibleAreas;
     [SerializeField] private float timeBeforeChange;
-    private AudioSource source;
     [SerializeField] private float scoreMultiplier = 5f;
+    private AudioSource source;
     public static AreaManager Instance { get; private set; }
 
     private void Awake()
@@ -26,7 +26,6 @@ public class AreaManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timeBeforeChange -= Time.deltaTime;
         if (timeBeforeChange < 0) ChangeArea();
     }
 
@@ -37,14 +36,17 @@ public class AreaManager : MonoBehaviour
         {
             player.Score += (Time.deltaTime * scoreMultiplier);
             player.onAlterScore.Invoke(player.Score);
+            timeBeforeChange -= Time.deltaTime;
         }
     }
-    public Vector3 GetRandomPositionFromList() { 
-        return possibleAreas[Random.Range(0, possibleAreas.Length)];}
+
+    public Vector3 GetRandomPositionFromList() => possibleAreas[Random.Range(0, possibleAreas.Length)];
+
     public void ChangeArea()
     {
-        transform.position = GetRandomPositionFromList();
-       timeBeforeChange = Random.Range(3.0f, 10.0f);
+        Vector3 curPosition = transform.position;
+        do { transform.position = GetRandomPositionFromList(); } while (transform.position == curPosition);
+        timeBeforeChange = Random.Range(1.5f, 5.0f);
         source.Play();
     }
 }

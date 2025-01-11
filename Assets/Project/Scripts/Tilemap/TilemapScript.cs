@@ -6,12 +6,14 @@ using UnityEngine.Tilemaps;
 
 public class TilemapScript : MonoBehaviour
 {
-    [SerializeField] private Tilemap tm;
+    [SerializeField] float tolerance = 0.3f;
+    private Tilemap tm;
     private AudioSource source;
     // Start is called before the first frame update
     void Start()
     {
         source = GetComponent<AudioSource>();
+        tm = GetComponent<Tilemap>();
     }
 
     // Update is called once per frame
@@ -24,9 +26,20 @@ public class TilemapScript : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<Item>() == null) return;
         foreach (ContactPoint2D contact in collision.contacts)
-        {
-            tm.RefreshTile(tm.layoutGrid.WorldToCell(contact.point));
-        }
+            CollideAt(contact.point);
         source.Play();
+    }
+
+    void CollideAt(Vector2 pos)
+    {
+        tm.RefreshTile(tm.layoutGrid.WorldToCell(pos));
+        tm.RefreshTile(tm.layoutGrid.WorldToCell(pos + Vector2.up * tolerance));
+        tm.RefreshTile(tm.layoutGrid.WorldToCell(pos + Vector2.down * tolerance));
+        tm.RefreshTile(tm.layoutGrid.WorldToCell(pos + Vector2.left * tolerance));
+        tm.RefreshTile(tm.layoutGrid.WorldToCell(pos + Vector2.right * tolerance));
+        tm.RefreshTile(tm.layoutGrid.WorldToCell(pos + Vector2.up * tolerance + Vector2.left * tolerance));
+        tm.RefreshTile(tm.layoutGrid.WorldToCell(pos + Vector2.up * tolerance + Vector2.right * tolerance));
+        tm.RefreshTile(tm.layoutGrid.WorldToCell(pos + Vector2.down * tolerance + Vector2.left * tolerance));
+        tm.RefreshTile(tm.layoutGrid.WorldToCell(pos + Vector2.down * tolerance + Vector2.right * tolerance));
     }
 }
