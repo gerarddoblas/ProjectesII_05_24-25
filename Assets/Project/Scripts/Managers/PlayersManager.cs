@@ -9,7 +9,7 @@ using UnityEngine.Windows;
 
 public class PlayersManager : MonoBehaviour
 {
-    public bool enabledHUDByDefault;
+    [SerializeField] bool enabledHUDByDefault, enableCreationByDefault;
     public PlayerInputManager playerInputManager;
     [SerializeField] private GameObject playerContainer, hudsContainer;
 
@@ -21,7 +21,6 @@ public class PlayersManager : MonoBehaviour
     [SerializeField] private Color[] playerColours;
     [SerializeField] private GameObject canvasPrefab;
 
-    private AudioSource source;
     public UnityEvent onAnyActionPerformed;
     public static PlayersManager Instance { get; private set; }
     private void Awake()
@@ -45,7 +44,6 @@ public class PlayersManager : MonoBehaviour
 
     private void Start()
     {
-        source = GetComponent<AudioSource>();
         playerInputManager = GetComponent<PlayerInputManager>();
         playerInputManager.onPlayerJoined += OnPlayerJoin;
     }
@@ -77,10 +75,15 @@ public class PlayersManager : MonoBehaviour
 
         if (!enabledHUDByDefault)
             instantiatedHUD.SetActive(false);
+        else
+            instantiatedHUD.SetActive(true);
 
-        SetOnAnyActionPerformed(input.gameObject);
+        if(!enableCreationByDefault)
+            player.GetComponent<Items>().LockManaAndCreation();
+        else
+            player.GetComponent<Items>().UnlockManaAndCreation();
 
-        source.Play();
+        SetOnAnyActionPerformed(player);
     }
 
     public void ShowAllHuds()
