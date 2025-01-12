@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +13,6 @@ public class Kaboom : Item
     private void Start()
     {
         this.GetComponent<SpriteRenderer>().enabled = false;
-        GameObject.Find("Grid").GetComponentInChildren<TilemapScript>().CollideAtArea(this.transform.position, 200);
     }
     public void Update()
     {
@@ -22,10 +22,12 @@ public class Kaboom : Item
             this.transform.localScale.y + (growth * Time.deltaTime), 
             this.transform.localScale.z + (growth * Time.deltaTime)
         );
-        if (contador >= timeInScene)
+        try
         {
+            GameObject.Find("Grid").GetComponentInChildren<TilemapScript>().CollideAtArea(this.transform.position, (int)(transform.localScale.x* transform.localScale.y));
+        }catch(Exception e) { }
+        if (contador >= timeInScene)
             Destroy(this.gameObject);
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
