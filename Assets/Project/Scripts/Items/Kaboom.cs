@@ -12,7 +12,7 @@ public class Kaboom : Item
     private void Start()
     {
         this.GetComponent<SpriteRenderer>().enabled = false;
-        GameObject.Find("Grid").GetComponentInChildren<TilemapScript>().CollideAtArea(this.transform.position, 200);
+        GameObject.Find("Grid").GetComponentInChildren<TilemapScript>().ExplodeArea(this.transform.position, 200);
     }
     public void Update()
     {
@@ -33,7 +33,7 @@ public class Kaboom : Item
         Debug.Log("Colliding with " + collision.gameObject.name);
         if (collision.gameObject.TryGetComponent<TilemapScript>(out TilemapScript tm))
         {
-            tm.CollideAtArea(this.transform.position, 200);
+            tm.ExplodeArea(this.transform.position, 200);
         }
     }
 
@@ -41,7 +41,7 @@ public class Kaboom : Item
     {
         if (target.TryGetComponent<TilemapScript>(out TilemapScript tm))
         {
-            tm.CollideAtArea(this.transform.position, 200);
+            tm.ExplodeArea(this.transform.position, 200);
         }
         else if (target.TryGetComponent<HealthBehaviour>(out HealthBehaviour hb))
             hb.FullDamage();

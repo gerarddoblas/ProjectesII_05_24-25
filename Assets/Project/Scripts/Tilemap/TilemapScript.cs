@@ -24,35 +24,63 @@ public class TilemapScript : MonoBehaviour
 
     void OnCollisionStay2D(Collision2D collision)
     {
+        foreach (ContactPoint2D contact in collision.contacts)
+        {
+            int i = 0;
+            BouncyTile[] bouncyTiles = new BouncyTile[9];
+            for(int x = -1; x <= 1; ++x) for(int y = -1; y <= 1; ++y)
+                {
+                    bouncyTiles[i] = tm.GetTile<BouncyTile>(tm.WorldToCell(contact.point + Vector2.up * y * tolerance + Vector2.right * x * tolerance));
+                    ++i;
+                } 
+            foreach(BouncyTile tile in bouncyTiles)
+            {
+                if (tile != null) tile.BounceAt(collision.gameObject, contact.point);
+            }
+        }
+
         if (collision.gameObject.GetComponent<Item>() == null) return;
         foreach (ContactPoint2D contact in collision.contacts)
-            CollideAt(contact.point);
+        {
+            Dictionary<Vector3Int, ExplodingTile> explodingTiles = CollideAt<ExplodingTile>(contact.point);
+            foreach (KeyValuePair<Vector3Int, ExplodingTile> tilePair in explodingTiles)
+                tilePair.Value.ExplodeTile(tilePair.Key, tm);
+        }
+
         source.Play();
     }
     
-    public void CollideAt(Vector2 pos)
+    public Dictionary<Vector3Int, T> CollideAt<T>(Vector2 pos)
+        where T : TileBase
     {
-        tm.RefreshTile(tm.layoutGrid.WorldToCell(pos));
-        tm.RefreshTile(tm.layoutGrid.WorldToCell(pos + Vector2.up * tolerance));
-        tm.RefreshTile(tm.layoutGrid.WorldToCell(pos + Vector2.down * tolerance));
-        tm.RefreshTile(tm.layoutGrid.WorldToCell(pos + Vector2.left * tolerance));
-        tm.RefreshTile(tm.layoutGrid.WorldToCell(pos + Vector2.right * tolerance));
-        tm.RefreshTile(tm.layoutGrid.WorldToCell(pos + Vector2.up * tolerance + Vector2.left * tolerance));
-        tm.RefreshTile(tm.layoutGrid.WorldToCell(pos + Vector2.down * tolerance + Vector2.left * tolerance));
-        tm.RefreshTile(tm.layoutGrid.WorldToCell(pos + Vector2.up * tolerance + Vector2.right * tolerance));
-        tm.RefreshTile(tm.layoutGrid.WorldToCell(pos + Vector2.down * tolerance + Vector2.right * tolerance));
+        Dictionary<Vector3Int, T> tiles = new Dictionary<Vector3Int, T>();
+        for (int x = -1; x <= 1; ++x) for (int y = -1; y <= 1; ++y)
+            {
+                Vector3Int tilePos = tm.WorldToCell(pos + Vector2.up * y * tolerance + Vector2.right * x * tolerance);
+                T tile = tm.GetTile<T>(tilePos);
+                if (tile != null) tiles[tilePos] = tile;
+            }
+        return tiles;
     }
 
-    public void CollideAtArea(Vector2 pos, int radius)
+    public void ExplodeArea(Vector2 pos, int radius)
     {
         for (int x = 0; x < radius; ++x)
             for (int y = 0; y < radius; ++y)
                 if (x * x + y * y < radius)
                 {
-                    CollideAt(pos + new Vector2(x, y));
-                    CollideAt(pos + new Vector2(-x, y));
-                    CollideAt(pos + new Vector2(x, -y));
-                    CollideAt(pos + new Vector2(-x, -y));
+                    Dictionary<Vector3Int, ExplodingTile> explodingTiles = CollideAt<ExplodingTile>(pos + new Vector2(x, y));
+                    foreach (KeyValuePair<Vector3Int, ExplodingTile> tilePair in explodingTiles)
+                        tilePair.Value.ExplodeTile(tilePair.Key, tm);
+                    explodingTiles = CollideAt<ExplodingTile>(pos + new Vector2(-x, y));
+                    foreach (KeyValuePair<Vector3Int, ExplodingTile> tilePair in explodingTiles)
+                        tilePair.Value.ExplodeTile(tilePair.Key, tm);
+                    explodingTiles = CollideAt<ExplodingTile>(pos + new Vector2(x, -y));
+                    foreach (KeyValuePair<Vector3Int, ExplodingTile> tilePair in explodingTiles)
+                        tilePair.Value.ExplodeTile(tilePair.Key, tm);
+                    explodingTiles = CollideAt<ExplodingTile>(pos + new Vector2(-x, -y));
+                    foreach (KeyValuePair<Vector3Int, ExplodingTile> tilePair in explodingTiles)
+                        tilePair.Value.ExplodeTile(tilePair.Key, tm);
                 }
     }
 }
