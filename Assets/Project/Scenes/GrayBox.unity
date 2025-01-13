@@ -665,7 +665,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54f9dc9a7699e4745855ae59b7fcf276, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tm: {fileID: 354010550}
   tolerance: 0.3
 --- !u!483693784 &354010549
 TilemapRenderer:
@@ -22335,18 +22334,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7464537486977160856, guid: 70277371814978843b8958f4aba0bef3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8503080579327066052, guid: 70277371814978843b8958f4aba0bef3, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8503080579327066052, guid: 70277371814978843b8958f4aba0bef3, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8503080579327066052, guid: 70277371814978843b8958f4aba0bef3, type: 3}
-      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
