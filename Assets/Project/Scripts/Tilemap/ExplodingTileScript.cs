@@ -45,9 +45,6 @@ namespace UnityEngine.Tilemaps
             tileData.transform = Matrix4x4.TRS(Vector3.zero, Quaternion.Euler(0f, 0f, 0f), Vector3.one);
             tileData.flags = TileFlags.LockTransform | TileFlags.LockColor;
             tileData.colliderType = Tile.ColliderType.Sprite;
-
-            RefreshTile(position, tilemap);
-
         }
 
         public void ExplodeTile(Vector3Int position, ITilemap tilemap)
@@ -59,6 +56,7 @@ namespace UnityEngine.Tilemaps
 
             states[position] = 1;
             UpdateTile(position, tilemap, ref tileData, 1);
+            RefreshTile(position, tilemap);
 
             Instantiate(particles, position, Quaternion.identity);
         }

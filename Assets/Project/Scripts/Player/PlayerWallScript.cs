@@ -21,8 +21,7 @@ public class PlayerWallScript : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.GetComponent<Tilemap>() == null) return;
-        Debug.Log("Colliding with playerwall");
+        if (collision.GetComponent<Tilemap>() == null || rb.velocity.y > 0) return;
         rb.position += Vector2.down * speed * Time.deltaTime;
     }
 }
