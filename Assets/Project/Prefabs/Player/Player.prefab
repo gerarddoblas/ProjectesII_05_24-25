@@ -4971,7 +4971,7 @@ MonoBehaviour:
   jumpParticles: {fileID: 2686372130080697451, guid: 711e25f765cc8194ca7824dffdcb9c64, type: 3}
   knowdownTime: 3
   jumpClip: {fileID: 8300000, guid: 4a95e4c3bafa6c240a922c6815c667fb, type: 3}
-  KnockoutClip: {fileID: 8300000, guid: b8f19cb7c498bb94fb038d5861ae103d, type: 3}
+  KnockoutClip: {fileID: 8300000, guid: 387373f49d179294aaf77c8f9fbe6c29, type: 3}
   positionMarker: {fileID: 7483774974877627172}
 --- !u!114 &1128478866674204696
 MonoBehaviour:
