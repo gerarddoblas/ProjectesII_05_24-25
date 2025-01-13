@@ -32,18 +32,10 @@ namespace UnityEngine.Tilemaps
             }
 #endif
 
-            try
-            {
-                if (states[position] < sprites.Length - 1)
-                {
-                    states[position]++;
-                    UpdateTile(position, tilemap, ref tileData, states[position]);
-                }
-            }
-            catch (KeyNotFoundException)
+            if(!states.ContainsKey(position))
             {
                 states.Add(position, 0);
-                UpdateTile(position, tilemap, ref tileData, states[position]);
+                UpdateTile(position, tilemap, ref tileData, 0);
             }
         }
 
@@ -54,13 +46,21 @@ namespace UnityEngine.Tilemaps
             tileData.flags = TileFlags.LockTransform | TileFlags.LockColor;
             tileData.colliderType = Tile.ColliderType.Sprite;
 
-#if UNITY_EDITOR
-            if (EditorApplication.isPlaying && state > 0)
-                Instantiate(particles, position, Quaternion.identity);
-#else
-            Instantiate(particles, position, Quaternion.identity);
-#endif
+            RefreshTile(position, tilemap);
 
+        }
+
+        public void ExplodeTile(Vector3Int position, ITilemap tilemap)
+        {
+            TileData tileData = new TileData();
+            tilemap.GetTile(position).GetTileData(position, tilemap, ref tileData);
+
+            if (states[position] == 1) return;
+
+            states[position] = 1;
+            UpdateTile(position, tilemap, ref tileData, 1);
+
+            Instantiate(particles, position, Quaternion.identity);
         }
     }
 
@@ -84,17 +84,18 @@ public class ExplodingTileEditor : Editor
         EditorGUI.BeginChangeCheck();
         tile.sprites[0] = (Sprite) EditorGUILayout.ObjectField("Before", tile.sprites[0], typeof(Sprite), false, null);
         tile.sprites[1] = (Sprite) EditorGUILayout.ObjectField("After", tile.sprites[1], typeof(Sprite), false, null);
-            if (EditorGUI.EndChangeCheck())
-                EditorUtility.SetDirty(tile);
 
-            EditorGUILayout.LabelField("Place particle system");
-            EditorGUILayout.Space();
+        if (EditorGUI.EndChangeCheck())
+            EditorUtility.SetDirty(tile);
 
-            EditorGUI.BeginChangeCheck();
-            tile.particles = (GameObject) EditorGUILayout.ObjectField("Before", tile.particles, typeof(GameObject), false, null);
-            if (EditorGUI.EndChangeCheck())
-                EditorUtility.SetDirty(tile);
-        }
+        EditorGUILayout.LabelField("Place particle system");
+        EditorGUILayout.Space();
+
+        EditorGUI.BeginChangeCheck();
+        tile.particles = (GameObject) EditorGUILayout.ObjectField("Particles", tile.particles, typeof(GameObject), false, null);
+        if (EditorGUI.EndChangeCheck())
+            EditorUtility.SetDirty(tile);
+    }
 
     [MenuItem("Assets/Create/ExplodingTile")]
     public static void CreateExplodingTile()

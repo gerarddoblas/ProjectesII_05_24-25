@@ -5,7 +5,8 @@ using UnityEngine;
 public class AreaParticleScript : MonoBehaviour
 {
     public Transform objective;
-    [SerializeField] private float speed = 1f;
+    public float speed = 1f;
+    public bool scaleSpeed = false;
     [SerializeField] private float tolerance = 0.1f;
     // Start is called before the first frame update
     void Start()
@@ -19,6 +20,6 @@ public class AreaParticleScript : MonoBehaviour
         Vector3 direction = objective.position - transform.position;
 
         if (direction.magnitude < tolerance) Destroy(this.gameObject);
-        else transform.position += direction.normalized * speed * direction.magnitude;
+        else transform.position += direction.normalized * speed * ((scaleSpeed) ? direction.magnitude : 1.0f);
     }
 }
