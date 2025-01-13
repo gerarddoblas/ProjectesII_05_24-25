@@ -57,6 +57,7 @@ MonoBehaviour:
   - {x: 8, y: -14}
   - {x: -8, y: -14}
   timeBeforeChange: 0
+  InArea: {fileID: 8300000, guid: 2dcff75ce34c0714fa1fb99960006438, type: 3}
   scoreMultiplier: 5
 --- !u!61 &8151673289166297804
 BoxCollider2D:

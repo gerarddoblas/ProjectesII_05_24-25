@@ -8,13 +8,19 @@ public class Egg : Item {
     public float timeInScene = 1.5f;
     public float contador = 0.0f;
     public int damage = 5;
+    private AudioSource source;
 
+    private void Start () 
+    {
+        source = GetComponent<AudioSource>();
+    }
     public void Update()
     {
         contador += Time.deltaTime;
         if (contador >= timeInScene)
         {
             Destroy(this.gameObject);
+            source.Play();
         }
     }
     override public IEnumerator Effect(GameObject target)

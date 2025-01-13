@@ -7,6 +7,12 @@ public class Barrel : Item
     public float timeInScene = 1.5f;
     public float contador = 0.0f;
     public int damage = 15;
+    private AudioSource source;
+
+    private void Start()
+    {
+        source = GetComponent<AudioSource>();
+    }
 
     public void Update()
     {
@@ -14,6 +20,7 @@ public class Barrel : Item
         if ( contador >= timeInScene )
         {
             Destroy(this.gameObject);
+            source.Play();
         }
     }
     override public IEnumerator Effect(GameObject target)

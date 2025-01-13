@@ -8,8 +8,10 @@ public class Kaboom : Item
     public float timeInScene = 2f;
     public float contador = 0.0f;
     public float growth = .25f;
+    private AudioSource source;
     private void Start()
     {
+        source = GetComponent<AudioSource>();
         this.GetComponent<SpriteRenderer>().enabled = false;
     }
     public void Update()
@@ -20,6 +22,7 @@ public class Kaboom : Item
             this.transform.localScale.y + (growth * Time.deltaTime), 
             this.transform.localScale.z + (growth * Time.deltaTime)
         );
+        source.Play();
         if (contador >= timeInScene)
         {
             Destroy(this.gameObject);
