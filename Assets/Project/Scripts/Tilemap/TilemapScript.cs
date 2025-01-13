@@ -24,32 +24,35 @@ public class TilemapScript : MonoBehaviour
 
     void OnCollisionStay2D(Collision2D collision)
     {
-        foreach (ContactPoint2D contact in collision.contacts)
-        {
-            int i = 0;
-            BouncyTile[] bouncyTiles = new BouncyTile[9];
-            for(int x = -1; x <= 1; ++x) for(int y = -1; y <= 1; ++y)
-                {
-                    bouncyTiles[i] = tm.GetTile<BouncyTile>(tm.WorldToCell(contact.point + Vector2.up * y * tolerance + Vector2.right * x * tolerance));
-                    ++i;
-                } 
-            foreach(BouncyTile tile in bouncyTiles)
-            {
-                if (tile != null) tile.BounceAt(collision.gameObject, contact.point);
-            }
-        }
+        Bounce(collision);
 
-        if (collision.gameObject.GetComponent<Item>() == null) return;
-        foreach (ContactPoint2D contact in collision.contacts)
+        if (collision.gameObject.GetComponent<Item>() != null)
         {
-            Dictionary<Vector3Int, ExplodingTile> explodingTiles = CollideAt<ExplodingTile>(contact.point);
-            foreach (KeyValuePair<Vector3Int, ExplodingTile> tilePair in explodingTiles)
-                tilePair.Value.ExplodeTile(tilePair.Key, tm);
+            foreach (ContactPoint2D contact in collision.contacts)
+            {
+                Dictionary<Vector3Int, ExplodingTile> explodingTiles = CollideAt<ExplodingTile>(contact.point);
+                foreach (KeyValuePair<Vector3Int, ExplodingTile> tilePair in explodingTiles)
+                    tilePair.Value.ExplodeTile(tilePair.Key, tm);
+            }
         }
 
         source.Play();
     }
     
+    public void Bounce(Collision2D collision)
+    {
+        foreach (ContactPoint2D contact in collision.contacts)
+        {
+            Dictionary<Vector3Int, BouncyTile> explodingTiles = CollideAt<BouncyTile>(contact.point);
+            foreach (KeyValuePair<Vector3Int, BouncyTile> tilePair in explodingTiles)
+                if (tilePair.Value != null)
+                {
+                    tilePair.Value.BounceAt(collision.gameObject, contact.point);
+                    return;
+                }
+        }
+    }
+
     public Dictionary<Vector3Int, T> CollideAt<T>(Vector2 pos)
         where T : TileBase
     {

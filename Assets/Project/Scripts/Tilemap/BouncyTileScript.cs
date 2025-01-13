@@ -26,7 +26,13 @@ namespace UnityEngine.Tilemaps
 
         public void BounceAt(GameObject gameObject, Vector3 contact)
         {
-            gameObject.GetComponent<Rigidbody2D>().AddForce((gameObject.transform.position - contact).normalized * 100.0f, ForceMode2D.Force);
+            float x = gameObject.transform.position.x - contact.x;
+            float y = gameObject.transform.position.y - contact.y;
+            Vector2 dir = (Mathf.Abs(x) > Mathf.Abs(y))
+                ? Vector2.right * Mathf.Sign(x)
+                : Vector2.up * Mathf.Sign(y);
+
+            gameObject.GetComponent<Rigidbody2D>().AddForce(dir * 1000.0f, ForceMode2D.Force);
         }
     }
 
