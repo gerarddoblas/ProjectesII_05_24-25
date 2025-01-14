@@ -179,6 +179,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5738696922677920033, guid: db46aaeeb82c9074180590376db3df43, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7130000758704212850, guid: db46aaeeb82c9074180590376db3df43, type: 3}
       propertyPath: possibleAreas.Array.size
       value: 13
@@ -22334,7 +22338,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8503080579327066052, guid: 70277371814978843b8958f4aba0bef3, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
