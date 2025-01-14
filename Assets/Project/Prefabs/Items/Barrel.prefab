@@ -178,6 +178,7 @@ MonoBehaviour:
   timeInScene: 2
   contador: 0
   damage: 15
+  BarrelBoom: {fileID: 8300000, guid: 810eea8358d54a844824661e36af0f6b, type: 3}
 --- !u!82 &-6384472547933613518
 AudioSource:
   m_ObjectHideFlags: 0
@@ -188,7 +189,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 810eea8358d54a844824661e36af0f6b, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

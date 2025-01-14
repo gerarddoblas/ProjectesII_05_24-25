@@ -22,9 +22,10 @@ public class Kaboom : Item
             this.transform.localScale.y + (growth * Time.deltaTime), 
             this.transform.localScale.z + (growth * Time.deltaTime)
         );
-        source.Play();
+
         if (contador >= timeInScene)
         {
+            source.Play();
             Destroy(this.gameObject);
         }
     }

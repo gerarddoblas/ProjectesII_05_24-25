@@ -8,6 +8,7 @@ public class Barrel : Item
     public float contador = 0.0f;
     public int damage = 15;
     private AudioSource source;
+    [SerializeField] private AudioClip BarrelBoom;
 
     private void Start()
     {
@@ -20,6 +21,7 @@ public class Barrel : Item
         if ( contador >= timeInScene )
         {
             Destroy(this.gameObject);
+            source.clip = BarrelBoom;
             source.Play();
         }
     }
@@ -31,6 +33,8 @@ public class Barrel : Item
             p.rigidbody2D.velocity = new Vector2(this.GetComponent<Rigidbody2D>().velocity.x, target.GetComponent<Rigidbody2D>().velocity.y);
             p.healthBehaviour.Damage(damage);
             Destroy(this.gameObject);
+            source.clip = BarrelBoom;
+            source.Play();
         }
         yield return null;
     }

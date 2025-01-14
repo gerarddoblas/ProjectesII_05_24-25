@@ -11,12 +11,13 @@ public class Beam:Item
     private void Start()
     {
         source = GetComponent<AudioSource>();
+        source.Play();
         if (creator.transform.position.x > this.transform.position.x)
             this.transform.localScale = new Vector3(-this.transform.localScale.x, this.transform.localScale.y, this.transform.localScale.z);
     }
     public void Update()
     {
-        source.Play();
+
         contador += Time.deltaTime;
         if (contador >= timeInScene)
         {

@@ -6,6 +6,7 @@ public class Mina : Item
 {
     private AudioSource source;
     [SerializeField]private AudioClip SetMine;
+    [SerializeField]private AudioClip MineBoom;
     private void Start()
     {
         source = GetComponent<AudioSource>();
@@ -14,7 +15,8 @@ public class Mina : Item
     {
         if (target.TryGetComponent<Player>(out Player p))
         {
-            source.Play(); ;
+            source.clip = MineBoom;
+            source.Play();
             p.healthBehaviour.Damage(2);
             Destroy(this.gameObject);
         }
@@ -23,7 +25,7 @@ public class Mina : Item
             if (target.gameObject)
             {
                 source.clip = SetMine;
-                source.Play(); ;
+                source.Play();
                 GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             }
         }

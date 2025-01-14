@@ -8,6 +8,7 @@ public class GroundCheck : MonoBehaviour
     [SerializeField] private float coyoteTime = 0.5f;
     [SerializeField]private bool grounded;
     [SerializeField] private bool coyote;
+    [SerializeField] private AudioClip PlayerInLand;
     public bool Grounded { get { return grounded; } set { grounded = value; } }
     public bool Coyote { get { return coyote; } set { coyote = value; } }
 

@@ -58,6 +58,6 @@ public class AreaManager : MonoBehaviour
     {
         transform.position = GetRandomPositionFromList();
        timeBeforeChange = Random.Range(3.0f, 10.0f);
-        source.Play();
+        //source.Play();
     }
 }
