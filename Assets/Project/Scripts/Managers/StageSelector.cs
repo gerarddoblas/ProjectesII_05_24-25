@@ -7,6 +7,9 @@ using UnityEngine.SceneManagement;
 public class StageSelector : MonoBehaviour
 {
     [SerializeField] string[] stages ;
+    [Header("minPlayersToPass: 0-AllPlayers")]
+    [SerializeField] int minPlayersToPass;
+    [SerializeField]bool  activateClapAnimation;
     private int players;
     public void LoadRandomStage()
     {        
@@ -15,10 +18,22 @@ public class StageSelector : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         players++;
-        if (players == PlayersManager.Instance.players.Count)
+        if ((players == PlayersManager.Instance.players.Count&&minPlayersToPass==0)||
+            (players>=minPlayersToPass&&minPlayersToPass!=0))
         {
-            Debug.Log("LoadingRandomStage...");
-            LoadRandomStage();
+            if (activateClapAnimation)
+            {
+                CameraFX.Instance.VerticalClap(delegate ()
+                {
+                    Debug.Log("LoadingRandomStage...");
+                    LoadRandomStage();
+                });
+            }
+            else
+            {
+                Debug.Log("LoadingRandomStage...");
+                LoadRandomStage();
+            }
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
