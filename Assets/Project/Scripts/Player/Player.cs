@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
 
     [Header("SFX")]
     private AudioSource source;
-    [SerializeField] private AudioClip jumpClip, KnockoutClip;
+    [SerializeField] private AudioClip walkClip, KnockoutClip;
     public SpriteRenderer positionMarker;
     public void LockMovement() { canMove = false; }
     public void UnlockMovement() {  canMove = true; }
@@ -65,8 +65,10 @@ public class Player : MonoBehaviour
     }
     private void FixedUpdate()
     {
+
         rigidbody2D.AddForce(new Vector2(acceleration * playerSpeed.x * Time.deltaTime, 0), ForceMode2D.Force);
         rigidbody2D.velocity = new Vector2(Mathf.Clamp(rigidbody2D.velocity.x, -maxSpeed, maxSpeed), rigidbody2D.velocity.y);
+
     }
     private void Update()
     {
@@ -88,15 +90,26 @@ public class Player : MonoBehaviour
     }
     void Move(InputAction.CallbackContext context)
     {
-        if (!canMove) return;
+        /*if (!canMove) return;
 
         playerSpeed = context.ReadValue<Vector2>();
         if (playerSpeed.x == 0) return;
-        spriteRenderer.flipX = playerSpeed.x < 0;
+        spriteRenderer.flipX = playerSpeed.x < 0;*/
+        if (canMove)
+        {
+            source.clip = walkClip;
+            source.Play();
+            playerSpeed = context.ReadValue<Vector2>();
+            if (playerSpeed.x < 0)
+                spriteRenderer.flipX = true;
+            else if (playerSpeed.x > 0)
+                spriteRenderer.flipX = false;
+        }
     }
     void MoveCancelled(InputAction.CallbackContext context)
     {
         playerSpeed = Vector2.zero;
+        source.Stop();
     }
     void Jump(InputAction.CallbackContext context)
     {
@@ -117,9 +130,8 @@ public class Player : MonoBehaviour
         groundCheck.Grounded = false;
         groundCheck.Coyote = false;
 
-        source.clip = jumpClip;
-        source.Play();
-
+        AudioManager.instance.PlaySFX("Jump");
+        jumpTime = 0;
         Instantiate(jumpParticles, groundCheck.transform.position, Quaternion.identity);
     }
 
@@ -141,10 +153,8 @@ public class Player : MonoBehaviour
     }
     IEnumerator Knockout()
     {
-        source.clip = KnockoutClip;
-        source.Play();
-
         canMove = false;
+        AudioManager.instance.PlaySFX("Knockout");
         StartCoroutine(healthBehaviour.SetInvincibility(knockoutTime * 2));
         yield return new WaitForSeconds(knockoutTime);
         canMove = true;

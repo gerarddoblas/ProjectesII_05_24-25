@@ -10,6 +10,7 @@ public class TilemapScript : MonoBehaviour
     private Tilemap tm;
     private AudioSource source;
     // Start is called before the first frame update
+    public static TilemapScript Instance { get; private set; }
     void Start()
     {
         source = GetComponent<AudioSource>();

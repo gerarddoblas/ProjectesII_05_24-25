@@ -10,24 +10,29 @@ public class Kaboom : Item
     public float timeInScene = 2f;
     public float contador = 0.0f;
     public float growth = .25f;
+    private AudioSource source;
     private void Start()
     {
+        source = GetComponent<AudioSource>();
         this.GetComponent<SpriteRenderer>().enabled = false;
     }
     public void Update()
     {
         contador += Time.deltaTime;
         this.transform.localScale = new Vector3(
-            this.transform.localScale.x + (growth * Time.deltaTime), 
-            this.transform.localScale.y + (growth * Time.deltaTime), 
+            this.transform.localScale.x + (growth * Time.deltaTime),
+            this.transform.localScale.y + (growth * Time.deltaTime),
             this.transform.localScale.z + (growth * Time.deltaTime)
         );
         try
         {
-            GameObject.Find("Grid").GetComponentInChildren<TilemapScript>().ExplodeArea(this.transform.position, (int)(transform.localScale.x* transform.localScale.y));
-        }catch(Exception e) { }
+            GameObject.Find("Grid").GetComponentInChildren<TilemapScript>().ExplodeArea(this.transform.position, (int)(transform.localScale.x * transform.localScale.y));
+        } catch (Exception e) { }
         if (contador >= timeInScene)
-            Destroy(this.gameObject);
+        {
+            AudioManager.instance.PlaySFX("Kaboom");
+            Destroy(this.gameObject); 
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

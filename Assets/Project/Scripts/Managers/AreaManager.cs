@@ -78,7 +78,6 @@ public class AreaManager : MonoBehaviour
 
     public void ChangeArea()
     {
-
         timeBeforeChange = Random.Range(1.5f, 5.0f);
 
         Vector3 curPosition = transform.position;

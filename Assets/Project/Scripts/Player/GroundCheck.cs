@@ -8,6 +8,7 @@ public class GroundCheck : MonoBehaviour
     [SerializeField] private float coyoteTime = 0.5f;
     [SerializeField]private bool grounded;
     [SerializeField] private bool coyote;
+    [SerializeField] private AudioClip PlayerInLand;
     public bool Grounded { get { return grounded; } set { grounded = value; } }
     public bool Coyote { get { return coyote; } set { coyote = value; } }
 
@@ -33,10 +34,15 @@ public class GroundCheck : MonoBehaviour
         if (!grounded) wasLastGrounded = Landed.FALLING;
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        AudioManager.instance.PlaySFX("InLand");
+    }
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (gameObject.activeInHierarchy)
         {
+
             grounded = true;
             coyote = true;
         }

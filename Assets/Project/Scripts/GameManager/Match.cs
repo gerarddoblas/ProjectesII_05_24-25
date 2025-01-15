@@ -12,6 +12,7 @@ public class Match : MonoBehaviour
     public TextMeshProUGUI counterText;
     public UnityEvent onFinishGame;
     private AudioSource source;
+    [SerializeField] private AudioClip ShortGameTime;
     
     void OnEnable()
     {
@@ -37,6 +38,7 @@ public class Match : MonoBehaviour
         remainingTime -= Time.deltaTime;
         if(remainingTime < 15.0f && !source.isPlaying)
         {
+            source.clip = ShortGameTime;
             source.Play();
         }
         if(remainingTime < 0)

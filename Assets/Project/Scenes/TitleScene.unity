@@ -782,6 +782,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stages:
   - LevelSelector
+  minPlayersToPass: 0
+  activateClapAnimation: 0
 --- !u!1 &1899283774
 GameObject:
   m_ObjectHideFlags: 0

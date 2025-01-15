@@ -50,9 +50,14 @@ public class Items : MonoBehaviour
         if (mana < maxFill && fillingMana)
         {
             mana += fillspeed * Time.deltaTime;
+            AudioManager.instance.PlayManaSound("ChargeMana");
             if (mana >= maxFill)
+            {
+                AudioManager.instance.manaSource.Stop();
                 mana = maxFill;
+            }
             onAlterMana.Invoke(this.mana);
+
         }
     }
     void CreateObject(InputAction.CallbackContext context, ObjectCreation.ObjectSizes size)
@@ -86,6 +91,7 @@ public class Items : MonoBehaviour
 
     void InstantiateCreatedObject(GameObject instantiatedItem)
     {
+        AudioManager.instance.PlaySFX("CreationItem");
         if (instantiatedItem.GetComponent<Item>().consumible)
             StartCoroutine(instantiatedItem.GetComponent<Item>().Effect(this.gameObject));
         else
