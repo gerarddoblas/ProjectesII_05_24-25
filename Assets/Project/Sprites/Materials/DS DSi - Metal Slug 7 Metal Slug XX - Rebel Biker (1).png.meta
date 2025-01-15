@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 25
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -106,6 +106,32 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -113,10 +139,10 @@ TextureImporter:
       name: DS DSi - Metal Slug 7 Metal Slug XX - Rebel Biker (1)_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 500
-        width: 150
-        height: 100
+        x: 65
+        y: 544
+        width: 18
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,10 +160,10 @@ TextureImporter:
       name: DS DSi - Metal Slug 7 Metal Slug XX - Rebel Biker (1)_1
       rect:
         serializedVersion: 2
-        x: 150
-        y: 500
-        width: 150
-        height: 100
+        x: 210
+        y: 540
+        width: 29
+        height: 23
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -155,10 +181,10 @@ TextureImporter:
       name: DS DSi - Metal Slug 7 Metal Slug XX - Rebel Biker (1)_2
       rect:
         serializedVersion: 2
-        x: 300
-        y: 500
-        width: 150
-        height: 100
+        x: 358
+        y: 537
+        width: 33
+        height: 29
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -176,10 +202,10 @@ TextureImporter:
       name: DS DSi - Metal Slug 7 Metal Slug XX - Rebel Biker (1)_3
       rect:
         serializedVersion: 2
-        x: 0
-        y: 400
-        width: 150
-        height: 100
+        x: 57
+        y: 436
+        width: 34
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -197,10 +223,10 @@ TextureImporter:
       name: DS DSi - Metal Slug 7 Metal Slug XX - Rebel Biker (1)_4
       rect:
         serializedVersion: 2
-        x: 150
-        y: 400
-        width: 150
-        height: 100
+        x: 208
+        y: 438
+        width: 33
+        height: 27
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -218,10 +244,10 @@ TextureImporter:
       name: DS DSi - Metal Slug 7 Metal Slug XX - Rebel Biker (1)_5
       rect:
         serializedVersion: 2
-        x: 300
-        y: 400
-        width: 150
-        height: 100
+        x: 357
+        y: 438
+        width: 35
+        height: 27
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -239,10 +265,10 @@ TextureImporter:
       name: DS DSi - Metal Slug 7 Metal Slug XX - Rebel Biker (1)_6
       rect:
         serializedVersion: 2
-        x: 0
-        y: 300
-        width: 150
-        height: 100
+        x: 56
+        y: 337
+        width: 36
+        height: 29
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -260,10 +286,10 @@ TextureImporter:
       name: DS DSi - Metal Slug 7 Metal Slug XX - Rebel Biker (1)_7
       rect:
         serializedVersion: 2
-        x: 150
-        y: 300
-        width: 150
-        height: 100
+        x: 206
+        y: 337
+        width: 37
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -281,10 +307,10 @@ TextureImporter:
       name: DS DSi - Metal Slug 7 Metal Slug XX - Rebel Biker (1)_8
       rect:
         serializedVersion: 2
-        x: 300
-        y: 300
-        width: 150
-        height: 100
+        x: 356
+        y: 337
+        width: 36
+        height: 29
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -302,10 +328,10 @@ TextureImporter:
       name: DS DSi - Metal Slug 7 Metal Slug XX - Rebel Biker (1)_9
       rect:
         serializedVersion: 2
-        x: 0
-        y: 200
-        width: 150
-        height: 100
+        x: 55
+        y: 236
+        width: 39
+        height: 31
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -323,10 +349,10 @@ TextureImporter:
       name: DS DSi - Metal Slug 7 Metal Slug XX - Rebel Biker (1)_10
       rect:
         serializedVersion: 2
-        x: 150
-        y: 200
-        width: 150
-        height: 100
+        x: 204
+        y: 235
+        width: 40
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -344,10 +370,10 @@ TextureImporter:
       name: DS DSi - Metal Slug 7 Metal Slug XX - Rebel Biker (1)_11
       rect:
         serializedVersion: 2
-        x: 300
-        y: 200
-        width: 150
-        height: 100
+        x: 354
+        y: 235
+        width: 40
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -365,10 +391,10 @@ TextureImporter:
       name: DS DSi - Metal Slug 7 Metal Slug XX - Rebel Biker (1)_12
       rect:
         serializedVersion: 2
-        x: 0
-        y: 100
-        width: 150
-        height: 100
+        x: 55
+        y: 135
+        width: 39
+        height: 33
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -386,10 +412,10 @@ TextureImporter:
       name: DS DSi - Metal Slug 7 Metal Slug XX - Rebel Biker (1)_13
       rect:
         serializedVersion: 2
-        x: 150
-        y: 100
-        width: 150
-        height: 100
+        x: 205
+        y: 136
+        width: 39
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -407,10 +433,10 @@ TextureImporter:
       name: DS DSi - Metal Slug 7 Metal Slug XX - Rebel Biker (1)_14
       rect:
         serializedVersion: 2
-        x: 300
-        y: 100
-        width: 150
-        height: 100
+        x: 355
+        y: 136
+        width: 39
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -428,10 +454,10 @@ TextureImporter:
       name: DS DSi - Metal Slug 7 Metal Slug XX - Rebel Biker (1)_15
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 150
-        height: 100
+        x: 54
+        y: 37
+        width: 40
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -446,36 +472,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DS DSi - Metal Slug 7 Metal Slug XX - Rebel Biker (1)_16
-      rect:
-        serializedVersion: 2
-        x: 150
-        y: 0
-        width: 150
-        height: 100
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e745067282e519047a7dbaafd1383bb4
-      internalID: -716661632
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: DS DSi - Metal Slug 7 Metal Slug XX - Rebel Biker (1)_17
       rect:
         serializedVersion: 2
-        x: 300
-        y: 0
-        width: 150
-        height: 100
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 204
+        y: 38
+        width: 40
+        height: 31
+      alignment: 9
+      pivot: {x: 0.46848342, y: 0.48252836}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -483,6 +488,27 @@ TextureImporter:
       bones: []
       spriteID: 20262b4d15a4a784498e84f705ab3bd7
       internalID: 1687553231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Metal Slug 7 Metal Slug XX - Rebel Biker (1)_20
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 39
+        width: 37
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30d0b9adf32bdc14cb4851c870c9c12b
+      internalID: -596171725
       vertices: []
       indices: 
       edges: []
@@ -508,7 +534,11 @@ TextureImporter:
       DS DSi - Metal Slug 7 Metal Slug XX - Rebel Biker (1)_15: -1248063835
       DS DSi - Metal Slug 7 Metal Slug XX - Rebel Biker (1)_16: -716661632
       DS DSi - Metal Slug 7 Metal Slug XX - Rebel Biker (1)_17: 1687553231
+      DS DSi - Metal Slug 7 Metal Slug XX - Rebel Biker (1)_18: -860492160
+      DS DSi - Metal Slug 7 Metal Slug XX - Rebel Biker (1)_19: 1821074461
       DS DSi - Metal Slug 7 Metal Slug XX - Rebel Biker (1)_2: 793968394
+      DS DSi - Metal Slug 7 Metal Slug XX - Rebel Biker (1)_20: -596171725
+      DS DSi - Metal Slug 7 Metal Slug XX - Rebel Biker (1)_21: 1710723671
       DS DSi - Metal Slug 7 Metal Slug XX - Rebel Biker (1)_3: -1952169349
       DS DSi - Metal Slug 7 Metal Slug XX - Rebel Biker (1)_4: -1932154091
       DS DSi - Metal Slug 7 Metal Slug XX - Rebel Biker (1)_5: -83933994
