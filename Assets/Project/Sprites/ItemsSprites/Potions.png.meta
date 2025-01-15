@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SmallHealthPotion
+      name: Potions_0
       rect:
         serializedVersion: 2
         x: 3
-        y: 16
-        width: 7
-        height: 13
+        y: 26
+        width: 18
+        height: 23
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2af7d88d00b77394e8a019e6b69f4b4e
-      internalID: -1462085337
+      spriteID: 152ab1f609ab64f4cb3176779c6ec93a
+      internalID: -56632360
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FullHealPotion
+      name: Potions_1
       rect:
         serializedVersion: 2
-        x: 13
-        y: 15
-        width: 13
-        height: 15
+        x: 33
+        y: 29
+        width: 9
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a4f92572ec3ed694087372a65fdc0378
-      internalID: -1760887911
+      spriteID: 13aa8f215ec363e47bb0844997429a9f
+      internalID: 526792378
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: InvencibilityPotion
+      name: Potions_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 13
-        height: 15
+        x: 3
+        y: 2
+        width: 18
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,8 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ed050e4f948565d438c7aff2c202f1e0
-      internalID: -472758036
+      spriteID: a4e6bb5594214714c83ce9ae6a412ab2
+      internalID: 1954935297
       vertices: []
       indices: 
       edges: []
@@ -183,9 +183,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      FullHealPotion: -1760887911
-      InvencibilityPotion: -472758036
-      SmallHealthPotion: -1462085337
+      Potions_0: -56632360
+      Potions_1: 526792378
+      Potions_2: 1954935297
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
