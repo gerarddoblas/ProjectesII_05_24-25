@@ -26,7 +26,9 @@ public class Match : MonoBehaviour
             PlayersManager.Instance.HideAllHuds();
             PlayersManager.Instance.LockPlayersMovement();
             PlayersManager.Instance.DisablePlayersCreation();
-            SceneManager.LoadScene("ResultScene");
+            CameraFX.Instance.VerticalClap(() =>            {
+                SceneManager.LoadScene("ResultScene");
+            });
         });
         source = GetComponent<AudioSource>();
         source.Play();

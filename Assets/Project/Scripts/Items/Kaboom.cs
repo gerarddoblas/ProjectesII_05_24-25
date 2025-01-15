@@ -30,7 +30,8 @@ public class Kaboom : Item
         } catch (Exception e) { }
         if (contador >= timeInScene)
         {
-            AudioManager.instance.PlaySFX("Kaboom");
+            
+            //AudioManager.instance.PlaySFX("Kaboom");
             Destroy(this.gameObject); 
         }
     }
@@ -38,19 +39,14 @@ public class Kaboom : Item
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Colliding with " + collision.gameObject.name);
-        if (collision.gameObject.TryGetComponent<TilemapScript>(out TilemapScript tm))
-        {
-            tm.ExplodeArea(this.transform.position, 200);
-        }
+        TilemapScript.Instance.ExplodeArea(this.transform.position, (int)Math.Sqrt(this.transform.localScale.magnitude));
     }
 
     override public IEnumerator Effect(GameObject target)
     {
-        if (target.TryGetComponent<TilemapScript>(out TilemapScript tm))
-        {
-            tm.ExplodeArea(this.transform.position, 200);
-        }
-        else if (target.TryGetComponent<HealthBehaviour>(out HealthBehaviour hb))
+        TilemapScript.Instance.ExplodeArea(this.transform.position, (int)Math.Sqrt(this.transform.localScale.magnitude));
+        
+        if (target.TryGetComponent<HealthBehaviour>(out HealthBehaviour hb))
             hb.FullDamage();
         yield return null;
     }

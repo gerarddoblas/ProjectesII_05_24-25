@@ -12,7 +12,7 @@ public class ItemHud : MonoBehaviour
     [SerializeField] private Image[] sprites;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         if (Instance == null)
             Instance = this;
