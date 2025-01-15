@@ -10,16 +10,17 @@ public class Items : MonoBehaviour
     public float mana, fillspeed, maxFill;
     public float consumedMana;
     public UnityEvent<float> onAlterMana;
+
     //Object Creation
-    private bool canCreate = true,fillingMana = true;
+    private bool canCreate = true, fillingMana = true;
     private bool dontRepeat = true;
-    private GameObject lastSmallObject, lastMidObject, lastBigObject;
     public ObjectCreation objectGenerator;
-    public GameObject smallObject, mediumObject, bigObject;
+
     public UnityEvent<Sprite> onGenerateRandomSmallObject, onGenerateRandomMidObject, onGenerateRandomBigObject;
-    Coroutine charging;
-    SpriteRenderer spriteRenderer;
-    Rigidbody2D rigidbody;
+    private Coroutine charging;
+    private SpriteRenderer spriteRenderer;
+    private Rigidbody2D rigidbody;
+
     public void EnableCreation() { canCreate = true; }
     public void DisableCreation() {  canCreate = false; }
     private void Awake()
@@ -30,15 +31,19 @@ public class Items : MonoBehaviour
         PlayerInput input = GetComponent<PlayerInput>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         rigidbody = GetComponent<Rigidbody2D>();
+
         input.actions.FindAction("GenerateSmallObject").started += CreateSmallObject;
         input.actions.FindAction("GenerateMidObject").started += CreateMidObject;
         input.actions.FindAction("GenerateBigObject").started += CreateBigObject;
-        smallObject = objectGenerator.GetRandomSmallObject();
-        onGenerateRandomSmallObject.Invoke(smallObject.GetComponent<SpriteRenderer>().sprite);
-        mediumObject = objectGenerator.GetRandomMediumObject();
-        onGenerateRandomMidObject.Invoke(mediumObject.GetComponent<SpriteRenderer>().sprite);
-        bigObject = objectGenerator.GetRandomBigObject();
-        onGenerateRandomBigObject.Invoke(bigObject.GetComponent<SpriteRenderer>().sprite);
+    }
+
+    private void Start()
+    {
+        for (int i = 0; i < 3; i++)
+            ItemHud.Instance.objects[i] = objectGenerator.GetRandomObject((ObjectCreation.ObjectSizes)i);
+        onGenerateRandomSmallObject.Invoke(ItemHud.Instance.objects[0].GetComponent<SpriteRenderer>().sprite);
+        onGenerateRandomMidObject.Invoke(ItemHud.Instance.objects[1].GetComponent<SpriteRenderer>().sprite);
+        onGenerateRandomBigObject.Invoke(ItemHud.Instance.objects[2].GetComponent<SpriteRenderer>().sprite);
     }
     private void Update()
     {
@@ -50,45 +55,35 @@ public class Items : MonoBehaviour
             onAlterMana.Invoke(this.mana);
         }
     }
-    void CreateSmallObject(InputAction.CallbackContext context)
+    void CreateObject(InputAction.CallbackContext context, ObjectCreation.ObjectSizes size)
     {
-        if(mana >= 1f && canCreate)
+        if (mana < (int)size || !canCreate) return;
+        mana -= (int)size;
+        onAlterMana.Invoke(this.mana);
+
+        GameObject instantiatedItem = ItemHud.Instance.objects[(int)size];
+        ItemHud.Instance.objects[(int)size] = objectGenerator.GetRandomObject(size);
+        while (instantiatedItem.GetComponent<SpriteRenderer>().sprite == ItemHud.Instance.objects[(int)size].GetComponent<SpriteRenderer>().sprite && dontRepeat)
+            ItemHud.Instance.objects[(int)size] = objectGenerator.GetRandomSmallObject();
+
+        switch(size)
         {
-            mana -= 1f;
-            GameObject  instantiatedItem = smallObject;
-            smallObject = objectGenerator.GetRandomSmallObject();
-            while(instantiatedItem.GetComponent<SpriteRenderer>().sprite == smallObject.GetComponent<SpriteRenderer>().sprite && dontRepeat)
-                smallObject = objectGenerator.GetRandomSmallObject();
-            onGenerateRandomSmallObject.Invoke(smallObject.GetComponent<SpriteRenderer>().sprite);
-            InstantiateCreatedObject(instantiatedItem);
+            case ObjectCreation.ObjectSizes.SMALL:
+                onGenerateRandomSmallObject.Invoke(ItemHud.Instance.objects[(int)size].GetComponent<SpriteRenderer>().sprite);
+                break;
+            case ObjectCreation.ObjectSizes.MEDIUM:
+                onGenerateRandomMidObject.Invoke(ItemHud.Instance.objects[(int)size].GetComponent<SpriteRenderer>().sprite);
+                break;
+            case ObjectCreation.ObjectSizes.LARGE:
+                onGenerateRandomBigObject.Invoke(ItemHud.Instance.objects[(int)size].GetComponent<SpriteRenderer>().sprite);
+                break;
         }
+        InstantiateCreatedObject(instantiatedItem);
     }
-    void CreateMidObject(InputAction.CallbackContext context)
-    {
-        if (mana >= 2f && canCreate)
-        {
-            mana -= 2f;
-            GameObject instantiatedItem = mediumObject;
-            mediumObject = objectGenerator.GetRandomMediumObject();
-            while (instantiatedItem.GetComponent<SpriteRenderer>().sprite == mediumObject.GetComponent<SpriteRenderer>().sprite && dontRepeat)
-                mediumObject = objectGenerator.GetRandomMediumObject(); 
-            onGenerateRandomMidObject.Invoke(mediumObject.GetComponent<SpriteRenderer>().sprite);
-            InstantiateCreatedObject(instantiatedItem);
-        }
-    }
-    void CreateBigObject(InputAction.CallbackContext context)
-    {
-        if (mana >= 3f && canCreate)
-        {
-            mana -= 3f;
-            GameObject instantiatedItem = bigObject;
-            bigObject = objectGenerator.GetRandomBigObject();
-            while (instantiatedItem.GetComponent<SpriteRenderer>().sprite == bigObject.GetComponent<SpriteRenderer>().sprite && dontRepeat)
-                bigObject = objectGenerator.GetRandomBigObject();
-            onGenerateRandomBigObject.Invoke(bigObject.GetComponent<SpriteRenderer>().sprite);
-            InstantiateCreatedObject(instantiatedItem);
-        }
-    }
+    void CreateSmallObject(InputAction.CallbackContext context) => CreateObject(context, ObjectCreation.ObjectSizes.SMALL);
+    void CreateMidObject(InputAction.CallbackContext context) => CreateObject(context, ObjectCreation.ObjectSizes.MEDIUM);
+    void CreateBigObject(InputAction.CallbackContext context) => CreateObject(context, ObjectCreation.ObjectSizes.LARGE);
+
     void InstantiateCreatedObject(GameObject instantiatedItem)
     {
         if (instantiatedItem.GetComponent<Item>().consumible)

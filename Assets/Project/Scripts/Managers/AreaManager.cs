@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AreaManager : MonoBehaviour
 {
+    [SerializeField] private int curAreaIndex;
     [SerializeField] private Vector2[] possibleAreas;
     [SerializeField] private float timeBeforeChange;
     private AudioSource source;
@@ -72,12 +73,21 @@ public class AreaManager : MonoBehaviour
             source.Stop();
     }
 
-    public Vector3 GetRandomPositionFromList() => possibleAreas[Random.Range(0, possibleAreas.Length)];
+    public int GetRandomIndex() => Random.Range(0, possibleAreas.Length);
+    public Vector3 GetRandomAreaPosition() => possibleAreas[GetRandomIndex()];
 
     public void ChangeArea()
     {
+
+        timeBeforeChange = Random.Range(1.5f, 5.0f);
+
         Vector3 curPosition = transform.position;
-        do { transform.position = GetRandomPositionFromList(); } while (transform.position == curPosition);
+        int curIndex = curAreaIndex;
+        do { curIndex = GetRandomIndex(); } while (curIndex == curAreaIndex);
+
+        transform.position = possibleAreas[curIndex];
+        curAreaIndex = curIndex;
+
         int particleCount = Random.Range(5, 8);
         while(particleCount > 0)
         {
@@ -93,8 +103,6 @@ public class AreaManager : MonoBehaviour
         }
 
         particleSystem.Play();
-
-        timeBeforeChange = Random.Range(1.5f, 5.0f);
         source.Play();
     }
 }
