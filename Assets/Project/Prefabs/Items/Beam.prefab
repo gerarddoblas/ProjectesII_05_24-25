@@ -321,7 +321,7 @@ MonoBehaviour:
   creatorImmunity: 1
   timeInScene: 0.5
   contador: 0
-  particle: {fileID: 5985029636819310970, guid: faebf9cd443954e488645e9ee8e20c3a, type: 3}
+  particle: {fileID: 2116742792820544769, guid: faebf9cd443954e488645e9ee8e20c3a, type: 3}
 --- !u!82 &-1943658474371392364
 AudioSource:
   m_ObjectHideFlags: 0

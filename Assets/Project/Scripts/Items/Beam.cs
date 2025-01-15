@@ -8,7 +8,7 @@ public class Beam:Item
     public float timeInScene = .5f;
     public float contador = 0.0f;
     private AudioSource source;
-    [SerializeField] private ParticleSystem particle;
+    [SerializeField] private GameObject particle;
 
     private void Start()
     {
