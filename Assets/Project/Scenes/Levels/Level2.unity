@@ -313,7 +313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54f9dc9a7699e4745855ae59b7fcf276, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tolerance: 0
+  tolerance: 0.3
 --- !u!483693784 &583392235
 TilemapRenderer:
   m_ObjectHideFlags: 0

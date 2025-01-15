@@ -9,15 +9,21 @@ public class ItemHud : MonoBehaviour
 
     public GameObject[] objects = new GameObject[3];
 
+    [SerializeField] private ObjectCreation objectCreation;
+
     [SerializeField] private Image[] sprites;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         if (Instance == null)
             Instance = this;
         else
             Destroy(gameObject);
+
+        objects[0] = objectCreation.GetRandomSmallObject();
+        objects[1] = objectCreation.GetRandomMediumObject();
+        objects[2] = objectCreation.GetRandomBigObject();
     }
 
     // Update is called once per frame
