@@ -15,8 +15,7 @@ public class Mina : Item
     {
         if (target.TryGetComponent<Player>(out Player p))
         {
-            source.clip = MineBoom;
-            source.Play();
+            AudioManager.instance.PlaySFX("Mine");
             p.healthBehaviour.Damage(2);
             Destroy(this.gameObject);
         }
@@ -24,8 +23,7 @@ public class Mina : Item
         {
             if (target.gameObject)
             {
-                source.clip = SetMine;
-                source.Play();
+                AudioManager.instance.PlaySFX("MineInMap");
                 GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             }
         }

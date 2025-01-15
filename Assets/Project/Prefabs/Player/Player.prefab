@@ -50,6 +50,7 @@ MonoBehaviour:
   coyoteTime: 0.5
   grounded: 0
   coyote: 0
+  PlayerInLand: {fileID: 0}
 --- !u!61 &9074607855059947321
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4970,7 +4971,7 @@ MonoBehaviour:
   landingParticles: {fileID: 2686372130080697451, guid: d8e6f85df7c2e4041a3171c972672bbd, type: 3}
   jumpParticles: {fileID: 2686372130080697451, guid: 711e25f765cc8194ca7824dffdcb9c64, type: 3}
   knowdownTime: 3
-  jumpClip: {fileID: 8300000, guid: 4a95e4c3bafa6c240a922c6815c667fb, type: 3}
+  walkClip: {fileID: 8300000, guid: 21d568c6e817ee24bb788c37eb56cb77, type: 3}
   KnockoutClip: {fileID: 8300000, guid: 387373f49d179294aaf77c8f9fbe6c29, type: 3}
   positionMarker: {fileID: 7483774974877627172}
 --- !u!114 &1128478866674204696

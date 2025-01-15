@@ -20,9 +20,9 @@ public class Barrel : Item
         contador += Time.deltaTime;
         if ( contador >= timeInScene )
         {
+            AudioManager.instance.PlaySFX("Barrel");
             Destroy(this.gameObject);
-            source.clip = BarrelBoom;
-            source.Play();
+
         }
     }
     override public IEnumerator Effect(GameObject target)
@@ -30,11 +30,11 @@ public class Barrel : Item
 
         if (target.TryGetComponent<Player>(out Player p))
         {
+            AudioManager.instance.PlaySFX("Barrel");
             p.rigidbody2D.velocity = new Vector2(this.GetComponent<Rigidbody2D>().velocity.x, target.GetComponent<Rigidbody2D>().velocity.y);
             p.healthBehaviour.Damage(damage);
             Destroy(this.gameObject);
-            source.clip = BarrelBoom;
-            source.Play();
+
         }
         yield return null;
     }

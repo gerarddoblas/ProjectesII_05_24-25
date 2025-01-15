@@ -34,10 +34,15 @@ public class GroundCheck : MonoBehaviour
         if (!grounded) wasLastGrounded = Landed.FALLING;
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        AudioManager.instance.PlaySFX("InLand");
+    }
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (gameObject.activeInHierarchy)
         {
+
             grounded = true;
             coyote = true;
         }

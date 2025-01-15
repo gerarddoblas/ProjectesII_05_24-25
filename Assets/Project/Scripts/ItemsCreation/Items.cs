@@ -45,15 +45,21 @@ public class Items : MonoBehaviour
         if (mana < maxFill && fillingMana)
         {
             mana += fillspeed * Time.deltaTime;
+            AudioManager.instance.PlayManaSound("ChargeMana");
             if (mana >= maxFill)
+            {
+                AudioManager.instance.manaSource.Stop();
                 mana = maxFill;
+            }
             onAlterMana.Invoke(this.mana);
+
         }
     }
     void CreateSmallObject(InputAction.CallbackContext context)
     {
         if(mana >= 1f && canCreate)
         {
+          //  AudioManager.instance.PlaySFX("");
             mana -= 1f;
             GameObject  instantiatedItem = smallObject;
             smallObject = objectGenerator.GetRandomSmallObject();
@@ -67,6 +73,7 @@ public class Items : MonoBehaviour
     {
         if (mana >= 2f && canCreate)
         {
+           // AudioManager.instance.PlaySFX("");
             mana -= 2f;
             GameObject instantiatedItem = mediumObject;
             mediumObject = objectGenerator.GetRandomMediumObject();
@@ -80,6 +87,7 @@ public class Items : MonoBehaviour
     {
         if (mana >= 3f && canCreate)
         {
+           // AudioManager.instance.PlaySFX("");
             mana -= 3f;
             GameObject instantiatedItem = bigObject;
             bigObject = objectGenerator.GetRandomBigObject();
@@ -91,6 +99,7 @@ public class Items : MonoBehaviour
     }
     void InstantiateCreatedObject(GameObject instantiatedItem)
     {
+        AudioManager.instance.PlaySFX("CreationItem");
         if (instantiatedItem.GetComponent<Item>().consumible)
             StartCoroutine(instantiatedItem.GetComponent<Item>().Effect(this.gameObject));
         else

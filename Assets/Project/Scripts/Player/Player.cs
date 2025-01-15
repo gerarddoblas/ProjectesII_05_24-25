@@ -31,7 +31,7 @@ public class Player : MonoBehaviour
     private bool canMove = true;
     public float knowdownTime = 3f;
     private AudioSource source;
-    [SerializeField] private AudioClip jumpClip, KnockoutClip;
+    [SerializeField] private AudioClip walkClip, KnockoutClip;
     public SpriteRenderer positionMarker;
     public void LockMovement() { canMove = false; }
     public void UnlockMovement() {  canMove = true; }
@@ -54,8 +54,7 @@ public class Player : MonoBehaviour
         });
     }
     private void FixedUpdate()
-    { 
-
+    {
         rigidbody2D.AddForce(new Vector2(acceleration*playerSpeed.x*Time.deltaTime,0), ForceMode2D.Force);
         if (rigidbody2D.velocity.x > maxSpeed)
             rigidbody2D.velocity = new Vector2(maxSpeed, rigidbody2D.velocity.y);
@@ -85,6 +84,8 @@ public class Player : MonoBehaviour
     {
         if (canMove)
         {
+            source.clip = walkClip;
+            source.Play();
             playerSpeed = context.ReadValue<Vector2>();
             if (playerSpeed.x < 0)
                 spriteRenderer.flipX = true;
@@ -95,6 +96,7 @@ public class Player : MonoBehaviour
     void MoveCancelled(InputAction.CallbackContext context)
     {
         playerSpeed = Vector2.zero;
+        source.Stop();
     }
     void Jump(InputAction.CallbackContext context)
     {
@@ -114,8 +116,7 @@ public class Player : MonoBehaviour
         curJumpForce = minJumpForce;
         groundCheck.Grounded = false;
         groundCheck.Coyote = false;
-        source.clip = jumpClip;
-        source.Play();
+        AudioManager.instance.PlaySFX("Jump");
         jumpTime = 0;
         Instantiate(jumpParticles, groundCheck.transform.position, Quaternion.identity);
     }
@@ -139,8 +140,7 @@ public class Player : MonoBehaviour
     IEnumerator Knockout()
     {
         canMove = false;
-        source.clip = KnockoutClip;
-        source.Play(); 
+        AudioManager.instance.PlaySFX("Knockout");
         StartCoroutine(healthBehaviour.SetInvencibility(knowdownTime*2));
         yield return new WaitForSeconds(knowdownTime);
         canMove = true;

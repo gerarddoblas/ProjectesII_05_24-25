@@ -25,7 +25,7 @@ public class Kaboom : Item
 
         if (contador >= timeInScene)
         {
-            source.Play();
+            AudioManager.instance.PlaySFX("Kaboom");
             Destroy(this.gameObject);
         }
     }
