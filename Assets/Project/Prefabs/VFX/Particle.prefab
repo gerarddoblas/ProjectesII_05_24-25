@@ -100,4 +100,4 @@ MonoBehaviour:
   objective: {fileID: 0}
   speed: 1
   scaleSpeed: 0
-  tolerance: 0.1
+  tolerance: 0.3

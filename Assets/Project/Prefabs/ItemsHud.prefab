@@ -154,6 +154,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  objectCreation: {fileID: 11400000, guid: beec49a64267bdd4792ee5991a8b74e8, type: 2}
   sprites:
   - {fileID: 8533107442818834267}
   - {fileID: 3808468593781046794}

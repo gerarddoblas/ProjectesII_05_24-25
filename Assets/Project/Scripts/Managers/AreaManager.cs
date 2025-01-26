@@ -101,7 +101,7 @@ public class AreaManager : MonoBehaviour
             --particleCount;
         }
 
-        particleSystem.Play();
+        //particleSystem.Play();
         source.Play();
     }
 }

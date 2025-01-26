@@ -26,7 +26,7 @@ public class Kaboom : Item
         );
         try
         {
-            GameObject.Find("Grid").GetComponentInChildren<TilemapScript>().ExplodeArea(this.transform.position, (int)(transform.localScale.x * transform.localScale.y));
+            TilemapScript.Instance.ExplodeArea(this.transform.position, (int)(transform.localScale.x * transform.localScale.y));
         } catch (Exception e) { }
         if (contador >= timeInScene)
         {
@@ -38,19 +38,16 @@ public class Kaboom : Item
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Colliding with " + collision.gameObject.name);
-        if (collision.gameObject.TryGetComponent<TilemapScript>(out TilemapScript tm))
-        {
-            tm.ExplodeArea(this.transform.position, 200);
-        }
+        TilemapScript.Instance.ExplodeArea(this.transform.position, (int)Math.Sqrt(this.transform.localScale.magnitude)/2);
+        if (collision.TryGetComponent<HealthBehaviour>(out HealthBehaviour hb)&&(collision.gameObject!=creator))
+            hb.FullDamage();
     }
 
     override public IEnumerator Effect(GameObject target)
     {
-        if (target.TryGetComponent<TilemapScript>(out TilemapScript tm))
-        {
-            tm.ExplodeArea(this.transform.position, 200);
-        }
-        else if (target.TryGetComponent<HealthBehaviour>(out HealthBehaviour hb))
+        TilemapScript.Instance.ExplodeArea(this.transform.position, (int)Math.Sqrt(this.transform.localScale.magnitude)/2);
+        Debug.Log("Colliding with " + target.gameObject.name);
+        if (target.TryGetComponent<HealthBehaviour>(out HealthBehaviour hb))
             hb.FullDamage();
         yield return null;
     }

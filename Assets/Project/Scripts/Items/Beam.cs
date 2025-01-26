@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.ParticleSystem;
 
 public class Beam:Item
 {
     public float timeInScene = .5f;
     public float contador = 0.0f;
     private AudioSource source;
+    [SerializeField] private GameObject particle;
 
     private void Start()
     {
@@ -20,6 +22,7 @@ public class Beam:Item
         contador += Time.deltaTime;
         if (contador >= timeInScene)
         {
+            Instantiate(particle, this.transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }
     }

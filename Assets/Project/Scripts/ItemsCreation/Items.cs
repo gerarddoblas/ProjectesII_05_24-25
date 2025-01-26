@@ -35,6 +35,8 @@ public class Items : MonoBehaviour
         input.actions.FindAction("GenerateSmallObject").started += CreateSmallObject;
         input.actions.FindAction("GenerateMidObject").started += CreateMidObject;
         input.actions.FindAction("GenerateBigObject").started += CreateBigObject;
+
+
     }
 
     private void Start()
@@ -69,7 +71,7 @@ public class Items : MonoBehaviour
         GameObject instantiatedItem = ItemHud.Instance.objects[(int)size];
         ItemHud.Instance.objects[(int)size] = objectGenerator.GetRandomObject(size);
         while (instantiatedItem.GetComponent<SpriteRenderer>().sprite == ItemHud.Instance.objects[(int)size].GetComponent<SpriteRenderer>().sprite && dontRepeat)
-            ItemHud.Instance.objects[(int)size] = objectGenerator.GetRandomSmallObject();
+            ItemHud.Instance.objects[(int)size] = objectGenerator.GetRandomObject(size);
 
         switch(size)
         {

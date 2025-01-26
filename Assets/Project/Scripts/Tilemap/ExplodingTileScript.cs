@@ -20,7 +20,10 @@ namespace UnityEngine.Tilemaps
         {
             states = new Dictionary<Vector3Int, int>();
         }
-
+        private void Awake()
+        {
+            states = new Dictionary<Vector3Int, int>();
+        }
         public override void GetTileData(Vector3Int position, ITilemap tilemap, ref TileData tileData)
         {
 

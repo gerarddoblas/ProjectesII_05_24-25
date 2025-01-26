@@ -155,8 +155,11 @@ public class Player : MonoBehaviour
     {
         canMove = false;
         AudioManager.instance.PlaySFX("Knockout");
+        this.GetComponent<Items>().LockManaAndCreation();
         StartCoroutine(healthBehaviour.SetInvincibility(knockoutTime * 2));
         yield return new WaitForSeconds(knockoutTime);
+
+        this.GetComponent<Items>().UnlockManaAndCreation();
         canMove = true;
 
         healthBehaviour.FullHeal();
