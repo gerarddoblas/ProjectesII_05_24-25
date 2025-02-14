@@ -8,7 +8,7 @@ public class GameController : MonoBehaviour
 {
     public List<BaseGame> gameModes;
     public List<string> stages;
-    public List<int> playerScores;
+    public List<float> playerScores;
     public BaseGame currentGameMode;
     [SerializeField] bool clapAnimations;
     public int targetScore;
@@ -65,11 +65,11 @@ public class GameController : MonoBehaviour
         SelectNextLevel();
         currentGameMode.StartGame();
     }
-    public void AddScore(int scoreToAdd, GameObject player)
+    public void AddScore(float scoreToAdd, GameObject player)
     {
         for (int i = 0; i < PlayersManager.Instance.players.Count; i++)
             if(player == PlayersManager.Instance.players[i])
-                playerScores.Add(scoreToAdd);
+                playerScores[i]+=scoreToAdd;
     }
     public void ResetScore() {
         playerScores.Clear();

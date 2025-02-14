@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
     [Header("Events")]
     public UnityEvent<float> onAlterMana;
     public UnityEvent<float> onAlterScore;
+    public UnityEvent<GameObject> onPlayerHitted;
 
     [Header("Score")]
     [SerializeField] private float score;
@@ -158,10 +159,19 @@ public class Player : MonoBehaviour
         this.GetComponent<Items>().LockManaAndCreation();
         StartCoroutine(healthBehaviour.SetInvincibility(knockoutTime * 2));
         yield return new WaitForSeconds(knockoutTime);
-
         this.GetComponent<Items>().UnlockManaAndCreation();
         canMove = true;
-
         healthBehaviour.FullHeal();
+    }
+    IEnumerator SetSnockout()
+    {
+        canMove = false;
+        healthBehaviour.SetInvincibility();
+        yield return null;
+    }
+    IEnumerator QuitKnockout() {
+        canMove = true;
+        healthBehaviour.QuitInvincibility();
+        yield return null;
     }
 }
