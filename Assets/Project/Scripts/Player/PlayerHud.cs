@@ -6,10 +6,7 @@ using UnityEngine.UI;
 
 public class PlayerHud : MonoBehaviour
 {
-    public Slider manaSlider, knockoutSlider;
-    public TextMeshProUGUI scoreText;
-    public Image smallImage, midImage, bigImage, backgroundImage;
-    [SerializeField]private GameObject keyboardControls, gamePadControls;
+    [SerializeField] private GameObject keyboardControls, gamePadControls;
     public Image manaRadial, knockoutRadial;
     public Transform playerTransform;
     private void Update()

@@ -8,13 +8,19 @@ public class Egg : Item {
     public float timeInScene = 1.5f;
     public float contador = 0.0f;
     public int damage = 5;
+    private AudioSource source;
 
+    private void Start () 
+    {
+        source = GetComponent<AudioSource>();
+    }
     public void Update()
     {
         contador += Time.deltaTime;
         if (contador >= timeInScene)
         {
             Destroy(this.gameObject);
+            AudioManager.instance.PlaySFX("Egg");
         }
     }
     override public IEnumerator Effect(GameObject target)
@@ -27,6 +33,7 @@ public class Egg : Item {
             p.GetComponent<Rigidbody2D>().velocity = new Vector2(this.GetComponent<Rigidbody2D>().velocity.x, target.GetComponent<Rigidbody2D>().velocity.y);
             p.healthBehaviour.Damage(damage);
             Destroy(this.gameObject);
+            AudioManager.instance.PlaySFX("Egg");
         }
         yield return null;
      }
