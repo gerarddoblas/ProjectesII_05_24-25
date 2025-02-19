@@ -11,7 +11,7 @@ public class BaseGame : ScriptableObject
     protected bool playingGame = false;
     public virtual void StartGame() { playingGame = true; }
     public virtual void UpdateGame() {}
-    protected void FinishGame()
+    public virtual void FinishGame()
     {
         playingGame = false;
         GameController.Instance.NextGame();

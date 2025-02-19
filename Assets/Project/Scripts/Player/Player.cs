@@ -174,4 +174,5 @@ public class Player : MonoBehaviour
         healthBehaviour.QuitInvincibility();
         yield return null;
     }
+    public bool GetKO() { return (!canMove && healthBehaviour.invincibility); }
 }

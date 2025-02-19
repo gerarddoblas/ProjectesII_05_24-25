@@ -20,4 +20,8 @@ public class TimeBasedGame : BaseGame
                 FinishGame();
         }
     }
+    public override void FinishGame()
+    {
+        base.FinishGame();
+    }
 }

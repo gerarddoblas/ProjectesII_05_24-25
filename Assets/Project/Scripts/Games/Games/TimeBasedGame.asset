@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: TimeBasedGame
   m_EditorClassIdentifier: 
   gameTime: 10
-  remainingTime: 1.7334989
+  remainingTime: 0
