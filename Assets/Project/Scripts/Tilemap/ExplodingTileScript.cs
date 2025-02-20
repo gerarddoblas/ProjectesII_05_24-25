@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -19,11 +20,22 @@ namespace UnityEngine.Tilemaps
         void OnEnable()
         {
             states = new Dictionary<Vector3Int, int>();
+            SceneManager.sceneLoaded += delegate (Scene loadedScene, LoadSceneMode loadedSceneMode)
+            {
+                Debug.Log("TileRefreshed");
+                states = new Dictionary<Vector3Int, int>();
+            };
         }
         private void Awake()
         {
             states = new Dictionary<Vector3Int, int>();
+            SceneManager.sceneLoaded +=delegate (Scene loadedScene, LoadSceneMode loadedSceneMode)
+            {
+                Debug.Log("TileRefreshed");
+                states = new Dictionary<Vector3Int, int>();
+            };
         }
+        
         public override void GetTileData(Vector3Int position, ITilemap tilemap, ref TileData tileData)
         {
 

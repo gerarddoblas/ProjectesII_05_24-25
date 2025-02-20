@@ -47,7 +47,7 @@ public class GameController : MonoBehaviour
     }
     public void StartGames()
     {
-        targetScore = 100;
+        //targetScore = 100;
         ResetScore();
         SelectNextGame();
         SelectNextLevel();
@@ -77,24 +77,50 @@ public class GameController : MonoBehaviour
             playerScores.Add(0);
     }
     private void SelectNextLevel() {
-        SceneManager.LoadScene(stages[(int)UnityEngine.Random.Range(0, stages.Count - 1)]);
+        SceneManager.LoadScene(stages[(int)UnityEngine.Random.Range(0, stages.Count)]);
     }
     private void SelectNextGame()
     {
-        currentGameMode = gameModes[(int)UnityEngine.Random.Range(0, gameModes.Count - 1)];
+        currentGameMode = gameModes[(int)UnityEngine.Random.Range(0, gameModes.Count)];
     }
     public void NextGame()
     {
-        if (clapAnimations && CameraFX.Instance!=null)
+        if (!PlayerAchievedTargetScore())
         {
-            CameraFX.Instance.VerticalClap(delegate () { 
+            if (clapAnimations && CameraFX.Instance != null)
+            {
+                CameraFX.Instance.VerticalClap(delegate ()
+                {
+                    SelectNextGame();
+                    SelectNextLevel();
+                });
+            }
+            else
+            {
                 SelectNextGame();
                 SelectNextLevel();
-            });        
+            }
         }
-        else { 
-            SelectNextGame();
-            SelectNextLevel();
+        else
+        {
+            if (clapAnimations && CameraFX.Instance != null)
+            {
+                CameraFX.Instance.VerticalClap(delegate ()
+                {
+                    SceneManager.LoadScene("ResultScene");
+                });
+            }
+            else
+                SceneManager.LoadScene("ResultScene");
         }
+
+    }
+    public bool PlayerAchievedTargetScore()
+    {
+        for(int i = 0; i < playerScores.Count;i++)
+            if (playerScores[i]>=targetScore)
+                return true;
+        
+        return false;
     }
 }
