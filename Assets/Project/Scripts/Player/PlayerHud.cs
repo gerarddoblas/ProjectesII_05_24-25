@@ -7,11 +7,19 @@ using UnityEngine.UI;
 public class PlayerHud : MonoBehaviour
 {
     [SerializeField] private GameObject keyboardControls, gamePadControls;
-    public Image manaRadial, knockoutRadial;
+    public Image manaRadial, knockoutRadial, barraDeVida;
     public Transform playerTransform;
+    private float vidaMaxima;
+    private HealthBehaviour playerLife;
+    private void Start()
+    {
+        playerLife = GameObject.Find("Player").GetComponent<HealthBehaviour>();
+        vidaMaxima = playerLife.health;
+    }
+
     private void Update()
     {
-        transform.position = playerTransform.position;
+       //transform.position = playerTransform.position;
 
         switch(Mathf.Floor(manaRadial.fillAmount * 3))
         {
@@ -32,6 +40,7 @@ public class PlayerHud : MonoBehaviour
         }
 
         knockoutRadial.color = (1 - knockoutRadial.fillAmount) * Color.white + knockoutRadial.fillAmount * Color.red;
+        barraDeVida.fillAmount = playerLife.health/vidaMaxima;
 
     }
     public void SetKeyboardControls()

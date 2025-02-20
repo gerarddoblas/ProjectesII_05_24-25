@@ -70,7 +70,7 @@ public class PlayersManager : MonoBehaviour
 
         player.GetComponent<HealthBehaviour>().OnAlterHealth.AddListener((int health, int maxHealth) =>
         {
-            instanceScript.knockoutRadial.fillAmount = 1 - ((float)health / (float)maxHealth);
+            instanceScript.barraDeVida.fillAmount = 1 - ((float)health / (float)maxHealth);
         });
 
         if (!enabledHUDByDefault)
