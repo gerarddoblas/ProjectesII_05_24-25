@@ -4965,6 +4965,9 @@ MonoBehaviour:
   onAlterScore:
     m_PersistentCalls:
       m_Calls: []
+  onPlayerHitted:
+    m_PersistentCalls:
+      m_Calls: []
   score: 0
   landingParticles: {fileID: 2686372130080697451, guid: d8e6f85df7c2e4041a3171c972672bbd, type: 3}
   jumpParticles: {fileID: 2686372130080697451, guid: 711e25f765cc8194ca7824dffdcb9c64, type: 3}
@@ -5399,7 +5402,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7523505177217120594
 Transform:
   m_ObjectHideFlags: 0

@@ -54,7 +54,6 @@ public class PlayersManager : MonoBehaviour
 
         player.transform.SetParent(playerContainer.transform);     
         player.GetComponent<SpriteRenderer>().color = playerColours[players.Count];
-
         GameObject instantiatedHUD = GameObject.Instantiate(canvasPrefab,hudsContainer.transform);
         PlayerHud instanceScript = instantiatedHUD.GetComponent<PlayerHud>();
 
@@ -72,7 +71,17 @@ public class PlayersManager : MonoBehaviour
         {
             instanceScript.barraDeVida.fillAmount = 1 - ((float)health / (float)maxHealth);
         });
+        Vector3[] hudPositions = new Vector3[4];
 
+        hudPositions[0] = new Vector3(-45, 24, 0);   
+        hudPositions[1] = new Vector3(35, 24, 0);    
+        hudPositions[2] = new Vector3(-45, -25, 0);  
+        hudPositions[3] = new Vector3(20, -25, 0);   
+
+        if (playersCanvas.Count <= 4)
+        {
+            instantiatedHUD.transform.position = hudPositions[playersCanvas.Count - 1]; // Asigna la posición según el índice del jugador
+        }
         if (!enabledHUDByDefault)
             instantiatedHUD.SetActive(false);
         else

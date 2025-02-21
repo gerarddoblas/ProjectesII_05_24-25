@@ -10,10 +10,10 @@ public class PlayerHud : MonoBehaviour
     public Image manaRadial, knockoutRadial, barraDeVida;
     public Transform playerTransform;
     private float vidaMaxima;
-    private HealthBehaviour playerLife;
+    [SerializeField] private HealthBehaviour playerLife;
     private void Start()
     {
-        playerLife = GameObject.Find("Player").GetComponent<HealthBehaviour>();
+        //playerLife = GameObject.Find("Player").GetComponent<HealthBehaviour>();
         vidaMaxima = playerLife.health;
     }
 
