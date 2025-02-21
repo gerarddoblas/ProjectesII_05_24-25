@@ -37,6 +37,7 @@ public class PlayersManager : MonoBehaviour
     }
 
     private void SetPlayersPosition(Scene loadedScene, LoadSceneMode loadedSceneMode) {
+        hudsContainer.transform.position = Vector2.zero;
         foreach (GameObject player in players)
             player.transform.position = Vector3.zero;
         //onAnyActionPerformed.RemoveAllListeners();
@@ -56,32 +57,13 @@ public class PlayersManager : MonoBehaviour
         player.GetComponent<SpriteRenderer>().color = playerColours[players.Count];
         GameObject instantiatedHUD = GameObject.Instantiate(canvasPrefab,hudsContainer.transform);
         PlayerHud instanceScript = instantiatedHUD.GetComponent<PlayerHud>();
-
+        
         playersCanvas.Add(instantiatedHUD);
         players.Add(input.gameObject);
 
-        instanceScript.playerTransform = input.gameObject.transform;
-
-        player.GetComponent<Items>().onAlterMana.AddListener((float currentMana) =>
-        {
-            instanceScript.manaRadial.fillAmount = currentMana / 3;
-        });
-
-        player.GetComponent<HealthBehaviour>().OnAlterHealth.AddListener((int health, int maxHealth) =>
-        {
-            instanceScript.barraDeVida.fillAmount = 1 - ((float)health / (float)maxHealth);
-        });
-        Vector3[] hudPositions = new Vector3[4];
-
-        hudPositions[0] = new Vector3(-45, 24, 0);   
-        hudPositions[1] = new Vector3(35, 24, 0);    
-        hudPositions[2] = new Vector3(-45, -25, 0);  
-        hudPositions[3] = new Vector3(20, -25, 0);   
-
-        if (playersCanvas.Count <= 4)
-        {
-            instantiatedHUD.transform.position = hudPositions[playersCanvas.Count - 1]; // Asigna la posición según el índice del jugador
-        }
+        
+        
+        
         if (!enabledHUDByDefault)
             instantiatedHUD.SetActive(false);
         else
@@ -92,7 +74,26 @@ public class PlayersManager : MonoBehaviour
         else
             player.GetComponent<Items>().UnlockManaAndCreation();
 
+        
+        switch (players.Count)
+        {
+            case 1:
+                instantiatedHUD.GetComponent<RectTransform>().anchoredPosition = Vector2.up;
+                instantiatedHUD.GetComponent<RectTransform>().position = new Vector3(100,-85,0);
+                instantiatedHUD.GetComponent<RectTransform>().anchoredPosition = Vector2.up;
+                instantiatedHUD.GetComponent<RectTransform>().position = new Vector3(100, -85, 0);
+               Debug.Log("W");
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            default:
+                break;
+        }
+
         SetOnAnyActionPerformed(player);
+        
     }
 
     public void ShowAllHuds()
