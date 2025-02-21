@@ -74,24 +74,32 @@ public class PlayersManager : MonoBehaviour
         else
             player.GetComponent<Items>().UnlockManaAndCreation();
 
-        
+        RectTransform hudRect = instantiatedHUD.GetComponent<RectTransform>();
+        hudRect.SetParent(hudsContainer.transform, false);
         switch (players.Count)
         {
             case 1:
-                instantiatedHUD.GetComponent<RectTransform>().anchoredPosition = Vector2.up;
-                instantiatedHUD.GetComponent<RectTransform>().position = new Vector3(100,-85,0);
-                instantiatedHUD.GetComponent<RectTransform>().anchoredPosition = Vector2.up;
-                instantiatedHUD.GetComponent<RectTransform>().position = new Vector3(100, -85, 0);
-               Debug.Log("W");
+                hudRect.anchorMin = Vector2.up;
+                hudRect.anchorMax = Vector2.up;
+                hudRect.anchoredPosition = new Vector2(100, -85);
                 break;
             case 2:
+                hudRect.anchorMin = Vector2.one;
+                hudRect.anchorMax = Vector2.one;
+                hudRect.anchoredPosition = new Vector2(-100, -85);
                 break;
             case 3:
+                hudRect.anchorMin = Vector2.zero;
+                hudRect.anchorMax = Vector2.zero;
+                hudRect.anchoredPosition = new Vector2(100, 85);
                 break;
             default:
+                hudRect.anchorMin = Vector2.left;
+                hudRect.anchorMax = Vector2.left;
+                hudRect.anchoredPosition = new Vector2(-100, 85);
                 break;
         }
-
+        
         SetOnAnyActionPerformed(player);
         
     }

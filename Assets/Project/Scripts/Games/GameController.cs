@@ -103,6 +103,8 @@ public class GameController : MonoBehaviour
         }
         else
         {
+            PlayersManager.Instance.HideAllHuds();
+           
             if (clapAnimations && CameraFX.Instance != null)
             {
                 CameraFX.Instance.VerticalClap(delegate ()
