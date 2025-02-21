@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: CoinCollect
   m_EditorClassIdentifier: 
   gameTime: 50
-  remainingTime: 43.60533
+  remainingTime: 47.50089
   coinPositions: []
   coin: {fileID: 4474864963852153268, guid: 77531d700d5b4b346b44bc3ec3a49218, type: 3}
