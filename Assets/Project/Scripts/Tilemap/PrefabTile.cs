@@ -32,6 +32,9 @@ namespace UnityEngine.Tilemaps
 
         public override void GetTileData(Vector3Int position, ITilemap tilemap, ref TileData tileData)
         {
+
+            if(!positions.Contains(position)) positions.Add(position);
+
 #if UNITY_EDITOR
             if (EditorApplication.isPlaying) tileData.sprite = null;
             else tileData.sprite = sprite;
@@ -68,7 +71,7 @@ namespace UnityEngine.Tilemaps
             EditorGUILayout.Space();
 
             EditorGUI.BeginChangeCheck();
-            tile.prefab = (GameObject)EditorGUILayout.ObjectField("Prefab", tile.sprite, typeof(GameObject), false, null);
+            tile.prefab = (GameObject)EditorGUILayout.ObjectField("Prefab", tile.prefab, typeof(GameObject), false, null);
             if (EditorGUI.EndChangeCheck())
                 EditorUtility.SetDirty(tile);
         }
