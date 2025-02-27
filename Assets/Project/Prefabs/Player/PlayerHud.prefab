@@ -185,10 +185,10 @@ RectTransform:
   m_Father: {fileID: 7330922514871537722}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.01, y: 0.05}
-  m_SizeDelta: {x: 1.5, y: 1.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7203458727771453334
 CanvasRenderer:
@@ -211,7 +211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -574,11 +574,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyboardControls: {fileID: 723795344861871278}
   gamePadControls: {fileID: 7564782597222096071}
-  manaRadial: {fileID: 0}
-  knockoutRadial: {fileID: 0}
-  barraDeVida: {fileID: 1217284174990103750}
-  playerTransform: {fileID: 0}
-  playerLife: {fileID: 2508079893292972155, guid: 2e5b21c6ddb9a934fa93ddb401ddc4ef, type: 3}
+  itemSprite: {fileID: 8268329595584052690}
+  healthBar: {fileID: 1217284174990103750}
 --- !u!225 &1971153255942441682
 CanvasGroup:
   m_ObjectHideFlags: 0

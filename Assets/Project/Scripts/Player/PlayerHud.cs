@@ -6,43 +6,15 @@ using UnityEngine.UI;
 
 public class PlayerHud : MonoBehaviour
 {
-    [SerializeField] private GameObject keyboardControls, gamePadControls;
-    public Image manaRadial, knockoutRadial, barraDeVida;
-    public Transform playerTransform;
-    private float vidaMaxima;
-    [SerializeField] private HealthBehaviour playerLife;
-    private void Start()
-    {
-        //playerLife = GameObject.Find("Player").GetComponent<HealthBehaviour>();
-        vidaMaxima = playerLife.health;
+    [SerializeField] GameObject keyboardControls, gamePadControls;
+    [SerializeField] Image itemSprite, healthBar;
+    
+    public void SetHealthbar(float currentHealth, float maxHealth) { healthBar.fillAmount = currentHealth/ maxHealth; }
+    public void SetItemSprite(Sprite newItemSprite){ 
+        itemSprite.color = new Color(255,255,255,1);
+        itemSprite.sprite = newItemSprite; 
     }
-
-    private void Update()
-    {
-       //transform.position = playerTransform.position;
-
-        switch(Mathf.Floor(manaRadial.fillAmount * 3))
-        {
-            case 0:
-                manaRadial.color = Color.black;
-                break;
-            case 1:
-                manaRadial.color = Color.green;
-                break;
-            case 2:
-                manaRadial.color = Color.blue;
-                break;
-            case 3:
-                manaRadial.color = Color.white;
-                break;
-            default:
-                break;
-        }
-
-        knockoutRadial.color = (1 - knockoutRadial.fillAmount) * Color.white + knockoutRadial.fillAmount * Color.red;
-        barraDeVida.fillAmount = playerLife.health/vidaMaxima;
-
-    }
+    public void ClearItemSprite() {  itemSprite.sprite = null; }
     public void SetKeyboardControls()
     {
         keyboardControls.SetActive(true);
