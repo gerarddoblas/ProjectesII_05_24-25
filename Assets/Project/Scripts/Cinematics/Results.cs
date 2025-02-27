@@ -32,8 +32,10 @@ public class Results : MonoBehaviour
         timer-=Time.deltaTime;
         if (Input.anyKeyDown&&timer<=0)
         {
-            PlayersManager.Instance.UnlockPlayersMovement();
-            SceneManager.LoadScene("LevelSelector");
+            CameraFX.Instance.VerticalClap(() =>{
+                PlayersManager.Instance.UnlockPlayersMovement();
+                SceneManager.LoadScene("LevelSelector");
+            });
         }
     }
 }

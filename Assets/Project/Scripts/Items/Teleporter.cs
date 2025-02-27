@@ -5,6 +5,7 @@ using UnityEngine.Tilemaps;
 
 public class Teleporter : Item
 {
+    [SerializeField] private GameObject particles;
     override public IEnumerator Effect(GameObject target)
     {
         if (target.TryGetComponent<Player>(out Player p))
@@ -15,6 +16,7 @@ public class Teleporter : Item
         }
         else
             creator.transform.position = this.transform.position;
+        Instantiate(particles, this.transform.position, Quaternion.identity);
         Destroy(this.gameObject);
         yield return null;
     }

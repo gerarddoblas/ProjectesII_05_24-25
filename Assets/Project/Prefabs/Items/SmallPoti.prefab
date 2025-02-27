@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7856704066592609255
 SpriteRenderer:
@@ -76,12 +76,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1462085337, guid: a7ce015d04e997841b0c00575e740369, type: 3}
+  m_Sprite: {fileID: 526792378, guid: a7ce015d04e997841b0c00575e740369, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.13, y: 0.15}
+  m_Size: {x: 0.09, y: 0.17}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -150,8 +150,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.07, y: 0.13}
-    newSize: {x: 0.13, y: 0.15}
+    oldSize: {x: 0.09, y: 0.17}
+    newSize: {x: 0.09, y: 0.17}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -176,3 +176,4 @@ MonoBehaviour:
   creatorImmunity: 0
   fullHeal: 0
   healthAmount: 5
+  particles: {fileID: 2116742792820544769, guid: eed8231b20ebf7a4caa7e5cba33e6de4, type: 3}

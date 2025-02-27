@@ -12,6 +12,7 @@ public class Match : MonoBehaviour
     public TextMeshProUGUI counterText;
     public UnityEvent onFinishGame;
     private AudioSource source;
+    [SerializeField] private AudioClip ShortGameTime;
     
     void OnEnable()
     {
@@ -25,7 +26,9 @@ public class Match : MonoBehaviour
             PlayersManager.Instance.HideAllHuds();
             PlayersManager.Instance.LockPlayersMovement();
             PlayersManager.Instance.DisablePlayersCreation();
-            SceneManager.LoadScene("ResultScene");
+            CameraFX.Instance.VerticalClap(() =>            {
+                SceneManager.LoadScene("ResultScene");
+            });
         });
         source = GetComponent<AudioSource>();
         source.Play();
@@ -37,6 +40,7 @@ public class Match : MonoBehaviour
         remainingTime -= Time.deltaTime;
         if(remainingTime < 15.0f && !source.isPlaying)
         {
+            source.clip = ShortGameTime;
             source.Play();
         }
         if(remainingTime < 0)

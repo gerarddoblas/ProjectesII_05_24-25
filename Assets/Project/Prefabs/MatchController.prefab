@@ -50,6 +50,7 @@ MonoBehaviour:
   onFinishGame:
     m_PersistentCalls:
       m_Calls: []
+  ShortGameTime: {fileID: 8300000, guid: b76948ae65f4f4849bf7343af1a42a5b, type: 3}
 --- !u!82 &2321973615920196185
 AudioSource:
   m_ObjectHideFlags: 0

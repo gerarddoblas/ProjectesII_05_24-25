@@ -8,9 +8,11 @@ public class HealthPotion : Item
     bool fullHeal = false;
     [SerializeField]
     int healthAmount = 5;
+    [SerializeField] private GameObject particles;
     override public IEnumerator Effect(GameObject target)
     {
-        if(fullHeal)
+        Instantiate(particles, this.transform.position, Quaternion.identity);
+        if (fullHeal)
             target.GetComponent<HealthBehaviour>().FullHeal();
         else
             target.GetComponent<HealthBehaviour>().Heal(healthAmount);

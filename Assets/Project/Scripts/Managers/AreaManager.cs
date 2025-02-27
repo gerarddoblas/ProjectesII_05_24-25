@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class AreaManager : MonoBehaviour
 {
+    [SerializeField] private int curAreaIndex;
     [SerializeField] private Vector2[] possibleAreas;
     [SerializeField] private float timeBeforeChange;
     private AudioSource source;
+    private ParticleSystem particleSystem;
     [SerializeField] private AudioClip InArea;
-   [SerializeField] private float scoreMultiplier = 5f;
+    [SerializeField] private float scoreMultiplier = 5f;
     int players = 0;
     public static AreaManager Instance { get; private set; }
 
@@ -25,6 +27,7 @@ public class AreaManager : MonoBehaviour
     void Start()
     {
         source = GetComponent<AudioSource>();
+        particleSystem = GetComponentInChildren<ParticleSystem>();
         ChangeArea();
     }
 
@@ -39,8 +42,10 @@ public class AreaManager : MonoBehaviour
         Player player = collision.GetComponent<Player>();
         if (player != null)
         {
-            player.Score += (Time.deltaTime * scoreMultiplier);
-            player.onAlterScore.Invoke(player.Score);
+            //player.Score += ();
+            //player.onAlterScore.Invoke(player.Score);
+            GameController.Instance.AddScore(Time.deltaTime * scoreMultiplier, collision.gameObject);
+            timeBeforeChange -= Time.deltaTime;
 
             if(Random.Range(0f, 100f) < particleRate)
             {
@@ -51,6 +56,8 @@ public class AreaManager : MonoBehaviour
 
                 GameObject instance = Instantiate(particle, spawnPos, Quaternion.identity);
                 instance.GetComponent<AreaParticleScript>().objective = collision.gameObject.transform;
+                instance.GetComponent<AreaParticleScript>().speed = 1.0f;
+                instance.GetComponent<AreaParticleScript>().scaleSpeed = true;
             }
         }
     }
@@ -61,18 +68,41 @@ public class AreaManager : MonoBehaviour
         players++;
     }
     private void OnTriggerExit2D(Collider2D collision)
-    { 
-        if (--players == 0)
+    {
+        players--;
+        if (players == 0)
             source.Stop();
     }
 
-    public Vector3 GetRandomPositionFromList() => possibleAreas[Random.Range(0, possibleAreas.Length)];
+    public int GetRandomIndex() => Random.Range(0, possibleAreas.Length);
+    public Vector3 GetRandomAreaPosition() => possibleAreas[GetRandomIndex()];
 
     public void ChangeArea()
     {
-        Vector3 curPosition = transform.position;
-        do { transform.position = GetRandomPositionFromList(); } while (transform.position == curPosition);
         timeBeforeChange = Random.Range(1.5f, 5.0f);
+
+        Vector3 curPosition = transform.position;
+        int curIndex = curAreaIndex;
+        do { curIndex = GetRandomIndex(); } while (curIndex == curAreaIndex);
+
+        transform.position = possibleAreas[curIndex];
+        curAreaIndex = curIndex;
+
+        int particleCount = Random.Range(5, 8);
+        while(particleCount > 0)
+        {
+            GameObject instance = Instantiate(
+                particle, 
+                curPosition + new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0f), 
+                Quaternion.identity
+                );
+            instance.GetComponent<AreaParticleScript>().objective = this.transform;
+            instance.GetComponent<AreaParticleScript>().speed = .5f;
+            instance.GetComponent<AreaParticleScript>().scaleSpeed = false;
+            --particleCount;
+        }
+
+        //particleSystem.Play();
         source.Play();
     }
 }

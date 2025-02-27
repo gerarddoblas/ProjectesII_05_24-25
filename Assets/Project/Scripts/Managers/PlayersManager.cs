@@ -37,6 +37,7 @@ public class PlayersManager : MonoBehaviour
     }
 
     private void SetPlayersPosition(Scene loadedScene, LoadSceneMode loadedSceneMode) {
+        hudsContainer.transform.position = Vector2.zero;
         foreach (GameObject player in players)
             player.transform.position = Vector3.zero;
         //onAnyActionPerformed.RemoveAllListeners();
@@ -54,36 +55,59 @@ public class PlayersManager : MonoBehaviour
 
         player.transform.SetParent(playerContainer.transform);     
         player.GetComponent<SpriteRenderer>().color = playerColours[players.Count];
-
         GameObject instantiatedHUD = GameObject.Instantiate(canvasPrefab,hudsContainer.transform);
         PlayerHud instanceScript = instantiatedHUD.GetComponent<PlayerHud>();
-
+        
         playersCanvas.Add(instantiatedHUD);
         players.Add(input.gameObject);
 
-        instanceScript.playerTransform = input.gameObject.transform;
-
-        player.GetComponent<Items>().onAlterMana.AddListener((float currentMana) =>
-        {
-            instanceScript.manaRadial.fillAmount = currentMana / 3;
+        player.GetComponent<Items>().onItemRecieved.AddListener(delegate (Sprite s){
+            instantiatedHUD.GetComponent<PlayerHud>().SetItemSprite(s);
         });
-
-        player.GetComponent<HealthBehaviour>().OnAlterHealth.AddListener((int health, int maxHealth) =>
+        player.GetComponent<Items>().onItemCreated.AddListener(delegate ()
         {
-            instanceScript.knockoutRadial.fillAmount = 1 - ((float)health / (float)maxHealth);
+            instantiatedHUD.GetComponent<PlayerHud>().ClearItemSprite();
         });
-
+        
+        
         if (!enabledHUDByDefault)
             instantiatedHUD.SetActive(false);
         else
             instantiatedHUD.SetActive(true);
 
-        if(!enableCreationByDefault)
-            player.GetComponent<Items>().LockManaAndCreation();
+        if (!enableCreationByDefault)
+            player.GetComponent<Items>().LockObjectCreation();
         else
-            player.GetComponent<Items>().UnlockManaAndCreation();
+            player.GetComponent<Items>().UnlockObjectCreation();
 
+        RectTransform hudRect = instantiatedHUD.GetComponent<RectTransform>();
+        hudRect.SetParent(hudsContainer.transform, false);
+        switch (players.Count)
+        {
+            case 1:
+                hudRect.anchorMin = Vector2.up;
+                hudRect.anchorMax = Vector2.up;
+                hudRect.anchoredPosition = new Vector2(100, -85);
+                break;
+            case 2:
+                hudRect.anchorMin = Vector2.one;
+                hudRect.anchorMax = Vector2.one;
+                hudRect.anchoredPosition = new Vector2(-100, -85);
+                break;
+            case 3:
+                hudRect.anchorMin = Vector2.zero;
+                hudRect.anchorMax = Vector2.zero;
+                hudRect.anchoredPosition = new Vector2(100, 85);
+                break;
+            default:
+                hudRect.anchorMin = Vector2.left;
+                hudRect.anchorMax = Vector2.left;
+                hudRect.anchoredPosition = new Vector2(-100, 85);
+                break;
+        }
+        
         SetOnAnyActionPerformed(player);
+        
     }
 
     public void ShowAllHuds()
@@ -161,12 +185,12 @@ public class PlayersManager : MonoBehaviour
     }
     public void DisablePlayersCreation() {
         foreach (GameObject player in players)
-            player.GetComponent<Items>().LockManaAndCreation();
+            player.GetComponent<Items>().LockObjectCreation();
     }
     public void EnablePlayersCreation()
     {
         foreach (GameObject player in players)
-            player.GetComponent<Items>().UnlockManaAndCreation();
+            player.GetComponent<Items>().UnlockObjectCreation();
     }
     private void SetOnAnyActionPerformed(GameObject newPlayer)
     {

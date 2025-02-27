@@ -8,7 +8,7 @@ public class RandomTeleporter : Item
     {
        // LeanTween.scale(target.gameObject, Vector3.zero, .5f).setOnComplete(delegate ()
        // {
-            target.transform.position = AreaManager.Instance.GetRandomPositionFromList();
+            target.transform.position = AreaManager.Instance.GetRandomAreaPosition();
             //target.transform.localScale = Vector3.one*4;
         //}).setEaseInOutBounce();
         yield return null;
