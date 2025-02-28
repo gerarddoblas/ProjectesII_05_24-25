@@ -29,6 +29,7 @@ public class CoinScript : MonoBehaviour
         {
             Debug.Log("Collided with player");
             player.Score++;
+            Instantiate(particle, this.transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }
     }
