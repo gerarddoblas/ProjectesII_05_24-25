@@ -18,6 +18,8 @@ namespace UnityEngine.Tilemaps
         public List<ValueTuple<Vector3Int, string>> spawnInfo;
         public Sprite sprite;
         public GameObject prefab;
+
+        [ExecuteInEditMode]
         private void Awake()
         {
             SceneManager.sceneLoaded += delegate (Scene loadedScene, LoadSceneMode loadedSceneMode)
