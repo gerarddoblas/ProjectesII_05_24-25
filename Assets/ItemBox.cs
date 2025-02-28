@@ -13,6 +13,7 @@ public class ItemBox : MonoBehaviour
             GameObject item = possibleItems[Random.Range(0,possibleItems.Count)];
             i.recievedObject = item;
             i.onItemRecieved.Invoke(item.GetComponent<SpriteRenderer>().sprite);
+            //GameController.Instance.AddScore(10,i.gameObject);
             Destroy(this.gameObject);
         }
     }
