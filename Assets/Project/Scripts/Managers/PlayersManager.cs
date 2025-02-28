@@ -61,7 +61,13 @@ public class PlayersManager : MonoBehaviour
         playersCanvas.Add(instantiatedHUD);
         players.Add(input.gameObject);
 
-        
+        player.GetComponent<Items>().onItemRecieved.AddListener(delegate (Sprite s){
+            instantiatedHUD.GetComponent<PlayerHud>().SetItemSprite(s);
+        });
+        player.GetComponent<Items>().onItemCreated.AddListener(delegate ()
+        {
+            instantiatedHUD.GetComponent<PlayerHud>().ClearItemSprite();
+        });
         
         
         if (!enabledHUDByDefault)
@@ -69,10 +75,10 @@ public class PlayersManager : MonoBehaviour
         else
             instantiatedHUD.SetActive(true);
 
-        if(!enableCreationByDefault)
-            player.GetComponent<Items>().LockManaAndCreation();
+        if (!enableCreationByDefault)
+            player.GetComponent<Items>().LockObjectCreation();
         else
-            player.GetComponent<Items>().UnlockManaAndCreation();
+            player.GetComponent<Items>().UnlockObjectCreation();
 
         RectTransform hudRect = instantiatedHUD.GetComponent<RectTransform>();
         hudRect.SetParent(hudsContainer.transform, false);
@@ -81,22 +87,22 @@ public class PlayersManager : MonoBehaviour
             case 1:
                 hudRect.anchorMin = Vector2.up;
                 hudRect.anchorMax = Vector2.up;
-                hudRect.anchoredPosition = new Vector2(100, -85);
+                hudRect.anchoredPosition = new Vector2(202, -171);
                 break;
             case 2:
                 hudRect.anchorMin = Vector2.one;
                 hudRect.anchorMax = Vector2.one;
-                hudRect.anchoredPosition = new Vector2(-100, -85);
+                hudRect.anchoredPosition = new Vector2(-202, -171);
                 break;
             case 3:
                 hudRect.anchorMin = Vector2.zero;
                 hudRect.anchorMax = Vector2.zero;
-                hudRect.anchoredPosition = new Vector2(100, 85);
+                hudRect.anchoredPosition = new Vector2(202, 171);
                 break;
             default:
                 hudRect.anchorMin = Vector2.left;
                 hudRect.anchorMax = Vector2.left;
-                hudRect.anchoredPosition = new Vector2(-100, 85);
+                hudRect.anchoredPosition = new Vector2(-202, 171);
                 break;
         }
         
@@ -179,12 +185,12 @@ public class PlayersManager : MonoBehaviour
     }
     public void DisablePlayersCreation() {
         foreach (GameObject player in players)
-            player.GetComponent<Items>().LockManaAndCreation();
+            player.GetComponent<Items>().LockObjectCreation();
     }
     public void EnablePlayersCreation()
     {
         foreach (GameObject player in players)
-            player.GetComponent<Items>().UnlockManaAndCreation();
+            player.GetComponent<Items>().UnlockObjectCreation();
     }
     private void SetOnAnyActionPerformed(GameObject newPlayer)
     {
