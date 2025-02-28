@@ -14,7 +14,8 @@ namespace UnityEngine.Tilemaps
     [Serializable]
     public class PrefabTile : TileBase
     {
-        public List<Vector3Int> positions;
+        
+        public List<ValueTuple<Vector3Int, string>> spawnInfo;
         public Sprite sprite;
         public GameObject prefab;
         private void Awake()
@@ -22,21 +23,25 @@ namespace UnityEngine.Tilemaps
             SceneManager.sceneLoaded += delegate (Scene loadedScene, LoadSceneMode loadedSceneMode)
             {
                 Debug.Log("PrefabSpawn");
-                foreach (var position in positions)
+                string sceneName = SceneManager.GetActiveScene().name;
+                foreach (var info in spawnInfo)
                 {
-                    Instantiate(prefab, position, Quaternion.identity);
+                    if(sceneName == info.Item2) Instantiate(prefab, info.Item1, Quaternion.identity);
                 }
             };
         }
         void OnEnable()
         {
-            positions = new List<Vector3Int>();
+            spawnInfo = new List<ValueTuple<Vector3Int, string>>();
         }
 
         public override void GetTileData(Vector3Int position, ITilemap tilemap, ref TileData tileData)
         {
 
-            if(!positions.Contains(position)) positions.Add(position);
+            string sceneName = SceneManager.GetActiveScene().name;
+            if (!spawnInfo.Contains((position, sceneName))) spawnInfo.Add((position, sceneName));
+
+            tileData.colliderType = Tile.ColliderType.None;
 
 #if UNITY_EDITOR
             if (EditorApplication.isPlaying) tileData.sprite = null;
