@@ -14,7 +14,10 @@ public class PlayerHud : MonoBehaviour
         itemSprite.color = new Color(255,255,255,1);
         itemSprite.sprite = newItemSprite; 
     }
-    public void ClearItemSprite() {  itemSprite.sprite = null; }
+    public void ClearItemSprite() {
+        itemSprite.color = new Color(255, 255, 255, 0);
+        itemSprite.sprite = null; 
+    }
     public void SetKeyboardControls()
     {
         keyboardControls.SetActive(true);
