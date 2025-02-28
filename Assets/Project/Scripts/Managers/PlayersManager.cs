@@ -68,7 +68,9 @@ public class PlayersManager : MonoBehaviour
         {
             instantiatedHUD.GetComponent<PlayerHud>().ClearItemSprite();
         });
-        
+        player.GetComponent<HealthBehaviour>().OnAlterHealth.AddListener(delegate (int mh, int h){
+            instantiatedHUD.GetComponent<PlayerHud>().SetHealthbar(mh, h);
+        });
         
         if (!enabledHUDByDefault)
             instantiatedHUD.SetActive(false);
