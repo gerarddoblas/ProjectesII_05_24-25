@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9d8268321cd2bfc4f8bd919fdd444eac
+guid: b9a2d69c626cdd84c8f1d1d2268719ad
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 25
+  spritePixelsToUnits: 50
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -106,101 +106,43 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ItemBox_0
+      name: BlorboCoin_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 55
-        width: 24
-        height: 25
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e5c067a38c587104cb5e35ddf6217f36
-      internalID: -5229075
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ItemBox_1
-      rect:
-        serializedVersion: 2
-        x: 30
-        y: 55
-        width: 24
-        height: 26
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6607308e8e2d7374c9149412d4d53060
-      internalID: -68815577
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ItemBox_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 27
-        width: 27
-        height: 27
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cb1d4d867888d0340b2cc13cfe0fce24
-      internalID: -1318545444
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ItemBox_3
-      rect:
-        serializedVersion: 2
-        x: 28
-        y: 27
-        width: 28
-        height: 27
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 826e2680dc468704393c155df94d30d5
-      internalID: -1018496651
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ItemBox_4
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1
-        width: 27
-        height: 26
+        x: 14
+        y: 142
+        width: 36
+        height: 36
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,8 +150,155 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 428b0153d2e2256419bcc99d6c516f0b
-      internalID: 832224994
+      spriteID: 8cd569adcfff87d41a2057056e3e82e4
+      internalID: 1992133959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlorboCoin_1
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 142
+        width: 24
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de59cf3fa3ebf874f9068b036e61125e
+      internalID: -1138475634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlorboCoin_2
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 142
+        width: 16
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f976eb94a81b1c044a8b940227fbce76
+      internalID: 1915953951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlorboCoin_3
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 78
+        width: 24
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8286d153ab9aecb4ab2dce143e81e17f
+      internalID: 934897939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlorboCoin_4
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 78
+        width: 36
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e18482b21c7d2e468ea700a442e8da5
+      internalID: -65797223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlorboCoin_5
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 78
+        width: 24
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7350adb885d00941bb9da410310c6e4
+      internalID: 1885637975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlorboCoin_6
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 14
+        width: 16
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 909a7039acfd5e342948ff41df9533e4
+      internalID: 1718878416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlorboCoin_7
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 14
+        width: 24
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb86e912c254939408ecee059c8b7a5f
+      internalID: 1509621310
       vertices: []
       indices: 
       edges: []
@@ -225,11 +314,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ItemBox_0: -5229075
-      ItemBox_1: -68815577
-      ItemBox_2: -1318545444
-      ItemBox_3: -1018496651
-      ItemBox_4: 832224994
+      BlorboCoin_0: 1992133959
+      BlorboCoin_1: -1138475634
+      BlorboCoin_2: 1915953951
+      BlorboCoin_3: 934897939
+      BlorboCoin_4: -65797223
+      BlorboCoin_5: 1885637975
+      BlorboCoin_6: 1718878416
+      BlorboCoin_7: 1509621310
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
