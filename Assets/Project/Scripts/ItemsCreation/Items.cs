@@ -31,14 +31,12 @@ public class Items : MonoBehaviour
         rigidbody = GetComponent<Rigidbody2D>();
 
         input.actions.FindAction("GenerateMidObject").started += CreateMidObject;
-
+        
 
     }
 
     private void Start()
     {
-        
-        
     }
     private void Update()
     {

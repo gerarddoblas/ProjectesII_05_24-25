@@ -10,6 +10,7 @@ public class CameraFX : MonoBehaviour
     public static CameraFX Instance { get; private set; }
     Vector3 originalCamPos;
     GameObject topClap, bottomClap;
+    [SerializeField]float timeBeforeFirstClap;
     float cameraSize;
     private void Awake()
     {
@@ -39,6 +40,7 @@ public class CameraFX : MonoBehaviour
         if (clapOnEnable)
             ReverseVerticalClap(() => { Debug.Log("Test clap finished"); });
     }
+    
     //MoveFx
     public void CenterCamera() { 
         LeanTween.cancel(Camera.main.transform.gameObject);

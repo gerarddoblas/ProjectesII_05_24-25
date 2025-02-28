@@ -84,6 +84,13 @@ public class PlayersManager : MonoBehaviour
 
         RectTransform hudRect = instantiatedHUD.GetComponent<RectTransform>();
         hudRect.SetParent(hudsContainer.transform, false);
+
+        if (input.currentControlScheme.Contains("Keyboard"))
+            instantiatedHUD.GetComponent<PlayerHud>().SetKeyboardControls();
+        else    
+            instantiatedHUD.GetComponent <PlayerHud>().SetGamepdControls();
+            
+
         switch (players.Count)
         {
             case 1:
@@ -109,6 +116,7 @@ public class PlayersManager : MonoBehaviour
         }
         
         SetOnAnyActionPerformed(player);
+        GameController.Instance.ResetScore();
         
     }
 

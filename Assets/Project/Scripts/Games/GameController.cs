@@ -67,9 +67,12 @@ public class GameController : MonoBehaviour
     }
     public void AddScore(float scoreToAdd, GameObject player)
     {
-        for (int i = 0; i < PlayersManager.Instance.players.Count; i++)
-            if(player == PlayersManager.Instance.players[i])
-                playerScores[i]+=scoreToAdd;
+        for (int i = 0; i < PlayersManager.Instance.players.Count; i++){
+            if (player == PlayersManager.Instance.players[i]){
+                playerScores[i] += scoreToAdd;
+                PlayersManager.Instance.playersCanvas[i].GetComponent<PlayerHud>().SetScoreText((int)playerScores[i]);
+            }
+        }
     }
     public void ResetScore() {
         playerScores.Clear();
