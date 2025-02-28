@@ -166,6 +166,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   possibleItems:
-  - {fileID: 2158082717029057907, guid: 9b46c30f446b8a54c96ca83699400fb7, type: 3}
-  - {fileID: 2128471897566729481, guid: 54510ed8c0f866441b64675bcdcb8b92, type: 3}
-  - {fileID: 2128471897566729481, guid: 5577da96ee4eaf84da18c47977a0697d, type: 3}
+  - {fileID: 8957381009157081984, guid: f27927c71d06e4d4490dc8c80ae8b0f0, type: 3}
