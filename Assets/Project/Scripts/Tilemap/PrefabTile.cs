@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 #if UNITY_EDITOR
 using UnityEditor;
 using static UnityEditor.VersionControl.Asset;
-using UnityEngine.SceneManagement;
 #endif
 
 namespace UnityEngine.Tilemaps
@@ -17,9 +17,8 @@ namespace UnityEngine.Tilemaps
         public List<Vector3Int> positions;
         public Sprite sprite;
         public GameObject prefab;
-        void OnEnable()
+        private void Awake()
         {
-            positions = new List<Vector3Int>();
             SceneManager.sceneLoaded += delegate (Scene loadedScene, LoadSceneMode loadedSceneMode)
             {
                 Debug.Log("PrefabSpawn");
@@ -28,6 +27,10 @@ namespace UnityEngine.Tilemaps
                     Instantiate(prefab, position, Quaternion.identity);
                 }
             };
+        }
+        void OnEnable()
+        {
+            positions = new List<Vector3Int>();
         }
 
         public override void GetTileData(Vector3Int position, ITilemap tilemap, ref TileData tileData)

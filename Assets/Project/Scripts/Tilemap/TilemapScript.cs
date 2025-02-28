@@ -13,6 +13,7 @@ public class TilemapScript : MonoBehaviour
     public static TilemapScript Instance { get; private set; }
     private void Awake()
     {
+        GetComponent<Tilemap>().RefreshAllTiles();
         if (Instance != null && Instance != this)
             Destroy(this);
         else
