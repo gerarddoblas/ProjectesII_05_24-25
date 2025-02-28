@@ -19,12 +19,6 @@ public class CoinScript : MonoBehaviour
     void Update()
     {
 
-        contador += Time.deltaTime;
-        if (contador >= timeInScene)// Comprobar que es funcional las particulas
-        {
-            Instantiate(particle);
-            Destroy(this.gameObject);// He puesto esto para que no este constantemente llamandose xd
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
