@@ -5124,15 +5124,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   objectGenerator: {fileID: 11400000, guid: beec49a64267bdd4792ee5991a8b74e8, type: 2}
-  onGenerateRandomSmallObject:
+  onItemRecieved:
     m_PersistentCalls:
       m_Calls: []
-  onGenerateRandomMidObject:
+  onItemCreated:
     m_PersistentCalls:
       m_Calls: []
-  onGenerateRandomBigObject:
-    m_PersistentCalls:
-      m_Calls: []
+  recievedObject: {fileID: 0}
 --- !u!82 &304102915850320622
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5402,7 +5400,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7523505177217120594
 Transform:
   m_ObjectHideFlags: 0
