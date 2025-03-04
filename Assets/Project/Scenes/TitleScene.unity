@@ -395,6 +395,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0d31cd41004d4549b054be3d1141663, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &614027132 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8995340852948080563, guid: c1217ab959ac9474b8b07e3c710a0211, type: 3}
+  m_PrefabInstance: {fileID: 1944373922}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &812831013
 GameObject:
   m_ObjectHideFlags: 0
@@ -560,6 +571,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1578472065 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1982488780637074187, guid: c1217ab959ac9474b8b07e3c710a0211, type: 3}
+  m_PrefabInstance: {fileID: 1944373922}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1729958066
 GameObject:
   m_ObjectHideFlags: 0
@@ -1618,6 +1640,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2071107648658917626, guid: c1217ab959ac9474b8b07e3c710a0211, type: 3}
+      propertyPath: timer
+      value: 
+      objectReference: {fileID: 1578472065}
+    - target: {fileID: 2071107648658917626, guid: c1217ab959ac9474b8b07e3c710a0211, type: 3}
+      propertyPath: instructions
+      value: 
+      objectReference: {fileID: 614027132}
     - target: {fileID: 2451079477313218815, guid: c1217ab959ac9474b8b07e3c710a0211, type: 3}
       propertyPath: m_Name
       value: Main Camera
@@ -1843,7 +1873,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1070946722087091741, guid: 6d85d4b54ee95084fa57b4b3d60a7a4a, type: 3}
       propertyPath: clapAnimations
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1070946722087091741, guid: 6d85d4b54ee95084fa57b4b3d60a7a4a, type: 3}
       propertyPath: stages.Array.size
