@@ -38,7 +38,7 @@ namespace UnityEngine.Tilemaps
 
 #if UNITY_EDITOR
 
-    [CustomEditor(typeof(ExplodingTile))]
+    [CustomEditor(typeof(BouncyTile))]
     public class BouncyTileEditor : Editor 
     {
         private BouncyTile tile { get { return (target as BouncyTile); } }
