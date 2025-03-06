@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 10f077df675e1014fbf21ad893a39127, type: 3}
-  m_Name: New Exploding Tile
+  m_Name: Exploding Tile
   m_EditorClassIdentifier: 
   sprites:
   - {fileID: 1782521112, guid: c25db868650fc844696ac72fff658e0b, type: 3}
