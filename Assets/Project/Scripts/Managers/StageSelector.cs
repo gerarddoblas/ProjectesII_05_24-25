@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -13,6 +14,14 @@ public class StageSelector : MonoBehaviour
     private int players;
     public void LoadRandomStage()
     {        
+        if(stages.Length == 0)
+        {
+#if UNITY_EDITOR
+            EditorApplication.isPlaying = false; return;
+#else
+            Application.Quit(); return;
+#endif
+        }
         SceneManager.LoadScene(stages[(int)Random.Range(0,stages.Length-1)]);
     }
     private void OnTriggerEnter2D(Collider2D collision)

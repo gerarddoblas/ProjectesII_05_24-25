@@ -25,7 +25,7 @@ namespace UnityEngine.Tilemaps
             SceneManager.sceneLoaded += delegate (Scene loadedScene, LoadSceneMode loadedSceneMode)
             {
                 Debug.Log("PrefabSpawn");
-                string sceneName = SceneManager.GetActiveScene().name;
+                string sceneName = loadedScene.name;
                 foreach (var info in spawnInfo)
                 {
                     if(sceneName == info.Item2) Instantiate(prefab, info.Item1, Quaternion.identity);
@@ -35,6 +35,15 @@ namespace UnityEngine.Tilemaps
         void OnEnable()
         {
             spawnInfo = new List<ValueTuple<Vector3Int, string>>();
+            SceneManager.sceneLoaded += delegate (Scene loadedScene, LoadSceneMode loadedSceneMode)
+            {
+                Debug.Log("PrefabSpawn");
+                string sceneName = loadedScene.name;
+                foreach (var info in spawnInfo)
+                {
+                    if (sceneName == info.Item2) Instantiate(prefab, info.Item1, Quaternion.identity);
+                }
+            };
         }
 
         public override void GetTileData(Vector3Int position, ITilemap tilemap, ref TileData tileData)
