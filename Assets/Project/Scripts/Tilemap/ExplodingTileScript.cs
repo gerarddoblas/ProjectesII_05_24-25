@@ -30,12 +30,12 @@ namespace UnityEngine.Tilemaps
         [ExecuteInEditMode]
         private void Awake()
         {
-            //states = new Dictionary<Vector3Int, int>();
-            //SceneManager.sceneLoaded += delegate (Scene loadedScene, LoadSceneMode loadedSceneMode)
-            //{
-            //    Debug.Log("TileRefreshed");
-            //    states = new Dictionary<Vector3Int, int>();
-            //};
+            states = new Dictionary<Vector3Int, int>();
+            SceneManager.sceneUnloaded += delegate (Scene unloadedScene)
+            {
+                Debug.Log("TileRefreshed");
+                states = new Dictionary<Vector3Int, int>();
+            };
         }
         
         public override void GetTileData(Vector3Int position, ITilemap tilemap, ref TileData tileData)
@@ -51,7 +51,6 @@ namespace UnityEngine.Tilemaps
 
             if(!states.ContainsKey(position))
             {
-                Debug.Log("Add pos");
                 states.Add(position, 0);
                 UpdateTile(position, tilemap, ref tileData, 0);
             } else
@@ -62,15 +61,12 @@ namespace UnityEngine.Tilemaps
 
         private void UpdateTile(Vector3Int position, ITilemap tilemap, ref TileData tileData, int state)
         {
-            Debug.Log("Update to state " + sprites[state].name);
             tileData.sprite = sprites[state];
             tileData.colliderType = Tile.ColliderType.Sprite;
         }
 
         public void ExplodeTile(Vector3Int position, ITilemap tilemap)
         {
-
-            Debug.Log("Boom");
 
             TileData tileData = new TileData();
             tilemap.GetTile(position).GetTileData(position, tilemap, ref tileData);
