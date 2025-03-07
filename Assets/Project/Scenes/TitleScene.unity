@@ -1303,7 +1303,7 @@ PrefabInstance:
     - target: {fileID: 6440259471974055472, guid: f4aed4a02c4f8e7419f0d65d818c6c8d, type: 3}
       propertyPath: canvasPrefab
       value: 
-      objectReference: {fileID: 2843471562298706066, guid: 47d43233bd6b3ba48bbf4410422af590, type: 3}
+      objectReference: {fileID: 5217877837741811901, guid: 47d43233bd6b3ba48bbf4410422af590, type: 3}
     - target: {fileID: 6440259471974055472, guid: f4aed4a02c4f8e7419f0d65d818c6c8d, type: 3}
       propertyPath: enabledHUDByDefault
       value: 1
