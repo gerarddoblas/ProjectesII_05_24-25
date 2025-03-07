@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -33,10 +34,10 @@ public class GameController : MonoBehaviour
             {
                 try
                 {
-                    CameraFX.Instance.VerticalClap(delegate ()
-                    {
+                    if(currentGameMode.instructions != null)    
+                        StartCoroutine(StartGameWithInstructions());
+                    else
                         currentGameMode.StartGame();
-                    });
                 }
                 catch (Exception e) { }
             }
@@ -44,6 +45,31 @@ public class GameController : MonoBehaviour
                 currentGameMode.StartGame();
         };
         
+    }
+    IEnumerator StartGameWithInstructions()
+    {
+        yield return null;
+        currentGameMode.SetGameState(false);
+        PlayersManager.Instance.LockPlayersMovement();
+        CameraFX.Instance.SetClap();
+        CameraFX.Instance.timer.gameObject.SetActive(false);
+        PlayersManager.Instance.HideAllHuds();
+        yield return null;
+        CameraFX.Instance.instructions.color = new Color(255, 255, 255, 1);
+        yield return null;
+        CameraFX.Instance.instructions.sprite = currentGameMode.instructions;
+        yield return new WaitForSeconds(2);
+        CameraFX.Instance.instructions.color = new Color(255, 255, 255, 0);
+        
+        yield return null;
+        CameraFX.Instance.ReverseVerticalClap(2,delegate ()
+        {
+            PlayersManager.Instance.ShowAllHuds(2);
+            PlayersManager.Instance.UnlockPlayersMovement();
+            CameraFX.Instance.timer.gameObject.SetActive(true);
+            currentGameMode.StartGame();
+
+        });
     }
     public void StartGames()
     {
