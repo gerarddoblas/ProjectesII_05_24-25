@@ -19,7 +19,7 @@ public class PlayerHud : MonoBehaviour
         foreach (var animation in scoreAnimations)
             StopCoroutine(animation);
         scoreAnimations.Clear();
-        scoreAnimations.Add(StartCoroutine(ScoreAnimation()));
+        if(this.gameObject.activeSelf) scoreAnimations.Add(StartCoroutine(ScoreAnimation()));
     }
 
     private IEnumerator ScoreAnimation()

@@ -4,11 +4,13 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.PlayerLoop;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class BaseGame : ScriptableObject
 {
-    
+    public Sprite instructions;
     protected bool playingGame = false;
+    public void SetGameState(bool newState) { playingGame = newState; }
     public virtual void StartGame() { 
         playingGame = true;
         PlayersManager.Instance.SetJoining(false);
