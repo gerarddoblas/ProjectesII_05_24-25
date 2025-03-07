@@ -32,14 +32,13 @@ public class GameController : MonoBehaviour
         {
             if (clapAnimations)
             {
-                try
+                if (currentGameMode != null)
                 {
-                    if(currentGameMode.instructions != null)    
+                    if (currentGameMode.instructions != null)
                         StartCoroutine(StartGameWithInstructions());
                     else
                         currentGameMode.StartGame();
                 }
-                catch (Exception e) { }
             }
             else
                 currentGameMode.StartGame();
@@ -72,6 +71,7 @@ public class GameController : MonoBehaviour
 
         });
     }
+    
     public void StartGames()
     {
         //targetScore = 100;
@@ -146,7 +146,7 @@ public class GameController : MonoBehaviour
         else
         {
             PlayersManager.Instance.HideAllHuds();
-
+            currentGameMode = null;
 
             if (clapAnimations && CameraFX.Instance != null)
             {
