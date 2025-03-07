@@ -12,8 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07882716084325843b4c0659f8260075, type: 3}
   m_Name: Item Box Tile
   m_EditorClassIdentifier: 
-  positions:
-  - {x: -29, y: -15, z: 0}
-  - {x: 28, y: -15, z: 0}
-  sprite: {fileID: -5229075, guid: 9d8268321cd2bfc4f8bd919fdd444eac, type: 3}
+  sprite: {fileID: 1990401786, guid: a5150f90fa08afd47839b332d0aa7dd1, type: 3}
   prefab: {fileID: 2732986131802241898, guid: d4562792465c3e24da7f19d2bf96efc0, type: 3}
