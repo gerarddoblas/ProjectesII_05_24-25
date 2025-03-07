@@ -11,6 +11,7 @@ public class PlayerHud : MonoBehaviour
     [SerializeField] TextMeshProUGUI scoreText;
 
     private List<Coroutine> scoreAnimations = new List<Coroutine>();
+    private List<Coroutine> itemAnimations = new List<Coroutine>();
     
     public void SetColour(Color colour)
     {
@@ -45,8 +46,29 @@ public class PlayerHud : MonoBehaviour
     public void SetHealthbar(float currentHealth, float maxHealth) { healthBar.fillAmount = currentHealth/ maxHealth; }
     public void SetItemSprite(Sprite newItemSprite){ 
         itemSprite.color = new Color(255,255,255,1);
-        itemSprite.sprite = newItemSprite; 
+        itemSprite.sprite = newItemSprite;
+        foreach (var animation in itemAnimations)
+            StopCoroutine(animation);
+        itemAnimations.Clear();
+        if (this.gameObject.activeSelf) itemAnimations.Add(StartCoroutine(ItemAnimation()));
     }
+
+    private IEnumerator ItemAnimation()
+    {
+        RectTransform rect = itemSprite.gameObject.GetComponent<RectTransform>();
+        while (rect.localScale.x < 2.5)
+        {
+            rect.localScale += 10 * Time.deltaTime * new Vector3(1, 1, 1);
+            yield return new WaitForEndOfFrame();
+        }
+        while (rect.localScale.x > 1)
+        {
+            rect.localScale -= 50 * Time.deltaTime * new Vector3(1, 1, 1);
+            yield return new WaitForEndOfFrame();
+        }
+        rect.localScale = Vector3.one;
+    }
+
     public void ClearItemSprite() {
         itemSprite.color = new Color(255, 255, 255, 0);
         itemSprite.sprite = null; 

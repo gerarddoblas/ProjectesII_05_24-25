@@ -5,6 +5,7 @@ using UnityEngine;
 public class ItemBox : MonoBehaviour
 {
     [SerializeField]List<GameObject> possibleItems = new List<GameObject>();
+    [SerializeField] private GameObject particle;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -13,6 +14,7 @@ public class ItemBox : MonoBehaviour
             GameObject item = possibleItems[Random.Range(0,possibleItems.Count)];
             i.recievedObject = item;
             i.onItemRecieved.Invoke(item.GetComponent<SpriteRenderer>().sprite);
+            Instantiate(particle, this.transform.position, Quaternion.identity);
             //GameController.Instance.AddScore(10,i.gameObject);
             Destroy(this.gameObject);
         }
