@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3926284514290105922}
-  - component: {fileID: 7549246311287354036}
   m_Layer: 0
   m_Name: Players
   m_TagString: Untagged
@@ -32,18 +31,6 @@ Transform:
   m_Father: {fileID: 8677806340695492295}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7549246311287354036
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1506764379820990596}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0572a4712fa2de4dad2d63aa54e38e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5789512594702725739
 GameObject:
   m_ObjectHideFlags: 0
@@ -77,7 +64,7 @@ Transform:
   - {fileID: 3926284514290105922}
   - {fileID: 986765965865619187}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6016600495428334092
 MonoBehaviour:
@@ -136,17 +123,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enabledHUDByDefault: 0
+  enableCreationByDefault: 0
+  playerInputManager: {fileID: 0}
+  playerContainer: {fileID: 1506764379820990596}
+  hudsContainer: {fileID: 8895789199184869957}
+  players: []
+  playersCanvas: []
   playerColours:
-  - {r: 0.5, g: 0, b: 0, a: 1}
+  - {r: 0.17254902, g: 0.3647059, b: 0.5294118, a: 1}
   - {r: 0, g: 0, b: 0.5, a: 1}
   - {r: 0, g: 0.5, b: 0, a: 1}
   - {r: 0.5, g: 0.5, b: 0, a: 1}
   canvasPrefab: {fileID: 5217877837741811901, guid: 47d43233bd6b3ba48bbf4410422af590, type: 3}
-  players: []
-  playersCanvas: []
-  playerInputManager: {fileID: 0}
-  playerContainer: {fileID: 1506764379820990596}
-  hudsContainer: {fileID: 8895789199184869957}
+  onAnyActionPerformed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8895789199184869957
 GameObject:
   m_ObjectHideFlags: 0

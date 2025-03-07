@@ -58,7 +58,7 @@ public class GameController : MonoBehaviour
         CameraFX.Instance.instructions.color = new Color(255, 255, 255, 1);
         yield return null;
         CameraFX.Instance.instructions.sprite = currentGameMode.instructions;
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(2);
         CameraFX.Instance.instructions.color = new Color(255, 255, 255, 0);
         
         yield return null;

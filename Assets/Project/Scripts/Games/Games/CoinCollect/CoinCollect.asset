@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81e2aa53a9d14fd4795302d98d0b4aad, type: 3}
   m_Name: CoinCollect
   m_EditorClassIdentifier: 
-  instructions: {fileID: 21300000, guid: d6ebcd6de4639b441a9aa2f7778878e5, type: 3}
+  instructions: {fileID: 21300000, guid: 100315dcd0aff204db0d0088a0c83bfd, type: 3}
   gameTime: 50
-  remainingTime: 47.50089
+  remainingTime: 39.661217
   coinPositions: []
   coin: {fileID: 4474864963852153268, guid: 77531d700d5b4b346b44bc3ec3a49218, type: 3}
