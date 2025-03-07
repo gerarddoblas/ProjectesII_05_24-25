@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,6 +14,8 @@ public class GameController : MonoBehaviour
     public BaseGame currentGameMode;
     [SerializeField] bool clapAnimations;
     public int targetScore;
+
+    [SerializeField] GameObject physicsCoin;
     public static GameController Instance { get; private set; }
 
     private void Awake()
@@ -107,6 +110,14 @@ public class GameController : MonoBehaviour
             if (player == PlayersManager.Instance.players[i])
             {
                 playerScores[i] -= scoreToRemove;
+                if(currentGameMode.GetType().Equals(typeof(CoinCollectGame)))
+                {
+                    for(int j = 0; j < scoreToRemove; j++)
+                    {
+                        GameObject instance = Instantiate(physicsCoin, player.transform.position + new Vector3(0, 2), Quaternion.identity);
+                        instance.GetComponent<Rigidbody2D>().AddForce(new Vector2(UnityEngine.Random.Range(-1000, 1000), 500));
+                    }
+                }
                 if (playerScores[i] < 0)
                     playerScores[i] = 0;
                 PlayersManager.Instance.playersCanvas[i].GetComponent<PlayerHud>().SetScoreText((int)playerScores[i]);
