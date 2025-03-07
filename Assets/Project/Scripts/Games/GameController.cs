@@ -100,6 +100,19 @@ public class GameController : MonoBehaviour
             }
         }
     }
+    public void RemoveScore(float scoreToRemove, GameObject player)
+    {
+        for (int i = 0; i < PlayersManager.Instance.players.Count; i++)
+        {
+            if (player == PlayersManager.Instance.players[i])
+            {
+                playerScores[i] -= scoreToRemove;
+                if (playerScores[i] < 0)
+                    playerScores[i] = 0;
+                PlayersManager.Instance.playersCanvas[i].GetComponent<PlayerHud>().SetScoreText((int)playerScores[i]);
+            }
+        }
+    }
     public void ResetScore() {
         playerScores.Clear();
         for (int i = 0; i < PlayersManager.Instance.players.Count; i++)

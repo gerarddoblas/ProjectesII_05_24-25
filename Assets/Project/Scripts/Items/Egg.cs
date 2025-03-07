@@ -32,6 +32,7 @@ public class Egg : Item {
         {
             p.GetComponent<Rigidbody2D>().velocity = new Vector2(this.GetComponent<Rigidbody2D>().velocity.x, target.GetComponent<Rigidbody2D>().velocity.y);
             p.healthBehaviour.Damage(damage);
+            GameController.Instance.RemoveScore(damage, p.gameObject);
             Destroy(this.gameObject);
             AudioManager.instance.PlaySFX("Egg");
         }

@@ -48,7 +48,10 @@ public class Kaboom : Item
         TilemapScript.Instance.ExplodeArea(this.transform.position, (int)Math.Sqrt(this.transform.localScale.magnitude)/2);
         Debug.Log("Colliding with " + target.gameObject.name);
         if (target.TryGetComponent<HealthBehaviour>(out HealthBehaviour hb))
+        {
+            GameController.Instance.RemoveScore(hb.maxhealth, hb.gameObject);
             hb.FullDamage();
+        }
         yield return null;
     }
 }
