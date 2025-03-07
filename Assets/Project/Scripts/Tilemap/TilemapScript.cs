@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.SceneManagement;
 
 public class TilemapScript : MonoBehaviour
 {
@@ -13,6 +14,11 @@ public class TilemapScript : MonoBehaviour
     public static TilemapScript Instance { get; private set; }
     private void Awake()
     {
+        GetComponent<Tilemap>().RefreshAllTiles();
+        SceneManager.sceneLoaded += delegate (Scene loadedScene, LoadSceneMode loadSceneMode)
+        {
+            tm.RefreshAllTiles();
+        };
         if (Instance != null && Instance != this)
             Destroy(this);
         else

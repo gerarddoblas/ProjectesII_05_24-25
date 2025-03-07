@@ -6,33 +6,50 @@ using UnityEngine.UI;
 
 public class PlayerHud : MonoBehaviour
 {
-    [SerializeField] private GameObject keyboardControls, gamePadControls;
-    public Image manaRadial, knockoutRadial;
-    public Transform playerTransform;
-    private void Update()
+    [SerializeField] GameObject keyboardControls, gamePadControls;
+    [SerializeField] Image itemSprite, healthBar;
+    [SerializeField] TextMeshProUGUI scoreText;
+
+    private List<Coroutine> scoreAnimations = new List<Coroutine>();
+    
+
+    public void SetScoreText(int score)
     {
-        transform.position = playerTransform.position;
+        scoreText.text = "Score: " + score;
+        foreach (var animation in scoreAnimations)
+            StopCoroutine(animation);
+        scoreAnimations.Clear();
+        scoreAnimations.Add(StartCoroutine(ScoreAnimation()));
+    }
 
-        switch(Mathf.Floor(manaRadial.fillAmount * 3))
+    private IEnumerator ScoreAnimation()
+    {
+        scoreText.color = Color.yellow;
+        while(scoreText.fontSize < 20)
         {
-            case 0:
-                manaRadial.color = Color.black;
-                break;
-            case 1:
-                manaRadial.color = Color.green;
-                break;
-            case 2:
-                manaRadial.color = Color.blue;
-                break;
-            case 3:
-                manaRadial.color = Color.white;
-                break;
-            default:
-                break;
+            scoreText.fontSize += 50 * Time.deltaTime;
+            yield return new WaitForEndOfFrame();
         }
-
-        knockoutRadial.color = (1 - knockoutRadial.fillAmount) * Color.white + knockoutRadial.fillAmount * Color.red;
-
+        while(scoreText.fontSize > 12)
+        {
+            scoreText.fontSize -= 50 * Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+        scoreText.fontSize = 12;
+        scoreText.color = Color.white;
+    }
+    public void SetHealthbar(float currentHealth, float maxHealth) { healthBar.fillAmount = currentHealth/ maxHealth; }
+    public void SetItemSprite(Sprite newItemSprite){ 
+        itemSprite.color = new Color(255,255,255,1);
+        itemSprite.sprite = newItemSprite; 
+    }
+    public void ClearItemSprite() {
+        itemSprite.color = new Color(255, 255, 255, 0);
+        itemSprite.sprite = null; 
+    }
+    public void HideControls() {
+        keyboardControls.SetActive(false);
+        gamePadControls.SetActive(false);
     }
     public void SetKeyboardControls()
     {
