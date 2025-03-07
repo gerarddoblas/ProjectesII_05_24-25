@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ public class Results : MonoBehaviour
 {
     // Start is called before the first frame update
     float timer = 5f;
-    void Start()
+    void Awake()
     {
         PlayersManager.Instance.LockPlayersMovement();
         PlayersManager.Instance.HideAllHuds();

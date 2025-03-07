@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AreaManager : MonoBehaviour
 {
@@ -20,6 +21,12 @@ public class AreaManager : MonoBehaviour
             Destroy(this);
         else
             Instance = this;
+
+        SceneManager.sceneLoaded += delegate (Scene loadedScene, LoadSceneMode loadedSceneMode)
+        {
+            if (GameController.Instance.currentGameMode.GetType() == typeof(TimeZoneCapture)) ChangeArea();
+            else this.transform.position = new Vector3(-1000, 0);
+        };
     }
 
     [SerializeField] private GameObject particle;
@@ -28,7 +35,7 @@ public class AreaManager : MonoBehaviour
     {
         source = GetComponent<AudioSource>();
         particleSystem = GetComponentInChildren<ParticleSystem>();
-        ChangeArea();
+        //ChangeArea();
     }
 
     // Update is called once per frame
