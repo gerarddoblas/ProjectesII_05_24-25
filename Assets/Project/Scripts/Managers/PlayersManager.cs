@@ -85,11 +85,8 @@ public class PlayersManager : MonoBehaviour
         RectTransform hudRect = instantiatedHUD.GetComponent<RectTransform>();
         hudRect.SetParent(hudsContainer.transform, false);
 
-        if (input.currentControlScheme.Contains("Keyboard"))
-            instantiatedHUD.GetComponent<PlayerHud>().SetKeyboardControls();
-        else    
-            instantiatedHUD.GetComponent <PlayerHud>().SetGamepdControls();
-            
+        instantiatedHUD.GetComponent<PlayerHud>().SetControls(input.currentControlScheme);
+
 
         switch (players.Count)
         {

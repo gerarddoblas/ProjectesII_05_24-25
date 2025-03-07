@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -6,7 +7,22 @@ using UnityEngine.UI;
 
 public class PlayerHud : MonoBehaviour
 {
-    [SerializeField] GameObject keyboardControls, gamePadControls;
+    [Serializable]
+    public class ActionButton
+    {
+        public string controllerName;
+        public Sprite sprite;
+    }
+
+    [Serializable]
+    public class ActionButtonScheme
+    {
+        public Sprite defaultSprite;
+        public List<ActionButton> actions;
+    }
+
+    [SerializeField]public ActionButtonScheme actionButtonScheme;
+    [SerializeField] GameObject Controls;
     [SerializeField] Image itemSprite, healthBar;
     [SerializeField] TextMeshProUGUI scoreText;
 
@@ -73,18 +89,23 @@ public class PlayerHud : MonoBehaviour
         itemSprite.color = new Color(255, 255, 255, 0);
         itemSprite.sprite = null; 
     }
+    public void SetControls(string controllsName)
+    {
+        foreach(ActionButton ab in actionButtonScheme.actions){
+            if(controllsName.Contains(ab.controllerName)){ 
+                Controls.GetComponent<Image>().sprite = ab.sprite;
+                return;
+            }
+        }
+        if (actionButtonScheme.defaultSprite)
+            Controls.GetComponent<Image>().sprite = actionButtonScheme.defaultSprite;
+    }
     public void HideControls() {
-        keyboardControls.SetActive(false);
-        gamePadControls.SetActive(false);
+        Controls.SetActive(false);
     }
-    public void SetKeyboardControls()
+    public void ShowControls()
     {
-        keyboardControls.SetActive(true);
-        gamePadControls.SetActive(false);
+        Controls.SetActive(true);
     }
-    public void SetGamepdControls()
-    {
-        keyboardControls.SetActive(false);
-        gamePadControls.SetActive(true);
-    }
+    
 }
