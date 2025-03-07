@@ -35,6 +35,7 @@ public class Results : MonoBehaviour
         {
             CameraFX.Instance.VerticalClap(() =>{
                 PlayersManager.Instance.UnlockPlayersMovement();
+                PlayersManager.Instance.playerInputManager.EnableJoining();
                 SceneManager.LoadScene("LevelSelector");
             });
         }

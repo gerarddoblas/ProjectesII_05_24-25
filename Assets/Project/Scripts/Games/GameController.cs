@@ -50,6 +50,7 @@ public class GameController : MonoBehaviour
     {
         yield return null;
         currentGameMode.SetGameState(false);
+        PlayersManager.Instance.playerInputManager.DisableJoining();
         PlayersManager.Instance.LockPlayersMovement();
         CameraFX.Instance.SetClap();
         CameraFX.Instance.timer.gameObject.SetActive(false);
@@ -74,9 +75,11 @@ public class GameController : MonoBehaviour
     public void StartGames()
     {
         //targetScore = 100;
+        PlayersManager.Instance.playerInputManager.DisableJoining();
         ResetScore();
         SelectNextGame();
         SelectNextLevel();
+        currentGameMode.StartGame();
     }
     private void Update()
     {
@@ -86,16 +89,26 @@ public class GameController : MonoBehaviour
     public void StartGames(int newTargetedScore)
     {
         targetScore = newTargetedScore;
-        ResetScore();
-        SelectNextGame();
-        SelectNextLevel();
-        currentGameMode.StartGame();
+        StartGames();
     }
     public void AddScore(float scoreToAdd, GameObject player)
     {
         for (int i = 0; i < PlayersManager.Instance.players.Count; i++){
             if (player == PlayersManager.Instance.players[i]){
                 playerScores[i] += scoreToAdd;
+                PlayersManager.Instance.playersCanvas[i].GetComponent<PlayerHud>().SetScoreText((int)playerScores[i]);
+            }
+        }
+    }
+    public void RemoveScore(float scoreToRemove, GameObject player)
+    {
+        for (int i = 0; i < PlayersManager.Instance.players.Count; i++)
+        {
+            if (player == PlayersManager.Instance.players[i])
+            {
+                playerScores[i] -= scoreToRemove;
+                if (playerScores[i] < 0)
+                    playerScores[i] = 0;
                 PlayersManager.Instance.playersCanvas[i].GetComponent<PlayerHud>().SetScoreText((int)playerScores[i]);
             }
         }
@@ -133,7 +146,8 @@ public class GameController : MonoBehaviour
         else
         {
             PlayersManager.Instance.HideAllHuds();
-           
+
+
             if (clapAnimations && CameraFX.Instance != null)
             {
                 CameraFX.Instance.VerticalClap(delegate ()
