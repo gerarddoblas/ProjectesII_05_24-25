@@ -60,7 +60,7 @@ public class PlayersManager : MonoBehaviour
         
         playersCanvas.Add(instantiatedHUD);
         players.Add(input.gameObject);
-
+        instantiatedHUD.GetComponent<PlayerHud>().SetColour(playerColours[players.Count-1]);
         player.GetComponent<Items>().onItemRecieved.AddListener(delegate (Sprite s){
             instantiatedHUD.GetComponent<PlayerHud>().SetItemSprite(s);
         });

@@ -22,8 +22,7 @@ public class TitleScreen : MonoBehaviour
         float width = this.GetComponent<RectTransform>().rect.width;
         float height = this.GetComponent<RectTransform>().rect.height;
 
-        RectTransform startTextRect = startText.GetComponent<RectTransform>();
-        RectTransform quitTextRect = quitText.GetComponent<RectTransform>();
+        
 
         LeanTween.move(Camera.main.gameObject, Vector2.zero, 7.5f).setOnUpdate(delegate(float r){
             if (Input.anyKeyDown)
@@ -34,19 +33,15 @@ public class TitleScreen : MonoBehaviour
                 LeanTween.move(title.gameObject, new Vector2(0, 2.75f), 1f).setEaseInOutBounce();
 
                 //Press space
-                LeanTween.move(pressSpaceText.GetComponent<RectTransform>(), new Vector2(0, 20), 1f).setEaseInOutBounce();
+                LeanTween.moveLocal(pressSpaceText.gameObject, new Vector2(0, 4.45f), 1f).setEaseInOutBounce();
 
                 //Start
-                startTextRect.anchorMin = new Vector2(0.5f, 0.5f);
-                startTextRect.anchorMax = new Vector2(0.5f, 0.5f);
-                startTextRect.localPosition = new Vector2(startDoor.transform.position.x / scale, -height);
-                LeanTween.move(startTextRect, (startDoor.transform.position + new Vector3(0, 2, 0)) / scale, 1f).setEaseInOutBounce();
-                
+                startText.transform.localPosition = new Vector2(startDoor.transform.position.x / scale, -height);
+                LeanTween.moveLocal(startText.gameObject, new Vector3(0, 0.625f), 1f).setEaseInOutBounce();
+
                 //Quit
-                quitTextRect.anchorMin = new Vector2(0.5f, 0.5f);
-                quitTextRect.anchorMax = new Vector2(0.5f, 0.5f);
-                quitTextRect.localPosition = new Vector2(quitDoor.transform.position.x / scale, -height);
-                LeanTween.move(quitTextRect, (quitDoor.transform.position + new Vector3(0, 2, 0)) / scale, 1f).setEaseInOutBounce();
+                quitText.transform.localPosition = new Vector2(quitDoor.transform.position.x / scale, -height);
+                LeanTween.moveLocal(quitText.gameObject, new Vector3(0, 0.625f), 1f).setEaseInOutBounce();
                 
                 LeanTween.value(1, 0, .5f).setOnUpdate(delegate (float r) { 
                     this.GetComponent<AudioSource>().volume = r;
@@ -60,16 +55,12 @@ public class TitleScreen : MonoBehaviour
             LeanTween.move(pressSpaceText.GetComponent<RectTransform>(), new Vector2(0, 20), 1f).setEaseInOutBounce();
 
             //Start
-            startTextRect.anchorMin = new Vector2(0.5f, 0.5f);
-            startTextRect.anchorMax = new Vector2(0.5f, 0.5f);
-            startTextRect.localPosition = new Vector2(startDoor.transform.position.x / scale, -height);
-            LeanTween.move(startTextRect, (startDoor.transform.position + new Vector3(0, 2, 0)) / scale, 1f).setEaseInOutBounce();
-            
+            startText.transform.localPosition = new Vector2(startDoor.transform.position.x / scale, -height);
+            LeanTween.moveLocal(startText.gameObject, new Vector3(0, 0.625f), 1f).setEaseInOutBounce();
+
             //Quit
-            quitTextRect.anchorMin = new Vector2(0.5f, 0.5f);
-            quitTextRect.anchorMax = new Vector2(0.5f, 0.5f);
-            quitTextRect.localPosition = new Vector2(quitDoor.transform.position.x / scale, -height);
-            LeanTween.move(quitTextRect, (quitDoor.transform.position + new Vector3(0, 2, 0)) / scale, 1f).setEaseInOutBounce();
+            quitText.transform.localPosition = new Vector2(quitDoor.transform.position.x / scale, -height);
+            LeanTween.moveLocal(quitText.gameObject, new Vector3(0, 0.625f), 1f).setEaseInOutBounce();
         }).setEaseInOutBounce();
         
     }

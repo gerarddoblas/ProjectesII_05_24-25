@@ -247,7 +247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 0}
-  showMS: 1
+  showMS: 0
   timeFormat: 0
 --- !u!1 &1102968860268504106
 GameObject:
