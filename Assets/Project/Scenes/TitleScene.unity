@@ -2277,10 +2277,6 @@ PrefabInstance:
       propertyPath: timer
       value: 
       objectReference: {fileID: 1578472065}
-    - target: {fileID: 2071107648658917626, guid: c1217ab959ac9474b8b07e3c710a0211, type: 3}
-      propertyPath: instructions
-      value: 
-      objectReference: {fileID: 614027132}
     - target: {fileID: 2451079477313218815, guid: c1217ab959ac9474b8b07e3c710a0211, type: 3}
       propertyPath: m_Name
       value: Main Camera
