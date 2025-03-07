@@ -8,6 +8,7 @@ public class TitleScreen : MonoBehaviour
 {
     Controls controls;
 
+    [SerializeField] private GameObject title;
     [SerializeField] private TMP_Text pressSpaceText;
     [SerializeField] private TMP_Text startText;
     [SerializeField] private TMP_Text quitText;
@@ -30,7 +31,7 @@ public class TitleScreen : MonoBehaviour
                 LeanTween.cancel(Camera.main.gameObject);
                 PlayersManager.Instance.SetJoining(true);
                 CameraFX.Instance.Center2DCamera(.5f);
-                LeanTween.move(this.gameObject, new Vector2(0, 2.75f), 1f).setEaseInOutBounce();
+                LeanTween.move(title.gameObject, new Vector2(0, 2.75f), 1f).setEaseInOutBounce();
 
                 //Press space
                 LeanTween.move(pressSpaceText.GetComponent<RectTransform>(), new Vector2(0, 20), 1f).setEaseInOutBounce();
@@ -46,13 +47,14 @@ public class TitleScreen : MonoBehaviour
                 quitTextRect.anchorMax = new Vector2(0.5f, 0.5f);
                 quitTextRect.localPosition = new Vector2(quitDoor.transform.position.x / scale, -height);
                 LeanTween.move(quitTextRect, (quitDoor.transform.position + new Vector3(0, 2, 0)) / scale, 1f).setEaseInOutBounce();
+                
                 LeanTween.value(1, 0, .5f).setOnUpdate(delegate (float r) { 
                     this.GetComponent<AudioSource>().volume = r;
                 });
             }
         }).setOnComplete(delegate (){
             PlayersManager.Instance.SetJoining(true);
-            LeanTween.move(this.gameObject, new Vector2(0, 2.75f), 1f).setEaseInOutBounce();
+            LeanTween.move(title.gameObject, new Vector2(0, 2.75f), 1f).setEaseInOutBounce();
 
             //Press space
             LeanTween.move(pressSpaceText.GetComponent<RectTransform>(), new Vector2(0, 20), 1f).setEaseInOutBounce();
