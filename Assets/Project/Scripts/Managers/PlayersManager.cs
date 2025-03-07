@@ -16,6 +16,7 @@ public class PlayersManager : MonoBehaviour
     [Header("Lists")]
     public List<GameObject> players;
     public List<GameObject> playersCanvas;
+    public List<Vector3Int> playerSpawnPositions;
 
     [Header("Visual Parameters")]
     [SerializeField] private Color[] playerColours;
@@ -32,14 +33,16 @@ public class PlayersManager : MonoBehaviour
         }
         else
             Destroy(gameObject);
-
-        SceneManager.sceneLoaded += SetPlayersPosition;
     }
 
-    private void SetPlayersPosition(Scene loadedScene, LoadSceneMode loadedSceneMode) {
+    public void SetPlayersPosition() {
         hudsContainer.transform.position = Vector2.zero;
-        foreach (GameObject player in players)
-            player.transform.position = Vector3.zero;
+        if (playerSpawnPositions.Count != 4)
+            for (int i = 0; i < players.Count; ++i)
+                players[i].transform.position = new Vector3Int(0, 0, 0);
+        else
+            for (int i = 0; i < players.Count; ++i)
+                players[i].transform.position = playerSpawnPositions[i];
         //onAnyActionPerformed.RemoveAllListeners();
     }
 
