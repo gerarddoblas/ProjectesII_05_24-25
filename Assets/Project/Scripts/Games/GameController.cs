@@ -56,9 +56,7 @@ public class GameController : MonoBehaviour
         CameraFX.Instance.SetClap();
         CameraFX.Instance.timer.gameObject.SetActive(false);
         PlayersManager.Instance.HideAllHuds();
-        yield return null;
         CameraFX.Instance.instructions.color = new Color(255, 255, 255, 1);
-        yield return null;
         CameraFX.Instance.instructions.sprite = currentGameMode.instructions;
         yield return new WaitForSeconds(2);
         CameraFX.Instance.instructions.color = new Color(255, 255, 255, 0);
@@ -70,7 +68,6 @@ public class GameController : MonoBehaviour
             PlayersManager.Instance.UnlockPlayersMovement();
             CameraFX.Instance.timer.gameObject.SetActive(true);
             currentGameMode.StartGame();
-
         });
     }
     
