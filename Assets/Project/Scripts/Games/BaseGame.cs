@@ -16,6 +16,7 @@ public class BaseGame : ScriptableObject
         PlayersManager.Instance.SetJoining(false);
         PlayersManager.Instance.ShowAllHuds();
         PlayersManager.Instance.EnablePlayersCreation();
+        AudioManager.instance.PlaySFX("NowGo");
     }
     public virtual void UpdateGame() {}
     public virtual void FinishGame()

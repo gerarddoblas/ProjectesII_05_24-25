@@ -16,6 +16,7 @@ public class PlayersManager : MonoBehaviour
     [Header("Lists")]
     public List<GameObject> players;
     public List<GameObject> playersCanvas;
+    public List<Vector3Int> playerSpawnPositions;
 
     [Header("Visual Parameters")]
     [SerializeField] private Color[] playerColours;
@@ -32,14 +33,20 @@ public class PlayersManager : MonoBehaviour
         }
         else
             Destroy(gameObject);
-
-        SceneManager.sceneLoaded += SetPlayersPosition;
     }
-
-    private void SetPlayersPosition(Scene loadedScene, LoadSceneMode loadedSceneMode) {
+    public void StopPlayers()
+    {
+        for (int i = 0; i < players.Count; ++i)
+            players[i].GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+    }
+    public void SetPlayersPosition() {
         hudsContainer.transform.position = Vector2.zero;
-        foreach (GameObject player in players)
-            player.transform.position = Vector3.zero;
+        if (playerSpawnPositions.Count != 4)
+            for (int i = 0; i < players.Count; ++i)
+                players[i].transform.position = new Vector3Int(0, 0, 0);
+        else
+            for (int i = 0; i < players.Count; ++i)
+                players[i].transform.position = playerSpawnPositions[i];
         //onAnyActionPerformed.RemoveAllListeners();
     }
 
@@ -60,7 +67,7 @@ public class PlayersManager : MonoBehaviour
         
         playersCanvas.Add(instantiatedHUD);
         players.Add(input.gameObject);
-
+        instantiatedHUD.GetComponent<PlayerHud>().SetColour(playerColours[players.Count-1]);
         player.GetComponent<Items>().onItemRecieved.AddListener(delegate (Sprite s){
             instantiatedHUD.GetComponent<PlayerHud>().SetItemSprite(s);
         });
@@ -85,11 +92,8 @@ public class PlayersManager : MonoBehaviour
         RectTransform hudRect = instantiatedHUD.GetComponent<RectTransform>();
         hudRect.SetParent(hudsContainer.transform, false);
 
-        if (input.currentControlScheme.Contains("Keyboard"))
-            instantiatedHUD.GetComponent<PlayerHud>().SetKeyboardControls();
-        else    
-            instantiatedHUD.GetComponent <PlayerHud>().SetGamepdControls();
-            
+        instantiatedHUD.GetComponent<PlayerHud>().SetControls(input.currentControlScheme);
+
 
         switch (players.Count)
         {

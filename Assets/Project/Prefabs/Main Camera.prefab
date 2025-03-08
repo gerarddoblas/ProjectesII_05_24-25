@@ -167,8 +167,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 81e5dc9b0cce2374a9ac78827bbd4714, type: 2}
-  m_sharedMaterial: {fileID: -3988142467084639221, guid: 81e5dc9b0cce2374a9ac78827bbd4714, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: cabc545e94625ca4496dde2c9db85274, type: 2}
+  m_sharedMaterial: {fileID: -4242594902984832961, guid: cabc545e94625ca4496dde2c9db85274, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -247,8 +247,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 0}
-  showMS: 1
+  showMS: 0
   timeFormat: 0
+  showOptions: 1
 --- !u!1 &1102968860268504106
 GameObject:
   m_ObjectHideFlags: 0

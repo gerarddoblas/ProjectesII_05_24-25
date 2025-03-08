@@ -12,12 +12,12 @@ GameObject:
   - component: {fileID: 2447423563948376479}
   - component: {fileID: 1808370118036145388}
   m_Layer: 0
-  m_Name: KeyboardControls
+  m_Name: Controls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6732487813204040686
 RectTransform:
   m_ObjectHideFlags: 0
@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 692100484, guid: 11a673d14e249304e88421962ecad117, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 09c71b17e54de3145b90edd1211b063a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -397,7 +397,6 @@ RectTransform:
   - {fileID: 2015488823069936516}
   - {fileID: 5313685632302311316}
   - {fileID: 6732487813204040686}
-  - {fileID: 1559287491750026804}
   m_Father: {fileID: 0}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -418,8 +417,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 708394c9f3ac76e409b962c8dc082ec3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyboardControls: {fileID: 723795344861871278}
-  gamePadControls: {fileID: 7564782597222096071}
+  actionButtonScheme:
+    defaultSprite: {fileID: 21300000, guid: 09c71b17e54de3145b90edd1211b063a, type: 3}
+    actions:
+    - controllerName: eyboard
+      sprite: {fileID: 692100484, guid: 11a673d14e249304e88421962ecad117, type: 3}
+    - controllerName: ual
+      sprite: {fileID: 21300000, guid: 09c71b17e54de3145b90edd1211b063a, type: 3}
+    - controllerName: intendo
+      sprite: {fileID: -1095957323, guid: 11a673d14e249304e88421962ecad117, type: 3}
+  Controls: {fileID: 723795344861871278}
   itemSprite: {fileID: 3211716127905048632}
   healthBar: {fileID: 1217284174990103750}
   scoreText: {fileID: 4314728748093129916}
@@ -503,82 +510,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 73590d405b36bc947b6220030ab9c259, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!1 &7564782597222096071
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1559287491750026804}
-  - component: {fileID: 7798733184568839975}
-  - component: {fileID: 356051664075199566}
-  m_Layer: 0
-  m_Name: GamepadControlls
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &1559287491750026804
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7564782597222096071}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7363463690276142053}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 38, y: -38}
-  m_SizeDelta: {x: 12, y: 12}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &7798733184568839975
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7564782597222096071}
-  m_CullTransparentMesh: 1
---- !u!114 &356051664075199566
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7564782597222096071}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: -1095957323, guid: 11a673d14e249304e88421962ecad117, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

@@ -11,11 +11,16 @@ public class Timer : MonoBehaviour
         MINUTEMINSEC,
         SECONDS
     }
-
+    public enum EShowOptions
+    {
+        ONLYGREATERTHANZERO,
+        POSITIVE,
+        NEGATIVE
+    }
     [SerializeField]TextMeshProUGUI timerText;
     public bool showMS;
     public ETimeFormat timeFormat; 
-    
+    public EShowOptions showOptions = EShowOptions.POSITIVE;
     public static Timer Instance { get; private set; }
     private void Awake()
     {
@@ -32,17 +37,24 @@ public class Timer : MonoBehaviour
     public void UpdateTimerText(float remainingSeconds)
     {
         string timeString = "";
-        switch (timeFormat)
+        if ((remainingSeconds >= 0 && showOptions == EShowOptions.POSITIVE)||
+            (remainingSeconds > 0 && showOptions == EShowOptions.ONLYGREATERTHANZERO)||
+            (showOptions == EShowOptions.NEGATIVE)
+            )
         {
-            case ETimeFormat.MINUTEMINSEC:
-                timeString = (remainingSeconds/60).ToString().Split(",")[0] + (remainingSeconds%60).ToString();
-                break;
-            default: 
-                timeString = remainingSeconds.ToString().Split(",")[0];
-                break;
+            switch (timeFormat)
+            {
+                case ETimeFormat.MINUTEMINSEC:
+                    timeString = (remainingSeconds / 60).ToString().Split(",")[0] + (remainingSeconds % 60).ToString();
+                    break;
+                default:
+                    timeString = remainingSeconds.ToString().Split(",")[0];
+                    break;
+            }
+            if (showMS)
+                timeString += "." + remainingSeconds.ToString().Split(",")[1];
         }
-        if (showMS)
-            timeString += "." + remainingSeconds.ToString().Split(",")[1];
         timerText.text = timeString;
+
     }
 }

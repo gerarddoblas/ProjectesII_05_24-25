@@ -33,7 +33,7 @@ Transform:
   - {fileID: 4460831522240399959}
   - {fileID: 2676363417343484865}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4529087099886752815
 MonoBehaviour:
@@ -75,6 +75,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 150d997aeaed63544b579b6bc7fd33b9, type: 3}
   - name: Laser
     clip: {fileID: 8300000, guid: 150d997aeaed63544b579b6bc7fd33b9, type: 3}
+  - name: NowGo
+    clip: {fileID: 8300000, guid: 43ccb7e60f3465d4489a60d7fe229b0d, type: 3}
   manaSounds: []
   musicSource: {fileID: 3435520507866103731}
   sfxSource: {fileID: 6957048188292590646}

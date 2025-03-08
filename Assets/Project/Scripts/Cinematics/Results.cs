@@ -8,8 +8,11 @@ public class Results : MonoBehaviour
 {
     // Start is called before the first frame update
     float timer = 5f;
-    void Start()
+    private void Awake()
     {
+        PlayersManager.Instance.StopPlayers();
+        PlayersManager.Instance.LockPlayersMovement();
+        PlayersManager.Instance.HideAllHuds();
         GameObject [] orderedPlayers = PlayersManager.Instance.players.OrderBy(go => (-1*go.GetComponent<Player>().Score)).ToArray();
         for(int i = 0; i < orderedPlayers.Length; i++)
         {
@@ -34,6 +37,7 @@ public class Results : MonoBehaviour
         {
             CameraFX.Instance.VerticalClap(() =>{
                 PlayersManager.Instance.UnlockPlayersMovement();
+                PlayersManager.Instance.playerInputManager.EnableJoining();
                 SceneManager.LoadScene("LevelSelector");
             });
         }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,6 +14,8 @@ public class GameController : MonoBehaviour
     public BaseGame currentGameMode;
     [SerializeField] bool clapAnimations;
     public int targetScore;
+
+    [SerializeField] GameObject physicsCoin;
     public static GameController Instance { get; private set; }
 
     private void Awake()
@@ -32,14 +35,13 @@ public class GameController : MonoBehaviour
         {
             if (clapAnimations)
             {
-                try
+                if (currentGameMode != null)
                 {
-                    if(currentGameMode.instructions != null)    
+                    if (currentGameMode.instructions != null)
                         StartCoroutine(StartGameWithInstructions());
                     else
                         currentGameMode.StartGame();
                 }
-                catch (Exception e) { }
             }
             else
                 currentGameMode.StartGame();
@@ -50,6 +52,7 @@ public class GameController : MonoBehaviour
     {
         yield return null;
         currentGameMode.SetGameState(false);
+        PlayersManager.Instance.playerInputManager.DisableJoining();
         PlayersManager.Instance.LockPlayersMovement();
         CameraFX.Instance.SetClap();
         CameraFX.Instance.timer.gameObject.SetActive(false);
@@ -71,12 +74,15 @@ public class GameController : MonoBehaviour
 
         });
     }
+    
     public void StartGames()
     {
         //targetScore = 100;
+        PlayersManager.Instance.playerInputManager.DisableJoining();
         ResetScore();
         SelectNextGame();
         SelectNextLevel();
+        currentGameMode.StartGame();
     }
     private void Update()
     {
@@ -86,16 +92,34 @@ public class GameController : MonoBehaviour
     public void StartGames(int newTargetedScore)
     {
         targetScore = newTargetedScore;
-        ResetScore();
-        SelectNextGame();
-        SelectNextLevel();
-        currentGameMode.StartGame();
+        StartGames();
     }
     public void AddScore(float scoreToAdd, GameObject player)
     {
         for (int i = 0; i < PlayersManager.Instance.players.Count; i++){
             if (player == PlayersManager.Instance.players[i]){
                 playerScores[i] += scoreToAdd;
+                PlayersManager.Instance.playersCanvas[i].GetComponent<PlayerHud>().SetScoreText((int)playerScores[i]);
+            }
+        }
+    }
+    public void RemoveScore(float scoreToRemove, GameObject player)
+    {
+        for (int i = 0; i < PlayersManager.Instance.players.Count; i++)
+        {
+            if (player == PlayersManager.Instance.players[i])
+            {
+                playerScores[i] -= scoreToRemove;
+                if(currentGameMode.GetType().Equals(typeof(CoinCollectGame)))
+                {
+                    for(int j = 0; j < scoreToRemove; j++)
+                    {
+                        GameObject instance = Instantiate(physicsCoin, player.transform.position + new Vector3(0, 2), Quaternion.identity);
+                        instance.GetComponent<Rigidbody2D>().AddForce(new Vector2(UnityEngine.Random.Range(-1000, 1000), 500));
+                    }
+                }
+                if (playerScores[i] < 0)
+                    playerScores[i] = 0;
                 PlayersManager.Instance.playersCanvas[i].GetComponent<PlayerHud>().SetScoreText((int)playerScores[i]);
             }
         }
@@ -114,6 +138,8 @@ public class GameController : MonoBehaviour
     }
     public void NextGame()
     {
+        PlayersManager.Instance.LockPlayersMovement();
+        PlayersManager.Instance.StopPlayers();
         if (!PlayerAchievedTargetScore())
         {
             if (clapAnimations && CameraFX.Instance != null)
@@ -133,7 +159,8 @@ public class GameController : MonoBehaviour
         else
         {
             PlayersManager.Instance.HideAllHuds();
-           
+            currentGameMode = null;
+
             if (clapAnimations && CameraFX.Instance != null)
             {
                 CameraFX.Instance.VerticalClap(delegate ()
