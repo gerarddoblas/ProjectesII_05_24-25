@@ -50,7 +50,6 @@ public class GameController : MonoBehaviour
     }
     IEnumerator StartGameWithInstructions()
     {
-        yield return null;
         currentGameMode.SetGameState(false);
         PlayersManager.Instance.playerInputManager.DisableJoining();
         PlayersManager.Instance.LockPlayersMovement();

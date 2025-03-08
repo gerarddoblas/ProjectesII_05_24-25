@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: New Coin Tile
   m_EditorClassIdentifier: 
   sprite: {fileID: 1992133959, guid: b9a2d69c626cdd84c8f1d1d2268719ad, type: 3}
-  prefab: {fileID: 4474864963852153268, guid: 77531d700d5b4b346b44bc3ec3a49218, type: 3}
+  prefab: {fileID: 8490169692131020553, guid: 77531d700d5b4b346b44bc3ec3a49218, type: 3}
