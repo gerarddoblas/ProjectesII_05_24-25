@@ -138,6 +138,8 @@ public class GameController : MonoBehaviour
     }
     public void NextGame()
     {
+        PlayersManager.Instance.LockPlayersMovement();
+        PlayersManager.Instance.StopPlayers();
         if (!PlayerAchievedTargetScore())
         {
             if (clapAnimations && CameraFX.Instance != null)

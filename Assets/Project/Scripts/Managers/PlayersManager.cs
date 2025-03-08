@@ -34,7 +34,11 @@ public class PlayersManager : MonoBehaviour
         else
             Destroy(gameObject);
     }
-
+    public void StopPlayers()
+    {
+        for (int i = 0; i < players.Count; ++i)
+            players[i].GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+    }
     public void SetPlayersPosition() {
         hudsContainer.transform.position = Vector2.zero;
         if (playerSpawnPositions.Count != 4)
