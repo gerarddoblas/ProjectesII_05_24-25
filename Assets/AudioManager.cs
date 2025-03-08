@@ -9,6 +9,8 @@ public class AudioManager : MonoBehaviour
     public Sound[] musicSounds, sfxSounds, manaSounds;
     public AudioSource musicSource, sfxSource, manaSource;
 
+    private Dictionary<string, float> soundCooldowns = new Dictionary<string, float>();
+    private float cooldownTime = 0.15f; 
     private void Awake()
     {
         if(instance == null)
@@ -48,6 +50,11 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
+            if (soundCooldowns.ContainsKey(name) && Time.time - soundCooldowns[name] < cooldownTime)
+            {
+                return; // Evita la saturación
+            }
+            soundCooldowns[name] = Time.time;
             sfxSource.PlayOneShot(s.clip);
         }
     }

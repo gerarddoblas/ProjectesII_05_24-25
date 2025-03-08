@@ -194,6 +194,7 @@ public class PlayersManager : MonoBehaviour
     {
         foreach (GameObject player in players)
             player.GetComponent<Player>().UnlockMovement();
+        AudioManager.instance.PlaySFX("NowGo");
     }
 
     public void SetJoining(bool enabled) {

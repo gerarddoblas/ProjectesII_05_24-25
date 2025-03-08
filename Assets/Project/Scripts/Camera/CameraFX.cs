@@ -105,6 +105,7 @@ public class CameraFX : MonoBehaviour
     public void CameraShake(float time, float magnitude){StartCoroutine(StartShake(time, magnitude));}
     private IEnumerator StartShake(float time, float magnitude)
     {
+        AudioManager.instance.PlaySFX("NowGo");
         originalCamPos = Camera.main.transform.position;
         while(time > 0)
         {
