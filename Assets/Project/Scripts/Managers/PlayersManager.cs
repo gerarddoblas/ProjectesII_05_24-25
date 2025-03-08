@@ -24,6 +24,11 @@ public class PlayersManager : MonoBehaviour
 
     public UnityEvent onAnyActionPerformed;
     public static PlayersManager Instance { get; private set; }
+    public void HealAllPlayers()
+    {
+        foreach (GameObject player in players)
+            player.GetComponent<HealthBehaviour>().FullHeal();
+    }
     private void Awake()
     {
         if (Instance == null)
@@ -189,6 +194,7 @@ public class PlayersManager : MonoBehaviour
     {
         foreach (GameObject player in players)
             player.GetComponent<Player>().UnlockMovement();
+        AudioManager.instance.PlaySFX("NowGo");
     }
 
     public void SetJoining(bool enabled) {

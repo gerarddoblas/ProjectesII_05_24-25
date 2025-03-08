@@ -77,6 +77,10 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 150d997aeaed63544b579b6bc7fd33b9, type: 3}
   - name: NowGo
     clip: {fileID: 8300000, guid: 43ccb7e60f3465d4489a60d7fe229b0d, type: 3}
+  - name: CollectCoin
+    clip: {fileID: 8300000, guid: d0fe0d5eb2c6aeb42927ade8d6647683, type: 3}
+  - name: LoseCoin
+    clip: {fileID: 8300000, guid: d58d90ab1586e77419d692af3cd2bb93, type: 3}
   manaSounds: []
   musicSource: {fileID: 3435520507866103731}
   sfxSource: {fileID: 6957048188292590646}

@@ -579,24 +579,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3571252476965832228, guid: c1217ab959ac9474b8b07e3c710a0211, type: 3}
   m_PrefabInstance: {fileID: 1944373922}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &826006241
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 826006237}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0d31cd41004d4549b054be3d1141663, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: {fileID: 496876995}
-  pressSpaceText: {fileID: 1324692504}
-  startText: {fileID: 2101696803}
-  quitText: {fileID: 1039123694}
-  startDoor: {fileID: 2119062836}
-  quitDoor: {fileID: 1737512999}
 --- !u!82 &826006242
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2241,7 +2223,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2744167357943020906, guid: c1217ab959ac9474b8b07e3c710a0211, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.69
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2744167357943020906, guid: c1217ab959ac9474b8b07e3c710a0211, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2291,9 +2273,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3571252476965832228, guid: c1217ab959ac9474b8b07e3c710a0211, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 826006241}
     - targetCorrespondingSourceObject: {fileID: 3571252476965832228, guid: c1217ab959ac9474b8b07e3c710a0211, type: 3}
       insertIndex: -1
       addedObject: {fileID: 826006242}
@@ -2468,7 +2447,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Start Game
+  m_text: Play again
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cabc545e94625ca4496dde2c9db85274, type: 2}
   m_sharedMaterial: {fileID: -4242594902984832961, guid: cabc545e94625ca4496dde2c9db85274, type: 2}
@@ -2697,11 +2676,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1070946722087091741, guid: 6d85d4b54ee95084fa57b4b3d60a7a4a, type: 3}
       propertyPath: stages.Array.data[0]
-      value: Level2
+      value: CoinCollect
       objectReference: {fileID: 0}
     - target: {fileID: 1070946722087091741, guid: 6d85d4b54ee95084fa57b4b3d60a7a4a, type: 3}
       propertyPath: stages.Array.data[1]
-      value: CoinCollect
+      value: Level2
       objectReference: {fileID: 0}
     - target: {fileID: 1070946722087091741, guid: 6d85d4b54ee95084fa57b4b3d60a7a4a, type: 3}
       propertyPath: stages.Array.data[2]

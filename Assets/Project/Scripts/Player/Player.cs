@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
     public Vector2 playerSpeed = Vector2.zero;
 
     [Header("Knockout Variables")]
-    private bool canMove = true;
+    public static bool canMove = true;
     public float knockoutTime = 3f;
 
     [Header("Events")]

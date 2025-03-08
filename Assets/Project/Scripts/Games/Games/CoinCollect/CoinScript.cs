@@ -23,6 +23,7 @@ public class CoinScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        AudioManager.instance.PlaySFX("CollectCoin");
         Player player = collision.GetComponent<Player>();
         Debug.Log("Coin Collided");
         if (player != null)
