@@ -9,26 +9,41 @@ public class OptionsMenu : MonoBehaviour
     public Slider brightSlider;
     public Slider musicSlider,fxSoundSlider;
     public Button Return;
-    void Start()
-    {
-        fullscreen.onValueChanged.AddListener(delegate (bool r) { 
-            Screen.fullScreen = r;
-        });
-        brightSlider.onValueChanged.AddListener(delegate (float r) {
-            Screen.brightness = r;
-        });
-        musicSlider.onValueChanged.AddListener(delegate (float r) { 
-            AudioManager.instance.manaSource.volume = r;
-        });
-        fxSoundSlider.onValueChanged.AddListener(delegate (float r) {
-            AudioManager.instance.sfxSource.volume = r;
-            AudioManager.instance.manaSource.volume = r;
-        });
-    }
+    
+        void Start()
+        {
+            Screen.fullScreen = (PlayerPrefs.GetInt("fullScreen", 1) == 1);
+            fullscreen.isOn = Screen.fullScreen;
+            fullscreen.onValueChanged.AddListener(delegate (bool r) {
+                Screen.fullScreen = r;
+                PlayerPrefs.SetInt("fullScreen", r ? 1 : 0);
+                PlayerPrefs.Save();
+            });
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+            Screen.brightness = PlayerPrefs.GetFloat("brightness", 1);
+            brightSlider.value = Screen.brightness;
+            brightSlider.onValueChanged.AddListener(delegate (float r) {
+                Screen.brightness = r;
+                PlayerPrefs.SetFloat("brightness", r);
+                PlayerPrefs.Save();
+            });
+
+            musicSlider.value = PlayerPrefs.GetFloat("MusicVolume", 1);
+            AudioManager.instance.manaSource.volume = musicSlider.value;
+            musicSlider.onValueChanged.AddListener(delegate (float r) {
+                AudioManager.instance.manaSource.volume = r;
+                PlayerPrefs.SetFloat("MusicVolume", r);
+                PlayerPrefs.Save();
+            });
+
+            fxSoundSlider.value = PlayerPrefs.GetFloat("FXVolume", 1);
+            AudioManager.instance.sfxSource.volume = fxSoundSlider.value;
+            AudioManager.instance.manaSource.volume = fxSoundSlider.value;
+            fxSoundSlider.onValueChanged.AddListener(delegate (float r) {
+                AudioManager.instance.sfxSource.volume = r;
+                AudioManager.instance.manaSource.volume = r;
+                PlayerPrefs.SetFloat("FXVolume", r);
+                PlayerPrefs.Save();
+            });
+        }
 }
