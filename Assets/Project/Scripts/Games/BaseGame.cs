@@ -11,7 +11,9 @@ public class BaseGame : ScriptableObject
     public Sprite instructions;
     protected bool playingGame = false;
     public void SetGameState(bool newState) { playingGame = newState; }
-    public virtual void StartGame() { 
+    public virtual void StartGame() {
+        //AudioManager.instance.PlaySFX("NowGo");
+        AudioManager.instance.PlayMusic("BackGround");
         playingGame = true;
         PlayersManager.Instance.SetJoining(false);
         PlayersManager.Instance.ShowAllHuds();

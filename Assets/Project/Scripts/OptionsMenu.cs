@@ -29,19 +29,19 @@ public class OptionsMenu : MonoBehaviour
             });
 
             musicSlider.value = PlayerPrefs.GetFloat("MusicVolume", 1);
-            AudioManager.instance.manaSource.volume = musicSlider.value;
+            AudioManager.instance.musicSource.volume = musicSlider.value;
             musicSlider.onValueChanged.AddListener(delegate (float r) {
-                AudioManager.instance.manaSource.volume = r;
+                AudioManager.instance.musicSource.volume = r;
                 PlayerPrefs.SetFloat("MusicVolume", r);
                 PlayerPrefs.Save();
             });
 
             fxSoundSlider.value = PlayerPrefs.GetFloat("FXVolume", 1);
             AudioManager.instance.sfxSource.volume = fxSoundSlider.value;
-            AudioManager.instance.manaSource.volume = fxSoundSlider.value;
+            AudioManager.instance.musicSource.volume = fxSoundSlider.value;
             fxSoundSlider.onValueChanged.AddListener(delegate (float r) {
                 AudioManager.instance.sfxSource.volume = r;
-                AudioManager.instance.manaSource.volume = r;
+                AudioManager.instance.musicSource.volume = r;
                 PlayerPrefs.SetFloat("FXVolume", r);
                 PlayerPrefs.Save();
             });
