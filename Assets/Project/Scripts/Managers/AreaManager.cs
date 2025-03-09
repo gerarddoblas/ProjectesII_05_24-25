@@ -41,6 +41,7 @@ public class AreaManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!GameController.Instance.currentGameMode.GetType().Equals(typeof(TimeZoneCapture))) Destroy(this.gameObject);
         if (timeBeforeChange < 0) ChangeArea();
     }
 
