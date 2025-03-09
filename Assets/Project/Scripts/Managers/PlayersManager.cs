@@ -187,6 +187,7 @@ public class PlayersManager : MonoBehaviour
             player.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
             player.GetComponent<Player>().LockMovement();
             player.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+            AudioManager.instance.StopMusic();
         }
     }
 
@@ -194,7 +195,10 @@ public class PlayersManager : MonoBehaviour
     {
         foreach (GameObject player in players)
             player.GetComponent<Player>().UnlockMovement();
+        AudioManager.instance.SetMusicVolume(1f);
         AudioManager.instance.PlaySFX("NowGo");
+        AudioManager.instance.PlayMusic("BackGround");
+        AudioManager.instance.SetMusicVolume(0.3f);
     }
 
     public void SetJoining(bool enabled) {

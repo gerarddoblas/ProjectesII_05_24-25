@@ -17,7 +17,7 @@ public class TitleScreen : MonoBehaviour
 
     private void Awake()
     {
-
+        AudioManager.instance.PlayMusic("opening");
         float scale = this.GetComponent<RectTransform>().localScale.x;
         float width = this.GetComponent<RectTransform>().rect.width;
         float height = this.GetComponent<RectTransform>().rect.height;
@@ -27,6 +27,8 @@ public class TitleScreen : MonoBehaviour
         LeanTween.move(Camera.main.gameObject, Vector2.zero, 7.5f).setOnUpdate(delegate(float r){
             if (Input.anyKeyDown)
             {
+                AudioManager.instance.StopMusic();
+                AudioManager.instance.PlayMusic("TitleScreen");
                 LeanTween.cancel(Camera.main.gameObject);
                 PlayersManager.Instance.SetJoining(true);
                 CameraFX.Instance.Center2DCamera(.5f);
@@ -48,6 +50,7 @@ public class TitleScreen : MonoBehaviour
                 });
             }
         }).setOnComplete(delegate (){
+            
             PlayersManager.Instance.SetJoining(true);
             LeanTween.move(title.gameObject, new Vector2(0, 2.75f), 1f).setEaseInOutBounce();
 
@@ -62,6 +65,5 @@ public class TitleScreen : MonoBehaviour
             quitText.transform.localPosition = new Vector2(quitDoor.transform.position.x / scale, -height);
             LeanTween.moveLocal(quitText.gameObject, new Vector3(0, 0.625f), 1f).setEaseInOutBounce();
         }).setEaseInOutBounce();
-        
     }
 }

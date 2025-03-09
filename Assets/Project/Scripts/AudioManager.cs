@@ -71,4 +71,27 @@ public class AudioManager : MonoBehaviour
             manaSource.PlayOneShot(s.clip);
         }
     }
+    public void StopMusic()
+    {
+        if (musicSource.isPlaying)
+        {
+            musicSource.Stop();
+        }
+    }
+    public void StopSFX()
+    {
+        sfxSource.Stop();
+    }
+    public void SetMusicVolume(float volume)
+    {
+        musicSource.volume = Mathf.Clamp(volume, 0f, 1f);
+    }
+    public void SetSFXVolume(float volume)
+    {
+       sfxSource.volume = Mathf.Clamp(volume, 0f, 1f);
+    }
+    public bool MusicPlaying()
+    {
+        return musicSource.isPlaying;
+    }
 }
