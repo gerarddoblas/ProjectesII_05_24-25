@@ -52,7 +52,7 @@ public class AreaManager : MonoBehaviour
         {
             //player.Score += ();
             //player.onAlterScore.Invoke(player.Score);
-            GameController.Instance.AddScore(Time.deltaTime * scoreMultiplier, collision.gameObject);
+            GameController.Instance.AddScore(Time.deltaTime * scoreMultiplier *10, collision.gameObject);
             timeBeforeChange -= Time.deltaTime;
 
             if(Random.Range(0f, 100f) < particleRate)

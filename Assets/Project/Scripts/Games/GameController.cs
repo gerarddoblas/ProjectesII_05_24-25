@@ -58,7 +58,7 @@ public class GameController : MonoBehaviour
         PlayersManager.Instance.HideAllHuds();
         CameraFX.Instance.instructions.color = new Color(255, 255, 255, 1);
         CameraFX.Instance.instructions.sprite = currentGameMode.instructions;
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(5);
         CameraFX.Instance.instructions.color = new Color(255, 255, 255, 0);
         
         yield return null;

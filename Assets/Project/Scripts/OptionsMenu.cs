@@ -38,10 +38,8 @@ public class OptionsMenu : MonoBehaviour
 
             fxSoundSlider.value = PlayerPrefs.GetFloat("FXVolume", 1);
             AudioManager.instance.sfxSource.volume = fxSoundSlider.value;
-            AudioManager.instance.musicSource.volume = fxSoundSlider.value;
             fxSoundSlider.onValueChanged.AddListener(delegate (float r) {
                 AudioManager.instance.sfxSource.volume = r;
-                AudioManager.instance.musicSource.volume = r;
                 PlayerPrefs.SetFloat("FXVolume", r);
                 PlayerPrefs.Save();
             });
