@@ -19,6 +19,7 @@ public class Mina : Item
             Debug.Log("Mine collied with player");
             AudioManager.instance.PlaySFX("Mine");
             p.healthBehaviour.Damage(2);
+            GameController.Instance.RemoveScore(p.healthBehaviour.maxhealth, p.gameObject);
             Destroy(this.gameObject);
         }
         else

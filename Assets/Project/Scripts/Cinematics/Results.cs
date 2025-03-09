@@ -8,10 +8,14 @@ public class Results : MonoBehaviour
 {
     // Start is called before the first frame update
     float timer = 5f;
-    void Start()
+    private void Start()
     {
-        GameObject [] orderedPlayers = PlayersManager.Instance.players.OrderBy(go => (-1*go.GetComponent<Player>().Score)).ToArray();
-        for(int i = 0; i < orderedPlayers.Length; i++)
+        PlayersManager.Instance.StopPlayers();
+        PlayersManager.Instance.LockPlayersMovement();
+        PlayersManager.Instance.HideAllHuds();
+        //GameObject [] orderedPlayers = PlayersManager.Instance.players.OrderBy(go => (-1*go.GetComponent<Player>().Score)).ToArray();
+        GameObject[] orderedPlayers = PlayersManager.Instance.players.OrderByDescending(go => GameController.Instance.playerScores[PlayersManager.Instance.players.IndexOf(go)]).ToArray();
+        for (int i = 0; i < orderedPlayers.Length; i++)
         {
             Debug.Log("Player with colour " + orderedPlayers[i].GetComponent<SpriteRenderer>().color 
                 +" lasted in " + i + " place with  "+ orderedPlayers[i].GetComponent<Player>().Score +" points");
@@ -34,7 +38,8 @@ public class Results : MonoBehaviour
         {
             CameraFX.Instance.VerticalClap(() =>{
                 PlayersManager.Instance.UnlockPlayersMovement();
-                SceneManager.LoadScene("LevelSelector");
+                PlayersManager.Instance.playerInputManager.EnableJoining();
+                SceneManager.LoadScene("PlayAgain");
             });
         }
     }

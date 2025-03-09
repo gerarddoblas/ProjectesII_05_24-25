@@ -58,7 +58,7 @@ MonoBehaviour:
   - {x: 8, y: -14}
   - {x: -8, y: -14}
   timeBeforeChange: 0
-  InArea: {fileID: 8300000, guid: 2dcff75ce34c0714fa1fb99960006438, type: 3}
+  InArea: {fileID: 8300000, guid: abf21b34f7d554b4c94d760b1b7f9901, type: 3}
   scoreMultiplier: 5
   particle: {fileID: 2140062284718592949, guid: 5715839756100b84089c85db157da5d8, type: 3}
   particleRate: 5

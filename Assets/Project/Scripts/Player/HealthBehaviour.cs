@@ -115,4 +115,14 @@ public class HealthBehaviour : MonoBehaviour
         yield return new WaitForSeconds(duration);
         invincibility = false;
     }
+    public IEnumerator SetInvincibility()
+    {
+        invincibility = true;
+        yield return null;
+    }
+    public IEnumerator QuitInvincibility()
+    {
+        invincibility = false;
+        yield return null;
+    }
 }

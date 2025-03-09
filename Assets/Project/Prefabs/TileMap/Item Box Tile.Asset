@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07882716084325843b4c0659f8260075, type: 3}
+  m_Name: Item Box Tile
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 1990401786, guid: a5150f90fa08afd47839b332d0aa7dd1, type: 3}
+  prefab: {fileID: 2732986131802241898, guid: d4562792465c3e24da7f19d2bf96efc0, type: 3}

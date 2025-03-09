@@ -13,6 +13,10 @@ public class Player : MonoBehaviour
     public HealthBehaviour healthBehaviour;
     private Animator animator;
 
+    [Header("Push")]
+    [SerializeField] private GameObject pushLeft;
+    [SerializeField] private GameObject pushRight;
+
     [Header("Physics Attributes")]
     public float acceleration, maxSpeed, jumpForce;
     [SerializeField] private float maxJumpForce, minJumpForce, curJumpForce, deltaJumpForce;
@@ -22,12 +26,13 @@ public class Player : MonoBehaviour
     public Vector2 playerSpeed = Vector2.zero;
 
     [Header("Knockout Variables")]
-    private bool canMove = true;
+    public static bool canMove = true;
     public float knockoutTime = 3f;
 
     [Header("Events")]
     public UnityEvent<float> onAlterMana;
     public UnityEvent<float> onAlterScore;
+    public UnityEvent<GameObject> onPlayerHitted;
 
     [Header("Score")]
     [SerializeField] private float score;
@@ -56,6 +61,7 @@ public class Player : MonoBehaviour
         input.actions.FindAction("Move").canceled += MoveCancelled;
         input.actions.FindAction("Jump").started += Jump;
         input.actions.FindAction("Jump").canceled += JumpStop;
+        input.actions.FindAction("GenerateSmallObject").started += Push;
 
         healthBehaviour = GetComponent<HealthBehaviour>();
         healthBehaviour.OnDie.AddListener(delegate ()
@@ -131,6 +137,7 @@ public class Player : MonoBehaviour
         groundCheck.Coyote = false;
 
         AudioManager.instance.PlaySFX("Jump");
+       // AudioManager.instance.SetSFXVolume(0.2f);
         jumpTime = 0;
         Instantiate(jumpParticles, groundCheck.transform.position, Quaternion.identity);
     }
@@ -155,13 +162,40 @@ public class Player : MonoBehaviour
     {
         canMove = false;
         AudioManager.instance.PlaySFX("Knockout");
-        this.GetComponent<Items>().LockManaAndCreation();
+        this.GetComponent<Items>().LockObjectCreation();
         StartCoroutine(healthBehaviour.SetInvincibility(knockoutTime * 2));
         yield return new WaitForSeconds(knockoutTime);
-
-        this.GetComponent<Items>().UnlockManaAndCreation();
+        this.GetComponent<Items>().UnlockObjectCreation();
         canMove = true;
-
         healthBehaviour.FullHeal();
+    }
+    IEnumerator SetSnockout()
+    {
+        canMove = false;
+        healthBehaviour.SetInvincibility();
+        yield return null;
+    }
+    IEnumerator QuitKnockout() {
+        canMove = true;
+        healthBehaviour.QuitInvincibility();
+        yield return null;
+    }
+    public bool GetKO() { return (!canMove && healthBehaviour.invincibility); }
+
+    private void Push(InputAction.CallbackContext context)
+    {
+        StartCoroutine(this.ActivatePush((spriteRenderer.flipX) ? pushLeft : pushRight));
+    }
+
+    IEnumerator ActivatePush(GameObject push)
+    {
+        if (canMove)
+        {
+            push.SetActive(true);
+            PushScript pushScript = push.GetComponent<PushScript>();
+            yield return new WaitForSeconds(0.1f);
+            push.SetActive(false);
+        }
+        yield return null;
     }
 }

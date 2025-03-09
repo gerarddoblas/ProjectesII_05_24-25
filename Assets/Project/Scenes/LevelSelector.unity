@@ -5756,6 +5756,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayersTrigger (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4550651798293246330, guid: 18468d648645d294daac946b8d5c422e, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4550651798293246330, guid: 18468d648645d294daac946b8d5c422e, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5812273852428917868, guid: 18468d648645d294daac946b8d5c422e, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -5827,14 +5835,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3530997944829853898, guid: 18468d648645d294daac946b8d5c422e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 88522607}
+      addedObject: {fileID: 88522608}
   m_SourcePrefab: {fileID: 100100000, guid: 18468d648645d294daac946b8d5c422e, type: 3}
 --- !u!1 &88522606 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3530997944829853898, guid: 18468d648645d294daac946b8d5c422e, type: 3}
   m_PrefabInstance: {fileID: 88522605}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &88522607
+--- !u!114 &88522608
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5843,13 +5851,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 88522606}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81010ae363663654e893849c893c30a0, type: 3}
+  m_Script: {fileID: 11500000, guid: 28d0f3c7987d8a14facabd1813c21784, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stages:
-  - Level2
-  minPlayersToPass: 1
-  activateClapAnimation: 1
+  minPlayersToPass: 0
+  activateClapAnimation: 0
 --- !u!1001 &464962788
 PrefabInstance:
   m_ObjectHideFlags: 0
