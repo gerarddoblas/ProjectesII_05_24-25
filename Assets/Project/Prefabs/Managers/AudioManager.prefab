@@ -50,11 +50,15 @@ MonoBehaviour:
   musicSounds:
   - name: opening
     clip: {fileID: 8300000, guid: 564c073470184364292ad24bdaec69c5, type: 3}
+  - name: TitleScreen
+    clip: {fileID: 8300000, guid: c377bf2cb84c3184085bae2b0a1b0614, type: 3}
+  - name: BackGround
+    clip: {fileID: 8300000, guid: 90fc5b2e46058224a9b7748fcb52fc76, type: 3}
   sfxSounds:
   - name: CreationItem
     clip: {fileID: 8300000, guid: ff17c18759d0e8448b4d2807f8f06a5a, type: 3}
   - name: Jump
-    clip: {fileID: 8300000, guid: 4a95e4c3bafa6c240a922c6815c667fb, type: 3}
+    clip: {fileID: 8300000, guid: 57d1d1506b7a2894ba9f19e26fd6c205, type: 3}
   - name: Knockout
     clip: {fileID: 8300000, guid: 387373f49d179294aaf77c8f9fbe6c29, type: 3}
   - name: InLand
@@ -79,8 +83,6 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 43ccb7e60f3465d4489a60d7fe229b0d, type: 3}
   - name: CollectCoin
     clip: {fileID: 8300000, guid: d0fe0d5eb2c6aeb42927ade8d6647683, type: 3}
-  - name: LoseCoin
-    clip: {fileID: 8300000, guid: d58d90ab1586e77419d692af3cd2bb93, type: 3}
   manaSounds: []
   musicSource: {fileID: 3435520507866103731}
   sfxSource: {fileID: 6957048188292590646}

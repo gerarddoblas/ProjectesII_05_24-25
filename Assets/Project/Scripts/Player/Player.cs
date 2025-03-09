@@ -137,6 +137,7 @@ public class Player : MonoBehaviour
         groundCheck.Coyote = false;
 
         AudioManager.instance.PlaySFX("Jump");
+        AudioManager.instance.SetSFXVolume(0.2f);
         jumpTime = 0;
         Instantiate(jumpParticles, groundCheck.transform.position, Quaternion.identity);
     }
