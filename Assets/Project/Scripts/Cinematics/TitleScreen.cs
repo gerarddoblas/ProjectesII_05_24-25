@@ -17,7 +17,7 @@ public class TitleScreen : MonoBehaviour
 
     private void Awake()
     {
-        AudioManager.instance.PlayMusic("opening");
+        
         float scale = this.GetComponent<RectTransform>().localScale.x;
         float width = this.GetComponent<RectTransform>().rect.width;
         float height = this.GetComponent<RectTransform>().rect.height;
@@ -65,5 +65,10 @@ public class TitleScreen : MonoBehaviour
             quitText.transform.localPosition = new Vector2(quitDoor.transform.position.x / scale, -height);
             LeanTween.moveLocal(quitText.gameObject, new Vector3(0, 0.625f), 1f).setEaseInOutBounce();
         }).setEaseInOutBounce();
+    }
+
+    private void Start()
+    {
+        AudioManager.instance.PlayMusic("opening");
     }
 }

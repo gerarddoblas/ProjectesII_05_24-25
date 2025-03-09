@@ -18,7 +18,8 @@ public class CoinScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(!GameController.Instance.currentGameMode.GetType().Equals(typeof(CoinCollectGame)))
+            Destroy(this.gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
