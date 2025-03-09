@@ -16467,6 +16467,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 724125076545595446, guid: c1217ab959ac9474b8b07e3c710a0211, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 724125076545595446, guid: c1217ab959ac9474b8b07e3c710a0211, type: 3}
+      propertyPath: m_IgnoreReversedGraphics
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1102968860268504106, guid: c1217ab959ac9474b8b07e3c710a0211, type: 3}
       propertyPath: m_IsActive
       value: 1
