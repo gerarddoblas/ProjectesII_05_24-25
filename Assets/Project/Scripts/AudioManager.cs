@@ -90,8 +90,4 @@ public class AudioManager : MonoBehaviour
     {
        sfxSource.volume = Mathf.Clamp(volume, 0f, 1f);
     }
-    public bool MusicPlaying()
-    {
-        return musicSource.isPlaying;
-    }
 }

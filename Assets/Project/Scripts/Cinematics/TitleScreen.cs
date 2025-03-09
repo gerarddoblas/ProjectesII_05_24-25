@@ -50,7 +50,7 @@ public class TitleScreen : MonoBehaviour
                 });
             }
         }).setOnComplete(delegate (){
-            
+            AudioManager.instance.PlayMusic("TitleScreen");
             PlayersManager.Instance.SetJoining(true);
             LeanTween.move(title.gameObject, new Vector2(0, 2.75f), 1f).setEaseInOutBounce();
 
