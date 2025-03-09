@@ -55,7 +55,7 @@ public class TitleScreen : MonoBehaviour
             LeanTween.move(title.gameObject, new Vector2(0, 2.75f), 1f).setEaseInOutBounce();
 
             //Press space
-            LeanTween.move(pressSpaceText.GetComponent<RectTransform>(), new Vector2(0, 20), 1f).setEaseInOutBounce();
+            LeanTween.moveLocal(pressSpaceText.gameObject, new Vector2(0, 4.45f), 1f).setEaseInOutBounce();
 
             //Start
             startText.transform.localPosition = new Vector2(startDoor.transform.position.x / scale, -height);
