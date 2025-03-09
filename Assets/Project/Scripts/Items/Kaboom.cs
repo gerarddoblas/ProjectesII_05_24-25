@@ -9,7 +9,7 @@ public class Kaboom : Item
 {
     public float timeInScene = 2f;
     public float contador = 0.0f;
-    public float growth = .25f;
+    public float growth = .1f;
     private AudioSource source;
     private void Start()
     {
