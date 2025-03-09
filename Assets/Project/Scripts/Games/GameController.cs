@@ -68,6 +68,8 @@ public class GameController : MonoBehaviour
             PlayersManager.Instance.UnlockPlayersMovement();
             CameraFX.Instance.timer.gameObject.SetActive(true);
             currentGameMode.StartGame();
+            AudioManager.instance.PlaySFX("NowGo");
+            AudioManager.instance.PlayMusic("BackGround"); 
         });
     }
     

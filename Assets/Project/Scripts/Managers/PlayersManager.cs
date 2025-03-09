@@ -115,12 +115,12 @@ public class PlayersManager : MonoBehaviour
             case 3:
                 hudRect.anchorMin = Vector2.zero;
                 hudRect.anchorMax = Vector2.zero;
-                hudRect.anchoredPosition = new Vector2(202, 171);
+                hudRect.anchoredPosition = new Vector2(202, -68);
                 break;
             default:
                 hudRect.anchorMin = Vector2.left;
                 hudRect.anchorMax = Vector2.left;
-                hudRect.anchoredPosition = new Vector2(-202, 171);
+                hudRect.anchoredPosition = new Vector2(-202, -68);
                 break;
         }
         
