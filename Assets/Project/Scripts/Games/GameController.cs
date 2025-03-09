@@ -125,7 +125,11 @@ public class GameController : MonoBehaviour
     public void ResetScore() {
         playerScores.Clear();
         for (int i = 0; i < PlayersManager.Instance.players.Count; i++)
+        {
             playerScores.Add(0);
+            PlayersManager.Instance.playersCanvas[i].GetComponent<PlayerHud>().SetScoreText((int)playerScores[i]);
+        }
+            
     }
     private void SelectNextLevel() {
         SceneManager.LoadScene(stages[(int)UnityEngine.Random.Range(0, stages.Count)]);

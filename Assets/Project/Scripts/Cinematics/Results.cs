@@ -8,7 +8,7 @@ public class Results : MonoBehaviour
 {
     // Start is called before the first frame update
     float timer = 5f;
-    private void Awake()
+    private void Start()
     {
         PlayersManager.Instance.StopPlayers();
         PlayersManager.Instance.LockPlayersMovement();
