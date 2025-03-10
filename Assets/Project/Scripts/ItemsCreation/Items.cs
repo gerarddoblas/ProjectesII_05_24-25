@@ -74,12 +74,12 @@ public class Items : MonoBehaviour
         {
             Vector3 spawnpos = Vector3.zero;
             if (spriteRenderer.flipX)
-                spawnpos = Vector3.left * 2f;
+                spawnpos = Vector3.left * .5f;
             else
-               spawnpos = Vector3.right * 2f;
-            instantiatedItem = Instantiate(instantiatedItem, this.transform.position + spawnpos, Quaternion.Euler(0, 0, 0));
+               spawnpos = Vector3.right * .5f;
+            instantiatedItem = Instantiate(instantiatedItem, this.transform.position + (spawnpos*transform.localScale.x), Quaternion.Euler(0, 0, 0));
             instantiatedItem.GetComponent<Item>().creator = this.gameObject;
-            instantiatedItem.GetComponent<Rigidbody2D>().AddForce(spawnpos * 12.5f, ForceMode2D.Impulse);
+            instantiatedItem.GetComponent<Rigidbody2D>().AddForce(spawnpos * 60f, ForceMode2D.Impulse);
         }
         onItemCreated.Invoke();
     }

@@ -142,6 +142,7 @@ public class GameController : MonoBehaviour
     {
         PlayersManager.Instance.LockPlayersMovement();
         PlayersManager.Instance.StopPlayers();
+        PlayersManager.Instance.HealAllPlayers();
         if (!PlayerAchievedTargetScore())
         {
             if (clapAnimations && CameraFX.Instance != null)
