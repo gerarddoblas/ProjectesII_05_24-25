@@ -145,15 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   possibleItems:
-  - {fileID: 4110435733389039893, guid: 1922fc243da642c449d2ff1fdd3f49fb, type: 3}
-  - {fileID: 4110435733389039893, guid: 1922fc243da642c449d2ff1fdd3f49fb, type: 3}
-  - {fileID: 4110435733389039893, guid: 1922fc243da642c449d2ff1fdd3f49fb, type: 3}
-  - {fileID: 2158082717029057907, guid: 9b46c30f446b8a54c96ca83699400fb7, type: 3}
-  - {fileID: 8325536505741278909, guid: b40e660cf7e20f944a582750f7a21b33, type: 3}
-  - {fileID: 8325536505741278909, guid: b40e660cf7e20f944a582750f7a21b33, type: 3}
-  - {fileID: 6923448661978156301, guid: 59c693c0c5a65c34cbfad3f8379ea29c, type: 3}
-  - {fileID: 2128471897566729481, guid: 54510ed8c0f866441b64675bcdcb8b92, type: 3}
-  - {fileID: 4110435733389039893, guid: daf37a4020ac11e4ebe0fc35400a8594, type: 3}
+  - {fileID: 8325536505741278909, guid: a781f0f7dbe60094e9319524b4c914e8, type: 3}
   particle: {fileID: 215918523138872930, guid: 1a30bd5a03d8bb542a39726e3bd84869, type: 3}
 --- !u!95 &8676153545450190991
 Animator:
