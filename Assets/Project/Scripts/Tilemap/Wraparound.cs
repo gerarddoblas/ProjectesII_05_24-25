@@ -15,6 +15,7 @@ public class Wraparound : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if(collision.GetComponent<Player>() == null) return;
         if (!objectsInside.Contains(collision) && !objectiveWraparound.objectsInside.Contains(collision))
         {
             objectsInside.Add(collision);
