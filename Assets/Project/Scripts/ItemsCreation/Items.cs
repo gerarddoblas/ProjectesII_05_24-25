@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Items : MonoBehaviour
 {
@@ -31,10 +32,8 @@ public class Items : MonoBehaviour
         rigidbody = GetComponent<Rigidbody2D>();
 
         input.actions.FindAction("GenerateMidObject").started += CreateMidObject;
-        
-
-    }
-
+        SceneManager.sceneLoaded += delegate (Scene loadedScene, LoadSceneMode loadedSceneMode) { recievedObject = null; };
+     }
     private void Start()
     {
     }
