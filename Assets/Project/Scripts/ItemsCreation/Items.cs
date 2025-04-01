@@ -19,7 +19,7 @@ public class Items : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D rigidbody;
-
+    [SerializeField] SpriteRenderer itemHandSprite;
     public UnityEvent<Sprite> onItemRecieved;
     public UnityEvent onItemCreated;
     public GameObject recievedObject;
@@ -33,7 +33,8 @@ public class Items : MonoBehaviour
 
         input.actions.FindAction("GenerateMidObject").started += CreateMidObject;
         SceneManager.sceneLoaded += delegate (Scene loadedScene, LoadSceneMode loadedSceneMode) { recievedObject = null; };
-     }
+        onItemRecieved.AddListener(delegate (Sprite s) { itemHandSprite.sprite = s; });
+        }
     private void Start()
     {
     }
@@ -52,6 +53,7 @@ public class Items : MonoBehaviour
 
         }*/
     }
+    public void SetItemHandSprite(Sprite s){itemHandSprite.sprite = s;}
     void CreateObject(InputAction.CallbackContext context, ObjectCreation.ObjectSizes size)
     {
 
@@ -59,6 +61,7 @@ public class Items : MonoBehaviour
         {
             GameObject instantiatedItem = recievedObject;
             InstantiateCreatedObject(instantiatedItem);
+            itemHandSprite.sprite = null;
             recievedObject = null;
         }
     }
@@ -73,9 +76,9 @@ public class Items : MonoBehaviour
         {
             Vector3 spawnpos = Vector3.zero;
             if (spriteRenderer.flipX)
-                spawnpos = Vector3.left * .5f;
+                spawnpos = Vector3.left * .55f;
             else
-               spawnpos = Vector3.right * .5f;
+               spawnpos = Vector3.right * .55f;
             instantiatedItem = Instantiate(instantiatedItem, this.transform.position + (spawnpos*transform.localScale.x), Quaternion.Euler(0, 0, 0));
             instantiatedItem.GetComponent<Item>().creator = this.gameObject;
             instantiatedItem.GetComponent<Rigidbody2D>().AddForce(spawnpos * 60f, ForceMode2D.Impulse);

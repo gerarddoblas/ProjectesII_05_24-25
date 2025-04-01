@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Localization.Settings;
 using UnityEngine.UI;
 
 public class OptionsMenu : MonoBehaviour
@@ -9,7 +12,7 @@ public class OptionsMenu : MonoBehaviour
     public Slider brightSlider;
     public Slider musicSlider,fxSoundSlider;
     public Button Return;
-    
+    public TMP_Dropdown langSelector;
         void Start()
         {
             Screen.fullScreen = (PlayerPrefs.GetInt("fullScreen", 1) == 1);
@@ -42,6 +45,10 @@ public class OptionsMenu : MonoBehaviour
                 AudioManager.instance.sfxSource.volume = r;
                 PlayerPrefs.SetFloat("FXVolume", r);
                 PlayerPrefs.Save();
+            });
+
+            langSelector.onValueChanged.AddListener(delegate (int optionIndex) {
+                LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[optionIndex];
             });
         }
 }

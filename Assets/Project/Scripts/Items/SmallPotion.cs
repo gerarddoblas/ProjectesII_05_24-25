@@ -28,7 +28,7 @@ public class SmallPotion : Item
     }
     IEnumerator Grow()
     {
-        if (target.transform.localScale == new Vector3(4, 4, 4))
+        if (target.transform.localScale == new Vector3(3.8f, 3.8f, 3.8f))
         {
             LeanTween.scale(target, target.transform.localScale / incrementMult, 1).setEaseInOutBounce();
             yield return new WaitForSeconds(duration);

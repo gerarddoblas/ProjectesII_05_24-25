@@ -53,39 +53,46 @@ public class StageSelector : MonoBehaviour
         GameObject player = collision.gameObject;
         if (PlayersManager.Instance.players.Contains(player))
         {
-            int index = PlayersManager.Instance.players.IndexOf(player);
-            GameObject hud = PlayersManager.Instance.playersCanvas[index];
-
-            Destroy(PlayersManager.Instance.playersCanvas[index]);
-            PlayersManager.Instance.playersCanvas[index] = null;
-
-            Destroy(player);
-            PlayersManager.Instance.players[index] = null;
-
-
-            if (PlayersManager.Instance.players.Count == 0 || PlayersManager.Instance.players.Count(p => p != null) == 0)
+            player.GetComponent<Player>().LockMovement();
+            LeanTween.scale(player.gameObject, Vector3.zero, .5f).setOnStart(() =>
             {
-                PlayersManager.Instance.SetJoining(false);
-                if (activateClapAnimation)
+                //LeanTween.move(player.gameObject, this.transform.position, .5f);
+            }).setOnComplete(() =>
+            {
+                int index = PlayersManager.Instance.players.IndexOf(player);
+                GameObject hud = PlayersManager.Instance.playersCanvas[index];
+
+                Destroy(PlayersManager.Instance.playersCanvas[index]);
+                PlayersManager.Instance.playersCanvas[index] = null;
+
+                Destroy(player);
+                PlayersManager.Instance.players[index] = null;
+
+
+                if (PlayersManager.Instance.players.Count == 0 || PlayersManager.Instance.players.Count(p => p != null) == 0)
                 {
-                    CameraFX.Instance.VerticalClap(delegate ()
+                    PlayersManager.Instance.SetJoining(false);
+                    if (activateClapAnimation)
+                    {
+                        CameraFX.Instance.VerticalClap(delegate ()
+                        {
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#else
+                            Application.Quit();
+#endif
+                        });
+                    }
+                    else
                     {
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
 #else
                         Application.Quit();
 #endif
-                    });
+                    }
                 }
-                else
-                {
-#if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-#else
-                    Application.Quit();
-#endif
-                }
-            }
+            });
         }
     }
 
