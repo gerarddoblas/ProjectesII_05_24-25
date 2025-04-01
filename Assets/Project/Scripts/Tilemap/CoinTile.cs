@@ -20,7 +20,7 @@ namespace UnityEngine.Tilemaps
                 string sceneName = loadedScene.name;
                 foreach (var info in spawnInfo)
                 {
-                    if (sceneName == info.Item2 && GameController.Instance.currentGameMode.GetType().Equals(typeof(CoinCollectGame))) Instantiate(prefab, info.Item1, Quaternion.identity);
+                    if (sceneName == info.Item2 && GameController.Instance.currentGameMode.GetType().Equals(typeof(CoinCollectGame))) Instantiate(prefab, info.Item1 + Vector3.right * 0.5f + Vector3.down * .5f, Quaternion.identity);
                 }
             };
         }
