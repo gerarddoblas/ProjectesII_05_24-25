@@ -3089,7 +3089,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1070946722087091741, guid: 6d85d4b54ee95084fa57b4b3d60a7a4a, type: 3}
       propertyPath: stages.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1070946722087091741, guid: 6d85d4b54ee95084fa57b4b3d60a7a4a, type: 3}
       propertyPath: gameModes.Array.size
@@ -3097,7 +3097,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1070946722087091741, guid: 6d85d4b54ee95084fa57b4b3d60a7a4a, type: 3}
       propertyPath: stages.Array.data[0]
-      value: WindLevel
+      value: Level2
       objectReference: {fileID: 0}
     - target: {fileID: 1070946722087091741, guid: 6d85d4b54ee95084fa57b4b3d60a7a4a, type: 3}
       propertyPath: stages.Array.data[1]
@@ -3105,7 +3105,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1070946722087091741, guid: 6d85d4b54ee95084fa57b4b3d60a7a4a, type: 3}
       propertyPath: stages.Array.data[2]
-      value: FerrisWheel
+      value: Level2
       objectReference: {fileID: 0}
     - target: {fileID: 1070946722087091741, guid: 6d85d4b54ee95084fa57b4b3d60a7a4a, type: 3}
       propertyPath: gameModes.Array.data[0]
