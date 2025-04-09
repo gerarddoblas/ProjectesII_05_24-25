@@ -5,12 +5,14 @@ using System.Diagnostics.CodeAnalysis;
 using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class GameController : MonoBehaviour
 {
     public List<BaseGame> gameModes;
     public List<string> stages;
     public List<float> playerScores;
+    public List<uint> playerGameScores;
     public BaseGame currentGameMode;
     [SerializeField] bool clapAnimations;
     public int targetScore;
@@ -78,6 +80,7 @@ public class GameController : MonoBehaviour
         //targetScore = 100;
         PlayersManager.Instance.playerInputManager.DisableJoining();
         ResetScore();
+        ResetGameScore();
         SelectNextGame();
         SelectNextLevel();
         currentGameMode.StartGame();
@@ -131,6 +134,29 @@ public class GameController : MonoBehaviour
         }
             
     }
+
+    public void ResetGameScore()
+    {
+        playerGameScores.Clear();
+        for (int i = 0; i < PlayersManager.Instance.players.Count; i++)
+        {
+            playerGameScores.Add(0);
+        }
+
+    }
+
+    private void UpdateGameScores()
+    {
+        List<int> maxScoreIndexes = new List<int>();
+        maxScoreIndexes.Add(0);
+        for (int i = 1; i < playerScores.Count; i++)
+            if (playerGameScores[i] > playerGameScores[maxScoreIndexes[0]])
+                maxScoreIndexes = new List<int> { i };
+            else if (playerGameScores[i] == playerGameScores[maxScoreIndexes[0]])
+                maxScoreIndexes.Add(i);
+        foreach(int i in maxScoreIndexes)
+            playerGameScores[i]++;
+    }
     private void SelectNextLevel() {
         SceneManager.LoadScene(stages[(int)UnityEngine.Random.Range(0, stages.Count)]);
     }
@@ -143,6 +169,8 @@ public class GameController : MonoBehaviour
         PlayersManager.Instance.LockPlayersMovement();
         PlayersManager.Instance.StopPlayers();
         PlayersManager.Instance.HealAllPlayers();
+        UpdateGameScores();
+        ResetScore();
         if (!PlayerAchievedTargetScore())
         {
             if (clapAnimations && CameraFX.Instance != null)
@@ -178,10 +206,9 @@ public class GameController : MonoBehaviour
     }
     public bool PlayerAchievedTargetScore()
     {
-        for(int i = 0; i < playerScores.Count;i++)
-            if (playerScores[i]>=targetScore)
+        for(int i = 0; i < playerGameScores.Count;i++)
+            if (playerGameScores[i]>=targetScore)
                 return true;
-        
         return false;
     }
 }
