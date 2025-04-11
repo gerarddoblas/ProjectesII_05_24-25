@@ -1,36 +1,34 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
+using UnityEngine.Tilemaps;
 
 [CreateAssetMenu(fileName = "TimeBasedGame", menuName = "Games/TimeBasedGame/CoinCollect")]
 public class CoinCollectGame : TimeBasedGame
 {
-    [SerializeField] private Transform[] coinPositions;
-    [SerializeField] private GameObject coin;
+
+    public PrefabTile coinTile;
+
+    override public void Reset()
+    {
+        base.Reset();
+        coinTile.positions = new List<Vector3Int>();
+        Debug.Log("Reset");
+    }
     override public void StartGame()
     {
         base.StartGame();
         PlayersManager.Instance.SetJoining(false);
         remainingTime = gameTime;
-        //LeanTween.alphaCanvas(counterText.GetComponentInParent<CanvasGroup>(), 1, 1);
         PlayersManager.Instance.ShowAllHuds(1);
         PlayersManager.Instance.EnablePlayersCreation();
-        /*onFinishGame.AddListener(delegate ()
-        {
-            PlayersManager.Instance.HideAllHuds();
-            PlayersManager.Instance.LockPlayersMovement();
-            PlayersManager.Instance.DisablePlayersCreation();
-            CameraFX.Instance.VerticalClap(() => {
-                SceneManager.LoadScene("ResultScene");
-            });
-        });*/
 
         /////////////////////////////Game-specific
-        foreach(Transform pos in coinPositions)
-        {
-            Instantiate(coin, pos);
-        }
+        TilemapScript.Instance.GetComponent<Tilemap>().RefreshAllTiles();
+        Debug.Log(coinTile.positions.Count);
+        coinTile.Spawn();
     }
 
     override public void UpdateGame()
