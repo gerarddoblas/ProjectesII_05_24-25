@@ -24,10 +24,7 @@ public class Kaboom : Item
             this.transform.localScale.y + (growth * Time.deltaTime),
             this.transform.localScale.z + (growth * Time.deltaTime)
         );
-        try
-        {
-            TilemapScript.Instance.ExplodeArea(this.transform.position, (int)(transform.localScale.x * transform.localScale.y));
-        } catch (Exception e) { }
+        TilemapScript.Instance.ExplodeArea(this.transform.position, (int)(transform.localScale.x * transform.localScale.y));
         if (contador >= timeInScene)
         {
             AudioManager.instance.PlaySFX("Kaboom");

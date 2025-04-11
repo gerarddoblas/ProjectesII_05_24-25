@@ -9,10 +9,12 @@ public class Barrel : Item
     public int damage = 15;
     private AudioSource source;
     [SerializeField] private AudioClip BarrelBoom;
+    private Rigidbody2D rb;
 
     private void Start()
     {
         source = GetComponent<AudioSource>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     public void Update()
@@ -24,6 +26,8 @@ public class Barrel : Item
             Destroy(this.gameObject);
 
         }
+
+        rb.velocity = Vector3.up * rb.velocity.y + Vector3.right * Mathf.Sign(rb.velocity.x) * 15;
     }
     override public IEnumerator Effect(GameObject target)
     {
