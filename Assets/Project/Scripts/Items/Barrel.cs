@@ -28,6 +28,7 @@ public class Barrel : Item
         }
 
         rb.velocity = Vector3.up * rb.velocity.y + Vector3.right * Mathf.Sign(rb.velocity.x) * 15;
+        transform.eulerAngles += Vector3.forward * Time.deltaTime;
     }
     override public IEnumerator Effect(GameObject target)
     {
