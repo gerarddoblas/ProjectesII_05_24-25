@@ -16,6 +16,7 @@ public class PlayersManager : MonoBehaviour
     [Header("Lists")]
     public List<GameObject> players;
     public List<GameObject> playersCanvas;
+    public List<Vector3Int> playerSpawnPositions;
 
     [Header("Visual Parameters")]
     [SerializeField] private Color[] playerColours;
@@ -23,6 +24,11 @@ public class PlayersManager : MonoBehaviour
 
     public UnityEvent onAnyActionPerformed;
     public static PlayersManager Instance { get; private set; }
+    public void HealAllPlayers()
+    {
+        foreach (GameObject player in players)
+            player.GetComponent<HealthBehaviour>().FullHeal();
+    }
     private void Awake()
     {
         if (Instance == null)
@@ -32,13 +38,20 @@ public class PlayersManager : MonoBehaviour
         }
         else
             Destroy(gameObject);
-
-        SceneManager.sceneLoaded += SetPlayersPosition;
     }
-
-    private void SetPlayersPosition(Scene loadedScene, LoadSceneMode loadedSceneMode) {
-        foreach (GameObject player in players)
-            player.transform.position = Vector3.zero;
+    public void StopPlayers()
+    {
+        for (int i = 0; i < players.Count; ++i)
+            players[i].GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+    }
+    public void SetPlayersPosition() {
+        hudsContainer.transform.position = Vector2.zero;
+        if (playerSpawnPositions.Count != 4)
+            for (int i = 0; i < players.Count; ++i)
+                players[i].transform.position = new Vector3Int(0, 0, 0);
+        else
+            for (int i = 0; i < players.Count; ++i)
+                players[i].transform.position = playerSpawnPositions[i];
         //onAnyActionPerformed.RemoveAllListeners();
     }
 
@@ -52,48 +65,76 @@ public class PlayersManager : MonoBehaviour
     {
         GameObject player = input.gameObject;
 
-        player.transform.SetParent(playerContainer.transform);     
-        player.GetComponent<SpriteRenderer>().color = playerColours[players.Count];
-        GameObject instantiatedHUD = GameObject.Instantiate(canvasPrefab,hudsContainer.transform);
-        PlayerHud instanceScript = instantiatedHUD.GetComponent<PlayerHud>();
+        player.transform.SetParent(playerContainer.transform);
 
-        playersCanvas.Add(instantiatedHUD);
-        players.Add(input.gameObject);
+        int slotIndex = players.FindIndex(p => p == null);
 
-        instanceScript.playerTransform = input.gameObject.transform;
-
-        player.GetComponent<Items>().onAlterMana.AddListener((float currentMana) =>
+        if (slotIndex == -1)
         {
-            instanceScript.manaRadial.fillAmount = currentMana / 3;
-        });
-
-        player.GetComponent<HealthBehaviour>().OnAlterHealth.AddListener((int health, int maxHealth) =>
-        {
-            instanceScript.barraDeVida.fillAmount = 1 - ((float)health / (float)maxHealth);
-        });
-        Vector3[] hudPositions = new Vector3[4];
-
-        hudPositions[0] = new Vector3(-45, 24, 0);   
-        hudPositions[1] = new Vector3(35, 24, 0);    
-        hudPositions[2] = new Vector3(-45, -25, 0);  
-        hudPositions[3] = new Vector3(20, -25, 0);   
-
-        if (playersCanvas.Count <= 4)
-        {
-            instantiatedHUD.transform.position = hudPositions[playersCanvas.Count - 1]; // Asigna la posición según el índice del jugador
+            slotIndex = players.Count;
+            players.Add(null);
+            playersCanvas.Add(null);
         }
+
+        players[slotIndex] = player;
+
+        player.GetComponent<SpriteRenderer>().color = playerColours[slotIndex];
+
+        GameObject instantiatedHUD = Instantiate(canvasPrefab, hudsContainer.transform);
+        playersCanvas[slotIndex] = instantiatedHUD;
+
+        var instanceScript = instantiatedHUD.GetComponent<PlayerHud>();
+        instanceScript.SetColour(playerColours[slotIndex]);
+        instanceScript.SetControls(input.currentControlScheme);
+
+        player.GetComponent<Items>().onItemRecieved.AddListener(delegate (Sprite s) {
+            instanceScript.SetItemSprite(s);
+        });
+
+        player.GetComponent<Items>().onItemCreated.AddListener(delegate () {
+            instanceScript.ClearItemSprite();
+        });
+
+        player.GetComponent<HealthBehaviour>().OnAlterHealth.AddListener(delegate (int mh, int h) {
+            instanceScript.SetHealthbar(mh, h);
+        });
+
         if (!enabledHUDByDefault)
             instantiatedHUD.SetActive(false);
         else
             instantiatedHUD.SetActive(true);
 
-        if(!enableCreationByDefault)
-            player.GetComponent<Items>().LockManaAndCreation();
-        else
-            player.GetComponent<Items>().UnlockManaAndCreation();
+        RectTransform hudRect = instantiatedHUD.GetComponent<RectTransform>();
+        hudRect.SetParent(hudsContainer.transform, false);
+
+        switch (slotIndex)
+        {
+            case 0:
+                hudRect.anchorMin = Vector2.up;
+                hudRect.anchorMax = Vector2.up;
+                hudRect.anchoredPosition = new Vector2(202, -171);
+                break;
+            case 1:
+                hudRect.anchorMin = Vector2.one;
+                hudRect.anchorMax = Vector2.one;
+                hudRect.anchoredPosition = new Vector2(-202, -171);
+                break;
+            case 2:
+                hudRect.anchorMin = Vector2.zero;
+                hudRect.anchorMax = Vector2.zero;
+                hudRect.anchoredPosition = new Vector2(202, -68);
+                break;
+            default:
+                hudRect.anchorMin = Vector2.left;
+                hudRect.anchorMax = Vector2.left;
+                hudRect.anchoredPosition = new Vector2(-202, -68);
+                break;
+        }
 
         SetOnAnyActionPerformed(player);
+        GameController.Instance.ResetScore();
     }
+
 
     public void ShowAllHuds()
     {
@@ -153,6 +194,7 @@ public class PlayersManager : MonoBehaviour
             player.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
             player.GetComponent<Player>().LockMovement();
             player.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+            AudioManager.instance.StopMusic();
         }
     }
 
@@ -160,6 +202,9 @@ public class PlayersManager : MonoBehaviour
     {
         foreach (GameObject player in players)
             player.GetComponent<Player>().UnlockMovement();
+        //AudioManager.instance.SetMusicVolume(1f);
+
+       // AudioManager.instance.SetMusicVolume(0.3f);
     }
 
     public void SetJoining(bool enabled) {
@@ -170,12 +215,12 @@ public class PlayersManager : MonoBehaviour
     }
     public void DisablePlayersCreation() {
         foreach (GameObject player in players)
-            player.GetComponent<Items>().LockManaAndCreation();
+            player.GetComponent<Items>().LockObjectCreation();
     }
     public void EnablePlayersCreation()
     {
         foreach (GameObject player in players)
-            player.GetComponent<Items>().UnlockManaAndCreation();
+            player.GetComponent<Items>().UnlockObjectCreation();
     }
     private void SetOnAnyActionPerformed(GameObject newPlayer)
     {
@@ -188,4 +233,5 @@ public class PlayersManager : MonoBehaviour
     {
         onAnyActionPerformed.Invoke();
     }
+
 }

@@ -25,16 +25,16 @@ public class Egg : Item {
     }
     override public IEnumerator Effect(GameObject target)
     {
-        if (target.TryGetComponent<Tilemap>(out Tilemap tm))
-            tm.GetTile(new Vector3Int((int)transform.position.x,(int)transform.position.y));
-
+        TilemapScript.Instance.ExplodeArea(this.transform.position, 10);
         if (target.TryGetComponent<Player>(out Player p))
         {
             p.GetComponent<Rigidbody2D>().velocity = new Vector2(this.GetComponent<Rigidbody2D>().velocity.x, target.GetComponent<Rigidbody2D>().velocity.y);
             p.healthBehaviour.Damage(damage);
+            GameController.Instance.RemoveScore(damage, p.gameObject);
             Destroy(this.gameObject);
             AudioManager.instance.PlaySFX("Egg");
         }
+        Destroy(this.gameObject);
         yield return null;
      }
 }

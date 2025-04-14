@@ -28,6 +28,7 @@ namespace UnityEngine.Tilemaps
         {
             float x = gameObject.transform.position.x - contact.x;
             float y = gameObject.transform.position.y - contact.y;
+            if (y < 0) return;
             Vector2 dir = (Mathf.Abs(x) > Mathf.Abs(y))
                 ? Vector2.right * Mathf.Sign(x)
                 : Vector2.up * Mathf.Sign(y);
@@ -38,7 +39,7 @@ namespace UnityEngine.Tilemaps
 
 #if UNITY_EDITOR
 
-    [CustomEditor(typeof(ExplodingTile))]
+    [CustomEditor(typeof(BouncyTile))]
     public class BouncyTileEditor : Editor 
     {
         private BouncyTile tile { get { return (target as BouncyTile); } }

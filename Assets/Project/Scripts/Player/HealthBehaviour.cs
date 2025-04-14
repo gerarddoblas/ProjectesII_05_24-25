@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
+using static UnityEngine.GraphicsBuffer;
 
 public class HealthBehaviour : MonoBehaviour
 {
+    [SerializeField]bool healOnSceneChanged = true;
     public bool invincibility = false;
     public int health, maxhealth;
 
@@ -16,6 +19,10 @@ public class HealthBehaviour : MonoBehaviour
     {
         health = maxhealth;
         OnAlterHealth.Invoke(health, maxhealth);
+        SceneManager.sceneLoaded += delegate (Scene loadedScene, LoadSceneMode loadedSceneMode) {
+            if (this.healOnSceneChanged)
+                this.FullHeal();
+        };
     }
     public void Heal(){
         health = Mathf.Min(health + 1, maxhealth);

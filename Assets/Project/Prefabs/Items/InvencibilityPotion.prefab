@@ -176,3 +176,4 @@ MonoBehaviour:
   creatorImmunity: 0
   fullHeal: 1
   healthAmount: 0
+  particles: {fileID: 2116742792820544769, guid: d621ba455f32cb5439ccfa00d78ca38f, type: 3}
