@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Exploding Tile
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: -574360118, guid: 21e2bbdb33b60fa4d851ced9dfd442ad, type: 3}
+  - {fileID: -1988677555, guid: c679899e224f59547bb95f0a0a7e2e4a, type: 3}
   - {fileID: 0}
   particles: {fileID: 2686372130080697451, guid: 68ddc66c4263afd4e9bbd02c72b86be7, type: 3}
