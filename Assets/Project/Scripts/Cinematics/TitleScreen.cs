@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TitleScreen : MonoBehaviour
@@ -32,7 +33,7 @@ public class TitleScreen : MonoBehaviour
                 LeanTween.cancel(Camera.main.gameObject);
                 PlayersManager.Instance.SetJoining(true);
                 CameraFX.Instance.Center2DCamera(.5f);
-                LeanTween.move(title.gameObject, new Vector2(0, 2.75f), 1f).setEaseInOutBounce();
+                LeanTween.move(title, endPos(title), 1f).setEaseInOutBounce();
 
                 //Press space
                 LeanTween.moveLocal(pressSpaceText.gameObject, new Vector2(0, 4.45f), 1f).setEaseInOutBounce();
@@ -52,7 +53,7 @@ public class TitleScreen : MonoBehaviour
         }).setOnComplete(delegate (){
             AudioManager.instance.PlayMusic("TitleScreen");
             PlayersManager.Instance.SetJoining(true);
-            LeanTween.move(title.gameObject, new Vector2(0, 2.75f), 1f).setEaseInOutBounce();
+            LeanTween.move(title, endPos(title), 1f).setEaseInOutBounce();
 
             //Press space
             LeanTween.moveLocal(pressSpaceText.gameObject, new Vector2(0, 4.45f), 1f).setEaseInOutBounce();
@@ -71,4 +72,6 @@ public class TitleScreen : MonoBehaviour
     {
         AudioManager.instance.PlayMusic("opening");
     }
+
+    private Vector3 endPos(GameObject go) => (Vector3)Variables.Object(go).Get("endPos");
 }
