@@ -68,6 +68,7 @@ public class Timer : MonoBehaviour
                 {
                     LeanTween.value(0, 1, 1).setOnUpdate(delegate (float r) {
                         timerText.color = new Color(1-(r/10),1-r,1-r);
+                        AudioManager.instance.SetMusicSpeed(1+(r/4));
                     });
                     hasWarned = true;
                 }

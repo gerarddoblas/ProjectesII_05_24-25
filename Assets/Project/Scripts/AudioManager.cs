@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
+    [SerializeField] bool resetSpeedsOnSceneChange = true;
     public static AudioManager instance;
     public Sound[] musicSounds, sfxSounds, manaSounds;
     public AudioSource musicSource, sfxSource, manaSource;
@@ -22,8 +24,23 @@ public class AudioManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        SceneManager.sceneLoaded += delegate (Scene loadedScene, LoadSceneMode loadedSceneMode)
+        {
+            if (resetSpeedsOnSceneChange)
+                ResetAudioSpeed();
+        };
     }
-
+    public void ResetAudioSpeed()
+    {
+        musicSource.pitch = 1;
+        sfxSource.pitch = 1;
+    }
+    public void SetMusicSpeed(float newSpeed){
+        musicSource.pitch = newSpeed;
+    }
+    public void SetSfxSpeed(float newSpeed){
+        sfxSource.pitch = newSpeed;
+    }
 
     public void PlayMusic(string name)
     {
