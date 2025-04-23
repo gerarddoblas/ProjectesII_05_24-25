@@ -119,7 +119,7 @@ public class GameController : MonoBehaviour
                         instance.GetComponent<Rigidbody2D>().AddForce(new Vector2(UnityEngine.Random.Range(-1000, 1000), 500));
                     }
                 }
-                if (playerScores[i] < 0)
+                if (playerScores[i] < 0 && !currentGameMode.GetType().Equals(typeof(FightArenaGame)))
                     playerScores[i] = 0;
                 PlayersManager.Instance.playersCanvas[i].GetComponent<PlayerHud>().SetScoreText((int)playerScores[i]);
             }
