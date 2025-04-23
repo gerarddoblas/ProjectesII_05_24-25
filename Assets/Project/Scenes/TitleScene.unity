@@ -3081,7 +3081,7 @@ PrefabInstance:
       objectReference: {fileID: 4474864963852153268, guid: 4a2e984d653f71a4a8e22eb50f64ef03, type: 3}
     - target: {fileID: 1070946722087091741, guid: 6d85d4b54ee95084fa57b4b3d60a7a4a, type: 3}
       propertyPath: targetScore
-      value: 300
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1070946722087091741, guid: 6d85d4b54ee95084fa57b4b3d60a7a4a, type: 3}
       propertyPath: clapAnimations
