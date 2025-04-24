@@ -58,6 +58,10 @@ MonoBehaviour:
     m_Localized: "Cr\xE8dits"
     m_Metadata:
       m_Items: []
+  - m_Id: 9696769247010816
+    m_Localized: "Cr\xE8dits:\n\nSergi Gonzalez\nGerard Doblas\nEugeni Vasiliev"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

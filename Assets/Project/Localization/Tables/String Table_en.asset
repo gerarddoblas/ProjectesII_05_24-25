@@ -58,6 +58,18 @@ MonoBehaviour:
     m_Localized: Credits
     m_Metadata:
       m_Items: []
+  - m_Id: 9696769247010816
+    m_Localized: 'Credits:
+
+
+      Sergi Gonzalez
+
+      Gerard Doblas
+
+      Eugeni
+      Vasiliev'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

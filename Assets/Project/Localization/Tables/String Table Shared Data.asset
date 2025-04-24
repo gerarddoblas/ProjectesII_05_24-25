@@ -55,6 +55,10 @@ MonoBehaviour:
     m_Key: Credits
     m_Metadata:
       m_Items: []
+  - m_Id: 9696769247010816
+    m_Key: CreditsText
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

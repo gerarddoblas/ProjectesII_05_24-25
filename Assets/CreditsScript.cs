@@ -26,7 +26,7 @@ public class CreditsScript : MonoBehaviour
             if (!isShowing)
             {
                 isShowing = true;
-                LeanTween.scale(credits.gameObject, Vector3.one, .1f).setEaseInOutBounce();
+                LeanTween.scale(credits, Vector3.one, .1f).setEaseInOutBounce();
             }
         }
     }
@@ -37,7 +37,7 @@ public class CreditsScript : MonoBehaviour
             if (players <= 0)
             {
                 isShowing = false;
-                LeanTween.scale(credits.gameObject, Vector3.zero, .1f).setEaseInOutBounce();
+                LeanTween.scale(credits, Vector3.zero, .1f).setEaseInOutBounce();
             }
         }
     }
