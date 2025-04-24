@@ -38,6 +38,26 @@ MonoBehaviour:
     m_Localized: 'Salir/Abandonar '
     m_Metadata:
       m_Items: []
+  - m_Id: 9286421960450048
+    m_Localized: "Cr\xE9ditos"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9696769247010816
+    m_Localized: "Cr\xE9ditos:\n\nSergi Gonzalez\nGerard Doblas\nEugeni Vasiliev"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9746962864660480
+    m_Localized: "Controles\n\n <sprite name=\"WKey\"><sprite name=\"AKey\"><sprite
+      name=\"SKey\"><sprite name=\"DKey\"> o <sprite name=\"LeftJoystick\"> para
+      moverte\n<sprite name=\"Spacebar\"> o <sprite name=\"AButton\"> para saltar\n<sprite
+      name=\"EKey\"> o <sprite name=\"PSPadUp\"> para lanzar objetos\n<sprite name=\"EscKey\">
+      para pausar"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9748125882245120
+    m_Localized: Controles
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

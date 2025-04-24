@@ -54,6 +54,26 @@ MonoBehaviour:
     m_Localized: Castellano
     m_Metadata:
       m_Items: []
+  - m_Id: 9286421960450048
+    m_Localized: "Cr\xE8dits"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9696769247010816
+    m_Localized: "Cr\xE8dits:\n\nSergi Gonzalez\nGerard Doblas\nEugeni Vasiliev"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9746962864660480
+    m_Localized: "Controls\n\n <sprite name=\"WKey\"><sprite name=\"AKey\"><sprite
+      name=\"SKey\"><sprite name=\"DKey\"> o <sprite name=\"LeftJoystick\"> per moure't\n<sprite
+      name=\"Spacebar\"> o <sprite name=\"AButton\"> per saltar\n<sprite name=\"EKey\">
+      o <sprite name=\"PSPadUp\"> per llen\xE7ar objectes\n<sprite name=\"EscKey\">
+      per pausar"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9748125882245120
+    m_Localized: Controls
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
