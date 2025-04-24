@@ -6,12 +6,13 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    private PlayerInput input;
-    private Rigidbody2D rigidbody2D;
-    private GroundCheck groundCheck;
-    private SpriteRenderer spriteRenderer;
-    public HealthBehaviour healthBehaviour;
-    private Animator animator;
+    [Header("Components")]
+    [SerializeField]private PlayerInput input;
+    [SerializeField]private Rigidbody2D rigidbody2D;
+    [SerializeField]private GroundCheck groundCheck;
+    [SerializeField]private SpriteRenderer spriteRenderer;
+    [SerializeField]public HealthBehaviour healthBehaviour;
+    [SerializeField]private Animator animator;
 
     [Header("Push")]
     [SerializeField] private GameObject pushLeft;
@@ -26,7 +27,7 @@ public class Player : MonoBehaviour
     public Vector2 playerSpeed = Vector2.zero;
 
     [Header("Knockout Variables")]
-    public static bool canMove = true;
+    public bool canMove = true;
     public float knockoutTime = 3f;
 
     [Header("Events")]
@@ -49,12 +50,7 @@ public class Player : MonoBehaviour
     public void LockMovement() { canMove = false; }
     public void UnlockMovement() {  canMove = true; }
     void Awake()
-    {
-        animator = GetComponent<Animator>();
-        source = GetComponent<AudioSource>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        rigidbody2D = GetComponent<Rigidbody2D>();
-        groundCheck = GetComponentInChildren<GroundCheck>();
+    { 
         input = GetComponent<PlayerInput>();
 
         input.actions.FindAction("Move").performed += Move;
@@ -62,6 +58,12 @@ public class Player : MonoBehaviour
         input.actions.FindAction("Jump").started += Jump;
         input.actions.FindAction("Jump").canceled += JumpStop;
         input.actions.FindAction("GenerateSmallObject").started += Push;
+        animator = GetComponent<Animator>();
+        source = GetComponent<AudioSource>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        rigidbody2D = GetComponent<Rigidbody2D>();
+        groundCheck = GetComponentInChildren<GroundCheck>();
+       
 
         healthBehaviour = GetComponent<HealthBehaviour>();
         healthBehaviour.OnDie.AddListener(delegate ()
@@ -197,5 +199,11 @@ public class Player : MonoBehaviour
             push.SetActive(false);
         }
         yield return null;
+    }
+    private void OnDestroy()
+    {
+        input.actions.FindAction("Move").RemoveAllBindingOverrides();
+        input.actions.FindAction("Jump").RemoveAllBindingOverrides();
+        input.actions.FindAction("GenerateSmallObject").RemoveAllBindingOverrides();
     }
 }
