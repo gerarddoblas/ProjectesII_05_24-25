@@ -14,6 +14,7 @@ public class TilemapScript : MonoBehaviour
     public static TilemapScript Instance { get; private set; }
     private void Awake()
     {
+        tm = GetComponent<Tilemap>();
         GetComponent<Tilemap>().RefreshAllTiles();
         SceneManager.sceneLoaded += delegate (Scene loadedScene, LoadSceneMode loadSceneMode)
         {

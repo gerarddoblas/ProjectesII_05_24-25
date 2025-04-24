@@ -38,6 +38,10 @@ MonoBehaviour:
     m_Localized: 'Salir/Abandonar '
     m_Metadata:
       m_Items: []
+  - m_Id: 9286421960450048
+    m_Localized: "Cr\xE9ditos"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
