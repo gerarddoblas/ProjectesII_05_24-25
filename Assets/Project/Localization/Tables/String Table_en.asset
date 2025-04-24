@@ -70,6 +70,17 @@ MonoBehaviour:
       Vasiliev'
     m_Metadata:
       m_Items: []
+  - m_Id: 9746962864660480
+    m_Localized: "Controls\n\n <sprite name=\"WKey\"><sprite name=\"AKey\"><sprite
+      name=\"SKey\"><sprite name=\"DKey\"> or <sprite name=\"LeftJoystick\"> to move\n<sprite
+      name=\"Spacebar\"> or <sprite name=\"AButton\"> to jump\n<sprite name=\"EKey\">
+      or <sprite name=\"PSPadUp\"> to throw items\n<sprite name=\"EscKey\"> to pause"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9748125882245120
+    m_Localized: Controls
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -59,6 +59,14 @@ MonoBehaviour:
     m_Key: CreditsText
     m_Metadata:
       m_Items: []
+  - m_Id: 9746962864660480
+    m_Key: ControlsText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9748125882245120
+    m_Key: Controls
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

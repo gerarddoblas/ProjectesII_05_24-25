@@ -34,23 +34,9 @@ public class QuitGameDoor : MonoBehaviour
 
                 if (PlayersManager.Instance.players.Count == 0 || PlayersManager.Instance.players.Count(p => p != null) == 0)
                 {
-
-
-
-                    PlayersManager.Instance.SetJoining(false);
-                    if (activateClapAnimation) CameraFX.Instance.VerticalClap(delegate () { Quit(); });
-                    else Quit();
+                    QuitMenu.Instance.EnableMenu();
                 }
             });
         }
-    }
-
-    private void Quit()
-    {
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-        Application.Quit();
-#endif
     }
 }

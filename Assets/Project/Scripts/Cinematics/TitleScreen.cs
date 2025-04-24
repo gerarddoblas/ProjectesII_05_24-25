@@ -14,6 +14,7 @@ public class TitleScreen : MonoBehaviour
     [SerializeField] private TMP_Text startText;
     [SerializeField] private TMP_Text quitText;
     [SerializeField] private TMP_Text creditsText;
+    [SerializeField] private TMP_Text controlsText;
 
     private void Awake()
     {
@@ -41,6 +42,7 @@ public class TitleScreen : MonoBehaviour
         LeanTween.moveLocal(startText.gameObject, endPos(startText.gameObject), 1f).setEaseInOutBounce();
         LeanTween.moveLocal(quitText.gameObject, endPos(quitText.gameObject), 1f).setEaseInOutBounce();
         LeanTween.moveLocal(creditsText.gameObject, endPos(quitText.gameObject), 1f).setEaseInOutBounce();
+        LeanTween.moveLocal(controlsText.gameObject, endPos(quitText.gameObject), 1f).setEaseInOutBounce();
     }
 
     private void Start()
