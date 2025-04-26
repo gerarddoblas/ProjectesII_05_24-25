@@ -14,7 +14,7 @@ public class CoinCollectGame : TimeBasedGame
     override public void Reset()
     {
         base.Reset();
-        coinTile.positions = new List<Vector3Int>();
+        //coinTile.positions = new List<Vector3Int>();
         Debug.Log("Reset");
     }
     override public void StartGame()
@@ -26,9 +26,10 @@ public class CoinCollectGame : TimeBasedGame
         PlayersManager.Instance.EnablePlayersCreation();
 
         /////////////////////////////Game-specific
-        TilemapScript.Instance.GetComponent<Tilemap>().RefreshAllTiles();
+        GameObject.Find("Grid").GetComponentInChildren<Tilemap>().RefreshAllTiles();
         Debug.Log(coinTile.positions.Count);
-        coinTile.Spawn();
+        GameObject parent = Instantiate(new GameObject("COIN PARENT"));
+        //coinTile.Spawn(parent);
     }
 
     override public void UpdateGame()

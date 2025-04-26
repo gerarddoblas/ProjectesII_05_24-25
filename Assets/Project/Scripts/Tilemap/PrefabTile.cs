@@ -17,19 +17,26 @@ namespace UnityEngine.Tilemaps
         public Sprite sprite;
         public GameObject prefab;
 
-        public List<Vector3Int> positions;
+        public Dictionary<int, List<Vector3Int>> positions = new Dictionary<int, List<Vector3Int>>();
 
-        public void Spawn()
+        private void OnEnable()
         {
-            GameObject parent = Instantiate(new GameObject("---" + prefab.name.ToUpper() + "---"));
-            Debug.Log(positions.Count);
-            foreach(var pos in positions) Instantiate(prefab, pos, Quaternion.identity, parent.transform);
+            SceneManager.sceneLoaded += delegate (Scene loadedScene, LoadSceneMode loadSceneMode)
+            {
+                if(!positions.ContainsKey(loadedScene.buildIndex)) positions.Add(loadedScene.buildIndex, new List<Vector3Int>());
+                GameObject parent = Instantiate(new GameObject("---" + prefab.name.ToUpper() + "---"));
+                if (GameController.Instance.currentGameMode != null && GameController.Instance.currentGameMode.GetType().Equals(typeof(CoinCollectGame)))
+                    foreach (Vector3Int position in positions[loadedScene.buildIndex]) Instantiate(prefab, position, Quaternion.identity, parent.transform);
+            };
         }
 
         public override void GetTileData(Vector3Int position, ITilemap tilemap, ref TileData tileData)
         {
             
-            if (!positions.Contains(position)) positions.Add(position);
+            int curSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+            if(!positions.ContainsKey(curSceneIndex)) positions.Add(curSceneIndex, new List<Vector3Int>());
+            if (!positions[curSceneIndex].Contains(position)) positions[curSceneIndex].Add(position);
 
             tileData.colliderType = Tile.ColliderType.None;
 

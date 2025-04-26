@@ -30,4 +30,9 @@ public class StealTheCrown : TimeBasedGame
             GameController.Instance.AddScore(scoreToAdd, instantiatedCrown.GetComponent<Crown>().GetOwner().gameObject);
         base.FinishGame();
     }
+
+    public override void Reset()
+    {
+        base.Reset();
+    }
 }
