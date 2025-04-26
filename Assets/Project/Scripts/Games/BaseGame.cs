@@ -23,13 +23,17 @@ public class BaseGame : ScriptableObject
     public virtual void StartGame() {
         playingGame = true;
         PlayersManager.Instance.SetJoining(false);
-        PlayersManager.Instance.ShowAllHuds();
+        PlayersManager.Instance.ShowAllHuds(); 
+        PlayersManager.Instance.RemovePlayersItems();
         PlayersManager.Instance.EnablePlayersCreation();
     }
     public virtual void UpdateGame() {}
     public virtual void FinishGame()
     {
+
         playingGame = false;
         GameController.Instance.NextGame();
+        PlayersManager.Instance.RemovePlayersItems();
+        PlayersManager.Instance.DisablePlayersCreation();
     } 
 }

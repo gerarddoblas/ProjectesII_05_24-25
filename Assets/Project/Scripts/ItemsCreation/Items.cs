@@ -76,4 +76,10 @@ public class Items : MonoBehaviour
         this.UnlockObjectCreation();
         yield return null;
     }
+    public void RemoveItem()
+    {
+        itemHandSprite.sprite = null;
+        recievedObject = null;
+        onItemCreated.Invoke();
+    }
 }

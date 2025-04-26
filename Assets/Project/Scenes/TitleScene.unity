@@ -4037,7 +4037,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 27.75
+  m_fontSize: 72
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -11052,11 +11052,11 @@ PrefabInstance:
     - target: {fileID: 1070946722087091741, guid: 6d85d4b54ee95084fa57b4b3d60a7a4a, type: 3}
       propertyPath: gameModes.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 36465c95c0a0c1b4dbe6782dc9a0dbbb, type: 2}
+      objectReference: {fileID: 11400000, guid: 7b4964c35a959d449b6569530dec5f72, type: 2}
     - target: {fileID: 1070946722087091741, guid: 6d85d4b54ee95084fa57b4b3d60a7a4a, type: 3}
       propertyPath: gameModes.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: 36465c95c0a0c1b4dbe6782dc9a0dbbb, type: 2}
+      objectReference: {fileID: 11400000, guid: 24ece7f569c2b004badf34362fd34cb7, type: 2}
     - target: {fileID: 2038882017119522903, guid: 6d85d4b54ee95084fa57b4b3d60a7a4a, type: 3}
       propertyPath: m_Name
       value: GameController

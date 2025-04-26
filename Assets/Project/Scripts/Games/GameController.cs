@@ -116,17 +116,16 @@ public class GameController : MonoBehaviour
                     for(int j = 0; j < scoreToRemove; j++)
                     {
                         GameObject instance = Instantiate(physicsCoin, player.transform.position + new Vector3(0, 2), Quaternion.identity);
-                        instance.GetComponent<Rigidbody2D>().AddForce(new Vector2(UnityEngine.Random.Range(-1000, 1000), 500));
+                        instance.GetComponent<Rigidbody2D>().AddForce(new Vector2(UnityEngine.Random.Range(-10, 10), 5));
                     }
                 }
                 else if (GameController.Instance.currentGameMode.GetType() == typeof(StealTheCrown))
                 {
                     try
                     {
-                        if(Crown.Instance.GetOwner() == player)
+                        if(Crown.Instance.GetOwner().gameObject == player)
                         {
                             Crown.Instance.RemoveOwner();
-                            Crown.Instance.GetComponent<Rigidbody2D>().AddForce(new Vector2(UnityEngine.Random.Range(-1000, 1000), 500));
                         }
                     }catch (Exception e) { }
                 }

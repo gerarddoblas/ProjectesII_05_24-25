@@ -13,21 +13,28 @@ public class StealTheCrown : TimeBasedGame
     override public void StartGame()
     {
         base.StartGame();
-        instantiatedCrown = GameObject.Instantiate(crownPrefab);
     }
 
     override public void UpdateGame()
     {
         base.UpdateGame();
         try {
-            if (scoreOverTime && instantiatedCrown.GetComponent<Crown>().GetOwner().gameObject != null)
-                GameController.Instance.AddScore(scoreToAdd * Time.deltaTime, instantiatedCrown.GetComponent<Crown>().GetOwner().gameObject);
+            Debug.Log("Trying to add score to:" + Crown.Instance.GetOwner().gameObject);
+            if (scoreOverTime && Crown.Instance.GetOwner().gameObject != null)
+            {
+                Debug.Log("AddingScore");
+                GameController.Instance.AddScore(scoreToAdd * Time.deltaTime, Crown.Instance.GetOwner().gameObject);
+            }
          }catch(Exception e) { }
     }
     public override void FinishGame()
     {
-        if (!scoreOverTime&& instantiatedCrown.GetComponent<Crown>().GetOwner().gameObject != null)
-            GameController.Instance.AddScore(scoreToAdd, instantiatedCrown.GetComponent<Crown>().GetOwner().gameObject);
+        Debug.Log("Trying to add score to:" + Crown.Instance.GetOwner().gameObject);
+        if (!scoreOverTime && Crown.Instance.GetOwner().gameObject != null)
+        {
+            Debug.Log("AddingScore");
+            GameController.Instance.AddScore(scoreToAdd, Crown.Instance.GetOwner().gameObject);
+        }
         base.FinishGame();
     }
 

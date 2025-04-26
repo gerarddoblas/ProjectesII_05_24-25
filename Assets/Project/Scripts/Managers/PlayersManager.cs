@@ -237,5 +237,9 @@ public class PlayersManager : MonoBehaviour
     {
         onAnyActionPerformed.Invoke();
     }
-
+    public void RemovePlayersItems()
+    {
+        foreach (GameObject player in players)
+            player.GetComponent<Items>().RemoveItem();
+     }
 }

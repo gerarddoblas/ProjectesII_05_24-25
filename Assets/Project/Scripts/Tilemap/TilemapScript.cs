@@ -21,7 +21,6 @@ public class TilemapScript : MonoBehaviour
             Instance = this;
             tm.RefreshAllTiles();
         };
-        
     }
     void Start()
     {

@@ -27,7 +27,7 @@ public class CoinCollectGame : TimeBasedGame
 
         /////////////////////////////Game-specific
         GameObject.Find("Grid").GetComponentInChildren<Tilemap>().RefreshAllTiles();
-        Debug.Log(coinTile.positions.Count);
+        //Debug.Log(coinTile.positions.Count);
         GameObject parent = Instantiate(new GameObject("COIN PARENT"));
         //coinTile.Spawn(parent);
     }
