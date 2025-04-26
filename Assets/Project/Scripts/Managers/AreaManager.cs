@@ -24,8 +24,10 @@ public class AreaManager : MonoBehaviour
 
         SceneManager.sceneLoaded += delegate (Scene loadedScene, LoadSceneMode loadedSceneMode)
         {
-            if (GameController.Instance.currentGameMode.GetType() == typeof(TimeZoneCapture)) ChangeArea();
-            else this.transform.position = new Vector3(-1000, 0);
+            if (GameController.Instance.currentGameMode.GetType() == typeof(TimeZoneCapture)) 
+                ChangeArea();
+            else
+                this.transform.position = new Vector3(-1000, 0);
         };
     }
 
