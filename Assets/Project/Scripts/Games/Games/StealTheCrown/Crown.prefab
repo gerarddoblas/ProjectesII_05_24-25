@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8970334076826368223}
   - component: {fileID: 1875836231423576806}
   - component: {fileID: 2290910811873410833}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Crown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,6 +99,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e23efedc8545de458d4fbc702bae240, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  owner: {fileID: 0}
+  canBepicked: 1
+  rb: {fileID: 0}
+  boxCollider: {fileID: 0}
 --- !u!50 &1875836231423576806
 Rigidbody2D:
   serializedVersion: 4

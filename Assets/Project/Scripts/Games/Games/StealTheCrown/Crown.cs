@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 public class Crown : MonoBehaviour
 {
    [SerializeField] Player owner;
-   [SerializeField] bool canBepicked = true;
+    private Player lastOwner = null;
+    [SerializeField] bool canBepicked = true;
    [SerializeField] public void SetCanBePicked(bool newValue) { canBepicked = newValue; }
     [SerializeField]private Rigidbody2D rb;
    [SerializeField] private BoxCollider2D boxCollider;
@@ -21,16 +22,13 @@ public class Crown : MonoBehaviour
             Destroy(this);
         else
             Instance = this;
-        SceneManager.sceneLoaded += delegate (Scene loadedScene, LoadSceneMode loadedSceneMode)
-        {
-            try
-            {
-                if (GameController.Instance.currentGameMode.GetType().Equals(typeof(StealTheCrown)))
-                    this.transform.position = Vector3.zero;
-                else
-                    this.transform.position = new Vector3(-1000, 0);
-            } catch { Debug.LogWarning("Object not instantiated"); }
-        };
+
+
+        if (GameController.Instance.currentGameMode.GetType().Equals(typeof(StealTheCrown)))
+            this.transform.position = Vector3.zero;
+        else
+            this.gameObject.SetActive(false);
+     
     }
     private void Update()
     {
@@ -39,18 +37,21 @@ public class Crown : MonoBehaviour
     }
     public Player GetOwner()
     {
-        return owner != null ? owner : null;
+        return owner;
     }
-    public void RemoveOwner() {  
+    public void RemoveOwner() {
+        lastOwner = owner;
         owner = null; 
         boxCollider.enabled = true;
+        rb.bodyType = RigidbodyType2D.Dynamic;
         rb.simulated = true;
-        
+        rb.AddForce(new Vector2(UnityEngine.Random.Range(-100, 100), 500));
+        StartCoroutine(AvoidPicking());
     }
     IEnumerator AvoidPicking()
     {   
         canBepicked = false;
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1.5f);
         canBepicked = true;
         yield return null;
     }
@@ -62,7 +63,15 @@ public class Crown : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.transform.TryGetComponent(out Player p))
-            SetOwner(p);
+        if (collision.transform.TryGetComponent(out Player p))
+        {
+            if (lastOwner != null && p == lastOwner)
+            {
+                if (canBepicked)
+                    SetOwner(p);
+            }
+            else
+                SetOwner(p);
+        }
     }
 }

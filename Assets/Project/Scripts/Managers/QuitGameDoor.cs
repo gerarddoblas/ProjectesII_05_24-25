@@ -27,6 +27,7 @@ public class QuitGameDoor : MonoBehaviour
 
                 Destroy(PlayersManager.Instance.playersCanvas[index]);
                 PlayersManager.Instance.playersCanvas[index] = null;
+                PlayersManager.Instance.joinTextsScript.texts[index].gameObject.SetActive(true);
 
                 Destroy(player);
                 PlayersManager.Instance.players[index] = null;
