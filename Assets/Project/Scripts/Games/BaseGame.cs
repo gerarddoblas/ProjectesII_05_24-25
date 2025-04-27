@@ -6,10 +6,12 @@ using UnityEngine.PlayerLoop;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
-
+using UnityEngine.Localization;
+using UnityEngine.Localization.Components;
 public class BaseGame : ScriptableObject
 {
-    public Sprite instructions;
+    
+    public LocalizedAsset<Sprite> instructions;
     protected bool playingGame = false;
 
     public bool gamePaused = false;

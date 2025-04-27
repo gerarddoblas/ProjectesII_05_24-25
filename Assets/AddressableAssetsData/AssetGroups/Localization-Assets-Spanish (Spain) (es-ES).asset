@@ -10,40 +10,40 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Localization-Assets-Catalan (ca)
+  m_Name: Localization-Assets-Spanish (Spain) (es-ES)
   m_EditorClassIdentifier: 
-  m_GroupName: Localization-Assets-Catalan (ca)
+  m_GroupName: Localization-Assets-Spanish (Spain) (es-ES)
   m_Data:
     m_SerializedData: []
-  m_GUID: 67b346a132971f347bead4ad6fc3678d
+  m_GUID: 1dcdd8a13131fbc40a01969792bf37d4
   m_SerializeEntries:
-  - m_GUID: f3da20a1c3ac493488cc257ec9795e78
-    m_Address: Coin_collect_CAT
+  - m_GUID: 184b07e2220faa64c8f092259ed84a35
+    m_Address: Coin_Collect_ES
     m_ReadOnly: 1
     m_SerializedLabels:
-    - Locale-ca
+    - Locale-es-ES
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 38f80275c9c6e2d44bf6db4847163a75
-    m_Address: Steal_the_crown_CAT
+  - m_GUID: 49beb55c007bb6944acf710ca87eca1b
+    m_Address: Steal_the_crown_ES
     m_ReadOnly: 1
     m_SerializedLabels:
-    - Locale-ca
+    - Locale-es-ES
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 7f1ad6f0db3ad7e42a3988b99e761552
-    m_Address: Reach_the_flag_CAT
+  - m_GUID: 2e225931da5cfd745879ca85921b0187
+    m_Address: Reach_the_flag_ES
     m_ReadOnly: 1
     m_SerializedLabels:
-    - Locale-ca
+    - Locale-es-ES
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 9745d2df509bfee4b849824d6915caf9
-    m_Address: Fight_arena_CAT
+  - m_GUID: f760f3b8694aa9e45b7b16e818b5318d
+    m_Address: Fight_arena_ES
     m_ReadOnly: 1
     m_SerializedLabels:
-    - Locale-ca
+    - Locale-es-ES
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 5448c31e479b0cf4bab920e63f8a7d50, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 7e70f12f44c9d8a46830d9f169fdf8b7, type: 2}
-    - {fileID: 11400000, guid: 99b644df8cd7cce4cb24992cdad36a6e, type: 2}
+    - {fileID: 11400000, guid: 785d86d3b35f0bf478a0e781561bb540, type: 2}
+    - {fileID: 11400000, guid: 2ebced75bdd8a86448fec9b40efa6e1c, type: 2}

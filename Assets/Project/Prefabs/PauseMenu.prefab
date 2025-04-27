@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3147687550150185027
 RectTransform:
   m_ObjectHideFlags: 0
@@ -624,9 +624,9 @@ MonoBehaviour:
     m_Options:
     - m_Text: "Catal\xE0"
       m_Image: {fileID: 0}
-    - m_Text: Castellano
-      m_Image: {fileID: 0}
     - m_Text: English
+      m_Image: {fileID: 0}
+    - m_Text: Castellano
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
@@ -701,8 +701,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 31a63c8f7d1a86649aaa4269f7957e70, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1840,7 +1840,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &277823460932872696
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2322,7 +2322,7 @@ RectTransform:
   - {fileID: 3147687550150185027}
   - {fileID: 5827199917709760782}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2350,7 +2350,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &7668466529740201314
 MonoBehaviour:
@@ -2914,7 +2914,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6223037065404069074
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3146,7 +3146,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6489843027799221066}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -3167,6 +3167,7 @@ MonoBehaviour:
   musicSlider: {fileID: 4074809632781055315}
   fxSoundSlider: {fileID: 4507259039878733706}
   Return: {fileID: 8923562057178968930}
+  langSelector: {fileID: 8971426144586418520}
 --- !u!1 &6792056416128496417
 GameObject:
   m_ObjectHideFlags: 0
@@ -3786,6 +3787,7 @@ GameObject:
   - component: {fileID: 3656547683141681193}
   - component: {fileID: 6359952042184524736}
   - component: {fileID: 7232233077273401969}
+  - component: {fileID: 8204630455196151306}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -3910,6 +3912,46 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &8204630455196151306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8187268062847090029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:315c750a2e5f8954c98fa7c59860bea2
+    m_TableEntryReference:
+      m_KeyId: 17808377819136
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 1
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7232233077273401969}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &8388223933999564538
 GameObject:
   m_ObjectHideFlags: 0

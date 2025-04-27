@@ -12,11 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69dbc80a2bc6e62438daf13984cc71c5, type: 3}
   m_Name: StealTheCrown
   m_EditorClassIdentifier: 
-  instructions: {fileID: 21300000, guid: b13a8b5e15074724dba1f662c41e4da2, type: 3}
-  itemBoxTile: {fileID: 11400000, guid: d00ba4a2d8ef410409523432467fee2e, type: 2}
+  instructions:
+    m_TableReference:
+      m_TableCollectionName: GUID:e317f5fdf0376ba4a87e4090d44d0bdc
+    m_TableEntryReference:
+      m_KeyId: 10874762394382336
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
   gamePaused: 0
   gameTime: 35
-  remainingTime: 21.1038
+  remainingTime: 35
   crownPrefab: {fileID: 3509787225685442031, guid: a998971a4e96b1647ae259066ea94a86, type: 3}
   instantiatedCrown: {fileID: 0}
   scoreOverTime: 1

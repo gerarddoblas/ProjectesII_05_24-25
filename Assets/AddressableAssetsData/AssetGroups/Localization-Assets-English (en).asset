@@ -16,7 +16,31 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: d0a503fa3f8500242962a27d58326278
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 500f1ae8e99355940955f25439baa36e
+    m_Address: Coin_collect_EN
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3e57508c9da330241bd2a90c0d8d678a
+    m_Address: Steal_the_crown_EN
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 381b3fde68285e64cbb1ddaa0ea29c1b
+    m_Address: Reach_the_flag_EN
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bacbfa509ceae8a41a81ccf59a4c533a
+    m_Address: Fight_aerna_EN
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 5448c31e479b0cf4bab920e63f8a7d50, type: 2}
   m_SchemaSet:

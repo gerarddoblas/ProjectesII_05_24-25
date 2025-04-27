@@ -25,7 +25,7 @@ public class StealTheCrown : TimeBasedGame
                 Debug.Log("AddingScore");
                 GameController.Instance.AddScore(scoreToAdd * Time.deltaTime, Crown.Instance.GetOwner().gameObject);
             }
-         }catch(Exception e) { }
+         }catch(Exception e) { Debug.LogWarning(e); }
     }
     public override void FinishGame()
     {
