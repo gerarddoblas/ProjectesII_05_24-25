@@ -139,10 +139,10 @@ TextureImporter:
       name: ItemBox 1_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 55
+        x: 4
+        y: 100
         width: 24
-        height: 25
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -160,10 +160,10 @@ TextureImporter:
       name: ItemBox 1_1
       rect:
         serializedVersion: 2
-        x: 30
-        y: 55
+        x: 36
+        y: 100
         width: 24
-        height: 26
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -181,10 +181,10 @@ TextureImporter:
       name: ItemBox 1_2
       rect:
         serializedVersion: 2
-        x: 58
-        y: 55
-        width: 24
-        height: 25
+        x: 66
+        y: 99
+        width: 27
+        height: 27
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -202,10 +202,10 @@ TextureImporter:
       name: ItemBox 1_3
       rect:
         serializedVersion: 2
-        x: 86
-        y: 55
-        width: 24
-        height: 26
+        x: 98
+        y: 99
+        width: 28
+        height: 27
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -223,10 +223,10 @@ TextureImporter:
       name: ItemBox 1_4
       rect:
         serializedVersion: 2
-        x: 0
-        y: 27
+        x: 2
+        y: 67
         width: 27
-        height: 27
+        height: 26
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -244,9 +244,9 @@ TextureImporter:
       name: ItemBox 1_5
       rect:
         serializedVersion: 2
-        x: 28
-        y: 27
-        width: 28
+        x: 34
+        y: 67
+        width: 27
         height: 27
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -265,8 +265,8 @@ TextureImporter:
       name: ItemBox 1_6
       rect:
         serializedVersion: 2
-        x: 84
-        y: 27
+        x: 66
+        y: 67
         width: 28
         height: 27
       alignment: 0
@@ -286,10 +286,10 @@ TextureImporter:
       name: ItemBox 1_7
       rect:
         serializedVersion: 2
-        x: 57
-        y: 27
+        x: 98
+        y: 67
         width: 27
-        height: 27
+        height: 26
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -307,8 +307,8 @@ TextureImporter:
       name: ItemBox 1_8
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1
+        x: 2
+        y: 35
         width: 27
         height: 26
       alignment: 0
@@ -328,10 +328,10 @@ TextureImporter:
       name: ItemBox 1_9
       rect:
         serializedVersion: 2
-        x: 56
-        y: 1
-        width: 27
-        height: 26
+        x: 36
+        y: 36
+        width: 24
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -341,6 +341,111 @@ TextureImporter:
       bones: []
       spriteID: b8329af623ee6f242b38586476935766
       internalID: -1858871736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ItemBox 1_10
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 36
+        width: 24
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68cc6e47d97537148a8e42ade2f29a95
+      internalID: -1655887043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ItemBox 1_11
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 35
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4569dcc995660e49baf2a5c092b1bff
+      internalID: -78126337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ItemBox 1_12
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 3
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34e3f567da7da054ca6599c09e2e569a
+      internalID: -1574816129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ItemBox 1_13
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 3
+        width: 27
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a44dec838f651a6488cb027e0be48ad8
+      internalID: -874139518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ItemBox 1_14
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 3
+        width: 27
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 484092db5c5010c43a53681950170d82
+      internalID: 295077635
       vertices: []
       indices: 
       edges: []
@@ -358,6 +463,11 @@ TextureImporter:
     nameFileIdTable:
       ItemBox 1_0: 1990401786
       ItemBox 1_1: -2041501056
+      ItemBox 1_10: -1655887043
+      ItemBox 1_11: -78126337
+      ItemBox 1_12: -1574816129
+      ItemBox 1_13: -874139518
+      ItemBox 1_14: 295077635
       ItemBox 1_2: -160698110
       ItemBox 1_3: 1845884139
       ItemBox 1_4: 950576992
