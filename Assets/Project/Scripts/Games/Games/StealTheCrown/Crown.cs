@@ -24,9 +24,7 @@ public class Crown : MonoBehaviour
             Instance = this;
 
 
-        if (GameController.Instance.currentGameMode.GetType().Equals(typeof(StealTheCrown)))
-            this.transform.position = Vector3.zero;
-        else
+        if (!GameController.Instance.currentGameMode.GetType().Equals(typeof(StealTheCrown)))
             this.gameObject.SetActive(false);
      
     }
