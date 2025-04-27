@@ -9345,7 +9345,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7130000758704212850, guid: db46aaeeb82c9074180590376db3df43, type: 3}
       propertyPath: possibleAreas.Array.data[4].y
-      value: -12
+      value: -13
       objectReference: {fileID: 0}
     - target: {fileID: 7130000758704212850, guid: db46aaeeb82c9074180590376db3df43, type: 3}
       propertyPath: possibleAreas.Array.data[5].x
