@@ -140,6 +140,7 @@ public class PlayersManager : MonoBehaviour
     {
         foreach (GameObject canva in playersCanvas)
         {
+            if (canva == null) continue;
             LeanTween.cancel(canva);
             canva.SetActive(true);
             canva.GetComponent<CanvasGroup>().alpha = 1.0f;
@@ -150,6 +151,7 @@ public class PlayersManager : MonoBehaviour
     {
         foreach (GameObject canva in playersCanvas)
         {
+            if (canva == null) continue;
             LeanTween.cancel(canva);
             LeanTween.value(canva, 0f, 1f, time).setOnStart(() =>
             {
@@ -165,6 +167,7 @@ public class PlayersManager : MonoBehaviour
     {
         foreach (GameObject canva in playersCanvas)
         {
+            if (canva == null) continue;
             LeanTween.cancel(canva);
             canva.GetComponent<CanvasGroup>().alpha = 0f;
             canva.SetActive(false);
@@ -175,6 +178,7 @@ public class PlayersManager : MonoBehaviour
     {
         foreach (GameObject canva in playersCanvas)
         {
+            if (canva == null) continue;
             LeanTween.cancel(canva);
             LeanTween.value(canva, 1f, 0f, time).setOnStart(() =>
             {

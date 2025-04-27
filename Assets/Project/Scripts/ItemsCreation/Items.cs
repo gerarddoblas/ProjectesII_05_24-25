@@ -7,11 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class Items : MonoBehaviour
 {
-    //Mana
-    public float mana, fillspeed, maxFill;
-    public float consumedMana;
-    public UnityEvent<float> onAlterMana;
-
+  
     //Object Creation
     private bool canCreate = true, fillingMana = true;
     private bool dontRepeat = true;
@@ -35,23 +31,9 @@ public class Items : MonoBehaviour
         SceneManager.sceneLoaded += delegate (Scene loadedScene, LoadSceneMode loadedSceneMode) { recievedObject = null; };
         onItemRecieved.AddListener(delegate (Sprite s) { itemHandSprite.sprite = s; });
         }
-    private void Start()
+    private void OnDestroy()
     {
-    }
-    private void Update()
-    {
-       /* if (mana < maxFill && fillingMana)
-        {
-            mana += fillspeed * Time.deltaTime;
-            AudioManager.instance.PlayManaSound("ChargeMana");
-            if (mana >= maxFill)
-            {
-                AudioManager.instance.manaSource.Stop();
-                mana = maxFill;
-            }
-            onAlterMana.Invoke(this.mana);
-
-        }*/
+        GetComponent<PlayerInput>().actions.FindAction("GenerateMidObject").RemoveAllBindingOverrides();
     }
     public void SetItemHandSprite(Sprite s){itemHandSprite.sprite = s;}
     void CreateObject(InputAction.CallbackContext context, ObjectCreation.ObjectSizes size)

@@ -5218,7 +5218,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c165a2c0bd9e56449f6d3f8c32c7fde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  input: {fileID: 0}
+  rigidbody2D: {fileID: 0}
+  groundCheck: {fileID: 0}
+  spriteRenderer: {fileID: 0}
   healthBehaviour: {fileID: 0}
+  animator: {fileID: 0}
   pushLeft: {fileID: 3314995150043532926}
   pushRight: {fileID: 2966707673361495694}
   acceleration: 7000
@@ -5244,7 +5249,7 @@ MonoBehaviour:
   score: 0
   landingParticles: {fileID: 2686372130080697451, guid: d8e6f85df7c2e4041a3171c972672bbd, type: 3}
   jumpParticles: {fileID: 2686372130080697451, guid: 711e25f765cc8194ca7824dffdcb9c64, type: 3}
-  walkClip: {fileID: 0}
+  walkClip: {fileID: 8300000, guid: 21d568c6e817ee24bb788c37eb56cb77, type: 3}
   KnockoutClip: {fileID: 8300000, guid: 387373f49d179294aaf77c8f9fbe6c29, type: 3}
   positionMarker: {fileID: 7483774974877627172}
 --- !u!114 &1128478866674204696

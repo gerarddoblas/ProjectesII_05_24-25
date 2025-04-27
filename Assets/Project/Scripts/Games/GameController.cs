@@ -71,7 +71,7 @@ public class GameController : MonoBehaviour
             CameraFX.Instance.timer.gameObject.SetActive(true);
             currentGameMode.StartGame();
             AudioManager.instance.PlaySFX("NowGo");
-            AudioManager.instance.PlayMusic("BackGround"); 
+            AudioManager.instance.PlayMusic("BackGround");
         });
     }
     
@@ -119,7 +119,18 @@ public class GameController : MonoBehaviour
                         instance.GetComponent<Rigidbody2D>().AddForce(new Vector2(UnityEngine.Random.Range(-1000, 1000), 500));
                     }
                 }
-                if (playerScores[i] < 0)
+                else if (GameController.Instance.currentGameMode.GetType() == typeof(StealTheCrown))
+                {
+                    try
+                    {
+                        if(Crown.Instance.GetOwner() == player)
+                        {
+                            Crown.Instance.RemoveOwner();
+                            Crown.Instance.GetComponent<Rigidbody2D>().AddForce(new Vector2(UnityEngine.Random.Range(-1000, 1000), 500));
+                        }
+                    }catch (Exception e) { }
+                }
+                if (playerScores[i] < 0 && !currentGameMode.GetType().Equals(typeof(FightArenaGame)))
                     playerScores[i] = 0;
                 PlayersManager.Instance.playersCanvas[i].GetComponent<PlayerHud>().SetScoreText((int)playerScores[i]);
             }

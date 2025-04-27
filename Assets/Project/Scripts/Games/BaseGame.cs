@@ -4,12 +4,15 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.PlayerLoop;
 using UnityEngine.SceneManagement;
+using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 
 public class BaseGame : ScriptableObject
 {
     public Sprite instructions;
     protected bool playingGame = false;
+
+    public bool gamePaused = false;
     public void SetGameState(bool newState) { playingGame = newState; }
     public virtual void StartGame() {
         playingGame = true;

@@ -25,6 +25,7 @@ public class PlayerHud : MonoBehaviour
     [SerializeField] GameObject Controls;
     [SerializeField] Image itemSprite, healthBar;
     [SerializeField] TextMeshProUGUI scoreText;
+    [SerializeField] public TMP_Text readyText;
 
     private List<Coroutine> scoreAnimations = new List<Coroutine>();
     private List<Coroutine> itemAnimations = new List<Coroutine>();

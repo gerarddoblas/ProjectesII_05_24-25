@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TitleScreen : MonoBehaviour
@@ -12,63 +13,42 @@ public class TitleScreen : MonoBehaviour
     [SerializeField] private TMP_Text pressSpaceText;
     [SerializeField] private TMP_Text startText;
     [SerializeField] private TMP_Text quitText;
-    [SerializeField] private GameObject startDoor;
-    [SerializeField] private GameObject quitDoor;
+    [SerializeField] private TMP_Text creditsText;
+    [SerializeField] private TMP_Text controlsText;
 
     private void Awake()
     {
-        
-        float scale = this.GetComponent<RectTransform>().localScale.x;
-        float width = this.GetComponent<RectTransform>().rect.width;
-        float height = this.GetComponent<RectTransform>().rect.height;
-
-        
-
         LeanTween.move(Camera.main.gameObject, Vector2.zero, 7.5f).setOnUpdate(delegate(float r){
             if (Input.anyKeyDown)
             {
                 AudioManager.instance.StopMusic();
-                AudioManager.instance.PlayMusic("TitleScreen");
+
                 LeanTween.cancel(Camera.main.gameObject);
-                PlayersManager.Instance.SetJoining(true);
                 CameraFX.Instance.Center2DCamera(.5f);
-                LeanTween.move(title.gameObject, new Vector2(0, 2.75f), 1f).setEaseInOutBounce();
 
-                //Press space
-                LeanTween.moveLocal(pressSpaceText.gameObject, new Vector2(0, 4.45f), 1f).setEaseInOutBounce();
-
-                //Start
-                startText.transform.localPosition = new Vector2(startDoor.transform.position.x / scale, -height);
-                LeanTween.moveLocal(startText.gameObject, new Vector3(0, 0.625f), 1f).setEaseInOutBounce();
-
-                //Quit
-                quitText.transform.localPosition = new Vector2(quitDoor.transform.position.x / scale, -height);
-                LeanTween.moveLocal(quitText.gameObject, new Vector3(0, 0.625f), 1f).setEaseInOutBounce();
-                
-                LeanTween.value(1, 0, .5f).setOnUpdate(delegate (float r) { 
-                    this.GetComponent<AudioSource>().volume = r;
-                });
+                Animation();
             }
-        }).setOnComplete(delegate (){
-            AudioManager.instance.PlayMusic("TitleScreen");
-            PlayersManager.Instance.SetJoining(true);
-            LeanTween.move(title.gameObject, new Vector2(0, 2.75f), 1f).setEaseInOutBounce();
+        }).setOnComplete(delegate (){ Animation(); }).setEaseInOutBounce();
+    }
 
-            //Press space
-            LeanTween.moveLocal(pressSpaceText.gameObject, new Vector2(0, 4.45f), 1f).setEaseInOutBounce();
+    private void Animation()
+    {
+        AudioManager.instance.PlayMusic("TitleScreen");
+        PlayersManager.Instance.SetJoining(true);
 
-            //Start
-            startText.transform.localPosition = new Vector2(startDoor.transform.position.x / scale, -height);
-            LeanTween.moveLocal(startText.gameObject, new Vector3(0, 0.625f), 1f).setEaseInOutBounce();
-
-            //Quit
-            quitText.transform.localPosition = new Vector2(quitDoor.transform.position.x / scale, -height);
-            LeanTween.moveLocal(quitText.gameObject, new Vector3(0, 0.625f), 1f).setEaseInOutBounce();
-        }).setEaseInOutBounce();
+        //Move
+        LeanTween.move(title, endPos(title), 1f).setEaseInOutBounce().setOnComplete(delegate () { LeanTween.rotate(title, new Vector3(0, 0, 10), .1f).setEaseInOutBounce(); });
+        LeanTween.moveLocal(pressSpaceText.gameObject, new Vector2(0, 4.45f), 1f).setEaseInOutBounce();
+        LeanTween.moveLocal(startText.gameObject, endPos(startText.gameObject), 1f).setEaseInOutBounce();
+        LeanTween.moveLocal(quitText.gameObject, endPos(quitText.gameObject), 1f).setEaseInOutBounce();
+        LeanTween.moveLocal(creditsText.gameObject, endPos(quitText.gameObject), 1f).setEaseInOutBounce();
+        LeanTween.moveLocal(controlsText.gameObject, endPos(quitText.gameObject), 1f).setEaseInOutBounce();
     }
 
     private void Start()
     {
         AudioManager.instance.PlayMusic("opening");
     }
+
+    private Vector3 endPos(GameObject go) => (Vector3)Variables.Object(go).Get("endPos");
 }

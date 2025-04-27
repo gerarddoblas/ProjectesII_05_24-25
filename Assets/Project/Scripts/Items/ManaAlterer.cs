@@ -10,7 +10,7 @@ public class ManaAlterer : Item
     bool fillMaxMana;
     override public IEnumerator Effect(GameObject target)
    {
-        float duration = itemDuration;
+       /* float duration = itemDuration;
         if (target.TryGetComponent<Items>(out Items items))
         {
             while (duration > 0)
@@ -25,7 +25,7 @@ public class ManaAlterer : Item
                 duration -= Time.deltaTime;
                 yield return null;
             }
-        }
+        }*/
         yield return null;
         Destroy(this.gameObject);
     }
