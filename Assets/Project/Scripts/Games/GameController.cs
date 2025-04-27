@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Security.Cryptography;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
@@ -62,7 +63,20 @@ public class GameController : MonoBehaviour
         CameraFX.Instance.instructions.sprite = currentGameMode.instructions;
         yield return new WaitForSeconds(5);
         CameraFX.Instance.instructions.color = new Color(255, 255, 255, 0);
-        
+
+        CameraFX.Instance.startTimer.text.gameObject.SetActive(true);
+        float time = CameraFX.Instance.startTimer.Time;
+        time = 3;
+        while (time > 0)
+        {
+            CameraFX.Instance.startTimer.text.transform.localScale = Vector3.one * (time - Mathf.Floor(time));
+            CameraFX.Instance.startTimer.text.color.WithAlpha(time - Mathf.Floor(time));
+            CameraFX.Instance.startTimer.text.text = Mathf.Ceil(time).ToString();
+            time -= Time.deltaTime;
+            yield return null;
+        }
+        CameraFX.Instance.startTimer.text.gameObject.SetActive(false);
+
         yield return null;
         CameraFX.Instance.ReverseVerticalClap(2,delegate ()
         {

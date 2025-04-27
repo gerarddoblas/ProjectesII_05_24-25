@@ -9,8 +9,16 @@ using UnityEngine.UI;
 
 public class CameraFX : MonoBehaviour
 {
+    [Serializable]
+    public struct StartTimer
+    {
+        public float Time;
+        public TMP_Text text;
+    }
+
     public TextMeshProUGUI timer;
     public Image instructions;
+    public StartTimer startTimer;
     public bool clapOnEnable = false;
     public static CameraFX Instance { get; private set; }
     Vector3 originalCamPos;
