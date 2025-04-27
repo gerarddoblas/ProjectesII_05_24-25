@@ -1,6 +1,7 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Timer : MonoBehaviour
@@ -25,6 +26,7 @@ public class Timer : MonoBehaviour
     [Header("Warning")]
     [SerializeField] bool warning = true;
     private bool hasWarned = false;
+    float timeScinceLastWarning = 0;
     [SerializeField] float remainingTimeForAdvice = 10f;
     public static Timer Instance { get; private set; }
 
@@ -47,10 +49,13 @@ public class Timer : MonoBehaviour
     public void UpdateTimerText(float remainingSeconds)
     {
         string timeString = "";
-        if ((remainingSeconds >= 0 && showOptions == EShowOptions.POSITIVE)||
-            (remainingSeconds > 0 && showOptions == EShowOptions.ONLYGREATERTHANZERO)||
-            (showOptions == EShowOptions.NEGATIVE)
-            )
+
+        int currentSecond = Mathf.FloorToInt(remainingSeconds);
+
+
+        if ((remainingSeconds >= 0 && showOptions == EShowOptions.POSITIVE) ||
+            (remainingSeconds > 0 && showOptions == EShowOptions.ONLYGREATERTHANZERO) ||
+            (showOptions == EShowOptions.NEGATIVE))
         {
             switch (timeFormat)
             {
@@ -63,21 +68,34 @@ public class Timer : MonoBehaviour
             }
             if (showMS)
                 timeString += "." + remainingSeconds.ToString().Split(",")[1];
-            if(remainingSeconds <= remainingTimeForAdvice && warning){
+
+            if (remainingSeconds <= remainingTimeForAdvice && warning)
+            {
                 if (!hasWarned)
                 {
-                    LeanTween.value(0, 1, 1).setOnUpdate(delegate (float r) {
-                        timerText.color = new Color(1-(r/10),1-r,1-r);
-                        AudioManager.instance.SetMusicSpeed(1+(r/4));
+                    LeanTween.value(0, 1, 1).setOnUpdate(delegate (float r)
+                    {
+                        timerText.color = new Color(1 - (r / 10), 1 - r, 1 - r);
+                        AudioManager.instance.SetMusicSpeed(1 + (r / 4));
                     });
                     hasWarned = true;
                 }
-                if(transform.localScale == Vector3.one){
-                         LeanTween.scale(this.gameObject, transform.localScale * 1.5f, 1).setEaseInOutBounce();
+                timeScinceLastWarning += Time.deltaTime; 
+
+                if (timeScinceLastWarning >= 1f)
+                {
+                    timeScinceLastWarning = 0f; 
+
+                    timerText.transform.localScale = Vector3.one; 
+                    LeanTween.scale(timerText.gameObject, Vector3.one * 1.5f, 0.5f)
+                        .setEaseOutBounce()
+                        .setOnComplete(() => {
+                            LeanTween.scale(timerText.gameObject, Vector3.one, 0.2f).setEaseInCubic();
+                        });
                 }
-                   
             }
         }
         timerText.text = timeString;
     }
+
 }
