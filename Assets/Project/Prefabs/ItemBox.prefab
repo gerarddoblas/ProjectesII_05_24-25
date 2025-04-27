@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   possibleItems:
-  - {fileID: 6923448661978156301, guid: 59c693c0c5a65c34cbfad3f8379ea29c, type: 3}
+  - {fileID: 4110435733389039893, guid: daf37a4020ac11e4ebe0fc35400a8594, type: 3}
   particle: {fileID: 215918523138872930, guid: 1a30bd5a03d8bb542a39726e3bd84869, type: 3}
 --- !u!95 &4996279173617749860
 Animator:
