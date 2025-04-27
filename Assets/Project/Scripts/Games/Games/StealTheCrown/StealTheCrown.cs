@@ -19,7 +19,7 @@ public class StealTheCrown : TimeBasedGame
     {
         base.UpdateGame();
         try {
-            Debug.Log("Trying to add score to:" + Crown.Instance.GetOwner().gameObject);
+            //Debug.Log("Trying to add score to:" + Crown.Instance.GetOwner().gameObject);
             if (scoreOverTime && Crown.Instance.GetOwner().gameObject != null)
             {
                 Debug.Log("AddingScore");
@@ -29,7 +29,7 @@ public class StealTheCrown : TimeBasedGame
     }
     public override void FinishGame()
     {
-        Debug.Log("Trying to add score to:" + Crown.Instance.GetOwner().gameObject);
+        //Debug.Log("Trying to add score to:" + Crown.Instance.GetOwner().gameObject);
         if (!scoreOverTime && Crown.Instance.GetOwner().gameObject != null)
         {
             Debug.Log("AddingScore");
