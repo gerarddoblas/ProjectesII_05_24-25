@@ -14,15 +14,58 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_TableCollectionName: AssetTable
   m_TableCollectionNameGuidString: e317f5fdf0376ba4a87e4090d44d0bdc
-  m_Entries: []
+  m_Entries:
+  - m_Id: 10874392288997376
+    m_Key: CoinCollect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10874762394382336
+    m_Key: StealTheCrown
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10875131593797632
+    m_Key: ZoneCapture
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10875414654791680
+    m_Key: FightArena
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items:
     - rid: 6384387483163164774
+    - rid: 4023489698604253191
   m_KeyGenerator:
     rid: 6384387483163164744
   references:
     version: 2
     RefIds:
+    - rid: 4023489698604253191
+      type: {class: AssetTypeMetadata, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries:
+        - m_KeyId: 10874392288997376
+          m_TableCodes:
+          - ca
+          - en
+          - es-ES
+        - m_KeyId: 10874762394382336
+          m_TableCodes:
+          - ca
+          - en
+          - es-ES
+        - m_KeyId: 10875131593797632
+          m_TableCodes:
+          - ca
+          - en
+          - es-ES
+        - m_KeyId: 10875414654791680
+          m_TableCodes:
+          - ca
+          - en
+          - es-ES
+        m_TypeString: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
     - rid: 6384387483163164744
       type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
       data:
