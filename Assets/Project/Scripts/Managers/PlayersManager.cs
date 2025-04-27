@@ -22,6 +22,8 @@ public class PlayersManager : MonoBehaviour
     [SerializeField] private Color[] playerColours;
     [SerializeField] private GameObject canvasPrefab;
 
+    public JoinTextsScript joinTextsScript;
+
     public UnityEvent onAnyActionPerformed;
     public static PlayersManager Instance { get; private set; }
     public void HealAllPlayers()
@@ -82,6 +84,7 @@ public class PlayersManager : MonoBehaviour
 
         GameObject instantiatedHUD = Instantiate(canvasPrefab, hudsContainer.transform);
         playersCanvas[slotIndex] = instantiatedHUD;
+        joinTextsScript.texts[slotIndex].gameObject.SetActive(false);
 
         var instanceScript = instantiatedHUD.GetComponent<PlayerHud>();
         instanceScript.SetColour(playerColours[slotIndex]);

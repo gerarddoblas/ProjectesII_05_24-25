@@ -10,15 +10,9 @@ using UnityEngine.UI;
 public class BaseGame : ScriptableObject
 {
     public Sprite instructions;
-    public PrefabTile itemBoxTile;
     protected bool playingGame = false;
 
     public bool gamePaused = false;
-
-    virtual public void Reset()
-    {
-        //itemBoxPositions.Clear();
-    }
     public void SetGameState(bool newState) { playingGame = newState; }
     public virtual void StartGame() {
         playingGame = true;

@@ -37,9 +37,4 @@ public class StealTheCrown : TimeBasedGame
         }
         base.FinishGame();
     }
-
-    public override void Reset()
-    {
-        base.Reset();
-    }
 }

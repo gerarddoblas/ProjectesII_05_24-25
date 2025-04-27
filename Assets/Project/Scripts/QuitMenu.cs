@@ -20,6 +20,8 @@ public class QuitMenu : MonoBehaviour
         else
             Destroy(gameObject);
 
+        Debug.Assert(Instance != null);
+
         cg = this.GetComponent<CanvasGroup>();
         DisableMenu();
         cancelButton.onClick.AddListener(delegate () { DisableMenu(); }); 

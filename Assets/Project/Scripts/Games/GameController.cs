@@ -173,7 +173,6 @@ public class GameController : MonoBehaviour
     private void SelectNextGame()
     {
         currentGameMode = gameModes[(int)UnityEngine.Random.Range(0, gameModes.Count)];
-        currentGameMode.Reset();
     }
     public void NextGame()
     {

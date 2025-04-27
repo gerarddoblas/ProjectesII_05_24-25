@@ -16,16 +16,16 @@ namespace UnityEngine.Tilemaps
     {
         public Sprite sprite;
         public GameObject prefab;
+        public GameObject parent;
 
         public Dictionary<int, List<Vector3Int>> positions = new Dictionary<int, List<Vector3Int>>();
 
-        private void OnEnable()
+        public virtual void OnEnable()
         {
             SceneManager.sceneLoaded += delegate (Scene loadedScene, LoadSceneMode loadSceneMode)
             {
                 if(!positions.ContainsKey(loadedScene.buildIndex)) positions.Add(loadedScene.buildIndex, new List<Vector3Int>());
-                GameObject parent = Instantiate(new GameObject("---" + prefab.name.ToUpper() + "---"));
-                //if (GameController.Instance.currentGameMode != null && GameController.Instance.currentGameMode.GetType().Equals(typeof(CoinCollectGame)))
+                if(parent == null) parent = Instantiate(new GameObject("---" + prefab.name.ToUpper() + "---"));
                 foreach (Vector3Int position in positions[loadedScene.buildIndex]) Instantiate(prefab, position, Quaternion.identity, parent.transform);
             };
         }
