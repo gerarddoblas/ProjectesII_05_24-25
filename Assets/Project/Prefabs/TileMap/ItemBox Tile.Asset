@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 1990401786, guid: a5150f90fa08afd47839b332d0aa7dd1, type: 3}
   prefab: {fileID: 4219225555164861909, guid: d4562792465c3e24da7f19d2bf96efc0, type: 3}
+  parent: {fileID: 0}

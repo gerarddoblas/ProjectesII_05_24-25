@@ -178,4 +178,4 @@ MonoBehaviour:
   healthAmount: 0
   invincibilityTime: 2.5
   invencibleParticles: {fileID: 2116742792820544769, guid: 017feae20926dba43931c45e3f1de814, type: 3}
-  healParticles: {fileID: 0}
+  healParticles: {fileID: 2116742792820544769, guid: 7e50011ca14192d46b483ca78a488123, type: 3}

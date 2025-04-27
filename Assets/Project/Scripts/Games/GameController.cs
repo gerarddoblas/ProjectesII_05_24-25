@@ -78,7 +78,9 @@ public class GameController : MonoBehaviour
         while (time > 0)
         {
             CameraFX.Instance.startTimer.text.transform.localScale = Vector3.one * (time - Mathf.Floor(time));
-            CameraFX.Instance.startTimer.text.color.WithAlpha(time - Mathf.Floor(time));
+            //CameraFX.Instance.startTimer.text.color.WithAlpha(time - Mathf.Floor(time));
+            Color c = CameraFX.Instance.startTimer.text.color;
+            CameraFX.Instance.startTimer.text.color = new Color(c.r, c.g, c.b, (time - Mathf.Floor(time)));
             CameraFX.Instance.startTimer.text.text = Mathf.Ceil(time).ToString();
             time -= Time.deltaTime;
             yield return new WaitForEndOfFrame();

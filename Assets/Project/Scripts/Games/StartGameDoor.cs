@@ -37,13 +37,15 @@ public class StartGameDoor : MonoBehaviour
             timer -= Time.deltaTime;
             timerText.text = ((int)timer + 1).ToString();
             timerText.transform.localScale = Vector3.one * (timer - Mathf.Floor(timer)); //Scale by fractional part
-            timerText.color = timerText.color.WithAlpha(timer - Mathf.Floor(timer)); //Transparency by fractional part
+            timerText.color = new Color(timerText.color.r, timerText.color.g, timerText.color.b,(timer - Mathf.Floor(timer)));
+            //timerText.color = timerText.color.WithAlpha(timer - Mathf.Floor(timer)); 
             return;
         }
 
         timerText.text = "";
         timerText.transform.localScale = Vector3.one;
-        timerText.color = timerText.color.WithAlpha(1);
+        timerText.color = new Color(timerText.color.r, timerText.color.g, timerText.color.b, (timer - Mathf.Floor(timer)));
+        //timerText.color = timerText.color.WithAlpha(1);
 
         //if (activateClapAnimation) CameraFX.Instance.VerticalClap(delegate () {
         //    GameController.Instance.StartGames();
