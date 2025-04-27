@@ -11,8 +11,11 @@ public class Kaboom : Item
     public float contador = 0.0f;
     public float growth = .1f;
     private AudioSource source;
+    [SerializeField] private GameObject explosionParticles;
     private void Start()
     {
+        TilemapScript.Instance.ExplodeArea(this.transform.position, 100);
+        Instantiate(explosionParticles, this.transform.position, Quaternion.identity);
         source = GetComponent<AudioSource>();
         this.GetComponent<SpriteRenderer>().enabled = false;
     }
@@ -24,9 +27,10 @@ public class Kaboom : Item
             this.transform.localScale.y + (growth * Time.deltaTime),
             this.transform.localScale.z + (growth * Time.deltaTime)
         );
-        TilemapScript.Instance.ExplodeArea(this.transform.position, (int)(transform.localScale.x * transform.localScale.y));
+
         if (contador >= timeInScene)
         {
+            
             AudioManager.instance.PlaySFX("Kaboom");
             Destroy(this.gameObject); 
         }
