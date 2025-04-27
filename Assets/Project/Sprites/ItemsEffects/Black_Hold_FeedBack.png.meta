@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a9a5c443be3eca147a6cee12acd9e924
+guid: ae1f1ed73819ad84a98ef5e1fc36068b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -110,22 +110,127 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 3DS_-_Skylanders_Spyros_Adventure_-_Title_Screen__File_Select_0
+      name: Black_Hold_FeedBack_0
       rect:
         serializedVersion: 2
-        x: 793
-        y: 314
-        width: 72
-        height: 71
-      alignment: 9
-      pivot: {x: 0.47666168, y: 0.51517755}
+        x: 2
+        y: 65
+        width: 31
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 04c173a20cf0f8e45a5a17ac222ab141
-      internalID: 239542851
+      spriteID: 058178dbbafd0d846aa4bc9c1eaf827a
+      internalID: 351332068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Black_Hold_FeedBack_1
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 65
+        width: 31
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9a8d572a7bfe1748979aee35921c9c7
+      internalID: -1126462852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Black_Hold_FeedBack_2
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 34
+        width: 30
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39cf51d6da2ad66438836d27dcd58db5
+      internalID: -2042074224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Black_Hold_FeedBack_3
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 34
+        width: 31
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e307149d9d95c6498b83e05626fabfd
+      internalID: -725036244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Black_Hold_FeedBack_4
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 2
+        width: 31
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d582f2dbe42490a49b4418134e160278
+      internalID: -715398546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Black_Hold_FeedBack_5
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 1
+        width: 31
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ed1d9bd4a014cd469a5f507ea8d8949
+      internalID: 55720705
       vertices: []
       indices: 
       edges: []
@@ -141,7 +246,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      3DS_-_Skylanders_Spyros_Adventure_-_Title_Screen__File_Select_0: 239542851
+      Black_Hold_FeedBack_0: 351332068
+      Black_Hold_FeedBack_1: -1126462852
+      Black_Hold_FeedBack_2: -2042074224
+      Black_Hold_FeedBack_3: -725036244
+      Black_Hold_FeedBack_4: -715398546
+      Black_Hold_FeedBack_5: 55720705
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

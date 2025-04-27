@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1895464327065767657}
   - component: {fileID: 1511714304283680827}
   - component: {fileID: -6849768691528100472}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: GravityGrenade
   m_TagString: Untagged
   m_Icon: {fileID: 0}

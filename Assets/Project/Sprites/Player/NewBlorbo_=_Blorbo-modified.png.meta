@@ -113,12 +113,12 @@ TextureImporter:
       name: NewBlorbo_=_Blorbo-modified_0
       rect:
         serializedVersion: 2
-        x: 27
+        x: 63
         y: 508
-        width: 146
+        width: 74
         height: 70
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -134,12 +134,12 @@ TextureImporter:
       name: NewBlorbo_=_Blorbo-modified_1
       rect:
         serializedVersion: 2
-        x: 228
+        x: 260
         y: 509
-        width: 143
+        width: 74
         height: 69
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -155,12 +155,12 @@ TextureImporter:
       name: NewBlorbo_=_Blorbo-modified_2
       rect:
         serializedVersion: 2
-        x: 435
+        x: 469
         y: 507
-        width: 130
+        width: 75
         height: 73
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -176,12 +176,12 @@ TextureImporter:
       name: NewBlorbo_=_Blorbo-modified_3
       rect:
         serializedVersion: 2
-        x: 54
+        x: 73
         y: 355
-        width: 91
+        width: 62
         height: 67
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -197,12 +197,12 @@ TextureImporter:
       name: NewBlorbo_=_Blorbo-modified_4
       rect:
         serializedVersion: 2
-        x: 254
+        x: 259
         y: 353
-        width: 91
-        height: 71
+        width: 86
+        height: 67
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -218,12 +218,12 @@ TextureImporter:
       name: NewBlorbo_=_Blorbo-modified_5
       rect:
         serializedVersion: 2
-        x: 445
+        x: 459
         y: 337
-        width: 110
-        height: 102
+        width: 81
+        height: 74
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -239,12 +239,12 @@ TextureImporter:
       name: NewBlorbo_=_Blorbo-modified_6
       rect:
         serializedVersion: 2
-        x: 23
+        x: 57
         y: 201
-        width: 154
-        height: 65
+        width: 86
+        height: 59
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -260,12 +260,12 @@ TextureImporter:
       name: NewBlorbo_=_Blorbo-modified_7
       rect:
         serializedVersion: 2
-        x: 244
+        x: 257
         y: 181
-        width: 111
-        height: 105
+        width: 83
+        height: 74
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -281,12 +281,12 @@ TextureImporter:
       name: NewBlorbo_=_Blorbo-modified_8
       rect:
         serializedVersion: 2
-        x: 442
+        x: 475
         y: 183
-        width: 116
-        height: 101
+        width: 83
+        height: 81
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -302,12 +302,12 @@ TextureImporter:
       name: NewBlorbo_=_Blorbo-modified_9
       rect:
         serializedVersion: 2
-        x: 32
+        x: 56
         y: 54
-        width: 135
+        width: 92
         height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.4870612, y: 0.35424027}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

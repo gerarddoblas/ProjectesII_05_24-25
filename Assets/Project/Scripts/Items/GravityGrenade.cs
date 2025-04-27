@@ -33,6 +33,7 @@ public class GravityGrenade : Item {
         Quaternion rotation = Quaternion.identity;
         rotation.eulerAngles = new Vector3 (90, 0, 0);
         Instantiate(particles, this.transform.position, rotation);
+        AudioManager.instance.PlaySFX("Gravity");
         yield return null;
      }
 

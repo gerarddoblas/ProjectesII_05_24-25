@@ -33,7 +33,7 @@ public class PlayerHud : MonoBehaviour
     
     public void SetColour(Color colour)
     {
-        itemSprite.transform.parent.GetComponent<Image>().color = colour;
+        itemSprite.transform.parent.GetChild(0).GetComponent<Image>().color = colour;
         //itemSprite.transform.parent.GetChild(0).GetComponent<Image>().color = colour;
     }
     public void SetScoreText(int score)

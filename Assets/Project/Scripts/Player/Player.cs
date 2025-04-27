@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
 
     [Header("SFX")]
     private AudioSource source;
-    [SerializeField] private AudioClip walkClip, KnockoutClip;
+    [SerializeField] private AudioClip KnockoutClip;
     public SpriteRenderer positionMarker;
     public void LockMovement() { canMove = false; }
     public void UnlockMovement() {  canMove = true; }
@@ -105,7 +105,6 @@ public class Player : MonoBehaviour
         spriteRenderer.flipX = playerSpeed.x < 0;*/
         if (canMove)
         {
-            source.clip = walkClip;
             source.Play();
             playerSpeed = context.ReadValue<Vector2>();
             if (playerSpeed.x < 0)
