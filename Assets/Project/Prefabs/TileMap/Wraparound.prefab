@@ -123,7 +123,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   area: {fileID: 0}
-  objective: {fileID: 793548150472951697}
+  objectiveWraparound: {fileID: 0}
+  particles: {fileID: 215918523138872930, guid: d7753ba00760d6c41b47e0677eafa152, type: 3}
+  objectsInside: []
 --- !u!1 &5829242731990270840
 GameObject:
   m_ObjectHideFlags: 0
@@ -216,7 +218,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   area: {fileID: 0}
-  objective: {fileID: 7657124700700848892}
+  objectiveWraparound: {fileID: 0}
+  particles: {fileID: 215918523138872930, guid: d7753ba00760d6c41b47e0677eafa152, type: 3}
+  objectsInside: []
 --- !u!1 &7657826071593215477
 GameObject:
   m_ObjectHideFlags: 0

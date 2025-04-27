@@ -6,6 +6,7 @@ public class Wraparound : MonoBehaviour
 {
     [SerializeField] private BoxCollider2D area;
     [SerializeField] private Wraparound objectiveWraparound;
+    [SerializeField] private GameObject particles;
     public List<Collider2D> objectsInside = new List<Collider2D>();
 
     void Start()
@@ -19,7 +20,9 @@ public class Wraparound : MonoBehaviour
         if (!objectsInside.Contains(collision) && !objectiveWraparound.objectsInside.Contains(collision))
         {
             objectsInside.Add(collision);
+            Instantiate(particles, collision.transform.position, Quaternion.identity);
             collision.transform.position = new Vector2(objectiveWraparound.transform.position.x, collision.transform.position.y);
+            Instantiate(particles, collision.transform.position, Quaternion.identity);
             objectiveWraparound.objectsInside.Add(collision);
         }
     }
