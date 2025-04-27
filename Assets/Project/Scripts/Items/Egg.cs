@@ -9,7 +9,7 @@ public class Egg : Item {
     public float contador = 0.0f;
     public int damage = 5;
     private AudioSource source;
-
+    [SerializeField] private GameObject particles;
     private void Start () 
     {
         source = GetComponent<AudioSource>();
