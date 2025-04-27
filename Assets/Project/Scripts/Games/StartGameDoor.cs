@@ -45,10 +45,12 @@ public class StartGameDoor : MonoBehaviour
         timerText.transform.localScale = Vector3.one;
         timerText.color = timerText.color.WithAlpha(1);
 
-        if (activateClapAnimation) CameraFX.Instance.VerticalClap(delegate () {
-            GameController.Instance.StartGames();
-        });
-        else GameController.Instance.StartGames();
+        //if (activateClapAnimation) CameraFX.Instance.VerticalClap(delegate () {
+        //    GameController.Instance.StartGames();
+        //});
+        //else
+        CameraFX.Instance.VerticalClap();
+        GameController.Instance.StartGames();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
