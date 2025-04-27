@@ -63,7 +63,13 @@ public class GameController : MonoBehaviour
         CameraFX.Instance.instructions.sprite = currentGameMode.instructions;
         yield return new WaitForSeconds(5);
         CameraFX.Instance.instructions.color = new Color(255, 255, 255, 0);
+        yield return null;
+        CameraFX.Instance.ReverseVerticalClap(2, delegate () { StartCoroutine(StartGameCountDown()); });
+    }
 
+    IEnumerator StartGameCountDown()
+    {
+        PlayersManager.Instance.ShowAllHuds(2);
         CameraFX.Instance.startTimer.text.gameObject.SetActive(true);
         float time = CameraFX.Instance.startTimer.Time;
         time = 3;
@@ -73,20 +79,15 @@ public class GameController : MonoBehaviour
             CameraFX.Instance.startTimer.text.color.WithAlpha(time - Mathf.Floor(time));
             CameraFX.Instance.startTimer.text.text = Mathf.Ceil(time).ToString();
             time -= Time.deltaTime;
-            yield return null;
+            yield return new WaitForEndOfFrame();
         }
         CameraFX.Instance.startTimer.text.gameObject.SetActive(false);
-
+        PlayersManager.Instance.UnlockPlayersMovement();
+        CameraFX.Instance.timer.gameObject.SetActive(true);
+        currentGameMode.StartGame();
+        AudioManager.instance.PlaySFX("NowGo");
+        AudioManager.instance.PlayMusic("BackGround");
         yield return null;
-        CameraFX.Instance.ReverseVerticalClap(2,delegate ()
-        {
-            PlayersManager.Instance.ShowAllHuds(2);
-            PlayersManager.Instance.UnlockPlayersMovement();
-            CameraFX.Instance.timer.gameObject.SetActive(true);
-            currentGameMode.StartGame();
-            AudioManager.instance.PlaySFX("NowGo");
-            AudioManager.instance.PlayMusic("BackGround");
-        });
     }
     
     public void StartGames()

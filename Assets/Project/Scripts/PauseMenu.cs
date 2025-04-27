@@ -51,6 +51,7 @@ public class PauseMenu : MonoBehaviour
         menuEnabled = true;
         cg.alpha = 1;
         cg.interactable = true;
+        cg.blocksRaycasts = true;
         Time.timeScale = 0;
         PlayersManager.Instance.HideAllHuds();
         CameraFX.Instance.timer.gameObject.SetActive(false);
@@ -61,6 +62,7 @@ public class PauseMenu : MonoBehaviour
         menuEnabled = false;
         cg.alpha = 0;
         cg.interactable = false;
+        cg.blocksRaycasts = false;
         Time.timeScale = 1;
         PlayersManager.Instance.ShowAllHuds();
         CameraFX.Instance.timer.gameObject.SetActive(true);

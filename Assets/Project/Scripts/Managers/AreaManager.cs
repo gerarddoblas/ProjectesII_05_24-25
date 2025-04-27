@@ -113,6 +113,6 @@ public class AreaManager : MonoBehaviour
         }
 
         //particleSystem.Play();
-        source.Play();
+        //source.Play();
     }
 }
