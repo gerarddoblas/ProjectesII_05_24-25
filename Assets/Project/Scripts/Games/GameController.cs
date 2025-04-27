@@ -172,15 +172,19 @@ public class GameController : MonoBehaviour
 
     private void UpdateGameScores()
     {
-        List<int> maxScoreIndexes = new List<int>();
-        maxScoreIndexes.Add(0);
+        List<int> maxScoreIndexes = new List<int>{0};
         for (int i = 1; i < playerScores.Count; i++)
             if (playerGameScores[i] > playerGameScores[maxScoreIndexes[0]])
                 maxScoreIndexes = new List<int> { i };
             else if (playerGameScores[i] == playerGameScores[maxScoreIndexes[0]])
                 maxScoreIndexes.Add(i);
         foreach(int i in maxScoreIndexes)
+        {
             playerGameScores[i]++;
+            Debug.Log((float)playerGameScores[i] / (float)targetScore);
+            PlayersManager.Instance.playersCanvas[i].GetComponent<PlayerHud>().gamePoints.fillAmount = (float)playerGameScores[i] / (float)targetScore;
+        }
+            
     }
     private void SelectNextLevel() {
         SceneManager.LoadScene(stages[(int)UnityEngine.Random.Range(0, stages.Count)]);
