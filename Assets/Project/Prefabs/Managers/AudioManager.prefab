@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9071ad3a0a67724c85c9924d51910c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resetSpeedsOnSceneChange: 1
   musicSounds:
   - name: opening
     clip: {fileID: 8300000, guid: 564c073470184364292ad24bdaec69c5, type: 3}
@@ -66,7 +67,7 @@ MonoBehaviour:
   - name: Timer
     clip: {fileID: 8300000, guid: b76948ae65f4f4849bf7343af1a42a5b, type: 3}
   - name: Egg
-    clip: {fileID: 8300000, guid: d012cac136cc12b41a3a5e3780cf3171, type: 3}
+    clip: {fileID: 8300000, guid: 3678f533d5ea81749a5140c72233cd76, type: 3}
   - name: Barrel
     clip: {fileID: 8300000, guid: 810eea8358d54a844824661e36af0f6b, type: 3}
   - name: Kaboom
@@ -75,8 +76,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 37a70ebf895a0f545bbbeaa8cf383584, type: 3}
   - name: MineInMap
     clip: {fileID: 8300000, guid: ef360f3ba8ad0f04c93cebd2c7b91cf5, type: 3}
-  - name: Laser
-    clip: {fileID: 8300000, guid: 150d997aeaed63544b579b6bc7fd33b9, type: 3}
+  - name: Gravity
+    clip: {fileID: 8300000, guid: aedb0dce55da8d946bd67e8acd5c290b, type: 3}
   - name: Laser
     clip: {fileID: 8300000, guid: 150d997aeaed63544b579b6bc7fd33b9, type: 3}
   - name: NowGo
