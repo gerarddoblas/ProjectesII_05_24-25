@@ -34,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7002814917597663600
 SpriteRenderer:
@@ -151,7 +151,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.26, y: 0.28}
+    oldSize: {x: 0.37142858, y: 0.4}
     newSize: {x: 0.26, y: 0.28}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -178,6 +178,7 @@ MonoBehaviour:
   timeInScene: 2.5
   contador: 0
   damage: 5
+  explosionParticles: {fileID: 2116742792820544769, guid: 42d3cd12ffc074748a8bc1932898fe56, type: 3}
 --- !u!82 &1895464327065767657
 AudioSource:
   m_ObjectHideFlags: 0

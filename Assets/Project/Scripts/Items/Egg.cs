@@ -9,7 +9,7 @@ public class Egg : Item {
     public float contador = 0.0f;
     public int damage = 5;
     private AudioSource source;
-    [SerializeField] private GameObject particles;
+    [SerializeField] private GameObject explosionParticles;
     private void Start () 
     {
         source = GetComponent<AudioSource>();
@@ -20,6 +20,7 @@ public class Egg : Item {
         if (contador >= timeInScene)
         {
             Destroy(this.gameObject);
+            Instantiate(explosionParticles, this.transform.position, Quaternion.identity);
             AudioManager.instance.PlaySFX("Egg");
         }
     }
@@ -32,9 +33,11 @@ public class Egg : Item {
             p.healthBehaviour.Damage(damage);
             GameController.Instance.RemoveScore(damage, p.gameObject);
             Destroy(this.gameObject);
+            Instantiate(explosionParticles, this.transform.position, Quaternion.identity);
             AudioManager.instance.PlaySFX("Egg");
         }
         Destroy(this.gameObject);
+        Instantiate(explosionParticles, this.transform.position, Quaternion.identity);
         yield return null;
      }
 }
