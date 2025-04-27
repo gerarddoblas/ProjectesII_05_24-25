@@ -12,22 +12,12 @@ public class TilemapScript : MonoBehaviour
     private AudioSource source;
     // Start is called before the first frame update
     public static TilemapScript Instance { get; private set; }
-    private void Awake()
-    {
-        GetComponent<Tilemap>().RefreshAllTiles();
-        SceneManager.sceneLoaded += delegate (Scene loadedScene, LoadSceneMode loadSceneMode)
-        {
-            tm.RefreshAllTiles();
-        };
-        if (Instance != null && Instance != this)
-            Destroy(this);
-        else
-            Instance = this;
-    }
     void Start()
     {
         source = GetComponent<AudioSource>();
         tm = GetComponent<Tilemap>();
+        tm.RefreshAllTiles();
+        Instance = this;
     }
 
     // Update is called once per frame

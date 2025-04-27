@@ -10,6 +10,7 @@ public class TimeBasedGame : BaseGame
     override public void  StartGame(){ 
         base.StartGame();
         remainingTime = gameTime;
+         Timer.Instance.StartTimer(remainingTime);
     }
     
     override public void UpdateGame()

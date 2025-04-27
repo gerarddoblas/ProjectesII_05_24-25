@@ -24,8 +24,10 @@ public class AreaManager : MonoBehaviour
 
         SceneManager.sceneLoaded += delegate (Scene loadedScene, LoadSceneMode loadedSceneMode)
         {
-            if (GameController.Instance.currentGameMode.GetType() == typeof(TimeZoneCapture)) ChangeArea();
-            else this.transform.position = new Vector3(-1000, 0);
+            if (GameController.Instance.currentGameMode.GetType() == typeof(TimeZoneCapture)) 
+                ChangeArea();
+            else
+                this.transform.position = new Vector3(-1000, 0);
         };
     }
 
@@ -41,6 +43,7 @@ public class AreaManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!GameController.Instance.currentGameMode.GetType().Equals(typeof(TimeZoneCapture))) Destroy(this.gameObject);
         if (timeBeforeChange < 0) ChangeArea();
     }
 
@@ -51,7 +54,7 @@ public class AreaManager : MonoBehaviour
         {
             //player.Score += ();
             //player.onAlterScore.Invoke(player.Score);
-            GameController.Instance.AddScore(Time.deltaTime * scoreMultiplier, collision.gameObject);
+            GameController.Instance.AddScore(Time.deltaTime * scoreMultiplier *10, collision.gameObject);
             timeBeforeChange -= Time.deltaTime;
 
             if(Random.Range(0f, 100f) < particleRate)

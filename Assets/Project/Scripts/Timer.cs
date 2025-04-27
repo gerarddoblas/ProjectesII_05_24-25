@@ -18,10 +18,16 @@ public class Timer : MonoBehaviour
         NEGATIVE
     }
     [SerializeField]TextMeshProUGUI timerText;
+    [Header("Timer display options")]
     public bool showMS;
     public ETimeFormat timeFormat; 
     public EShowOptions showOptions = EShowOptions.POSITIVE;
+    [Header("Warning")]
+    [SerializeField] bool warning = true;
+    private bool hasWarned = false;
+    [SerializeField] float remainingTimeForAdvice = 10f;
     public static Timer Instance { get; private set; }
+
     private void Awake()
     {
         if (Instance == null)
@@ -34,6 +40,10 @@ public class Timer : MonoBehaviour
             timerText = this.GetComponent<TextMeshProUGUI>();
     }
 
+    public void StartTimer(float seconds)
+    {
+        LeanTween.scale(transform.GetChild(0).gameObject, new Vector3(0, 1, 1), seconds);
+    }
     public void UpdateTimerText(float remainingSeconds)
     {
         string timeString = "";
@@ -53,8 +63,21 @@ public class Timer : MonoBehaviour
             }
             if (showMS)
                 timeString += "." + remainingSeconds.ToString().Split(",")[1];
+            if(remainingSeconds <= remainingTimeForAdvice && warning){
+                if (!hasWarned)
+                {
+                    LeanTween.value(0, 1, 1).setOnUpdate(delegate (float r) {
+                        timerText.color = new Color(1-(r/10),1-r,1-r);
+                        AudioManager.instance.SetMusicSpeed(1+(r/4));
+                    });
+                    hasWarned = true;
+                }
+                if(transform.localScale == Vector3.one){
+                         LeanTween.scale(this.gameObject, transform.localScale * 1.5f, 1).setEaseInOutBounce();
+                }
+                   
+            }
         }
         timerText.text = timeString;
-
     }
 }

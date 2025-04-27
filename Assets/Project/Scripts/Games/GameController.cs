@@ -3,14 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Security.Cryptography;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class GameController : MonoBehaviour
 {
     public List<BaseGame> gameModes;
     public List<string> stages;
     public List<float> playerScores;
+    public List<uint> playerGameScores;
     public BaseGame currentGameMode;
     [SerializeField] bool clapAnimations;
     public int targetScore;
@@ -58,9 +61,22 @@ public class GameController : MonoBehaviour
         PlayersManager.Instance.HideAllHuds();
         CameraFX.Instance.instructions.color = new Color(255, 255, 255, 1);
         CameraFX.Instance.instructions.sprite = currentGameMode.instructions;
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(5);
         CameraFX.Instance.instructions.color = new Color(255, 255, 255, 0);
-        
+
+        CameraFX.Instance.startTimer.text.gameObject.SetActive(true);
+        float time = CameraFX.Instance.startTimer.Time;
+        time = 3;
+        while (time > 0)
+        {
+            CameraFX.Instance.startTimer.text.transform.localScale = Vector3.one * (time - Mathf.Floor(time));
+            CameraFX.Instance.startTimer.text.color.WithAlpha(time - Mathf.Floor(time));
+            CameraFX.Instance.startTimer.text.text = Mathf.Ceil(time).ToString();
+            time -= Time.deltaTime;
+            yield return null;
+        }
+        CameraFX.Instance.startTimer.text.gameObject.SetActive(false);
+
         yield return null;
         CameraFX.Instance.ReverseVerticalClap(2,delegate ()
         {
@@ -68,6 +84,8 @@ public class GameController : MonoBehaviour
             PlayersManager.Instance.UnlockPlayersMovement();
             CameraFX.Instance.timer.gameObject.SetActive(true);
             currentGameMode.StartGame();
+            AudioManager.instance.PlaySFX("NowGo");
+            AudioManager.instance.PlayMusic("BackGround");
         });
     }
     
@@ -76,6 +94,7 @@ public class GameController : MonoBehaviour
         //targetScore = 100;
         PlayersManager.Instance.playerInputManager.DisableJoining();
         ResetScore();
+        ResetGameScore();
         SelectNextGame();
         SelectNextLevel();
         currentGameMode.StartGame();
@@ -111,10 +130,20 @@ public class GameController : MonoBehaviour
                     for(int j = 0; j < scoreToRemove; j++)
                     {
                         GameObject instance = Instantiate(physicsCoin, player.transform.position + new Vector3(0, 2), Quaternion.identity);
-                        instance.GetComponent<Rigidbody2D>().AddForce(new Vector2(UnityEngine.Random.Range(-1000, 1000), 500));
+                        instance.GetComponent<Rigidbody2D>().AddForce(new Vector2(UnityEngine.Random.Range(-10, 10), 5));
                     }
                 }
-                if (playerScores[i] < 0)
+                else if (GameController.Instance.currentGameMode.GetType() == typeof(StealTheCrown))
+                {
+                    try
+                    {
+                        if(Crown.Instance.GetOwner().gameObject == player)
+                        {
+                            Crown.Instance.RemoveOwner();
+                        }
+                    }catch (Exception e) { }
+                }
+                if (playerScores[i] < 0 && !currentGameMode.GetType().Equals(typeof(FightArenaGame)))
                     playerScores[i] = 0;
                 PlayersManager.Instance.playersCanvas[i].GetComponent<PlayerHud>().SetScoreText((int)playerScores[i]);
             }
@@ -123,7 +152,34 @@ public class GameController : MonoBehaviour
     public void ResetScore() {
         playerScores.Clear();
         for (int i = 0; i < PlayersManager.Instance.players.Count; i++)
+        {
             playerScores.Add(0);
+            PlayersManager.Instance.playersCanvas[i].GetComponent<PlayerHud>().SetScoreText((int)playerScores[i]);
+        }
+            
+    }
+
+    public void ResetGameScore()
+    {
+        playerGameScores.Clear();
+        for (int i = 0; i < PlayersManager.Instance.players.Count; i++)
+        {
+            playerGameScores.Add(0);
+        }
+
+    }
+
+    private void UpdateGameScores()
+    {
+        List<int> maxScoreIndexes = new List<int>();
+        maxScoreIndexes.Add(0);
+        for (int i = 1; i < playerScores.Count; i++)
+            if (playerGameScores[i] > playerGameScores[maxScoreIndexes[0]])
+                maxScoreIndexes = new List<int> { i };
+            else if (playerGameScores[i] == playerGameScores[maxScoreIndexes[0]])
+                maxScoreIndexes.Add(i);
+        foreach(int i in maxScoreIndexes)
+            playerGameScores[i]++;
     }
     private void SelectNextLevel() {
         SceneManager.LoadScene(stages[(int)UnityEngine.Random.Range(0, stages.Count)]);
@@ -136,6 +192,9 @@ public class GameController : MonoBehaviour
     {
         PlayersManager.Instance.LockPlayersMovement();
         PlayersManager.Instance.StopPlayers();
+        PlayersManager.Instance.HealAllPlayers();
+        UpdateGameScores();
+        ResetScore();
         if (!PlayerAchievedTargetScore())
         {
             if (clapAnimations && CameraFX.Instance != null)
@@ -171,10 +230,9 @@ public class GameController : MonoBehaviour
     }
     public bool PlayerAchievedTargetScore()
     {
-        for(int i = 0; i < playerScores.Count;i++)
-            if (playerScores[i]>=targetScore)
+        for(int i = 0; i < playerGameScores.Count;i++)
+            if (playerGameScores[i]>=targetScore)
                 return true;
-        
         return false;
     }
 }

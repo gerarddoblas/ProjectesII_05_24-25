@@ -3,14 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Items : MonoBehaviour
 {
-    //Mana
-    public float mana, fillspeed, maxFill;
-    public float consumedMana;
-    public UnityEvent<float> onAlterMana;
-
+  
     //Object Creation
     private bool canCreate = true, fillingMana = true;
     private bool dontRepeat = true;
@@ -18,7 +15,7 @@ public class Items : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D rigidbody;
-
+    [SerializeField] SpriteRenderer itemHandSprite;
     public UnityEvent<Sprite> onItemRecieved;
     public UnityEvent onItemCreated;
     public GameObject recievedObject;
@@ -31,28 +28,14 @@ public class Items : MonoBehaviour
         rigidbody = GetComponent<Rigidbody2D>();
 
         input.actions.FindAction("GenerateMidObject").started += CreateMidObject;
-        
-
-    }
-
-    private void Start()
+        SceneManager.sceneLoaded += delegate (Scene loadedScene, LoadSceneMode loadedSceneMode) { recievedObject = null; };
+        onItemRecieved.AddListener(delegate (Sprite s) { itemHandSprite.sprite = s; });
+        }
+    private void OnDestroy()
     {
+        GetComponent<PlayerInput>().actions.FindAction("GenerateMidObject").RemoveAllBindingOverrides();
     }
-    private void Update()
-    {
-       /* if (mana < maxFill && fillingMana)
-        {
-            mana += fillspeed * Time.deltaTime;
-            AudioManager.instance.PlayManaSound("ChargeMana");
-            if (mana >= maxFill)
-            {
-                AudioManager.instance.manaSource.Stop();
-                mana = maxFill;
-            }
-            onAlterMana.Invoke(this.mana);
-
-        }*/
-    }
+    public void SetItemHandSprite(Sprite s){itemHandSprite.sprite = s;}
     void CreateObject(InputAction.CallbackContext context, ObjectCreation.ObjectSizes size)
     {
 
@@ -60,6 +43,7 @@ public class Items : MonoBehaviour
         {
             GameObject instantiatedItem = recievedObject;
             InstantiateCreatedObject(instantiatedItem);
+            itemHandSprite.sprite = null;
             recievedObject = null;
         }
     }
@@ -74,12 +58,12 @@ public class Items : MonoBehaviour
         {
             Vector3 spawnpos = Vector3.zero;
             if (spriteRenderer.flipX)
-                spawnpos = Vector3.left * 2f;
+                spawnpos = Vector3.left * .55f;
             else
-               spawnpos = Vector3.right * 2f;
-            instantiatedItem = Instantiate(instantiatedItem, this.transform.position + spawnpos, Quaternion.Euler(0, 0, 0));
+               spawnpos = Vector3.right * .55f;
+            instantiatedItem = Instantiate(instantiatedItem, this.transform.position + (spawnpos*transform.localScale.x), Quaternion.Euler(0, 0, 0));
             instantiatedItem.GetComponent<Item>().creator = this.gameObject;
-            instantiatedItem.GetComponent<Rigidbody2D>().AddForce(spawnpos * 12.5f, ForceMode2D.Impulse);
+            instantiatedItem.GetComponent<Rigidbody2D>().AddForce(spawnpos * 60f, ForceMode2D.Impulse);
         }
         onItemCreated.Invoke();
     }
@@ -91,5 +75,11 @@ public class Items : MonoBehaviour
         yield return new WaitForSeconds(time);
         this.UnlockObjectCreation();
         yield return null;
+    }
+    public void RemoveItem()
+    {
+        itemHandSprite.sprite = null;
+        recievedObject = null;
+        onItemCreated.Invoke();
     }
 }

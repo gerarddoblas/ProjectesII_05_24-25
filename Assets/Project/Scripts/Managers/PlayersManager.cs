@@ -22,6 +22,8 @@ public class PlayersManager : MonoBehaviour
     [SerializeField] private Color[] playerColours;
     [SerializeField] private GameObject canvasPrefab;
 
+    public JoinTextsScript joinTextsScript;
+
     public UnityEvent onAnyActionPerformed;
     public static PlayersManager Instance { get; private set; }
     public void HealAllPlayers()
@@ -65,74 +67,83 @@ public class PlayersManager : MonoBehaviour
     {
         GameObject player = input.gameObject;
 
-        player.transform.SetParent(playerContainer.transform);     
-        player.GetComponent<SpriteRenderer>().color = playerColours[players.Count];
-        GameObject instantiatedHUD = GameObject.Instantiate(canvasPrefab,hudsContainer.transform);
-        PlayerHud instanceScript = instantiatedHUD.GetComponent<PlayerHud>();
-        
-        playersCanvas.Add(instantiatedHUD);
-        players.Add(input.gameObject);
-        instantiatedHUD.GetComponent<PlayerHud>().SetColour(playerColours[players.Count-1]);
-        player.GetComponent<Items>().onItemRecieved.AddListener(delegate (Sprite s){
-            instantiatedHUD.GetComponent<PlayerHud>().SetItemSprite(s);
-        });
-        player.GetComponent<Items>().onItemCreated.AddListener(delegate ()
+        player.transform.SetParent(playerContainer.transform);
+
+        int slotIndex = players.FindIndex(p => p == null);
+
+        if (slotIndex == -1)
         {
-            instantiatedHUD.GetComponent<PlayerHud>().ClearItemSprite();
+            slotIndex = players.Count;
+            players.Add(null);
+            playersCanvas.Add(null);
+        }
+
+        players[slotIndex] = player;
+
+        player.GetComponent<SpriteRenderer>().color = playerColours[slotIndex];
+
+        GameObject instantiatedHUD = Instantiate(canvasPrefab, hudsContainer.transform);
+        playersCanvas[slotIndex] = instantiatedHUD;
+        joinTextsScript.texts[slotIndex].gameObject.SetActive(false);
+
+        var instanceScript = instantiatedHUD.GetComponent<PlayerHud>();
+        instanceScript.SetColour(playerColours[slotIndex]);
+        instanceScript.SetControls(input.currentControlScheme);
+
+        player.GetComponent<Items>().onItemRecieved.AddListener(delegate (Sprite s) {
+            instanceScript.SetItemSprite(s);
         });
-        player.GetComponent<HealthBehaviour>().OnAlterHealth.AddListener(delegate (int mh, int h){
-            instantiatedHUD.GetComponent<PlayerHud>().SetHealthbar(mh, h);
+
+        player.GetComponent<Items>().onItemCreated.AddListener(delegate () {
+            instanceScript.ClearItemSprite();
         });
-        
+
+        player.GetComponent<HealthBehaviour>().OnAlterHealth.AddListener(delegate (int mh, int h) {
+            instanceScript.SetHealthbar(mh, h);
+        });
+
         if (!enabledHUDByDefault)
             instantiatedHUD.SetActive(false);
         else
             instantiatedHUD.SetActive(true);
 
-        if (!enableCreationByDefault)
-            player.GetComponent<Items>().LockObjectCreation();
-        else
-            player.GetComponent<Items>().UnlockObjectCreation();
-
         RectTransform hudRect = instantiatedHUD.GetComponent<RectTransform>();
         hudRect.SetParent(hudsContainer.transform, false);
 
-        instantiatedHUD.GetComponent<PlayerHud>().SetControls(input.currentControlScheme);
-
-
-        switch (players.Count)
+        switch (slotIndex)
         {
-            case 1:
+            case 0:
                 hudRect.anchorMin = Vector2.up;
                 hudRect.anchorMax = Vector2.up;
                 hudRect.anchoredPosition = new Vector2(202, -171);
                 break;
-            case 2:
+            case 1:
                 hudRect.anchorMin = Vector2.one;
                 hudRect.anchorMax = Vector2.one;
                 hudRect.anchoredPosition = new Vector2(-202, -171);
                 break;
-            case 3:
+            case 2:
                 hudRect.anchorMin = Vector2.zero;
                 hudRect.anchorMax = Vector2.zero;
-                hudRect.anchoredPosition = new Vector2(202, 171);
+                hudRect.anchoredPosition = new Vector2(202, -68);
                 break;
             default:
                 hudRect.anchorMin = Vector2.left;
                 hudRect.anchorMax = Vector2.left;
-                hudRect.anchoredPosition = new Vector2(-202, 171);
+                hudRect.anchoredPosition = new Vector2(-202, -68);
                 break;
         }
-        
+
         SetOnAnyActionPerformed(player);
         GameController.Instance.ResetScore();
-        
     }
+
 
     public void ShowAllHuds()
     {
         foreach (GameObject canva in playersCanvas)
         {
+            if (canva == null) continue;
             LeanTween.cancel(canva);
             canva.SetActive(true);
             canva.GetComponent<CanvasGroup>().alpha = 1.0f;
@@ -143,6 +154,7 @@ public class PlayersManager : MonoBehaviour
     {
         foreach (GameObject canva in playersCanvas)
         {
+            if (canva == null) continue;
             LeanTween.cancel(canva);
             LeanTween.value(canva, 0f, 1f, time).setOnStart(() =>
             {
@@ -158,6 +170,7 @@ public class PlayersManager : MonoBehaviour
     {
         foreach (GameObject canva in playersCanvas)
         {
+            if (canva == null) continue;
             LeanTween.cancel(canva);
             canva.GetComponent<CanvasGroup>().alpha = 0f;
             canva.SetActive(false);
@@ -168,6 +181,7 @@ public class PlayersManager : MonoBehaviour
     {
         foreach (GameObject canva in playersCanvas)
         {
+            if (canva == null) continue;
             LeanTween.cancel(canva);
             LeanTween.value(canva, 1f, 0f, time).setOnStart(() =>
             {
@@ -195,10 +209,9 @@ public class PlayersManager : MonoBehaviour
     {
         foreach (GameObject player in players)
             player.GetComponent<Player>().UnlockMovement();
-        AudioManager.instance.SetMusicVolume(1f);
-        AudioManager.instance.PlaySFX("NowGo");
-        AudioManager.instance.PlayMusic("BackGround");
-        AudioManager.instance.SetMusicVolume(0.3f);
+        //AudioManager.instance.SetMusicVolume(1f);
+
+       // AudioManager.instance.SetMusicVolume(0.3f);
     }
 
     public void SetJoining(bool enabled) {
@@ -227,4 +240,9 @@ public class PlayersManager : MonoBehaviour
     {
         onAnyActionPerformed.Invoke();
     }
+    public void RemovePlayersItems()
+    {
+        foreach (GameObject player in players)
+            player.GetComponent<Items>().RemoveItem();
+     }
 }

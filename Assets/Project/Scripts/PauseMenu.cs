@@ -28,9 +28,9 @@ public class PauseMenu : MonoBehaviour
         optionsMenu.Return.onClick.AddListener (delegate () { ExitOptionsMenu(); });    
         exitButton.onClick.AddListener(delegate (){
 #if UNITY_EDITOR
-            //EditorApplication.isPlaying = false; 
+            UnityEditor.EditorApplication.isPlaying = false;
 #else
-            Application.Quit(); 
+            Application.Quit();
 #endif
         });
 

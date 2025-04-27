@@ -6,8 +6,10 @@ public class WingBoots : Item
 {
     public float incrementMult = 1.5f;
     public float duration = 5;
+    [SerializeField] private GameObject particles;
     override public IEnumerator Effect(GameObject target)
     {
+        Instantiate(particles, target.transform.position, Quaternion.identity, target.transform);
         Player p = target.GetComponent<Player>();
         while (p.maxSpeed!=13)
             yield return null;

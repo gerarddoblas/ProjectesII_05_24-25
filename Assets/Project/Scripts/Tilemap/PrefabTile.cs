@@ -14,43 +14,29 @@ namespace UnityEngine.Tilemaps
     [Serializable]
     public class PrefabTile : TileBase
     {
-        
-        public List<ValueTuple<Vector3Int, string>> spawnInfo;
         public Sprite sprite;
         public GameObject prefab;
+        public GameObject parent;
 
-        [ExecuteInEditMode]
-        private void Awake()
+        public Dictionary<int, List<Vector3Int>> positions = new Dictionary<int, List<Vector3Int>>();
+
+        public virtual void OnEnable()
         {
-            SceneManager.sceneLoaded += delegate (Scene loadedScene, LoadSceneMode loadedSceneMode)
+            SceneManager.sceneLoaded += delegate (Scene loadedScene, LoadSceneMode loadSceneMode)
             {
-                Debug.Log("PrefabSpawn");
-                string sceneName = loadedScene.name;
-                foreach (var info in spawnInfo)
-                {
-                    if(sceneName == info.Item2) Instantiate(prefab, info.Item1, Quaternion.identity);
-                }
-            };
-        }
-        void OnEnable()
-        {
-            spawnInfo = new List<ValueTuple<Vector3Int, string>>();
-            SceneManager.sceneLoaded += delegate (Scene loadedScene, LoadSceneMode loadedSceneMode)
-            {
-                Debug.Log("PrefabSpawn");
-                string sceneName = loadedScene.name;
-                foreach (var info in spawnInfo)
-                {
-                    if (sceneName == info.Item2) Instantiate(prefab, info.Item1, Quaternion.identity);
-                }
+                if(!positions.ContainsKey(loadedScene.buildIndex)) positions.Add(loadedScene.buildIndex, new List<Vector3Int>());
+                if(parent == null) parent = Instantiate(new GameObject("---" + prefab.name.ToUpper() + "---"));
+                foreach (Vector3Int position in positions[loadedScene.buildIndex]) Instantiate(prefab, position, Quaternion.identity, parent.transform);
             };
         }
 
         public override void GetTileData(Vector3Int position, ITilemap tilemap, ref TileData tileData)
         {
+            
+            int curSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
-            string sceneName = SceneManager.GetActiveScene().name;
-            if (!spawnInfo.Contains((position, sceneName))) spawnInfo.Add((position, sceneName));
+            if(!positions.ContainsKey(curSceneIndex)) positions.Add(curSceneIndex, new List<Vector3Int>());
+            if (!positions[curSceneIndex].Contains(position)) positions[curSceneIndex].Add(position);
 
             tileData.colliderType = Tile.ColliderType.None;
 
@@ -69,12 +55,6 @@ namespace UnityEngine.Tilemaps
     public class PrefabTileEditor : Editor
     {
         private PrefabTile tile { get { return (target as PrefabTile); } }
-
-        public void OnEnable()
-        {
-
-
-        }
 
         public override void OnInspectorGUI()
         {
