@@ -12,20 +12,6 @@ namespace UnityEngine.Tilemaps
     public class ItemBoxTile : PrefabTile
     {
 
-        public override void GetTileData(Vector3Int position, ITilemap tilemap, ref TileData tileData)
-        {
-
-            //if (!GameController.Instance.currentGameMode.Contains(position)) GameController.Instance.currentGameMode.itemBoxPositions.Add(position);
-
-            tileData.colliderType = Tile.ColliderType.None;
-
-#if UNITY_EDITOR
-            if (EditorApplication.isPlaying) tileData.sprite = null;
-            else tileData.sprite = sprite;
-#else
-            tileData.sprite = null;
-#endif
-        }
     }
 
 #if UNITY_EDITOR
