@@ -22,12 +22,12 @@ namespace UnityEngine.Tilemaps
 
         public virtual void OnEnable()
         {
-            SceneManager.sceneLoaded += delegate (Scene loadedScene, LoadSceneMode loadSceneMode)
-            {
-                if(!positions.ContainsKey(loadedScene.buildIndex)) positions.Add(loadedScene.buildIndex, new List<Vector3Int>());
-                if(parent == null) parent = Instantiate(new GameObject("---" + prefab.name.ToUpper() + "---"));
-                foreach (Vector3Int position in positions[loadedScene.buildIndex]) Instantiate(prefab, position, Quaternion.identity, parent.transform);
-            };
+            //SceneManager.sceneLoaded += delegate (Scene loadedScene, LoadSceneMode loadSceneMode)
+            //{
+            //    if(!positions.ContainsKey(loadedScene.buildIndex)) positions.Add(loadedScene.buildIndex, new List<Vector3Int>());
+            //    if(parent == null) parent = Instantiate(new GameObject("---" + prefab.name.ToUpper() + "---"));
+            //    foreach (Vector3Int position in positions[loadedScene.buildIndex]) Instantiate(prefab, position, Quaternion.identity, parent.transform);
+            //};
         }
 
         public override void GetTileData(Vector3Int position, ITilemap tilemap, ref TileData tileData)

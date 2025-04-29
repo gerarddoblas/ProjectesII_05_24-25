@@ -1594,7 +1594,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
+  m_fontSize: 21.6
   m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4135,7 +4135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28d0f3c7987d8a14facabd1813c21784, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minPlayersToPass: 1
+  minPlayersToPass: 2
   activateClapAnimation: 1
   timeToAccept: 5
   timerText: {fileID: 1303578660}
@@ -4841,7 +4841,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 27.95
+  m_fontSize: 31.1
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5005,7 +5005,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 21.6
+  m_fontSize: 26.55
   m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -8249,7 +8249,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 9
-      m_TileSpriteIndex: 12
+      m_TileSpriteIndex: 21
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -11384,8 +11384,8 @@ Tilemap:
     m_Data: {fileID: 287864844, guid: c679899e224f59547bb95f0a0a7e2e4a, type: 3}
   - m_RefCount: 14
     m_Data: {fileID: 1431502626, guid: c25db868650fc844696ac72fff658e0b, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 27167715, guid: c679899e224f59547bb95f0a0a7e2e4a, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 124
     m_Data: {fileID: 1131498306, guid: c679899e224f59547bb95f0a0a7e2e4a, type: 3}
   - m_RefCount: 1
@@ -11402,8 +11402,8 @@ Tilemap:
     m_Data: {fileID: 1539184989, guid: c679899e224f59547bb95f0a0a7e2e4a, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 2146309156, guid: c679899e224f59547bb95f0a0a7e2e4a, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 27167715, guid: c679899e224f59547bb95f0a0a7e2e4a, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 596
     m_Data:
@@ -12170,19 +12170,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1070946722087091741, guid: 6d85d4b54ee95084fa57b4b3d60a7a4a, type: 3}
       propertyPath: stages.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1070946722087091741, guid: 6d85d4b54ee95084fa57b4b3d60a7a4a, type: 3}
       propertyPath: gameModes.Array.size
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1070946722087091741, guid: 6d85d4b54ee95084fa57b4b3d60a7a4a, type: 3}
       propertyPath: stages.Array.data[0]
-      value: Level2
+      value: WindLevel
       objectReference: {fileID: 0}
     - target: {fileID: 1070946722087091741, guid: 6d85d4b54ee95084fa57b4b3d60a7a4a, type: 3}
       propertyPath: stages.Array.data[1]
-      value: Level2
+      value: FerrisWheelLevel
       objectReference: {fileID: 0}
     - target: {fileID: 1070946722087091741, guid: 6d85d4b54ee95084fa57b4b3d60a7a4a, type: 3}
       propertyPath: stages.Array.data[2]
@@ -12191,7 +12191,7 @@ PrefabInstance:
     - target: {fileID: 1070946722087091741, guid: 6d85d4b54ee95084fa57b4b3d60a7a4a, type: 3}
       propertyPath: gameModes.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 24ece7f569c2b004badf34362fd34cb7, type: 2}
+      objectReference: {fileID: 11400000, guid: 7b4964c35a959d449b6569530dec5f72, type: 2}
     - target: {fileID: 1070946722087091741, guid: 6d85d4b54ee95084fa57b4b3d60a7a4a, type: 3}
       propertyPath: gameModes.Array.data[1]
       value: 
@@ -12203,7 +12203,7 @@ PrefabInstance:
     - target: {fileID: 1070946722087091741, guid: 6d85d4b54ee95084fa57b4b3d60a7a4a, type: 3}
       propertyPath: gameModes.Array.data[3]
       value: 
-      objectReference: {fileID: 11400000, guid: 40de0c6f4b45ee54b8e7ac613d8fb4f6, type: 2}
+      objectReference: {fileID: 11400000, guid: 6183abcb69abbb547aedc70b55de96dd, type: 2}
     - target: {fileID: 2038882017119522903, guid: 6d85d4b54ee95084fa57b4b3d60a7a4a, type: 3}
       propertyPath: m_Name
       value: GameController

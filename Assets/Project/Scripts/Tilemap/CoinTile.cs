@@ -14,13 +14,13 @@ namespace UnityEngine.Tilemaps
     {
         public override void OnEnable()
         {
-            SceneManager.sceneLoaded += delegate (Scene loadedScene, LoadSceneMode loadSceneMode)
-            {
-                if (!positions.ContainsKey(loadedScene.buildIndex)) positions.Add(loadedScene.buildIndex, new List<Vector3Int>());
-                GameObject parent = Instantiate(new GameObject("---" + prefab.name.ToUpper() + "---"));
-                if (GameController.Instance.currentGameMode != null && GameController.Instance.currentGameMode.GetType().Equals(typeof(CoinCollectGame)))
-                    foreach (Vector3Int position in positions[loadedScene.buildIndex]) Instantiate(prefab, position, Quaternion.identity, parent.transform);
-            };
+            //SceneManager.sceneLoaded += delegate (Scene loadedScene, LoadSceneMode loadSceneMode)
+            //{
+            //    if (!positions.ContainsKey(loadedScene.buildIndex)) positions.Add(loadedScene.buildIndex, new List<Vector3Int>());
+            //    GameObject parent = Instantiate(new GameObject("---" + prefab.name.ToUpper() + "---"));
+            //    if (GameController.Instance.currentGameMode != null && GameController.Instance.currentGameMode.GetType().Equals(typeof(CoinCollectGame)))
+            //        foreach (Vector3Int position in positions[loadedScene.buildIndex]) Instantiate(prefab, position, Quaternion.identity, parent.transform);
+            //};
         }
     }
 
