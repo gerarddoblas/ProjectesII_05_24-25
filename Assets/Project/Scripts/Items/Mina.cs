@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.ParticleSystem;
 
 public class Mina : Item
 {
     private AudioSource source;
     [SerializeField]private AudioClip SetMine;
     [SerializeField]private AudioClip MineBoom;
+    [SerializeField] private GameObject particles;
     private void Start()
     {
         source = GetComponent<AudioSource>();
@@ -16,6 +18,7 @@ public class Mina : Item
         Debug.Log("Collied/Triggered");
         if (target.TryGetComponent<Player>(out Player p))
         {
+            Instantiate(particles, this.transform.position, Quaternion.identity);
             Debug.Log("Mine collied with player");
             AudioManager.instance.PlaySFX("Mine");
             p.healthBehaviour.Damage(2);

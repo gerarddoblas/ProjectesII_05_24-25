@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1895464327065767657}
   - component: {fileID: 1511714304283680827}
   - component: {fileID: -6849768691528100472}
+  - component: {fileID: 2607310877365251597}
   m_Layer: 7
   m_Name: GravityGrenade
   m_TagString: Untagged
@@ -312,3 +313,24 @@ MonoBehaviour:
   damage: 5
   force: 200
   particles: {fileID: 215918523138872930, guid: e134b254b4c655c46920bd96149a3d0f, type: 3}
+--- !u!95 &2607310877365251597
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4110435733389039893}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 42f7c77c28199fa418766f95df0b7011, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

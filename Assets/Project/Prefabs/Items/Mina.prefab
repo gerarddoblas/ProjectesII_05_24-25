@@ -151,7 +151,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.32, y: 0.32}
+    oldSize: {x: 0.45714286, y: 0.45714286}
     newSize: {x: 0.64, y: 0.64}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -177,6 +177,7 @@ MonoBehaviour:
   creatorImmunity: 0
   SetMine: {fileID: 8300000, guid: ef360f3ba8ad0f04c93cebd2c7b91cf5, type: 3}
   MineBoom: {fileID: 8300000, guid: 37a70ebf895a0f545bbbeaa8cf383584, type: 3}
+  particles: {fileID: 2116742792820544769, guid: b3e7984d96734a04f9edc9241f4b5841, type: 3}
 --- !u!82 &6634740257997141737
 AudioSource:
   m_ObjectHideFlags: 0

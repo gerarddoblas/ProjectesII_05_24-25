@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -3991546595046551116}
   - component: {fileID: 6634740257997141737}
   - component: {fileID: -7450824888362699428}
+  - component: {fileID: 8353749447682005311}
   m_Layer: 7
   m_Name: Drill
   m_TagString: Untagged
@@ -151,7 +152,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.28, y: 0.31}
+    oldSize: {x: 0.56, y: 0.62}
     newSize: {x: 0.28, y: 0.31}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -273,3 +274,24 @@ MonoBehaviour:
   creatorImmunity: 0
   timeInScene: 1.5
   contador: 0
+--- !u!95 &8353749447682005311
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8325536505741278909}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 992b81b02f2ea7742b68fa693bcc527e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

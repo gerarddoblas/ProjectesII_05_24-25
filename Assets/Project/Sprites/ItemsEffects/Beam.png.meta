@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 72fe913e896be0d41a26e242ded25ef4
+guid: 8417135511ccff24ca53d51b71797176
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,12 +43,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 15
+  spritePixelsToUnits: 200
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -108,112 +108,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: Flag_0
-      rect:
-        serializedVersion: 2
-        x: 134
-        y: 245
-        width: 32
-        height: 50
-      alignment: 9
-      pivot: {x: 0.48688745, y: 0.113964535}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0d3280c3a7a8a8043a1973587d9326e8
-      internalID: 2139413786
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Flag_1
-      rect:
-        serializedVersion: 2
-        x: 134
-        y: 185
-        width: 30
-        height: 50
-      alignment: 9
-      pivot: {x: 0.5, y: 0.113964535}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2d93623c2d4ad974fb8258d7e6df5938
-      internalID: 1095206805
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Flag_2
-      rect:
-        serializedVersion: 2
-        x: 134
-        y: 125
-        width: 31
-        height: 50
-      alignment: 9
-      pivot: {x: 0.5, y: 0.10557281}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c85d484a6d5dc0642b52ef9c8c66f178
-      internalID: 1196527608
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Flag_3
-      rect:
-        serializedVersion: 2
-        x: 134
-        y: 65
-        width: 32
-        height: 50
-      alignment: 9
-      pivot: {x: 0.5, y: 0.09718094}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 67042671ee6d7a646aa7790d7d32fd64
-      internalID: 2144252713
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Flag_4
-      rect:
-        serializedVersion: 2
-        x: 134
-        y: 5
-        width: 30
-        height: 50
-      alignment: 9
-      pivot: {x: 0.5, y: 0.088788204}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c0b58b59277fd604db8050701634f22a
-      internalID: -1840130226
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
@@ -224,12 +119,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      Flag_0: 2139413786
-      Flag_1: 1095206805
-      Flag_2: 1196527608
-      Flag_3: 2144252713
-      Flag_4: -1840130226
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -13,6 +13,7 @@ public class Drill : Item
     {
         source = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody2D>();
+        AudioManager.instance.PlaySFX("Drill");
     }
     public void Update()
     {
@@ -21,7 +22,7 @@ public class Drill : Item
         if (contador >= timeInScene)
         {
             Destroy(this.gameObject);
-            //AudioManager.instance.PlaySFX("Drill");
+            
         }
     }
     override public IEnumerator Effect(GameObject target)
