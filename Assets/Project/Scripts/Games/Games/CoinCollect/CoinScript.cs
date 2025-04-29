@@ -9,7 +9,7 @@ public class CoinScript : MonoBehaviour
     public float contador = 0.0f;
     private AudioSource source;
     [SerializeField] private GameObject particle;
-    private void OnEnable()
+    private void Start()
     {
         if (GameController.Instance.currentGameMode != null && !GameController.Instance.currentGameMode.GetType().Equals(typeof(CoinCollectGame)))
             gameObject.SetActive(false);  

@@ -178,9 +178,9 @@ public class GameController : MonoBehaviour
     {
         List<int> maxScoreIndexes = new List<int>{0};
         for (int i = 1; i < playerScores.Count; i++)
-            if (playerGameScores[i] > playerGameScores[maxScoreIndexes[0]])
+            if (playerScores[i] > playerScores[maxScoreIndexes[0]])
                 maxScoreIndexes = new List<int> { i };
-            else if (playerGameScores[i] == playerGameScores[maxScoreIndexes[0]])
+            else if (playerScores[i] == playerScores[maxScoreIndexes[0]])
                 maxScoreIndexes.Add(i);
         foreach(int i in maxScoreIndexes)
         {

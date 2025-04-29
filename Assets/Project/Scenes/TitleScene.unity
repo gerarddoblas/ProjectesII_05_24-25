@@ -1594,7 +1594,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 21.6
+  m_fontSize: 45.05
   m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4841,7 +4841,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 31.1
+  m_fontSize: 67.75
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5005,7 +5005,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 26.55
+  m_fontSize: 55.25
   m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5142,7 +5142,7 @@ PrefabInstance:
     - target: {fileID: 6016600495428334092, guid: f4aed4a02c4f8e7419f0d65d818c6c8d, type: 3}
       propertyPath: m_PlayerPrefab
       value: 
-      objectReference: {fileID: 3595640720133808575, guid: 2e5b21c6ddb9a934fa93ddb401ddc4ef, type: 3}
+      objectReference: {fileID: 9167606857973438476, guid: 2e5b21c6ddb9a934fa93ddb401ddc4ef, type: 3}
     - target: {fileID: 6016600495428334092, guid: f4aed4a02c4f8e7419f0d65d818c6c8d, type: 3}
       propertyPath: m_MaxPlayerCount
       value: -1
@@ -11828,7 +11828,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 52.15
+  m_fontSize: 72
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
