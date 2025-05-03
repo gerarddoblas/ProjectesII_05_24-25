@@ -88,7 +88,6 @@ public class PlayersManager : MonoBehaviour
 
         var instanceScript = instantiatedHUD.GetComponent<PlayerHud>();
         instanceScript.SetColour(playerColours[slotIndex]);
-        instanceScript.SetControls(input.currentControlScheme);
 
         player.GetComponent<Items>().onItemRecieved.AddListener(delegate (Sprite s) {
             instanceScript.SetItemSprite(s);
