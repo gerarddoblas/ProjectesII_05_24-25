@@ -4,16 +4,8 @@ using UnityEngine;
 
 public class CoinContainer : MonoBehaviour
 {
-    public static CoinContainer Instance { get; private set; }
     private void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(this);
-        }
-        else
-            Destroy(gameObject);
         if (GameController.Instance.currentGameMode.GetType().Equals(typeof(CoinCollectGame)))
             EnableCoins();
         else
