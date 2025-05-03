@@ -10,7 +10,6 @@ using UnityEngine.Localization;
 using UnityEngine.Localization.Components;
 public class BaseGame : ScriptableObject
 {
-    
     public LocalizedAsset<Sprite> instructions;
     protected bool playingGame = false;
 
