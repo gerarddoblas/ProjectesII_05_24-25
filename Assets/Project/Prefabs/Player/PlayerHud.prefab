@@ -429,7 +429,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 72563ffb7c3349542970f8c14bfc6be3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 342dabe988dae9a4385f500f09503e9e, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -505,7 +505,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Score: 0'
+  m_text: ' Score: 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 81e5dc9b0cce2374a9ac78827bbd4714, type: 2}
   m_sharedMaterial: {fileID: -3988142467084639221, guid: 81e5dc9b0cce2374a9ac78827bbd4714, type: 2}
