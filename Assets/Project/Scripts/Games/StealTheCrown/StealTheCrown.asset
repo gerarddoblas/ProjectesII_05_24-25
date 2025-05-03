@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69dbc80a2bc6e62438daf13984cc71c5, type: 3}
+  m_Name: StealTheCrown
+  m_EditorClassIdentifier: 
+  instructions:
+    m_TableReference:
+      m_TableCollectionName: GUID:e317f5fdf0376ba4a87e4090d44d0bdc
+    m_TableEntryReference:
+      m_KeyId: 10874762394382336
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+  gamePaused: 0
+  gameTime: 35
+  remainingTime: -0.0003296323
+  crownPrefab: {fileID: 3509787225685442031, guid: a998971a4e96b1647ae259066ea94a86, type: 3}
+  instantiatedCrown: {fileID: 0}
+  scoreOverTime: 1
+  scoreToAdd: 1
