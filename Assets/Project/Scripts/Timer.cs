@@ -2,26 +2,28 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
-    public enum ETimeFormat
-    {
-        HOURMINSEC,
-        MINUTEMINSEC,
-        SECONDS
-    }
-    public enum EShowOptions
-    {
-        ONLYGREATERTHANZERO,
-        POSITIVE,
-        NEGATIVE
-    }
-    [SerializeField]TextMeshProUGUI timerText;
-    [Header("Timer display options")]
-    public bool showMS;
-    public ETimeFormat timeFormat; 
-    public EShowOptions showOptions = EShowOptions.POSITIVE;
+    [SerializeField] Image timerRect;
+    //public enum ETimeFormat
+    //{
+    //    HOURMINSEC,
+    //    MINUTEMINSEC,
+    //    SECONDS
+    //}
+    //public enum EShowOptions
+    //{
+    //    ONLYGREATERTHANZERO,
+    //    POSITIVE,
+    //    NEGATIVE
+    //}
+    //[SerializeField]TextMeshProUGUI timerText;
+    //[Header("Timer display options")]
+    //public bool showMS;
+    //public ETimeFormat timeFormat; 
+    //public EShowOptions showOptions = EShowOptions.POSITIVE;
     [Header("Warning")]
     [SerializeField] bool warning = true;
     private bool hasWarned = false;
@@ -37,64 +39,41 @@ public class Timer : MonoBehaviour
         }
         else
             Destroy(gameObject);
-        if (timerText == null)
-            timerText = this.GetComponent<TextMeshProUGUI>();
+        //if (timerText == null)
+        //    timerText = this.GetComponent<TextMeshProUGUI>();
     }
 
     public void StartTimer(float seconds)
     {
         LeanTween.scale(transform.GetChild(0).gameObject, new Vector3(0, 1, 1), seconds);
     }
-    public void UpdateTimerText(float remainingSeconds)
+
+    public void UpdateTimerRect(float remainingSeconds, float gameTime)
     {
-        string timeString = "";
+        float scale = remainingSeconds / gameTime;
+        timerRect.transform.localScale =
+            scale * Vector3.right 
+            + timerRect.transform.localScale.y * Vector3.up 
+            + timerRect.transform.localScale.z * Vector3.forward;
+        timerRect.color = Color.white * scale + Color.red * (1 - scale);
 
-        int currentSecond = Mathf.FloorToInt(remainingSeconds);
-
-
-        if ((remainingSeconds >= 0 && showOptions == EShowOptions.POSITIVE) ||
-            (remainingSeconds > 0 && showOptions == EShowOptions.ONLYGREATERTHANZERO) ||
-            (showOptions == EShowOptions.NEGATIVE))
+        if (remainingSeconds <= remainingTimeForAdvice && warning)
         {
-            switch (timeFormat)
+            if (!hasWarned)
             {
-                case ETimeFormat.MINUTEMINSEC:
-                    timeString = (remainingSeconds / 60).ToString().Split(",")[0] + (remainingSeconds % 60).ToString();
-                    break;
-                default:
-                    timeString = remainingSeconds.ToString().Split(",")[0];
-                    break;
+                LeanTween.value(0, 1, 1).setOnUpdate(delegate (float r)
+                {
+                    AudioManager.instance.SetMusicSpeed(1 + (r / 4));
+                });
+                hasWarned = true;
             }
-            if (showMS)
-                timeString += "." + remainingSeconds.ToString().Split(",")[1];
+            timeScinceLastWarning += Time.deltaTime;
 
-            if (remainingSeconds <= remainingTimeForAdvice && warning)
+            if (timeScinceLastWarning >= 1f)
             {
-                if (!hasWarned)
-                {
-                    LeanTween.value(0, 1, 1).setOnUpdate(delegate (float r)
-                    {
-                        timerText.color = new Color(1 - (r / 10), 1 - r, 1 - r);
-                        AudioManager.instance.SetMusicSpeed(1 + (r / 4));
-                    });
-                    hasWarned = true;
-                }
-                timeScinceLastWarning += Time.deltaTime; 
-
-                if (timeScinceLastWarning >= 1f)
-                {
-                    timeScinceLastWarning = 0f; 
-
-                    timerText.transform.localScale = Vector3.one; 
-                    LeanTween.scale(timerText.gameObject, Vector3.one * 1.5f, 0.5f)
-                        .setEaseOutBounce()
-                        .setOnComplete(() => {
-                            LeanTween.scale(timerText.gameObject, Vector3.one, 0.2f).setEaseInCubic();
-                        });
-                }
+                timeScinceLastWarning = 0f;
             }
         }
-        timerText.text = timeString;
     }
 
 }

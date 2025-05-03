@@ -21,7 +21,7 @@ public class TimeBasedGame : BaseGame
                 FinishGame();
         }
         try{
-            Timer.Instance.UpdateTimerText(remainingTime);
+            Timer.Instance.UpdateTimerRect(remainingTime, gameTime);
         }catch(Exception e) { }
     }
     public override void FinishGame(){

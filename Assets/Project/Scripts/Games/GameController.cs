@@ -191,11 +191,15 @@ public class GameController : MonoBehaviour
             
     }
     private void SelectNextLevel() {
-        SceneManager.LoadScene(stages[(int)UnityEngine.Random.Range(0, stages.Count)]);
+        string nextLevel;
+        do { nextLevel = stages[(int)UnityEngine.Random.Range(0, stages.Count)]; } while (nextLevel == SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(nextLevel);
     }
     private void SelectNextGame()
     {
-        currentGameMode = gameModes[(int)UnityEngine.Random.Range(0, gameModes.Count)];
+        BaseGame nextGame;
+        do { nextGame = gameModes[(int)UnityEngine.Random.Range(0, gameModes.Count)]; } while (nextGame == currentGameMode);
+        currentGameMode = nextGame;
     }
     public void NextGame()
     {

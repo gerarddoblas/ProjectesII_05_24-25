@@ -38,7 +38,7 @@ public class PlayerHud : MonoBehaviour
     }
     public void SetScoreText(int score)
     {
-        scoreText.text = "Score: " + score;
+        scoreText.text = score.ToString();
         foreach (var animation in scoreAnimations)
             StopCoroutine(animation);
         scoreAnimations.Clear();
@@ -90,24 +90,6 @@ public class PlayerHud : MonoBehaviour
     public void ClearItemSprite() {
         itemSprite.color = new Color(255, 255, 255, 0);
         itemSprite.sprite = null; 
-    }
-    public void SetControls(string controllsName)
-    {
-        foreach(ActionButton ab in actionButtonScheme.actions){
-            if(controllsName.Contains(ab.controllerName)){ 
-                Controls.GetComponent<Image>().sprite = ab.sprite;
-                return;
-            }
-        }
-        if (actionButtonScheme.defaultSprite)
-            Controls.GetComponent<Image>().sprite = actionButtonScheme.defaultSprite;
-    }
-    public void HideControls() {
-        Controls.SetActive(false);
-    }
-    public void ShowControls()
-    {
-        Controls.SetActive(true);
     }
     
 }
