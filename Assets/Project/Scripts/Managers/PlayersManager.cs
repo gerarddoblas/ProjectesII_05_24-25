@@ -84,7 +84,8 @@ public class PlayersManager : MonoBehaviour
 
         GameObject instantiatedHUD = Instantiate(canvasPrefab, hudsContainer.transform);
         playersCanvas[slotIndex] = instantiatedHUD;
-        joinTextsScript.texts[slotIndex].gameObject.SetActive(false);
+        try { joinTextsScript.texts[slotIndex].gameObject.SetActive(false); }
+        catch (System.Exception e) { }
 
         var instanceScript = instantiatedHUD.GetComponent<PlayerHud>();
         instanceScript.SetColour(playerColours[slotIndex]);
