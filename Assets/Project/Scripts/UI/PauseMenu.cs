@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
-    PauseMenu Instance;
+    public static PauseMenu Instance;
     CanvasGroup cg;
     bool menuEnabled = false;
     [SerializeField] Button resumeButton, optionsButton, exitButton;
@@ -54,6 +54,13 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0;
         PlayersManager.Instance.HideAllHuds();
         CameraFX.Instance.timer.gameObject.SetActive(false);
+    }
+    public void HideMenu()
+    {
+        menuEnabled = false;
+        cg.alpha = 0;
+        cg.interactable = false;
+        cg.blocksRaycasts = false;
     }
     public void DisableMenu()
     {

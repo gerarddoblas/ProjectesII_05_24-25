@@ -22,6 +22,8 @@ public class QuitMenu : MonoBehaviour
     public void EnableMenu()
     {
         if (menuEnabled) return;
+      
+        PauseMenu.Instance.HideMenu();
         menuEnabled = true;
         cg.alpha = 1;
         cg.interactable = true;
