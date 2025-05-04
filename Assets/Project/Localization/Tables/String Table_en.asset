@@ -98,6 +98,38 @@ MonoBehaviour:
     m_Localized: Steal the crown
     m_Metadata:
       m_Items: []
+  - m_Id: 13452212010176512
+    m_Localized: Are you sure you want to quit?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13452927189340160
+    m_Localized: Cancel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13453105560506368
+    m_Localized: Confirm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13454439407898624
+    m_Localized: Options
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13455032637673472
+    m_Localized: Full Screen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13455331712520192
+    m_Localized: Music Volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13455578467618816
+    m_Localized: FX volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13455929996431360
+    m_Localized: English
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -90,6 +90,38 @@ MonoBehaviour:
     m_Localized: Roba la corona
     m_Metadata:
       m_Items: []
+  - m_Id: 13452212010176512
+    m_Localized: Segur que vols abandonar?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13452927189340160
+    m_Localized: "Cancel\xB7lar"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13453105560506368
+    m_Localized: Confirmar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13454439407898624
+    m_Localized: Opcions
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13455032637673472
+    m_Localized: "Pantalla \ncompleta"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13455331712520192
+    m_Localized: "Volum M\xFAsica"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13455578467618816
+    m_Localized: Volum efectes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13455929996431360
+    m_Localized: "Catal\xE0"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
