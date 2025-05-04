@@ -7,23 +7,6 @@ using UnityEngine.UI;
 public class Timer : MonoBehaviour
 {
     [SerializeField] Image timerRect;
-    //public enum ETimeFormat
-    //{
-    //    HOURMINSEC,
-    //    MINUTEMINSEC,
-    //    SECONDS
-    //}
-    //public enum EShowOptions
-    //{
-    //    ONLYGREATERTHANZERO,
-    //    POSITIVE,
-    //    NEGATIVE
-    //}
-    //[SerializeField]TextMeshProUGUI timerText;
-    //[Header("Timer display options")]
-    //public bool showMS;
-    //public ETimeFormat timeFormat; 
-    //public EShowOptions showOptions = EShowOptions.POSITIVE;
     [Header("Warning")]
     [SerializeField] bool warning = true;
     private bool hasWarned = false;
@@ -39,13 +22,7 @@ public class Timer : MonoBehaviour
         }
         else
             Destroy(gameObject);
-        //if (timerText == null)
-        //    timerText = this.GetComponent<TextMeshProUGUI>();
-    }
-
-    public void StartTimer(float seconds)
-    {
-        LeanTween.scale(transform.GetChild(0).gameObject, new Vector3(0, 1, 1), seconds);
+        timerRect.transform.localScale = Vector3.zero;
     }
 
     public void UpdateTimerRect(float remainingSeconds, float gameTime)
@@ -53,8 +30,8 @@ public class Timer : MonoBehaviour
         float scale = remainingSeconds / gameTime;
         timerRect.transform.localScale =
             scale * Vector3.right 
-            + timerRect.transform.localScale.y * Vector3.up 
-            + timerRect.transform.localScale.z * Vector3.forward;
+            + Vector3.up 
+            + Vector3.forward;
         timerRect.color = Color.white * scale + Color.red * (1 - scale);
 
         if (remainingSeconds <= remainingTimeForAdvice && warning)

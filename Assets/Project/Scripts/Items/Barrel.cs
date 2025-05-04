@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Barrel : Item
 {
+    private int direction = 1;
     public float timeInScene = 1.5f;
     public float contador = 0.0f;
     public int damage = 15;
@@ -27,7 +28,8 @@ public class Barrel : Item
 
         }
 
-        rb.velocity = Vector3.up * rb.velocity.y + Vector3.right * Mathf.Sign(rb.velocity.x) * 15;
+        if (Mathf.Sign(rb.velocity.x) != direction) direction *= -1;
+        rb.velocity = Vector3.up * rb.velocity.y + Vector3.right * direction * 15;
         transform.eulerAngles += Vector3.forward * Time.deltaTime;
     }
     override public IEnumerator Effect(GameObject target)
