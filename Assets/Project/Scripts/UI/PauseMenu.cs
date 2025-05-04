@@ -47,7 +47,6 @@ public class PauseMenu : MonoBehaviour
     }
     public void EnableMenu()
     {
-        Debug.Log("EnablingMenu");
         menuEnabled = true;
         cg.alpha = 1;
         cg.interactable = true;
@@ -58,7 +57,6 @@ public class PauseMenu : MonoBehaviour
     }
     public void DisableMenu()
     {
-        Debug.Log("HidingMenu");
         menuEnabled = false;
         cg.alpha = 0;
         cg.interactable = false;

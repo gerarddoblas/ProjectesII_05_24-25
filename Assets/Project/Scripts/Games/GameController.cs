@@ -130,26 +130,22 @@ public class GameController : MonoBehaviour
             if (player == PlayersManager.Instance.players[i])
             {
                 playerScores[i] -= scoreToRemove;
-                if(currentGameMode.GetType().Equals(typeof(CoinCollectGame)))
+                if (currentGameMode != null)
                 {
-                    for(int j = 0; j < scoreToRemove; j++)
+                    if (currentGameMode.GetType().Equals(typeof(CoinCollectGame)))
                     {
-                        GameObject instance = Instantiate(physicsCoin, player.transform.position + new Vector3(0, 2), Quaternion.identity);
-                        instance.GetComponent<Rigidbody2D>().AddForce(new Vector2(UnityEngine.Random.Range(-10, 10), 5));
-                    }
-                }
-                else if (GameController.Instance.currentGameMode.GetType() == typeof(StealTheCrown))
-                {
-                    try
-                    {
-                        if(Crown.Instance.GetOwner().gameObject == player)
+                        for (int j = 0; j < scoreToRemove; j++)
                         {
-                            Crown.Instance.RemoveOwner();
+                            GameObject instance = Instantiate(physicsCoin, player.transform.position + new Vector3(0, 3), Quaternion.identity);
+                            instance.GetComponent<Rigidbody2D>().AddForce(new Vector2(UnityEngine.Random.Range(-40, 40), 20));
                         }
-                    }catch (Exception e) { }
+                    }
+                    else if (GameController.Instance.currentGameMode.GetType() == typeof(StealTheCrown))
+                        if (Crown.Instance.GetOwner() != null && Crown.Instance.GetOwner().gameObject == player)
+                            Crown.Instance.RemoveOwner();
+                    if (!currentGameMode.GetType().Equals(typeof(FightArenaGame)))
+                        playerScores[i] = Mathf.Max(playerScores[i], 0);
                 }
-                if (playerScores[i] < 0 && !currentGameMode.GetType().Equals(typeof(FightArenaGame)))
-                    playerScores[i] = 0;
                 PlayersManager.Instance.playersCanvas[i].GetComponent<PlayerHud>().SetScoreText((int)playerScores[i]);
             }
         }
@@ -185,7 +181,6 @@ public class GameController : MonoBehaviour
         foreach(int i in maxScoreIndexes)
         {
             playerGameScores[i]++;
-            Debug.Log((float)playerGameScores[i] / (float)targetScore);
             PlayersManager.Instance.playersCanvas[i].GetComponent<PlayerHud>().gamePoints.fillAmount = (float)playerGameScores[i] / (float)targetScore;
         }
             

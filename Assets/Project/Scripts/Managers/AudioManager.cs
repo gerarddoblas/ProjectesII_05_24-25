@@ -46,11 +46,7 @@ public class AudioManager : MonoBehaviour
     {
         Sound s = Array.Find(musicSounds, x => x.name == name);
 
-        if (s == null) 
-        {
-            Debug.Log("Sound Not Found");
-        }
-        else
+        if(s != null)
         {
             musicSource.clip = s.clip;
             musicSource.Play();
@@ -61,16 +57,9 @@ public class AudioManager : MonoBehaviour
     {
         Sound s = Array.Find(sfxSounds, x => x.name == name);
 
-        if (s == null)
+        if(s != null)
         {
-            Debug.Log("Sound Not Found");
-        }
-        else
-        {
-            if (soundCooldowns.ContainsKey(name) && Time.time - soundCooldowns[name] < cooldownTime)
-            {
-                return; // Evita la saturación
-            }
+            if (soundCooldowns.ContainsKey(name) && Time.time - soundCooldowns[name] < cooldownTime) return; // Avoids saturating
             soundCooldowns[name] = Time.time;
             sfxSource.PlayOneShot(s.clip);
         }
@@ -79,21 +68,11 @@ public class AudioManager : MonoBehaviour
     {
         Sound s = Array.Find(manaSounds, x => x.name == name);
 
-        if (s == null)
-        {
-            Debug.Log("Sound Not Found");
-        }
-        else
-        {
-            manaSource.PlayOneShot(s.clip);
-        }
+        if (s != null) manaSource.PlayOneShot(s.clip);
     }
     public void StopMusic()
     {
-        if (musicSource.isPlaying)
-        {
-            musicSource.Stop();
-        }
+        if (musicSource.isPlaying) musicSource.Stop();
     }
     public void StopSFX()
     {

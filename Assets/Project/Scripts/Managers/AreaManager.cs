@@ -7,13 +7,16 @@ public class AreaManager : MonoBehaviour
 {
     [SerializeField] private int curAreaIndex;
     [SerializeField] private Vector2[] possibleAreas;
-    [SerializeField] private float timeBeforeChange;
+    [SerializeField] private float timeBeforeChange = 3f;
     private AudioSource source;
     private ParticleSystem particleSystem;
     [SerializeField] private AudioClip InArea;
     [SerializeField] private float scoreMultiplier = 5f;
     int players = 0;
     public static AreaManager Instance { get; private set; }
+
+    [SerializeField] private GameObject particle;
+    [SerializeField] private float particleRate = 5.0f;
 
     private void Awake()
     {
@@ -24,23 +27,19 @@ public class AreaManager : MonoBehaviour
 
         SceneManager.sceneLoaded += delegate (Scene loadedScene, LoadSceneMode loadedSceneMode)
         {
-            if (GameController.Instance.currentGameMode.GetType() == typeof(TimeZoneCapture)) 
+            if (GameController.Instance.currentGameMode.GetType() == typeof(TimeZoneCapture))
                 ChangeArea();
             else
-                this.transform.position = new Vector3(-1000, 0);
+                this.gameObject?.SetActive(false);
         };
     }
 
-    [SerializeField] private GameObject particle;
-    [SerializeField] private float particleRate = 5.0f;
     void Start()
     {
         source = GetComponent<AudioSource>();
         particleSystem = GetComponentInChildren<ParticleSystem>();
-        //ChangeArea();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (!GameController.Instance.currentGameMode.GetType().Equals(typeof(TimeZoneCapture))) Destroy(this.gameObject);
@@ -52,8 +51,6 @@ public class AreaManager : MonoBehaviour
         Player player = collision.GetComponent<Player>();
         if (player != null)
         {
-            //player.Score += ();
-            //player.onAlterScore.Invoke(player.Score);
             GameController.Instance.AddScore(Time.deltaTime * scoreMultiplier *10, collision.gameObject);
             timeBeforeChange -= Time.deltaTime;
 
@@ -111,8 +108,5 @@ public class AreaManager : MonoBehaviour
             instance.GetComponent<AreaParticleScript>().scaleSpeed = false;
             --particleCount;
         }
-
-        //particleSystem.Play();
-        //source.Play();
     }
 }

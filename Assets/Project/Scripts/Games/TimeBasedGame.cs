@@ -6,7 +6,7 @@ using UnityEngine;
 public class TimeBasedGame : BaseGame
 {
     [SerializeField] protected float gameTime;
-    [SerializeField]protected float remainingTime;
+    [SerializeField] protected float remainingTime;
     override public void  StartGame(){ 
         base.StartGame();
         remainingTime = gameTime;
@@ -19,11 +19,7 @@ public class TimeBasedGame : BaseGame
         remainingTime -= Time.deltaTime;
         if (remainingTime <= 0)
             FinishGame();
-        try
-        {
-            Timer.Instance.UpdateTimerRect(remainingTime, gameTime);
-        }
-        catch (Exception e) { }
+        Timer.Instance?.UpdateTimerRect(remainingTime, gameTime);
     }
     public override void FinishGame(){
         base.FinishGame();

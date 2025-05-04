@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7856704066592609255}
   - component: {fileID: -8350918590151756432}
   - component: {fileID: 387624527577898417}
-  - component: {fileID: 3985795242095886366}
+  - component: {fileID: 7299730834321604282}
   m_Layer: 7
   m_Name: InvencibilityPotion
   m_TagString: Untagged
@@ -159,7 +159,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.64, y: 0.64}
   m_EdgeRadius: 0
---- !u!114 &3985795242095886366
+--- !u!114 &7299730834321604282
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -168,14 +168,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2128471897566729481}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b157447f21763d54c883b62a12d07914, type: 3}
+  m_Script: {fileID: 11500000, guid: cd8c59bb1c96e78478222a72820dd720, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   creator: {fileID: 0}
   consumible: 1
   creatorImmunity: 0
-  healingType: 0
-  healthAmount: 0
-  invincibilityTime: 2.5
-  invencibleParticles: {fileID: 2116742792820544769, guid: 017feae20926dba43931c45e3f1de814, type: 3}
-  healParticles: {fileID: 2116742792820544769, guid: 7e50011ca14192d46b483ca78a488123, type: 3}
+  invencibilityTime: 5
+  consumible: 1

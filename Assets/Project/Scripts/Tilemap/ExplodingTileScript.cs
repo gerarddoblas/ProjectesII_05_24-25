@@ -23,7 +23,6 @@ namespace UnityEngine.Tilemaps
 
             SceneManager.sceneUnloaded += delegate (Scene unloadedScene)
             {
-                Debug.Log("TileRefreshed");
                 states = new Dictionary<Vector3Int, int>();
             };
         }
@@ -33,7 +32,6 @@ namespace UnityEngine.Tilemaps
             states = new Dictionary<Vector3Int, int>();
             SceneManager.sceneUnloaded += delegate (Scene unloadedScene)
             {
-                Debug.Log("TileRefreshed");
                 states = new Dictionary<Vector3Int, int>();
             };
         }
