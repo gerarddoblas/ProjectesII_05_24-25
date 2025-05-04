@@ -10,15 +10,13 @@ using UnityEngine.UI;
 public class StartGameDoor : MonoBehaviour
 {
     [Header("minPlayersToPass: 0-AllPlayers")]
-    [SerializeField] int minPlayersToPass;
-    [SerializeField] bool activateClapAnimation;
+    [SerializeField] private int minPlayersToPass;
+    [SerializeField] private bool activateClapAnimation;
     private int players;
 
-    [SerializeField] float timeToAccept;
-    float timer;
-    [SerializeField] TextMeshProUGUI timerText;
-
-    bool accepted = false;
+    [SerializeField] private float timeToAccept;
+    private float timer;
+    [SerializeField] private TextMeshProUGUI timerText;
 
     private void Start()
     {
@@ -30,33 +28,23 @@ public class StartGameDoor : MonoBehaviour
         if (players == 0 || !((players == PlayersManager.Instance.players.Count && minPlayersToPass == 0) ||
              (players >= minPlayersToPass && minPlayersToPass != 0))) return;
 
-
-
         if(timer > 0)
         {
             timer -= Time.deltaTime;
             timerText.text = ((int)timer + 1).ToString();
             timerText.transform.localScale = Vector3.one * (timer - Mathf.Floor(timer)); //Scale by fractional part
             timerText.color = new Color(timerText.color.r, timerText.color.g, timerText.color.b,(timer - Mathf.Floor(timer)));
-            //timerText.color = timerText.color.WithAlpha(timer - Mathf.Floor(timer)); 
             return;
         }
 
         timerText.text = "";
         timerText.transform.localScale = Vector3.one;
         timerText.color = new Color(timerText.color.r, timerText.color.g, timerText.color.b, (timer - Mathf.Floor(timer)));
-        //timerText.color = timerText.color.WithAlpha(1);
-
-        //if (activateClapAnimation) CameraFX.Instance.VerticalClap(delegate () {
-        //    GameController.Instance.StartGames();
-        //});
-        //else
         CameraFX.Instance.VerticalClap();
         GameController.Instance.StartGames();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
         if (!collision.GetComponent<Player>()) return;
 
         GameObject player = collision.gameObject;
@@ -71,7 +59,6 @@ public class StartGameDoor : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-
         if (!collision.GetComponent<Player>()) return;
 
         GameObject player = collision.gameObject;
@@ -81,7 +68,6 @@ public class StartGameDoor : MonoBehaviour
         LeanTween.scale(hud.GetComponent<PlayerHud>().readyText.gameObject, Vector3.zero, .25f);
 
         players--;
-
         //If no one is left, reset
         if (players <= 0)
         {

@@ -50,8 +50,8 @@ MonoBehaviour:
     m_Localized: "Controles\n\n <sprite name=\"WKey\"><sprite name=\"AKey\"><sprite
       name=\"SKey\"><sprite name=\"DKey\"> o <sprite name=\"LeftJoystick\"> para
       moverte\n<sprite name=\"Spacebar\"> o <sprite name=\"AButton\"> para saltar\n<sprite
-      name=\"EKey\"> o <sprite name=\"PSPadUp\"> para lanzar objetos\n<sprite name=\"EscKey\">
-      para pausar"
+      name=\"EKey\"> o <sprite name=\"PSPadUp\"> para lanzar objetos\n<sprite name=\"LClick\">
+      para pegar\n<sprite name=\"EscKey\"> para pausar"
     m_Metadata:
       m_Items: []
   - m_Id: 9748125882245120

@@ -25,7 +25,6 @@ public class CameraFX : MonoBehaviour
     GameObject topClap, bottomClap;
     [SerializeField]float timeBeforeFirstClap;
     float cameraSize;
-    [SerializeField] bool showInstructions = true;
     public void SetClap()
     {
         topClap.transform.localPosition = new Vector3(0, Camera.main.orthographicSize, 1); 
@@ -62,7 +61,7 @@ public class CameraFX : MonoBehaviour
             , 1
          );
         if (clapOnEnable)
-            ReverseVerticalClap(() => { Debug.Log("Test clap finished"); });
+            ReverseVerticalClap(() => {});
     }
     
 

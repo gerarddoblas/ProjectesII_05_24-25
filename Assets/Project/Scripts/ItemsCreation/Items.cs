@@ -7,10 +7,9 @@ using UnityEngine.SceneManagement;
 
 public class Items : MonoBehaviour
 {
-  
+
     //Object Creation
-    private bool canCreate = true, fillingMana = true;
-    private bool dontRepeat = true;
+    [SerializeField] private bool canCreate = true;
     public ObjectCreation objectGenerator;
 
     private SpriteRenderer spriteRenderer;
@@ -19,8 +18,6 @@ public class Items : MonoBehaviour
     public UnityEvent<Sprite> onItemRecieved;
     public UnityEvent onItemCreated;
     public GameObject recievedObject;
-    public void EnableCreation() { canCreate = true; }
-    public void DisableCreation() {  canCreate = false; }
     private void Awake()
     {
         PlayerInput input = GetComponent<PlayerInput>();
