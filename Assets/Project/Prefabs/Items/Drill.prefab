@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6634740257997141737}
   - component: {fileID: -7450824888362699428}
   - component: {fileID: 8353749447682005311}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Drill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -273,7 +273,7 @@ MonoBehaviour:
   consumible: 0
   creatorImmunity: 0
   timeInScene: 1.5
-  contador: 0
+  counter: 0
 --- !u!95 &8353749447682005311
 Animator:
   serializedVersion: 5

@@ -5070,7 +5070,7 @@ GameObject:
   - component: {fileID: 955066382619735325}
   - component: {fileID: 8721418410945491118}
   - component: {fileID: 7995753541070086679}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LeftWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5306,7 +5306,7 @@ GameObject:
   - component: {fileID: 2548119381937508126}
   - component: {fileID: 7935471649592058151}
   - component: {fileID: 1953274344235407363}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RightWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5767,6 +5767,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7513a56333b2f4a45a8187e156e8766d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canCreate: 1
   objectGenerator: {fileID: 11400000, guid: beec49a64267bdd4792ee5991a8b74e8, type: 2}
   itemHandSprite: {fileID: 4367300864627284546}
   onItemRecieved:
