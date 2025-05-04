@@ -16,7 +16,7 @@ public class CameraFX : MonoBehaviour
         public TMP_Text text;
     }
 
-    public TextMeshProUGUI timer;
+    public Timer timer;
     public Image instructions;
     public StartTimer startTimer;
     public bool clapOnEnable = false;

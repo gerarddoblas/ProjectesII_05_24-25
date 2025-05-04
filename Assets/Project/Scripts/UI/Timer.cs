@@ -1,12 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor;
+using UnityEditor.Localization.Editor;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
     [SerializeField] Image timerRect;
+
+    [Header("Game Texts")]
+    [SerializeField] TMP_Text gameText;
+    [SerializeField] TMP_Text coinCollect;
+    [SerializeField] TMP_Text fightArena;
+    [SerializeField] TMP_Text zoneCapture;
+    [SerializeField] TMP_Text stealTheCrown;
     [Header("Warning")]
     [SerializeField] bool warning = true;
     private bool hasWarned = false;
@@ -23,10 +32,31 @@ public class Timer : MonoBehaviour
         else
             Destroy(gameObject);
         timerRect.transform.localScale = Vector3.zero;
+        gameText.text = "";
     }
 
     public void UpdateTimerRect(float remainingSeconds, float gameTime)
     {
+        if(gameText.text == "" && GameController.Instance.currentGameMode != null)
+        {
+            if(GameController.Instance.currentGameMode.GetType().Equals(typeof(CoinCollectGame)))
+            {
+                gameText.text = coinCollect.text;
+            }
+            else if(GameController.Instance.currentGameMode.GetType().Equals(typeof(FightArenaGame)))
+            {
+                gameText.text = fightArena.text;
+            }
+            else if(GameController.Instance.currentGameMode.GetType().Equals(typeof(StealTheCrown)))
+            {
+                gameText.text = stealTheCrown.text;
+            }
+            else if(GameController.Instance.currentGameMode.GetType().Equals(typeof(TimeZoneCapture)))
+            {
+                gameText.text = zoneCapture.text;
+            }
+        }
+
         float scale = remainingSeconds / gameTime;
         timerRect.transform.localScale =
             scale * Vector3.right 

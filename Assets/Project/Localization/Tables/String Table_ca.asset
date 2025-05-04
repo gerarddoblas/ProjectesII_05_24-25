@@ -74,6 +74,22 @@ MonoBehaviour:
     m_Localized: Controls
     m_Metadata:
       m_Items: []
+  - m_Id: 13417586361323520
+    m_Localized: Recull Monedes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13418558705848320
+    m_Localized: Arena de lluita
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13418860494409728
+    m_Localized: Captura la bandera
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13419336556302336
+    m_Localized: Roba la corona
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
