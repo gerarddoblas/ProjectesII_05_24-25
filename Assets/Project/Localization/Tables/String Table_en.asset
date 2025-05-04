@@ -31,7 +31,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 34533546700800
-    m_Localized: Press space/jump button to join
+    m_Localized: Press <sprite name="Spacebar> or <sprite name="AButton"> to join
     m_Metadata:
       m_Items: []
   - m_Id: 35109537886208

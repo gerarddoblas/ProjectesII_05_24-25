@@ -31,7 +31,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 34533546700800
-    m_Localized: "Pulsa el bot\xF3n de salto/espacio para unirse"
+    m_Localized: Pulsa <sprite name="Spacebar> o <sprite name="AButton"> para unirte
     m_Metadata:
       m_Items: []
   - m_Id: 35109537886208
