@@ -19,6 +19,7 @@ public class GameController : MonoBehaviour
     public int targetScore;
 
     [SerializeField] GameObject physicsCoin;
+    [SerializeField] private GameObject winnerParticles;
     public static GameController Instance { get; private set; }
 
     private void Awake()
@@ -203,6 +204,8 @@ public class GameController : MonoBehaviour
         PlayersManager.Instance.StopPlayers();
         PlayersManager.Instance.HealAllPlayers();
         Player winner = UpdateGameScores();
+        GameObject instance = Instantiate(winnerParticles, winner.transform.position, Quaternion.identity);
+        instance.transform.localScale = Vector3.one * 1.5f;
         ResetScore();
         LeanTween.move(CameraFX.Instance.gameObject, winner.transform.position, 2f).setOnUpdate((float dt) => {
             Camera.main.transform.position = 
@@ -210,7 +213,7 @@ public class GameController : MonoBehaviour
                 Camera.main.transform.position.y * Vector3.up + 
                 10 * Vector3.back;
             Camera.main.orthographicSize -= .02f;
-            Camera.main.orthographicSize = Mathf.Max(Camera.main.orthographicSize, 5.0f);
+            Camera.main.orthographicSize = Mathf.Max(Camera.main.orthographicSize, 10.0f);
         }).setOnComplete(() =>
         {
             StartCoroutine(CheckGameComplete());
