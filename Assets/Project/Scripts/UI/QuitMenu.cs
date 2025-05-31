@@ -21,6 +21,7 @@ public class QuitMenu : MonoBehaviour
     }
     public void EnableMenu()
     {
+        PlayersManager.Instance.SetJoining(false);
         if (menuEnabled) return;
       
         PauseMenu.Instance.HideMenu();
@@ -41,6 +42,8 @@ public class QuitMenu : MonoBehaviour
         Time.timeScale = 1;
         PlayersManager.Instance.ShowAllHuds();
         CameraFX.Instance.timer.gameObject.SetActive(true);
+        PlayersManager.Instance.SetJoining(true);
+
     }
 
     private void Quit()
