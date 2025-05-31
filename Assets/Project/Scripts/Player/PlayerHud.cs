@@ -31,13 +31,15 @@ public class PlayerHud : MonoBehaviour
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] public Image gamePoints;
     [SerializeField] public TMP_Text readyText;
+    [SerializeField] GameObject playerIcon;
 
     private List<Coroutine> scoreAnimations = new List<Coroutine>();
     private List<Coroutine> itemAnimations = new List<Coroutine>();
     
     public void SetColour(Color colour)
     {
-        itemSprite.transform.parent.GetChild(0).GetComponent<Image>().color = colour;
+        playerIcon.GetComponent<Image>().color = colour;
+        //itemSprite.transform.parent.GetChild(0).GetComponent<Image>().color = colour;
         //itemSprite.transform.parent.GetChild(0).GetComponent<Image>().color = colour;
     }
     public void SetScoreText(int score)

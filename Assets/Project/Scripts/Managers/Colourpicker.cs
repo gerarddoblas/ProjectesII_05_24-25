@@ -39,6 +39,7 @@ public class Colourpicker : MonoBehaviour
             pickedColours[index] = true;
             referencedPlayer.GetComponent<SpriteRenderer>().color = playerColours[index];
             referencedHud.GetComponent<PlayerHud>().SetColour(playerColours[index]);
+            referencedPlayer.GetComponent<PlayerInput>().actions.FindAction("Move").started -= selectColour;
             container.transform.GetChild(index).LeanScale(Vector3.one * 1.1f, .5f).setOnComplete(() => {
                 Color c = container.transform.GetChild(index).GetComponent<Image>().color;
                 c.a /= 2;
@@ -70,9 +71,9 @@ public class Colourpicker : MonoBehaviour
             SetColourPicked(3);
     }
     public void Hide() {
+        
         LeanTween.value(1, 0, .5f).setOnUpdate((float r) => { cg.alpha = r; }).setOnComplete(() => {
             PlayersManager.Instance.SetJoining(true);
-            referencedPlayer.GetComponent<PlayerInput>().actions.FindAction("Move").started -= selectColour;
             referencedPlayer.GetComponent<SpriteRenderer>().enabled = true;
             referencedPlayer.GetComponent<Rigidbody2D>().simulated = true;
             referencedPlayer = null;

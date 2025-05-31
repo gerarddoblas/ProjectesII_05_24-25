@@ -843,6 +843,7 @@ MonoBehaviour:
   scoreText: {fileID: 4314728748093129916}
   gamePoints: {fileID: 1852114868472738961}
   readyText: {fileID: 5712259035725085865}
+  playerIcon: {fileID: 1248366526393311003}
 --- !u!225 &1971153255942441682
 CanvasGroup:
   m_ObjectHideFlags: 0
