@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,25 +8,33 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Windows;
 
+[Serializable]public struct PlayerHUDPosPreset
+{
+    public Vector2 anchorMin, anchorMax, position;
+}
 public class PlayersManager : MonoBehaviour
 {
+    public static PlayersManager Instance { get; private set; }
+
+    [Header("Joinig options")]
     [SerializeField] bool enabledHUDByDefault, enableCreationByDefault;
     public PlayerInputManager playerInputManager;
-    [SerializeField] private GameObject playerContainer, hudsContainer;
 
+    [Header("Object references")]
+    [SerializeField] private GameObject playerContainer, hudsContainer, colourpicker;
+    public GameObject GetColourPicker() { return colourpicker; }
     [Header("Lists")]
     public List<GameObject> players;
     public List<GameObject> playersCanvas;
     public List<Vector3Int> playerSpawnPositions;
 
     [Header("Visual Parameters")]
-    [SerializeField] private Color[] playerColours;
     [SerializeField] private GameObject canvasPrefab;
+    [SerializeField] PlayerHUDPosPreset[] playerHUDPosPresets;
 
     public JoinTextsScript joinTextsScript;
-
     public UnityEvent onAnyActionPerformed;
-    public static PlayersManager Instance { get; private set; }
+
     public void HealAllPlayers()
     {
         foreach (GameObject player in players)
@@ -61,6 +70,7 @@ public class PlayersManager : MonoBehaviour
     {
         playerInputManager = GetComponent<PlayerInputManager>();
         playerInputManager.onPlayerJoined += OnPlayerJoin;
+               
     }
 
     private void OnPlayerJoin(PlayerInput input)
@@ -80,14 +90,13 @@ public class PlayersManager : MonoBehaviour
 
         players[slotIndex] = player;
 
-        player.GetComponent<SpriteRenderer>().color = playerColours[slotIndex];
 
         GameObject instantiatedHUD = Instantiate(canvasPrefab, hudsContainer.transform);
         playersCanvas[slotIndex] = instantiatedHUD;
         joinTextsScript?.texts[slotIndex].gameObject.SetActive(false);
 
         var instanceScript = instantiatedHUD.GetComponent<PlayerHud>();
-        instanceScript.SetColour(playerColours[slotIndex]);
+        //instanceScript.SetColour(playerColours[slotIndex]);
 
         player.GetComponent<Items>().onItemRecieved.AddListener(delegate (Sprite s) {
             instanceScript.SetItemSprite(s);
@@ -109,32 +118,19 @@ public class PlayersManager : MonoBehaviour
         RectTransform hudRect = instantiatedHUD.GetComponent<RectTransform>();
         hudRect.SetParent(hudsContainer.transform, false);
 
-        switch (slotIndex)
-        {
-            case 0:
-                hudRect.anchorMin = Vector2.up;
-                hudRect.anchorMax = Vector2.up;
-                hudRect.anchoredPosition = new Vector2(202, -171);
-                break;
-            case 1:
-                hudRect.anchorMin = Vector2.one;
-                hudRect.anchorMax = Vector2.one;
-                hudRect.anchoredPosition = new Vector2(-202, -171);
-                break;
-            case 2:
-                hudRect.anchorMin = Vector2.zero;
-                hudRect.anchorMax = Vector2.zero;
-                hudRect.anchoredPosition = new Vector2(202, -68);
-                break;
-            default:
-                hudRect.anchorMin = Vector2.left;
-                hudRect.anchorMax = Vector2.left;
-                hudRect.anchoredPosition = new Vector2(-202, -68);
-                break;
-        }
+        hudRect.anchorMin = playerHUDPosPresets[slotIndex].anchorMin;
+        hudRect.anchorMax = playerHUDPosPresets[slotIndex].anchorMax;
+        hudRect.anchoredPosition = playerHUDPosPresets[slotIndex].position;
 
         SetOnAnyActionPerformed(player);
         GameController.Instance.ResetScore();
+
+
+        //
+        player.GetComponent<SpriteRenderer>().enabled = false;
+        player.GetComponent<Rigidbody2D>().simulated = false;
+//        instanceScript.statsHUD.SetActive(false);
+        colourpicker.GetComponent<Colourpicker>().Show(player,instanceScript.gameObject);
     }
 
 

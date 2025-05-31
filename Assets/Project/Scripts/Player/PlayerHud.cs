@@ -20,7 +20,11 @@ public class PlayerHud : MonoBehaviour
         public Sprite defaultSprite;
         public List<ActionButton> actions;
     }
+    [Header("Menus")]
+    public GameObject colourPickerHUD;
+    public GameObject statsHUD;
 
+    [Header("Stats")]
     [SerializeField]public ActionButtonScheme actionButtonScheme;
     [SerializeField] GameObject Controls;
     [SerializeField] Image itemSprite, healthBar;

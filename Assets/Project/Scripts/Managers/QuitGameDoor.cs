@@ -30,6 +30,7 @@ public class QuitGameDoor : MonoBehaviour
                 if(PlayersManager.Instance.joinTextsScript != null)
                     PlayersManager.Instance.joinTextsScript.texts[index].gameObject.SetActive(true);
 
+                PlayersManager.Instance.GetColourPicker().GetComponent<Colourpicker>().UnSelectColour(player.GetComponent<SpriteRenderer>().color);
                 Destroy(player);
                 PlayersManager.Instance.players[index] = null;
 
