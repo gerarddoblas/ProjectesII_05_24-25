@@ -27,7 +27,7 @@ public class Colourpicker : MonoBehaviour
         {
             if (c == playerColours[i])
             {
-                pickedColours[i] = true;
+                pickedColours[i] = false;
                 container.transform.GetChild(i).GetComponent<Image>().color = c;
             }
         }
