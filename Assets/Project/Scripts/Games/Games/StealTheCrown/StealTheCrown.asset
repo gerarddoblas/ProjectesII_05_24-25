@@ -21,8 +21,8 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
   gamePaused: 0
-  gameTime: 35
-  remainingTime: -0.0068392456
+  gameTime: 0
+  remainingTime: -0.0062813
   crownPrefab: {fileID: 3509787225685442031, guid: a998971a4e96b1647ae259066ea94a86, type: 3}
   instantiatedCrown: {fileID: 0}
   scoreOverTime: 1

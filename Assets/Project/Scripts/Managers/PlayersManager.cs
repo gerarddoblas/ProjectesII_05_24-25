@@ -123,7 +123,7 @@ public class PlayersManager : MonoBehaviour
         hudRect.anchoredPosition = playerHUDPosPresets[slotIndex].position;
 
         SetOnAnyActionPerformed(player);
-        GameController.Instance.ResetScore();
+        
 
 
         //
@@ -131,6 +131,7 @@ public class PlayersManager : MonoBehaviour
         player.GetComponent<Rigidbody2D>().simulated = false;
 //        instanceScript.statsHUD.SetActive(false);
         colourpicker.GetComponent<Colourpicker>().Show(player,instanceScript.gameObject);
+        GameController.Instance.ResetScore();
     }
 
 
