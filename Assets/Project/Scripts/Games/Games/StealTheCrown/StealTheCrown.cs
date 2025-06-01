@@ -13,6 +13,10 @@ public class StealTheCrown : TimeBasedGame
     override public void StartGame()
     {
         base.StartGame();
+        remainingTime = gameTime;
+        PlayersManager.Instance.ShowAllHuds(1);
+        PlayersManager.Instance.EnablePlayersCreation();
+
     }
 
     override public void UpdateGame()

@@ -9,7 +9,10 @@ public class JoinTextsScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        foreach(var text in texts) LeanTween.scale(text.gameObject, Vector3.one * .7f, 1f).setLoopPingPong();
+        if (PlayersManager.Instance.players.Count != 0)
+            Destroy(this.gameObject);
+        foreach(var text in texts) 
+            LeanTween.scale(text.gameObject, Vector3.one * .7f, 1f).setLoopPingPong();
     }
 
     // Update is called once per frame
