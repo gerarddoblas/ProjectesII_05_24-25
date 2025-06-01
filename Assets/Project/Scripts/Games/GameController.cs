@@ -204,7 +204,7 @@ public class GameController : MonoBehaviour
         PlayersManager.Instance.StopPlayers();
         PlayersManager.Instance.HealAllPlayers();
         Player winner = UpdateGameScores();
-        GameObject instance = Instantiate(winnerParticles, winner.transform.position, Quaternion.identity);
+        GameObject instance = Instantiate(winnerParticles, winner.transform.position + Vector3.forward, Quaternion.identity);
         instance.transform.localScale = Vector3.one * 1.5f;
         ResetScore();
         PlayersManager.Instance.LockPlayersPhysics(true);
