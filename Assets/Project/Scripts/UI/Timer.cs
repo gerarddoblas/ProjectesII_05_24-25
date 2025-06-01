@@ -10,11 +10,11 @@ public class Timer : MonoBehaviour
     [SerializeField] Image timerRect;
 
     [Header("Game Texts")]
-    [SerializeField] TMP_Text gameText;
-    [SerializeField] TMP_Text coinCollect;
-    [SerializeField] TMP_Text fightArena;
-    [SerializeField] TMP_Text zoneCapture;
-    [SerializeField] TMP_Text stealTheCrown;
+    [SerializeField] public TMP_Text gameText;
+    [SerializeField] public TMP_Text coinCollect;
+    [SerializeField] public TMP_Text fightArena;
+    [SerializeField] public TMP_Text zoneCapture;
+    [SerializeField] public TMP_Text stealTheCrown;
     [Header("Warning")]
     [SerializeField] bool warning = true;
     private bool hasWarned = false;
@@ -36,13 +36,13 @@ public class Timer : MonoBehaviour
 
     public void UpdateTimerRect(float remainingSeconds, float gameTime)
     {
-        if(gameText.text == "" && GameController.Instance.currentGameMode != null)
-        {
-            if(GameController.Instance.currentGameMode.GetType().Equals(typeof(CoinCollectGame)))
+        //if(gameText.text == "" && GameController.Instance.currentGameMode != null)
+        //{
+           /* if(GameController.Instance.currentGameMode.GetType().Equals(typeof(CoinCollectGame)))
             {
                 gameText.text = coinCollect.text;
-            }
-            else if(GameController.Instance.currentGameMode.GetType().Equals(typeof(FightArenaGame)))
+            }*/
+           /* else if(GameController.Instance.currentGameMode.GetType().Equals(typeof(FightArenaGame)))
             {
                 gameText.text = fightArena.text;
             }
@@ -53,8 +53,8 @@ public class Timer : MonoBehaviour
             else if(GameController.Instance.currentGameMode.GetType().Equals(typeof(TimeZoneCapture)))
             {
                 gameText.text = zoneCapture.text;
-            }
-        }
+            }*/
+        //}
 
         float scale = remainingSeconds / gameTime;
         timerRect.transform.localScale =

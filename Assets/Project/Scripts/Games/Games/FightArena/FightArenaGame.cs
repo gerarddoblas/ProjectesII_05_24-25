@@ -11,18 +11,9 @@ public class FightArenaGame : TimeBasedGame
         base.StartGame();
         PlayersManager.Instance.SetJoining(false);
         remainingTime = gameTime;
-        //LeanTween.alphaCanvas(counterText.GetComponentInParent<CanvasGroup>(), 1, 1);
         PlayersManager.Instance.ShowAllHuds(1);
         PlayersManager.Instance.EnablePlayersCreation();
-        /*onFinishGame.AddListener(delegate ()
-        {
-            PlayersManager.Instance.HideAllHuds();
-            PlayersManager.Instance.LockPlayersMovement();
-            PlayersManager.Instance.DisablePlayersCreation();
-            CameraFX.Instance.VerticalClap(() => {
-                SceneManager.LoadScene("ResultScene");
-            });
-        });*/
+        Timer.Instance.gameText.text = Timer.Instance.fightArena.text;
     }
 
     override public void UpdateGame()

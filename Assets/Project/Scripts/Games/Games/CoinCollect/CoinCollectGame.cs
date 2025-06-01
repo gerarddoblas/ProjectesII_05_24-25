@@ -15,6 +15,7 @@ public class CoinCollectGame : TimeBasedGame
         remainingTime = gameTime;
         PlayersManager.Instance.ShowAllHuds(1);
         PlayersManager.Instance.EnablePlayersCreation();
+        Timer.Instance.gameText.text = Timer.Instance.coinCollect.text;
     }
 
     override public void UpdateGame()

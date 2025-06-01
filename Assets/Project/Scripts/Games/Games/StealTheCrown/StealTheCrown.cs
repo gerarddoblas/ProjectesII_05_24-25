@@ -13,6 +13,7 @@ public class StealTheCrown : TimeBasedGame
     override public void StartGame()
     {
         base.StartGame();
+       Timer.Instance.gameText.text =Timer.Instance.stealTheCrown.text;
     }
 
     override public void UpdateGame()

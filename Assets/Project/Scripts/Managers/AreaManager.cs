@@ -30,7 +30,8 @@ public class AreaManager : MonoBehaviour
             if (GameController.Instance.currentGameMode.GetType() == typeof(TimeZoneCapture))
                 ChangeArea();
             else
-                this.gameObject?.SetActive(false);
+                try { this.gameObject?.SetActive(false); } catch { }
+            
         };
     }
 
