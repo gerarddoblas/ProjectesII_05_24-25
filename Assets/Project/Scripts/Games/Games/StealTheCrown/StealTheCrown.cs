@@ -13,19 +13,17 @@ public class StealTheCrown : TimeBasedGame
     override public void StartGame()
     {
         base.StartGame();
-       Timer.Instance.gameText.text =Timer.Instance.stealTheCrown.text;
+        PlayersManager.Instance.SetJoining(false);
+        remainingTime = gameTime;
+        PlayersManager.Instance.ShowAllHuds(1);
+        PlayersManager.Instance.EnablePlayersCreation();
+        Timer.Instance.gameText.text =Timer.Instance.stealTheCrown.text;
     }
 
     override public void UpdateGame()
     {
         base.UpdateGame();
-        if (scoreOverTime && Crown.Instance.GetOwner() != null)
-            GameController.Instance.AddScore(scoreToAdd * Time.deltaTime, Crown.Instance.GetOwner().gameObject);
+        GameController.Instance.AddScore(scoreToAdd * Time.deltaTime, Crown.Instance.GetOwner().gameObject);
     }
-    public override void FinishGame()
-    {
-        if (!scoreOverTime && Crown.Instance.GetOwner().gameObject != null)
-            GameController.Instance.AddScore(scoreToAdd, Crown.Instance.GetOwner().gameObject);
-        base.FinishGame();
-    }
+    
 }
