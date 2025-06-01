@@ -19,6 +19,7 @@ public class GameController : MonoBehaviour
     public int targetScore;
 
     [SerializeField] GameObject physicsCoin;
+    [SerializeField] private GameObject winnerParticles;
     public static GameController Instance { get; private set; }
 
     private void Awake()
@@ -170,7 +171,7 @@ public class GameController : MonoBehaviour
 
     }
 
-    private void UpdateGameScores()
+    private Player UpdateGameScores()
     {
         List<int> maxScoreIndexes = new List<int>{0};
         for (int i = 1; i < playerScores.Count; i++)
@@ -183,6 +184,7 @@ public class GameController : MonoBehaviour
             playerGameScores[i]++;
             PlayersManager.Instance.playersCanvas[i].GetComponent<PlayerHud>().gamePoints.fillAmount = (float)playerGameScores[i] / (float)targetScore;
         }
+        return PlayersManager.Instance.players[maxScoreIndexes[0]].GetComponent<Player>();
             
     }
     private void SelectNextLevel() {
@@ -201,8 +203,26 @@ public class GameController : MonoBehaviour
         PlayersManager.Instance.LockPlayersMovement();
         PlayersManager.Instance.StopPlayers();
         PlayersManager.Instance.HealAllPlayers();
-        UpdateGameScores();
+        Player winner = UpdateGameScores();
+        GameObject instance = Instantiate(winnerParticles, winner.transform.position, Quaternion.identity);
+        instance.transform.localScale = Vector3.one * 1.5f;
         ResetScore();
+        PlayersManager.Instance.LockPlayersPhysics(true);
+        LeanTween.move(CameraFX.Instance.gameObject, winner.transform.position, 2f).setOnUpdate((float dt) => {
+            Camera.main.transform.position = 
+                Camera.main.transform.position.x * Vector3.right + 
+                Camera.main.transform.position.y * Vector3.up + 
+                10 * Vector3.back;
+            Camera.main.orthographicSize -= .02f;
+            Camera.main.orthographicSize = Mathf.Max(Camera.main.orthographicSize, 10.0f);
+        }).setOnComplete(() =>
+        {
+            StartCoroutine(CheckGameComplete());
+        });
+    }
+    private IEnumerator CheckGameComplete()
+    {
+        yield return new WaitForSeconds(3);
         if (!PlayerAchievedTargetScore())
         {
             if (clapAnimations && CameraFX.Instance != null)
@@ -211,12 +231,14 @@ public class GameController : MonoBehaviour
                 {
                     SelectNextGame();
                     SelectNextLevel();
+                    PlayersManager.Instance.LockPlayersPhysics(false);
                 });
             }
             else
             {
                 SelectNextGame();
                 SelectNextLevel();
+                PlayersManager.Instance.LockPlayersPhysics(false);
             }
         }
         else
@@ -229,12 +251,15 @@ public class GameController : MonoBehaviour
                 CameraFX.Instance.VerticalClap(delegate ()
                 {
                     SceneManager.LoadScene("ResultScene");
+                    PlayersManager.Instance.LockPlayersPhysics(false);
                 });
             }
-            else
+            else { 
                 SceneManager.LoadScene("ResultScene");
+                PlayersManager.Instance.LockPlayersPhysics(false);
+            }
         }
-
+        yield return null;
     }
     public bool PlayerAchievedTargetScore()
     {

@@ -240,4 +240,9 @@ public class PlayersManager : MonoBehaviour
         foreach (GameObject player in players)
             player.GetComponent<Items>().RemoveItem();
      }
+    public void LockPlayersPhysics(bool value)
+    {
+        foreach (GameObject player in players)
+            player.GetComponent<Rigidbody2D>().simulated = !value;
+    }
 }

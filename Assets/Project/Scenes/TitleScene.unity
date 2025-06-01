@@ -4476,7 +4476,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28d0f3c7987d8a14facabd1813c21784, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minPlayersToPass: 2
+  minPlayersToPass: 1
   activateClapAnimation: 1
   timeToAccept: 5
   timerText: {fileID: 1303578660}
@@ -13568,6 +13568,10 @@ PrefabInstance:
       propertyPath: clapAnimations
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1070946722087091741, guid: 6d85d4b54ee95084fa57b4b3d60a7a4a, type: 3}
+      propertyPath: winnerParticles
+      value: 
+      objectReference: {fileID: 215918523138872930, guid: 208fe3e7745fdf048b7f1ba94ea7c364, type: 3}
     - target: {fileID: 1070946722087091741, guid: 6d85d4b54ee95084fa57b4b3d60a7a4a, type: 3}
       propertyPath: stages.Array.size
       value: 3
